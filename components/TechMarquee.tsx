@@ -9,10 +9,9 @@ const TechMarquee: React.FC = () => {
       <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-midnight to-transparent z-10" />
       
       <motion.div 
-        className="flex whitespace-nowrap gap-12"
-        animate={{ x: [0, -1000] }}
+        className="flex whitespace-nowrap gap-12 w-max"
+        animate={{ x: ["0%", "-50%"] }}
         transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-        whileHover={{ animationPlayState: "paused" }}
       >
         {[...TECH_STACK, ...TECH_STACK].map((tech, i) => (
           <motion.span 

@@ -5,7 +5,7 @@ export const HERO_CONTENT = {
   headline: "Architecting the Future with Prompts",
   subheadline: "I bridge the gap between human intent and machine intelligence. Specializing in AI Automation, Multi-Agent Systems, and LLM Integration.",
   cta: "View My Work",
-  image: "https://github.com/akshaymad0608.png"
+  image: "/profile-photo.jpg"
 };
 
 export const TECH_STACK = [

@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
-import { ArrowRight, Terminal, Zap, Globe, Smartphone, Search } from 'lucide-react';
+import { ArrowRight, Terminal, Zap, Globe, Smartphone, Search, Brain } from 'lucide-react';
 import { HERO_CONTENT } from '../constants';
 
 const Hero: React.FC = () => {
@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
     <section 
       ref={ref} 
       onMouseMove={handleMouseMove}
-      className="relative min-h-[100dvh] flex items-center overflow-hidden pt-24 md:pt-32 pb-16"
+      className="relative min-h-[100dvh] flex flex-col justify-center overflow-hidden pt-40 md:pt-48 pb-16"
     >
       {/* Background Ambience */}
       <motion.div 
@@ -114,13 +114,13 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.8 }}
                   className="mb-8"
                 >
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto">
-                    <div className="absolute inset-0 bg-gradient-to-r from-electric to-neonLime rounded-full animate-spin-slow blur-md opacity-70" />
-                    <img 
-                      src={HERO_CONTENT.image} 
-                      alt="Akshay Mahajan" 
-                      className="relative w-full h-full object-cover rounded-full border-2 border-midnight shadow-2xl z-10"
-                    />
+                  <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-r from-electric to-neonLime rounded-full animate-spin-slow blur-xl opacity-60" />
+                    <div className="relative w-full h-full rounded-full border border-electric/40 bg-slate-900/80 backdrop-blur-sm shadow-[0_0_40px_rgba(0,240,255,0.3)] flex items-center justify-center z-10 overflow-hidden group">
+                       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
+                       <div className="absolute inset-0 bg-gradient-to-t from-electric/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                       <Brain className="w-14 h-14 md:w-16 md:h-16 text-electric relative z-20 group-hover:scale-110 group-hover:animate-pulse transition-transform duration-500" strokeWidth={1.5} />
+                    </div>
                   </div>
                 </motion.div>
 
