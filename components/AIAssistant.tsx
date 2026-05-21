@@ -1,7 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Send, Bot, ChevronRight, Smile } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, ChevronRight, Smile, Trash2 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
+import ReactMarkdown from 'react-markdown';
 import { AI_SYSTEM_INSTRUCTION } from '../constants';
 
 const SUGGESTED_QUESTIONS = [
@@ -21,6 +22,7 @@ const AIAssistant: React.FC = () => {
   ]);
   const [isLoading, setIsLoading] = useState(false);
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const inputRef = useRef<HTMLInputElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom
@@ -30,18 +32,33 @@ const AIAssistant: React.FC = () => {
     }
   }, [messages, isLoading, isOpen]);
 
+  // Focus input when opened
+  useEffect(() => {
+    if (isOpen && inputRef.current) {
+      setTimeout(() => inputRef.current?.focus(), 300);
+    }
+  }, [isOpen]);
+
+  const handleClearChat = () => {
+    setMessages([
+      { role: 'assistant', text: "Memory wiped. Neural link reset. How may I assist you anew?" }
+    ]);
+  };
+
   const handleChat = async (textInput: string) => {
     if (!textInput.trim() || isLoading) return;
 
     const userMessage = textInput.trim();
     setInput('');
     setShowEmojiPicker(false);
+    
+    // Add user message
     setMessages(prev => [...prev, { role: 'user', text: userMessage }]);
     setIsLoading(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-      const response = await ai.models.generateContent({
+      const ai = new GoogleGenAI({ apiKey: import.meta.env.VITE_GEMINI_API_KEY || '' });
+      const stream = await ai.models.generateContentStream({
         model: 'gemini-2.5-flash',
         contents: [...messages, { role: 'user', text: userMessage }].map(m => m.text).join('\n'),
         config: {
@@ -50,12 +67,23 @@ const AIAssistant: React.FC = () => {
         }
       });
 
-      const aiText = response.text || "Connection interrupted. Realigning sat-link...";
-      setMessages(prev => [...prev, { role: 'assistant', text: aiText }]);
+      // Add a placeholder for the assistant's streaming response
+      setMessages(prev => [...prev, { role: 'assistant', text: '' }]);
+      setIsLoading(false); // We show streaming now instead of waiting indicator
+
+      let currentText = '';
+      for await (const chunk of stream) {
+        currentText += chunk.text;
+        setMessages(prev => {
+          const newMessages = [...prev];
+          newMessages[newMessages.length - 1].text = currentText;
+          return newMessages;
+        });
+      }
     } catch (error) {
-      setMessages(prev => [...prev, { role: 'assistant', text: "Error: Neural link unstable. Please try again later." }]);
-    } finally {
+      console.error(error);
       setIsLoading(false);
+      setMessages(prev => [...prev, { role: 'assistant', text: "Error: Neural link unstable. Please check API key or try again later." }]);
     }
   };
 
@@ -69,7 +97,7 @@ const AIAssistant: React.FC = () => {
   };
 
   return (
-    <div className="fixed bottom-6 right-6 z-[100] font-sans">
+    <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[100] font-sans">
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -77,7 +105,7 @@ const AIAssistant: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="absolute bottom-16 md:bottom-20 right-0 w-[calc(100vw-48px)] max-w-[420px] h-[600px] max-h-[75vh] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden ring-1 ring-white/5"
+            className="absolute bottom-16 md:bottom-20 right-0 w-[calc(100vw-32px)] sm:w-[calc(100vw-48px)] max-w-[420px] h-[500px] md:h-[600px] max-h-[80vh] md:max-h-[75vh] bg-slate-900/95 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl flex flex-col overflow-hidden ring-1 ring-white/5"
           >
             {/* Header */}
             <div className="p-4 bg-gradient-to-r from-slate-900 to-slate-800 border-b border-white/5 flex justify-between items-center relative overflow-hidden">
@@ -96,17 +124,29 @@ const AIAssistant: React.FC = () => {
                   </div>
                 </div>
               </div>
-              <button 
-                onClick={() => setIsOpen(false)} 
-                aria-label="Close chat"
-                className="text-slate-400 hover:text-white p-2 rounded-full hover:bg-white/5 transition-colors relative z-10"
-              >
-                <X size={20} />
-              </button>
+              <div className="flex items-center gap-1 z-10">
+                {messages.length > 1 && (
+                    <button 
+                        onClick={handleClearChat} 
+                        aria-label="Clear chat"
+                        title="Clear history"
+                        className="text-slate-400 hover:text-red-400 p-2 rounded-full hover:bg-white/5 transition-colors relative"
+                    >
+                        <Trash2 size={16} />
+                    </button>
+                )}
+                <button 
+                  onClick={() => setIsOpen(false)} 
+                  aria-label="Close chat"
+                  className="text-slate-400 hover:text-white p-2 rounded-full hover:bg-white/5 transition-colors relative"
+                >
+                  <X size={20} />
+                </button>
+              </div>
             </div>
 
             {/* Messages Area */}
-            <div ref={scrollRef} className="flex-grow p-5 overflow-y-auto space-y-6 scroll-smooth bg-gradient-to-b from-transparent to-black/20">
+            <div ref={scrollRef} className="flex-grow p-4 md:p-5 overflow-y-auto space-y-6 scroll-smooth bg-gradient-to-b from-transparent to-black/20 text-slate-200">
               {messages.map((m, i) => (
                 <motion.div 
                     initial={{ opacity: 0, y: 10 }}
@@ -116,17 +156,21 @@ const AIAssistant: React.FC = () => {
                 >
                   <div className={`max-w-[85%] rounded-2xl p-4 text-sm leading-relaxed shadow-lg ${
                     m.role === 'user' 
-                      ? 'bg-electric text-midnight font-semibold rounded-tr-none' 
-                      : 'bg-white/5 text-slate-200 border border-white/5 rounded-tl-none backdrop-blur-md'
+                      ? 'bg-electric text-midnight font-semibold rounded-br-sm' 
+                      : 'bg-white/5 text-slate-200 border border-white/10 rounded-bl-sm backdrop-blur-md prose prose-invert prose-sm max-w-none prose-p:my-1 prose-a:text-electric prose-strong:text-white'
                   }`}>
-                    {m.text}
+                    {m.role === 'user' ? (
+                      m.text
+                    ) : (
+                      <ReactMarkdown>{m.text || '...'}</ReactMarkdown>
+                    )}
                   </div>
                 </motion.div>
               ))}
               
               {isLoading && (
                 <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex justify-start">
-                  <div className="bg-white/5 p-4 rounded-2xl rounded-tl-none border border-white/5 flex items-center gap-2">
+                  <div className="bg-white/5 p-4 rounded-2xl rounded-bl-sm border border-white/10 flex items-center gap-2">
                     <span className="w-2 h-2 bg-electric rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                     <span className="w-2 h-2 bg-electric rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                     <span className="w-2 h-2 bg-electric rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -153,7 +197,7 @@ const AIAssistant: React.FC = () => {
             </div>
 
             {/* Input Area */}
-            <div className="p-4 bg-slate-900 border-t border-white/5 backdrop-blur-md relative z-20">
+            <div className="p-3 md:p-4 bg-slate-900 border-t border-white/5 backdrop-blur-md relative z-20">
                {/* Emoji Picker Popover */}
                <AnimatePresence>
                  {showEmojiPicker && (
@@ -183,11 +227,12 @@ const AIAssistant: React.FC = () => {
                     type="button"
                     onClick={() => setShowEmojiPicker(!showEmojiPicker)}
                     aria-label="Toggle emoji picker"
-                    className={`p-3 rounded-xl transition-colors ${showEmojiPicker ? 'bg-electric text-midnight' : 'bg-white/5 hover:bg-white/10 text-slate-400 hover:text-electric'}`}
+                    className={`hidden sm:flex p-3 rounded-xl transition-colors ${showEmojiPicker ? 'bg-electric text-midnight' : 'bg-white/5 hover:bg-white/10 text-slate-400 hover:text-electric'}`}
                 >
                     <Smile size={20} />
                 </button>
                 <input
+                  ref={inputRef}
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}

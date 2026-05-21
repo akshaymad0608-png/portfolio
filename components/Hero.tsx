@@ -187,13 +187,15 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 0.8 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 w-full"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl mx-auto"
                 >
                   {features.map((feature, index) => (
-                    <div key={index} className="p-6 rounded-2xl bg-white/5 border border-white/5 backdrop-blur-sm hover:bg-white/10 transition-colors group">
-                      <feature.icon className="w-8 h-8 text-electric mb-4 group-hover:scale-110 transition-transform duration-300" />
-                      <h3 className="text-white font-bold mb-1">{feature.label}</h3>
-                      <p className="text-xs text-slate-400">{feature.desc}</p>
+                    <div key={index} className="relative p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden group hover:-translate-y-1 transition-all duration-300">
+                      <div className="absolute inset-0 bg-gradient-to-br from-electric/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-electric/50 to-transparent scale-x-0 group-hover:scale-x-100 transition-transform duration-700" />
+                      <feature.icon className="w-8 h-8 text-electric mb-4 group-hover:scale-110 transition-transform duration-300 relative z-10" />
+                      <h3 className="text-white font-bold mb-1 relative z-10 text-base">{feature.label}</h3>
+                      <p className="text-xs text-slate-400 relative z-10 leading-relaxed">{feature.desc}</p>
                     </div>
                   ))}
                 </motion.div>

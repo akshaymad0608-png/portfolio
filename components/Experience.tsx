@@ -32,8 +32,9 @@ const Experience: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Selected Missions</h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">DEPLOYED SOLUTIONS // 2024-2026</p>
+          <span className="text-electric font-mono text-sm tracking-widest mb-4 block">DEPLOYED_SOLUTIONS</span>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4">Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Missions</span></h2>
+          <p className="text-slate-400 max-w-2xl mx-auto font-mono text-sm">2024-2026 // PRODUCTION LOGS</p>
         </motion.div>
 
         <div className="relative max-w-5xl mx-auto">

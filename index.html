@@ -25,7 +25,7 @@
     <meta name="twitter:description" content="Bridging the gap between human intent and machine intelligence.">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=1200&auto=format&fit=crop">
     
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -57,6 +57,29 @@
         color: #e2e8f0;
         overflow-x: hidden;
       }
+      /* Noise & Grid Overlay */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: 
+          linear-gradient(to right, rgba(255,255,255,0.02) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(255,255,255,0.02) 1px, transparent 1px);
+        background-size: 40px 40px;
+        mask-image: radial-gradient(circle at center, black, transparent 80%);
+        pointer-events: none;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+        opacity: 0.15;
+        mix-blend-overlay: true;
+        pointer-events: none;
+      }
       /* Custom Scrollbar */
       ::-webkit-scrollbar {
         width: 10px;
@@ -85,7 +108,8 @@
     "framer-motion": "https://esm.sh/framer-motion@^12.27.5",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.38.0"
+    "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
+    "react-markdown": "https://esm.sh/react-markdown@^10.1.0"
   }
 }
 </script>

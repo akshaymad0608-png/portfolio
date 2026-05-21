@@ -3,7 +3,7 @@ import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial } 
 
 export const HERO_CONTENT = {
   headline: "Architecting the Future with Prompts",
-  subheadline: "I bridge the gap between human intent and machine intelligence. Specializing in AI Automation, Multi-Agent Systems, and LLM Integration.",
+  subheadline: "I bridge the gap between human intent and machine intelligence. Action-oriented AI Generalist specializing in AI Automation, Multi-Agent Systems, and Full-Stack LLM Integration.",
   cta: "View My Work",
   image: "/profile-photo.jpg"
 };
@@ -53,6 +53,27 @@ export const SKILLS: Skill[] = [
     icon: Sparkles, 
     description: "MidJourney, HeyGen, ElevenLabs, and AI video/audio.",
     demoLink: "#showcase" 
+  },
+  {
+    name: "RAG & Vector Databases",
+    level: 94,
+    icon: Layers,
+    description: "Semantic search, context augmentation, and knowledge bases.",
+    demoLink: "#work"
+  },
+  {
+    name: "Full-Stack AI Integration",
+    level: 92,
+    icon: Cpu,
+    description: "Deploying AI models into production-ready web applications.",
+    demoLink: "#work"
+  },
+  {
+    name: "AI Strategy & Consulting",
+    level: 88,
+    icon: MessageSquare,
+    description: "Advising enterprises on AI adoption, product management, and ROI.",
+    demoLink: "#services"
   },
   { 
     name: "Web Development", 
@@ -137,6 +158,30 @@ export const PROJECTS: Project[] = [
     icon: Youtube,
     stat: "YOUTUBE GROWTH",
     elementId: "aiminivlogs"
+  },
+  {
+    id: 6,
+    title: "Enterprise Dashboard",
+    category: "Custom Software",
+    year: "2025",
+    description: "Built a high-performance business intelligence dashboard using React and TailwindCSS, processing millions of rows of data into real-time metrics and charts.",
+    tech: ["React", "TailwindCSS", "Data Viz"],
+    link: "#",
+    icon: Code2,
+    stat: "REAL-TIME SCALING",
+    elementId: "enterprise-dashboard"
+  },
+  {
+    id: 7,
+    title: "SaaS Starter Kit",
+    category: "Web Development",
+    year: "2024",
+    description: "Developed a comprehensive full-stack Next.js boilerplate. Streamlines authentication, database integration, and UI design for launching fast scalable SaaS platforms.",
+    tech: ["Next.js", "TypeScript", "Prisma"],
+    link: "#",
+    icon: Layers,
+    stat: "FULL-STACK",
+    elementId: "saas-starter"
   }
 ];
 
@@ -231,10 +276,10 @@ export const SERVICES: Service[] = [
   },
   {
     id: 3,
-    title: "Corporate Training",
+    title: "AI Generalist Operations",
     icon: Users,
-    description: "Upskilling teams to leverage Prompt Engineering effectively, from basic prompting to advanced CoT strategies.",
-    features: ["Advanced Prompting", "AI Safety Protocols", "Developer Tooling", "Executive Briefings"]
+    description: "Holistic AI implementation covering video, text, image, and workflow automation for end-to-end efficiency.",
+    features: ["Multimodal AI Ops", "Prompt Optimization", "Workflow Automation", "No-code Deployments"]
   },
   {
     id: 4,
@@ -242,6 +287,20 @@ export const SERVICES: Service[] = [
     icon: ShieldCheck,
     description: "Analyzing existing AI implementations for cost, latency, accuracy, and hallucination risks.",
     features: ["Token Optimization", "Latency Reduction", "Hallucination Auditing", "Cost Analysis"]
+  },
+  {
+    id: 5,
+    title: "Web Development",
+    icon: Layers,
+    description: "Building responsive, highly-performant modern web applications using React, TailwindCSS, and Next.js.",
+    features: ["Frontend Architecture", "React & Next.js", "TailwindCSS Styling", "Performance Optimization"]
+  },
+  {
+    id: 6,
+    title: "Custom Software Solutions",
+    icon: Rocket,
+    description: "End-to-end bespoke software creation tailored to unique business processes and demands.",
+    features: ["Full-Stack Development", "API Integration", "Database Design", "Scalable Cloud Hosting"]
   }
 ];
 
