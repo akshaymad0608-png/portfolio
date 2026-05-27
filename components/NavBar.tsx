@@ -44,7 +44,7 @@ const NavBar: React.FC = () => {
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-midnight/80 backdrop-blur-xl border-b border-white/10 py-4 shadow-[0_10px_40px_rgba(0,0,0,0.5)]' : 'bg-transparent py-6'}`}>
-      <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center">
+      <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center relative z-50">
           <a 
             href="#" 
             aria-label="Home"
@@ -89,22 +89,21 @@ const NavBar: React.FC = () => {
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0, y: -20 }}
-            animate={{ opacity: 1, height: "auto", y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -20 }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="absolute top-full mt-2 left-4 right-4 p-6 bg-midnight/95 backdrop-blur-2xl border border-white/10 rounded-2xl md:hidden z-50 overflow-hidden shadow-2xl shadow-electric/10"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 top-[0] pt-24 bg-midnight/98 backdrop-blur-2xl md:hidden z-40 overflow-y-auto"
           >
-            <div className="flex flex-col gap-4">
+            <div className="flex flex-col px-8 py-8 h-full gap-2">
               {navLinks.map((link, i) => (
                 <motion.a 
                   key={link.name} 
                   href={link.href}
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 }}
+                  transition={{ delay: i * 0.05 + 0.1 }}
                   onClick={(e) => handleScroll(e, link.href)}
-                  className="text-lg font-medium text-slate-200 hover:text-electric cursor-pointer py-2 block border-b border-white/5 last:border-0"
+                  className="text-2xl font-bold font-display text-slate-200 hover:text-electric cursor-pointer py-4 border-b border-white/5 last:border-0 transition-colors"
                 >
                   {link.name}
                 </motion.a>

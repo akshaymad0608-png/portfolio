@@ -136,7 +136,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
         
-        <div className="mt-20 pt-8 pb-16 md:pb-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
+        <div className="mt-20 pt-8 pb-32 md:pb-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-center">
             <p className="text-slate-500 text-sm">© {new Date().getFullYear()} Akshay Mahajan. All rights reserved.</p>
             <div className="flex items-center gap-2 text-sm text-slate-500 font-mono">
               <span className="w-2 h-2 bg-electric rounded-full animate-pulse shadow-[0_0_8px_#00f0ff]"></span>

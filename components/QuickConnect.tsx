@@ -51,7 +51,7 @@ const QuickConnect: React.FC = () => {
                 </div>
                 <span className="text-sm font-medium">Email Me</span>
               </a>
-              <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-all">
+              <a href="https://wa.me/?text=Hi%20Akshay" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-all">
                 <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
                   <WhatsAppIcon className="w-4 h-4 text-green-400" />
                 </div>
