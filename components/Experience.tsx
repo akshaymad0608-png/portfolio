@@ -39,7 +39,7 @@ const Experience: React.FC = () => {
 
         <div className="relative max-w-5xl mx-auto">
           {/* Vertical Line */}
-          <div className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-electric/30 to-transparent transform md:-translate-x-1/2 z-0" />
+          <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-electric/30 to-transparent transform md:-translate-x-1/2 z-0" />
 
           {PROJECTS.map((project, index) => {
             const isEven = index % 2 === 0;
@@ -53,18 +53,18 @@ const Experience: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true, margin: "-100px" }}
-                className={`relative flex flex-col md:flex-row items-center mb-24 last:mb-0 ${isEven ? 'md:flex-row-reverse' : ''}`}
+                className={`relative flex flex-col md:flex-row items-center mb-16 md:mb-24 last:mb-0 ${isEven ? 'md:flex-row-reverse' : ''}`}
               >
                 {/* Spacer */}
                 <div className="hidden md:block w-1/2" />
 
                 {/* Connection Point */}
-                <div className="absolute left-6 md:left-1/2 w-8 h-8 rounded-full bg-midnight border-2 border-electric flex items-center justify-center transform -translate-x-1/2 translate-y-1/2 z-10 shadow-[0_0_15px_rgba(0,240,255,0.4)] top-0 md:top-auto">
-                    <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
+                <div className="absolute left-4 md:left-1/2 w-6 h-6 md:w-8 md:h-8 rounded-full bg-midnight border-2 border-electric flex items-center justify-center transform -translate-x-1/2 translate-y-1/2 z-10 shadow-[0_0_15px_rgba(0,240,255,0.4)] top-0 md:top-auto">
+                    <div className="w-1.5 h-1.5 md:w-2 md:h-2 bg-white rounded-full animate-pulse" />
                 </div>
 
                 {/* Content Card */}
-                <div className="w-full md:w-1/2 pl-16 md:pl-0 md:px-12 mt-6 md:mt-0">
+                <div className="w-full md:w-1/2 pl-12 md:pl-0 md:px-12 mt-4 md:mt-0">
                    <div className="group relative rounded-2xl bg-slate-900/40 backdrop-blur-md border border-white/10 hover:border-electric/50 transition-all duration-500 overflow-hidden hover:shadow-[0_0_30px_rgba(0,240,255,0.1)]">
                       
                       {/* Image/Icon Section */}

@@ -111,22 +111,6 @@ const Hero: React.FC = () => {
                 <motion.div
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.8 }}
-                  className="mb-8"
-                >
-                  <div className="relative w-32 h-32 md:w-40 md:h-40 mx-auto flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-r from-electric to-neonLime rounded-full animate-spin-slow blur-xl opacity-60" />
-                    <div className="relative w-full h-full rounded-full border border-electric/40 bg-slate-900/80 backdrop-blur-sm shadow-[0_0_40px_rgba(0,240,255,0.3)] flex items-center justify-center z-10 overflow-hidden group">
-                       <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
-                       <div className="absolute inset-0 bg-gradient-to-t from-electric/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                       <Brain className="w-14 h-14 md:w-16 md:h-16 text-electric relative z-20 group-hover:scale-110 group-hover:animate-pulse transition-transform duration-500" strokeWidth={1.5} />
-                    </div>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                   className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-electric/30 bg-electric/10 text-electric text-xs font-mono tracking-wider backdrop-blur-md"
                 >

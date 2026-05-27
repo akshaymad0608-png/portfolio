@@ -53,3 +53,12 @@ export interface Testimonial {
   content: string;
   avatar: string;
 }
+
+export interface Certificate {
+  id: number;
+  title: string;
+  issuer: string;
+  date: string;
+  expertise: string[];
+  downloadLink?: string;
+}

@@ -43,9 +43,9 @@ const Contact: React.FC = () => {
                   <Linkedin className="text-electric shrink-0" />
                   <span className="text-sm sm:text-base">in/akshay-mahajan-95bb86187</span>
                 </a>
-                <a href="https://github.com/akshaymad0608-png" target="_blank" rel="noopener noreferrer" aria-label="Akshay Mahajan's GitHub Profile" className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors p-4 rounded-xl bg-white/5 hover:bg-white/10 break-all">
+                <a href="https://github.com/akshaymad0608" target="_blank" rel="noopener noreferrer" aria-label="Akshay Mahajan's GitHub Profile" className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors p-4 rounded-xl bg-white/5 hover:bg-white/10 break-all">
                   <Github className="text-electric shrink-0" />
-                  <span className="text-sm sm:text-base">github.com/akshaymad0608-png</span>
+                  <span className="text-sm sm:text-base">github.com/akshaymad0608</span>
                 </a>
                 <a href="https://instagram.com/aiminivlogs4" target="_blank" rel="noopener noreferrer" aria-label="Akshay Mahajan's Instagram Profile" className="flex items-center gap-4 text-slate-300 hover:text-white transition-colors p-4 rounded-xl bg-white/5 hover:bg-white/10 break-all">
                   <Instagram className="text-electric shrink-0" />
