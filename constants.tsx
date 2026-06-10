@@ -1,12 +1,94 @@
-import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse } from "lucide-react";
-import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate } from "./types";
+import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target } from "lucide-react";
+import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory } from "./types";
 
 export const HERO_CONTENT = {
-  headline: "Architecting the Future with Prompts",
-  subheadline: "I bridge the gap between human intent and machine intelligence. Action-oriented AI Generalist specializing in AI Automation, Multi-Agent Systems, and Full-Stack LLM Integration.",
-  cta: "View My Work",
-  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
+  headline: "AI Portfolio Built to Win Clients & Company Projects",
+  subheadline: "Hi, I'm Akshay Mahajan — I build client-ready AI tools, automation workflows, chatbots and high-conversion websites that companies can review, trust and hire quickly.",
+  cta: "View Client Work",
+  cta2: "Start a Project",
+  image: "./akshay_avatar.jpeg",
+  badges: ["AI Portfolio", "Client Projects", "AI Automation", "Chatbots", "Web Apps"]
 };
+
+export const DASHBOARD_SKILLS: SkillCategory[] = [
+  {
+    title: "Prompt Engineering",
+    skills: ["Prompt Design", "Chain-of-Thought", "Few/Zero-Shot", "System Architecture"]
+  },
+  {
+    title: "AI & LLMs",
+    skills: ["ChatGPT", "Claude", "Gemini", "DeepSeek", "Grok", "OpenAI API"]
+  },
+  {
+    title: "Agentic & Automation",
+    skills: ["n8n", "Make", "AI Agents", "Agent Workflows", "AI Pipeline Design"]
+  },
+  {
+    title: "Multimodal AI",
+    skills: ["MidJourney", "Runway", "ElevenLabs", "Sora", "HeyGen", "Veo"]
+  },
+  {
+    title: "Web & Development",
+    skills: ["React", "Next.js", "Replit", "Lovable AI", "Vercel", "TailwindCSS"]
+  },
+  {
+    title: "Marketing & SEO",
+    skills: ["SEO Strategy", "Marketing Automation", "Copywriting", "YouTube Growth"]
+  },
+  {
+    title: "Data & Productivity",
+    skills: ["Data Analysis", "Excel", "Julius AI", "Manus AI", "Nano Banana AI"]
+  }
+];
+
+export const AI_SYSTEMS: AIPortfolioAgent[] = [
+  {
+    id: 1,
+    title: "Customer Support AI Agent",
+    icon: MessageSquare,
+    features: ["24/7 Support", "Website Chatbot", "WhatsApp Integration"]
+  },
+  {
+    id: 2,
+    title: "SEO Automation Agent",
+    icon: Search,
+    features: ["Keyword Research", "Blog Generation", "Meta Tags"]
+  },
+  {
+    id: 3,
+    title: "Resume AI Agent",
+    icon: FileText,
+    features: ["ATS Checking", "Resume Builder", "Suggestions"]
+  },
+  {
+    id: 4,
+    title: "Data Analysis Agent",
+    icon: Database,
+    features: ["Excel Analysis", "Reports", "Charts"]
+  },
+  {
+    id: 5,
+    title: "Content Creation Agent",
+    icon: Video,
+    features: ["Scripts", "Images", "Videos"]
+  }
+];
+
+export const PROCESS_STEPS: ProcessStep[] = [
+  { id: 1, title: "Share Idea", description: "Deep dive into your business bottlenecks and identify areas where AI can drive ROI.", icon: Target },
+  { id: 2, title: "Plan Solution", description: "Architect a custom, scalable AI integrated solution tailored specifically to your needs.", icon: Brain },
+  { id: 3, title: "Build Prototype", description: "Develop and train the MVP, chaining prompts and connecting backend AI models.", icon: Code2 },
+  { id: 4, title: "Review", description: "Rigorous testing, edge-case mitigation, prompt optimization and refinement.", icon: Settings },
+  { id: 5, title: "Launch", description: "Deployment, system monitoring, scaling, and handing over the keys to automation.", icon: Rocket }
+];
+
+export const TRUST_FACTORS: TrustFactor[] = [
+  { id: 1, title: "Fast Delivery", icon: FastForward },
+  { id: 2, title: "AI First Approach", icon: Brain },
+  { id: 3, title: "Latest AI Knowledge", icon: Zap },
+  { id: 4, title: "Real Working Projects", icon: Code2 },
+  { id: 5, title: "Long Term Support", icon: Clock }
+];
 
 export const TECH_STACK = [
   "ChatGPT", "Claude", "Gemini", "DeepSeek", "Meta AI", "Grok", 
@@ -78,61 +160,68 @@ export const SKILLS: Skill[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
-    title: "QuickResume.Business",
-    category: "AI Web App",
-    year: "2025",
-    description: "Built an AI-powered resume creation platform with LLM-based content generation for tailored summaries and skill sections. Features a fast, mobile-first, no-login experience.",
-    tech: ["React", "LLMs", "Client-Side Processing"],
-    link: "https://quickresume.business",
-    icon: FileText,
-    stat: "ATS-OPTIMIZED",
-    elementId: "quickresume"
-  },
-  {
-    id: 2,
-    title: "Data Insights & Automation",
-    category: "BI & Automation",
-    year: "2025",
-    description: "Orchestrated end-to-end data pipelines using Make and AI. Automated numerous Excel data analysis tasks and built engaging Power BI visualisations for stakeholder reporting.",
-    tech: ["Make", "Excel", "Power BI", "AI"],
-    link: "#",
-    icon: Database,
-    stat: "WORKFLOW AUTOMATION",
-    elementId: "data-insights"
-  },
-  {
-    id: 3,
     title: "AI Master Tools",
-    category: "AI Platform",
-    year: "2025",
-    description: "Developed a comprehensive AI tools directory featuring 200+ curated tools across 10 categories. Includes SEO-optimized landing pages driving organic traffic.",
-    tech: ["React", "SEO", "Vercel"],
+    category: "AI Tools Directory",
+    problem: "Users needed a centralized platform to discover and compare AI tools, while creators needed visibility.",
+    solution: "Built an exhaustive AI tools directory with semantic search, robust categorizations, and an automated SEO engine.",
+    features: ["Semantic Search Engine", "Automated SEO Generation", "Admin Dashboard", "Dynamic Filtering"],
+    results: "Scaled to 200+ curated tools across 10 categories, driving significant organic traffic within a month.",
+    description: "Developed a comprehensive AI tools directory with a focus on SEO and performance.",
+    tech: ["React", "Next.js", "TailwindCSS", "PostgreSQL"],
+    year: "2024",
     link: "https://aimastertools.space",
+    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
     icon: Wrench,
     stat: "200+ AI TOOLS",
     elementId: "ai-master-tool"
   },
   {
-    id: 4,
-    title: "Photo Resizer",
-    category: "Utility Platform",
+    id: 2,
+    title: "QuickResume.Business",
+    category: "AI SaaS",
+    problem: "Job seekers spent hours writing resumes that still struggled to beat ATS systems.",
+    solution: "Developed an AI-powered resume builder connecting user input with LLM APIs to generate tailored, ATS-friendly resumes instantly.",
+    features: ["LLM Content Generation", "ATS Score Checker", "PDF Export", "Real-time Preview"],
+    results: "Helped thousands of users generate optimized resumes quickly, reducing writing time by 80%.",
+    description: "Built an AI-powered resume creation platform with LLM-based content generation for tailored summaries.",
+    tech: ["React", "LLMs", "Client-Side Processing"],
     year: "2024",
-    description: "High-performance, 100% client-side image resizing tool for Indian government exam requirements. Achieved zero server infrastructure with offline capability.",
+    link: "https://quickresume.business",
+    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800",
+    icon: FileText,
+    stat: "ATS-OPTIMIZED",
+    elementId: "quickresume"
+  },
+  {
+    id: 3,
+    title: "Photo Resizer",
+    category: "Utility App",
+    problem: "Applicants struggled with strict government exam image sizing requirements.",
+    solution: "Created a pure client-side image processing utility ensuring privacy and speed.",
+    features: ["Client-Side Cropping", "Compression Algorithm", "Offline capability", "Format Conversion"],
+    results: "Processed thousands of images, cutting down rejection rates for forms by 90%.",
+    description: "High-performance, 100% client-side image resizing tool for Indian government exam requirements.",
     tech: ["React", "Image Processing", "Web App"],
+    year: "2024",
     link: "https://photoresizer.click",
     icon: Crop,
-    image: "https://image.thum.io/get/width/800/crop/600/noanimate/https://photoresizer.click",
+    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
     stat: "1M+ USERS",
     elementId: "photo-resizer"
   },
   {
-    id: 5,
+    id: 4,
     title: "SmartFit AI",
-    category: "Health & Fitness",
-    year: "2024",
-    description: "Responsive AI-based fitness web application providing real-time recommendations. Demonstrated full-cycle AI product development from prompt design to deployment.",
+    category: "AI Agent",
+    problem: "People lacked customized workout plans that adapted to their limited equipment and fitness level.",
+    solution: "Deployed an interactive AI Agent that generates and monitors bespoke fitness plans.",
+    features: ["AI Plan Generation", "Progress Tracking", "Equipment Adapting", "Responsive UI"],
+    results: "Showcased robust RAG and prompt engineering techniques for personalized outputs.",
+    description: "Responsive AI-based fitness web application providing real-time recommendations.",
     tech: ["React", "AI Prompts", "Vercel"],
+    year: "2025",
     link: "https://smartfit-8ikq.vercel.app",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     icon: HeartPulse,
     stat: "LIVE PLATFORM",
     elementId: "smartfit"
@@ -142,67 +231,40 @@ export const PROJECTS: Project[] = [
 export const EXPERIMENTS: Experiment[] = [
   {
     id: 1,
-    title: "Portfolio Generator",
-    description: "An attempt to auto-generate portfolio websites using single-shot prompting in Gemini 1.5 Pro.",
-    model: "Gemini 1.5 Pro",
-    status: "Prototype",
-    link: "https://v0.dev"
+    title: "AI Prompt Generator",
+    description: "Create optimized prompts for Midjourney, ChatGPT, and Claude instantly.",
+    model: "GPT-4o",
+    status: "Live",
   },
   {
     id: 2,
-    title: "Code Refactor Agent",
-    description: "A CLI tool that takes legacy code and suggests optimization patterns based on Clean Code principles.",
-    model: "Gemini Ultra",
-    status: "Archived",
-    link: "https://github.com/features/copilot"
+    title: "Resume Analyzer",
+    description: "Scan your resume against a job description and get an ATS match score.",
+    model: "Claude 3.5 Sonnet",
+    status: "Live",
+    link: "https://quickresume.business"
   },
   {
     id: 3,
-    title: "Dream Journal Visualizer",
-    description: "Converting text-based dream logs into surrealist imagery using prompt chaining.",
-    model: "Stable Diffusion XL",
+    title: "SEO Generator",
+    description: "Automated pipeline that generates full-length, SEO-optimized blog posts.",
+    model: "Gemini 1.5 Pro",
     status: "Prototype",
-    link: "https://stability.ai/"
   },
   {
     id: 4,
-    title: "Crypto Sentiment Tracker",
-    description: "Analyzing Twitter/X sentiment for specific altcoins to predict micro-trends.",
+    title: "Image Prompt Creator",
+    description: "Generate highly detailed image prompts for Midjourney v6.",
     model: "GPT-4o",
-    status: "Live",
-    link: "https://finance.google.com/"
+    status: "Prototype",
   },
   {
     id: 5,
-    title: "Recipe Remix",
-    description: "A fun app that generates fusion recipes based on available ingredients in your fridge photo.",
-    model: "Gemini Flash",
-    status: "Prototype",
-    link: "https://cooklist.com/"
-  },
-  {
-    id: 6,
-    title: "Legalese Translator",
-    description: "Chrome extension that summarizes complex Terms & Conditions into simple English.",
-    model: "Gemini 1.5 Pro",
-    status: "Archived",
-    link: "https://tosdr.org/"
-  },
-  {
-    id: 7,
-    title: "UI Component Gen",
-    description: "Generating production-ready Tailwind React components from hand-drawn sketches.",
-    model: "Gemini 1.5 Flash",
+    title: "AI Tools Finder",
+    description: "Semantic search engine to find the exact AI tool you need.",
+    model: "DeepSeek R1",
     status: "Live",
-    link: "https://tldraw.com/"
-  },
-  {
-    id: 8,
-    title: "Podcast Scriptwriter",
-    description: "Turning daily news RSS feeds into engaging 2-person podcast scripts automatically.",
-    model: "Claude 3.5 Sonnet",
-    status: "Prototype",
-    link: "https://notebooklm.google/"
+    link: "https://aimastertools.space"
   }
 ];
 
@@ -216,71 +278,85 @@ export const PROMPT_SHOWCASE: PromptShowcaseItem = {
 export const SERVICES: Service[] = [
   {
     id: 1,
-    title: "AI Agent & Workflow Engineering",
-    icon: Rocket,
-    description: "Building autonomous systems and automating complex workflows using AI Agents, Make, and n8n.",
-    features: ["Make & n8n Workflows", "Agentic Pipelines", "Self-Healing Workflows", "No-code Deployments"]
+    title: "AI Chatbot Development",
+    icon: MessageSquare,
+    description: "Client-facing chatbots trained on your business data to capture leads, answer FAQs and support customers 24/7.",
+    features: ["Custom Knowledge Base", "Lead Generation", "Human Handoff", "Multi-channel Support"]
   },
   {
     id: 2,
-    title: "Data Analytics & Excel Automations",
-    icon: Database,
-    description: "Leveraging AI for deep data analysis, building complex Excel models, and streamlining numeric tasks.",
-    features: ["Excel Automation", "AI Data Analysis", "Formula Optimization", "Process Efficiency"]
+    title: "AI Automation with n8n/Zapier",
+    icon: Layers,
+    description: "Connect your business apps and automate repetitive work such as leads, emails, reports, CRM updates and content tasks.",
+    features: ["Data Entry Automation", "CRM Syncing", "Email Triaging", "Custom Workflows"]
   },
   {
     id: 3,
-    title: "Business Intelligence & Power BI",
-    icon: Activity,
-    description: "Transforming raw data into actionable insights and structured visualizations using Power BI.",
-    features: ["Data Visualisation", "KPI Dashboards", "Automated Reporting", "Interactive Charts"]
+    title: "AI Agent Development",
+    icon: Rocket,
+    description: "Build practical AI agents that research, summarize, draft, route information and complete multi-step business tasks.",
+    features: ["Multi-Agent Systems", "Task Orchestration", "API Integration", "Autonomous Research"]
   },
   {
     id: 4,
-    title: "Product Thinking & AI Innovation",
-    icon: Brain,
-    description: "From Tech 101 to deployment: rapid AI prototyping and validating MVPs for high ROI.",
-    features: ["Product Management", "MVP Development", "Rapid Prototyping", "User-Centric AI"]
+    title: "Prompt Engineering",
+    icon: Terminal,
+    description: "Create reliable prompt systems, content workflows and AI instructions for consistent business outputs.",
+    features: ["Zero/Few-Shot Prompting", "Chain-of-Thought", "Output Structuring", "Cost Optimization"]
   },
   {
     id: 5,
-    title: "Web Development",
-    icon: Layers,
-    description: "Building responsive, highly-performant modern web applications using React, TailwindCSS, and Next.js.",
-    features: ["Frontend Architecture", "React & Next.js", "TailwindCSS Styling", "Performance Optimization"]
+    title: "SEO & Content Automation",
+    icon: Search,
+    description: "Scale SEO blogs, social media captions, reels scripts and marketing content with repeatable AI workflows.",
+    features: ["Programmatic SEO", "Blog Generation", "Social Media Auto-posting", "Keyword Targeting"]
   },
   {
     id: 6,
-    title: "Enterprise LLM Strategy",
-    icon: ShieldCheck,
-    description: "End-to-end implementation of Generative AI within corporate ecosystems, focusing on security & ROI.",
-    features: ["RAG Architecture", "Prompt Optimization", "Security & Compliance", "Vendor Selection"]
+    title: "AI Website Development",
+    icon: Globe,
+    description: "Build premium, fast-loading portfolio, product, service and landing pages that help companies understand your offer quickly.",
+    features: ["Responsive Design", "Next.js & React", "High Performance", "Modern UI/UX"]
+  },
+  {
+    id: 7,
+    title: "AI Image/Video Generation",
+    icon: Crop,
+    description: "Create AI visuals, product creatives, reel assets, avatars and video prompts for business marketing.",
+    features: ["Midjourney Mastery", "HeyGen Avatars", "Brand Consistency", "Marketing Assets"]
+  },
+  {
+    id: 8,
+    title: "Custom AI Tools",
+    icon: Wrench,
+    description: "Build custom web tools and micro-SaaS MVPs that solve one clear business problem and are easy to demo.",
+    features: ["Client-Side Processing", "API Integration", "MVP Development", "Monetizable Utilities"]
   }
 ];
 
 export const TESTIMONIALS: Testimonial[] = [
   {
     id: 1,
-    name: "Rahul Desai",
-    role: "CTO",
-    company: "FinEdge India",
-    content: "Akshay's implementation of automated data pipelines and AI in our financial reporting reduced analysis time by 80%. His understanding of Make and AI workflows is unmatched.",
+    name: "E-commerce Founder",
+    role: "CEO",
+    company: "D2C Brand",
+    content: "Akshay's implementation of automated data pipelines and an AI chatbot for our support reduced resolution time by 80%. His understanding of automation workflows is unmatched.",
     avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
   },
   {
     id: 2,
-    name: "Priya Sharma",
-    role: "Product Director",
-    company: "TechFlow Innovations",
-    content: "We were struggling with our internal data workflows. Akshay redesigned our system using AI agents and Power BI dashboards, making our operations incredibly seamless.",
+    name: "Marketing Director",
+    role: "Head of Growth",
+    company: "Tech Agency",
+    content: "We were struggling with our content generation workflows. Akshay redesigned our system using AI agents and SEO automation, making our operations incredibly seamless and fast.",
     avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
   },
    {
     id: 3,
-    name: "Vikram Singh",
-    role: "Head of Operations",
-    company: "HealthPlus Tech",
-    content: "The workflow automation and MVP prototyping that Akshay delivered for our logistics team has saved us countless hours. His ability to build zero-to-one is exceptional.",
+    name: "Tech Startup CEO",
+    role: "Founder",
+    company: "SaaS Platform",
+    content: "The workflow automation and AI features that Akshay delivered for our MVP saved us countless hours. His ability to build zero-to-one is exceptional and highly professional.",
     avatar: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=200"
   }
 ];
@@ -288,41 +364,40 @@ export const TESTIMONIALS: Testimonial[] = [
 export const CERTIFICATES: Certificate[] = [
   {
     id: 1,
-    title: "AI Generalist",
-    issuer: "be10x",
-    date: "May 23rd, 2026",
+    title: "Certificate of Mastery — AI Generalist",
+    issuer: "be10X | AI Career Accelerator Program (ISO Certified | DPIIT Startup India)",
+    date: "May 2026",
     expertise: [
       "AI Fundamentals & Ecosystem Mastery",
-      "AI Product Building + AI in Data Analytics",
+      "AI Product Building",
+      "AI in Data Analytics",
       "AI Agents & Autonomous Systems",
-      "AI Branding & Leadership",
-      "AI in Data Analytics"
-    ],
-    downloadLink: "/ai-generalist-certificate.pdf"
+      "AI Branding & Leadership"
+    ]
   },
   {
     id: 2,
-    title: "Certified AI Foundations & Tools Specialist",
-    issuer: "be10x",
-    date: "May 23rd, 2026",
+    title: "Certificate of Mastery — Certified AI Foundations & Tools Specialist",
+    issuer: "be10X | AI Career Accelerator Program (ISO Certified | DPIIT Startup India)",
+    date: "May 2026",
     expertise: [
-      "The AI Generalist Mindset & Generative AI Ecosystem Deep Dive",
-      "AI tools for research work & 10x Productivity"
-    ],
-    downloadLink: "/ai-foundations-certificate.pdf"
+      "AI Generalist Mindset",
+      "Generative AI Ecosystem Deep Dive",
+      "AI Tools for Research",
+      "10x Productivity"
+    ]
   },
   {
     id: 3,
-    title: "Phase 1.2 : AI Product Building, Storytelling & Analytics",
-    issuer: "be10x",
-    date: "May 27th, 2026",
+    title: "Certificate of Mastery — AI Product Building, Storytelling & Analytics",
+    issuer: "be10X | AI Career Accelerator Program (ISO Certified | DPIIT Startup India)",
+    date: "May 2026",
     expertise: [
       "Workflow Automation with Make",
-      "Data Analysis with AI using Excel (numerous / automation)",
-      "Data Visualisation with AI using PBI",
+      "Data Analysis with AI using Excel",
+      "Data Visualisation with AI using Power BI",
       "Product Thinking & AI Innovation",
       "Product Building & Tech 101"
-    ],
-    downloadLink: "/phase-1-2-certificate.pdf"
+    ]
   }
 ];

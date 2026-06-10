@@ -3,6 +3,10 @@ export interface Project {
   id: number;
   title: string;
   category: string;
+  problem: string;
+  solution: string;
+  features: string[];
+  results: string;
   description: string;
   tech: string[];
   year: string;
@@ -11,6 +15,31 @@ export interface Project {
   icon?: any;
   stat?: string;
   elementId?: string;
+}
+
+export interface AIPortfolioAgent {
+  id: number;
+  title: string;
+  icon: any;
+  features: string[];
+}
+
+export interface ProcessStep {
+  id: number;
+  title: string;
+  description: string;
+  icon: any;
+}
+
+export interface TrustFactor {
+  id: number;
+  title: string;
+  icon: any;
+}
+
+export interface SkillCategory {
+  title: string;
+  skills: string[];
 }
 
 export interface Experiment {

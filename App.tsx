@@ -1,18 +1,23 @@
 import React from 'react';
 import NavBar from './components/NavBar';
 import Hero from './components/Hero';
-import Expertise from './components/Expertise';
-import Services from './components/Services';
+import WorkProof from './components/WorkProof';
 import Experience from './components/Experience';
-import Certificates from './components/Certificates';
+import Services from './components/Services';
+import ClientPitch from './components/ClientPitch';
+import TechMarquee from './components/TechMarquee';
+import SkillsDashboard from './components/SkillsDashboard';
+import AISystems from './components/AISystems';
 import Lab from './components/Lab';
-import PromptSlider from './components/PromptSlider';
+import Process from './components/Process';
+import About from './components/About';
+import Achievements from './components/Achievements';
+import Certificates from './components/Certificates';
+import TrustFactors from './components/TrustFactors';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
-import TechMarquee from './components/TechMarquee';
 import QuickConnect from './components/QuickConnect';
-
-import GitHubStats from './components/GitHubStats';
+import AIChatBot from './components/AIChatBot';
 
 const App: React.FC = () => {
   return (
@@ -21,17 +26,23 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <TechMarquee />
-        <Expertise />
+        <WorkProof />
+        <ClientPitch />
         <Services />
-        <GitHubStats />
-        <PromptSlider />
         <Experience />
-        <Certificates />
+        <AISystems />
+        <SkillsDashboard />
         <Lab />
+        <Process />
+        <About />
+        <Achievements />
+        <Certificates />
+        <TrustFactors />
         <Testimonials />
         <Contact />
       </main>
       <QuickConnect />
+      <AIChatBot />
     </div>
   );
 };

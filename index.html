@@ -3,8 +3,43 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Akshay Mahajan | AI Architect & Prompt Engineer</title>
-    <meta name="description" content="Portfolio of Akshay Mahajan" />
+    
+    <!-- Primary Meta Tags -->
+    <title>Akshay Mahajan | AI Generalist & Builder</title>
+    <meta name="title" content="Akshay Mahajan | AI Generalist & Builder" />
+    <meta name="description" content="I help businesses save time using AI automation, chatbots, websites and smart workflows. Ready to build?" />
+    <meta name="keywords" content="Akshay Mahajan AI, AI Generalist India, Prompt Engineer India, AI Automation Developer, Custom AI Solutions" />
+    <meta name="author" content="Akshay Mahajan" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://akshay.website/" />
+    <meta property="og:title" content="Akshay Mahajan | AI Generalist & Builder" />
+    <meta property="og:description" content="I help businesses save time using AI automation, chatbots, websites and smart workflows." />
+    <meta property="og:image" content="https://akshay.website/akshay_avatar.jpeg" /> <!-- Updated SEO image -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://akshay.website/" />
+    <meta property="twitter:title" content="Akshay Mahajan | AI Generalist & Builder" />
+    <meta property="twitter:description" content="I help businesses save time using AI automation, chatbots, websites and smart workflows." />
+    <meta property="twitter:image" content="https://akshay.website/akshay_avatar.jpeg" />
+
+    <!-- Schema.org markup for Google+ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Akshay Mahajan",
+      "jobTitle": "AI Generalist & Builder",
+      "url": "https://akshay.website/",
+      "sameAs": [
+        "https://linkedin.com/in/akshay-mahajan-95bb86187",
+        "https://instagram.com/aiminivlogs4"
+      ],
+      "knowsAbout": ["Artificial Intelligence", "Prompt Engineering", "Web Development", "AI Automation"]
+    }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
@@ -61,6 +96,38 @@
           linear-gradient(90deg, rgba(0,245,212,0.025) 1px, transparent 1px);
         background-size: 48px 48px;
         pointer-events: none;
+      }
+      
+      /* Cyber-Light Theme */
+      html.light-mode body {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      
+      html.light-mode img, 
+      html.light-mode video {
+        filter: invert(1) hue-rotate(180deg);
+      }
+      
+      /* Fix for project preview images */
+      .project-preview img {
+        opacity: 1 !important;
+        filter: none !important;
+      }
+      html.light-mode .project-preview img {
+        filter: invert(1) hue-rotate(180deg) !important;
+      }
+      
+      .project-preview::before,
+      .project-preview::after {
+        display: none !important;
+      }
+      
+      .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+      }
+      .hide-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
       }
     </style>
   </head>

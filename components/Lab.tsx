@@ -5,8 +5,9 @@ import { FlaskConical, Github, ArrowUpRight } from 'lucide-react';
 
 const Lab: React.FC = () => {
   return (
-    <section className="py-16 md:py-24 bg-midnight relative border-t border-white/5">
-      <div className="container mx-auto px-6">
+    <section id="lab" className="py-16 md:py-24 bg-[#050A15] relative border-y border-white/5 scroll-mt-20">
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -14,15 +15,16 @@ const Lab: React.FC = () => {
           className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6"
         >
           <div>
+            <span className="text-electric font-mono text-sm tracking-widest mb-4 block">LABORATORY</span>
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 flex items-center gap-3">
-              <FlaskConical className="text-electric" /> The Lab
+              Try My AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Experiments</span>
             </h2>
-            <p className="text-slate-400">Experimental R&D, Prototypes, and AI Studio Archives.</p>
+            <p className="text-slate-400">Experimental R&D, Prototypes, and specialized AI tools.</p>
           </div>
-          <div className="flex items-center gap-2 text-sm font-mono text-slate-500 border border-slate-800 px-3 py-1 rounded-full">
+          <div className="flex items-center gap-2 text-sm font-mono text-slate-500 border border-slate-800 px-3 py-1 rounded-full bg-slate-900/50 backdrop-blur-sm">
             <span>STATUS:</span>
             <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-green-500">OPERATIONAL</span>
+            <span className="text-green-500">ONLINE</span>
           </div>
         </motion.div>
 

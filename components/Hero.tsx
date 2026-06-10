@@ -1,7 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Terminal, Zap, Globe, Smartphone, Search, Brain } from 'lucide-react';
-import { HERO_CONTENT } from '../constants';
+import { HERO_CONTENT, TECH_STACK } from '../constants';
 
 const Hero: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -46,10 +46,10 @@ const Hero: React.FC = () => {
   };
 
   const features = [
-    { icon: Search, label: "SEO Optimized", desc: "Rank higher with semantic HTML" },
-    { icon: Zap, label: "Lightning Fast", desc: "99+ Lighthouse Performance" },
-    { icon: Smartphone, label: "Mobile First", desc: "Responsive across all devices" },
-    { icon: Globe, label: "Global CDN", desc: "Deployed on the edge" },
+    { icon: Brain, label: "AI Tools Built", desc: "Proof that I can build real business tools." },
+    { icon: Zap, label: "Automation Workflows", desc: "Lead, report, email and content automation." },
+    { icon: Globe, label: "Client Websites", desc: "Portfolio, SaaS and product pages." },
+    { icon: Terminal, label: "AI Agents", desc: "Research, support and workflow agents." },
   ];
 
   return (
@@ -112,19 +112,29 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-electric/30 bg-electric/10 text-electric text-xs font-mono tracking-wider backdrop-blur-md"
+                  className="mb-8 relative"
                 >
-                  <Terminal size={14} className="animate-pulse" /> SYSTEM_ACTIVE // PROMPT_ARCHITECT
+                  <div className="absolute inset-0 bg-electric/20 rounded-full blur-[30px] animate-pulse" />
+                  <img src={HERO_CONTENT.image} alt="Akshay Mahajan" className="relative w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-electric/40 object-cover object-top shadow-[0_0_40px_rgba(0,240,255,0.2)]" />
                 </motion.div>
 
-                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-8 leading-[1.1] break-words">
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                  className="inline-flex items-center gap-2 mb-8 px-4 py-1.5 rounded-full border border-green-500/30 bg-green-500/10 text-green-400 text-xs sm:text-sm font-semibold tracking-wider backdrop-blur-md shadow-[0_0_15px_rgba(34,197,94,0.2)]"
+                >
+                  <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" /> Available for Company & Client Projects
+                </motion.div>
+
+                <h1 className="text-[40px] leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-8 break-words">
                   {HERO_CONTENT.headline.split(" ").map((word, i) => (
                     <motion.span
                       key={i}
                       initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
-                      className={`inline-block mx-1 sm:mx-2 md:mx-3 ${word.toLowerCase() === 'future' ? 'text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime' : ''}`}
+                      className={`inline-block mx-1 sm:mx-2 md:mx-3 ${(['ai', 'agents', 'automation'].includes(word.toLowerCase().replace(/[^a-z]/g, ''))) ? 'text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime' : ''}`}
                     >
                       {word}
                     </motion.span>
@@ -135,7 +145,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.8 }}
-                  className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed px-4 sm:px-0"
+                  className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed px-4 sm:px-0"
                 >
                   {HERO_CONTENT.subheadline}
                 </motion.p>
@@ -144,6 +154,19 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1, duration: 0.8 }}
+                  className="flex flex-wrap justify-center gap-3 mb-10 max-w-3xl px-4"
+                >
+                  {HERO_CONTENT.badges?.map((badge, i) => (
+                    <span key={i} className="px-4 py-2 rounded-xl bg-white/5 border border-white/10 text-slate-300 text-sm font-medium flex items-center gap-2 shadow-lg backdrop-blur-md">
+                      <Terminal size={14} className="text-electric" /> {badge}
+                    </span>
+                  ))}
+                </motion.div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.1, duration: 0.8 }}
                   className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-20 w-full sm:w-auto px-6 sm:px-0"
                 >
                   <a 
@@ -158,12 +181,17 @@ const Hero: React.FC = () => {
                      </span>
                   </a>
                   
-                  <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-slate-500 font-mono text-[10px] sm:text-xs md:text-sm w-full sm:w-auto mt-6 sm:mt-0">
-                    <div className="flex items-center gap-2">
-                      <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-neonLime rounded-full animate-ping" />
-                      <span className="text-center break-words whitespace-nowrap">AVAILABLE FOR GLOBAL ROLES</span>
-                    </div>
-                  </div>
+                  <a 
+                    href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    aria-label="Build With Me"
+                    className="group relative inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-transparent border border-electric/30 text-white font-black text-base sm:text-lg rounded-2xl overflow-hidden transition-all hover:border-electric hover:bg-electric/10 hover:scale-105 active:scale-95 cursor-pointer w-full sm:w-auto shadow-[0_0_20px_rgba(0,240,255,0.1)]"
+                  >
+                     <span className="relative z-10 flex items-center gap-3">
+                       {HERO_CONTENT.cta2} <Zap className="w-5 h-5 text-neonLime group-hover:text-electric transition-colors" />
+                     </span>
+                  </a>
                 </motion.div>
 
                 {/* Features Grid */}
@@ -171,7 +199,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 1.2, duration: 0.8 }}
-                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl mx-auto"
+                  className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 w-full max-w-6xl mx-auto mb-20"
                 >
                   {features.map((feature, index) => (
                     <div key={index} className="relative p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm overflow-hidden group hover:-translate-y-1 transition-all duration-300">
