@@ -22,7 +22,7 @@ const TechMarquee: React.FC = () => {
               textShadow: "0 0 20px rgba(0, 240, 255, 0.5)"
             }}
             transition={{ duration: 0.2 }}
-            className="text-4xl md:text-6xl font-black text-white/10 transition-colors cursor-default uppercase tracking-tighter select-none"
+            className="text-4xl md:text-6xl font-bold text-white/10 transition-colors cursor-default uppercase tracking-tighter select-none"
           >
             {tech}
           </motion.span>

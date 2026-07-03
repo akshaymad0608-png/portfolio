@@ -23,7 +23,7 @@ const Achievements: React.FC = () => {
           className="max-w-3xl mx-auto text-center mb-16"
         >
           <span className="text-electric font-mono text-sm tracking-widest mb-4 block">MILESTONES</span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Key <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Achievements</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Key <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Achievements</span></h2>
         </motion.div>
 
         <div className="max-w-4xl mx-auto bg-slate-900/60 border border-white/10 rounded-3xl p-5 sm:p-8 md:p-12 shadow-2xl">

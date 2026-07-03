@@ -14,7 +14,7 @@ const Certificates: React.FC = () => {
           className="text-center mb-12 md:mb-16"
         >
           <span className="text-electric font-mono text-sm tracking-widest mb-4 block">CREDENTIALS</span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-4">Certificates of <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Mastery</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Certificates of <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Mastery</span></h2>
           <p className="text-slate-400 max-w-2xl mx-auto font-mono text-sm">VALIDATED EXPERTISE // BE10X ACCELERATOR</p>
         </motion.div>
 

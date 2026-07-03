@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight, Terminal, Zap, Globe, Smartphone, Search, Brain } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { HERO_CONTENT, TECH_STACK } from '../constants';
 
 const Hero: React.FC = () => {
@@ -29,21 +30,6 @@ const Hero: React.FC = () => {
 
   const yText = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
   const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
-
-  const handleScrollToWork = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const element = document.getElementById('work');
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    }
-  };
 
   const features = [
     { icon: Brain, label: "AI Tools Built", desc: "Proof that I can build real business tools." },
@@ -127,14 +113,14 @@ const Hero: React.FC = () => {
                   <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse" /> Available for Company & Client Projects
                 </motion.div>
 
-                <h1 className="text-[40px] leading-[1.1] sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white mb-8 break-words">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white mb-8 break-words">
                   {HERO_CONTENT.headline.split(" ").map((word, i) => (
                     <motion.span
                       key={i}
                       initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
                       animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                       transition={{ delay: i * 0.1, duration: 0.8, ease: "easeOut" }}
-                      className={`inline-block mx-1 sm:mx-2 md:mx-3 ${(['ai', 'agents', 'automation'].includes(word.toLowerCase().replace(/[^a-z]/g, ''))) ? 'text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime' : ''}`}
+                      className={`inline-block mx-1 sm:mx-2 md:mx-3 ${(['ai', 'agents', 'automation'].includes(word.toLowerCase().replace(/[^a-z]/g, ''))) ? 'text-transparent bg-clip-text bg-gradient-to-r from-electric to-blue-300' : ''}`}
                     >
                       {word}
                     </motion.span>
@@ -145,7 +131,7 @@ const Hero: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8, duration: 0.8 }}
-                  className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-light leading-relaxed px-4 sm:px-0"
+                  className="text-base sm:text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 font-medium leading-relaxed px-4 sm:px-0"
                 >
                   {HERO_CONTENT.subheadline}
                 </motion.p>
@@ -169,27 +155,26 @@ const Hero: React.FC = () => {
                   transition={{ delay: 1.1, duration: 0.8 }}
                   className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-12 sm:mb-20 w-full sm:w-auto px-6 sm:px-0"
                 >
-                  <a 
-                    href="#work" 
-                    onClick={handleScrollToWork}
+                  <Link 
+                    to="/work"
                     aria-label="View my work"
-                    className="group relative inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-white text-midnight font-black text-base sm:text-lg rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)] w-full sm:w-auto"
+                    className="group relative inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-white text-midnight font-bold text-base sm:text-lg rounded-2xl overflow-hidden transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.3)] w-full sm:w-auto"
                   >
-                     <div className="absolute inset-0 bg-gradient-to-r from-electric via-white to-neonLime opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                     <div className="absolute inset-0 bg-blue-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                      <span className="relative z-10 flex items-center gap-3">
                        {HERO_CONTENT.cta} <ArrowRight className="w-5 h-5 group-hover:translate-x-2 transition-transform" />
                      </span>
-                  </a>
+                  </Link>
                   
                   <a 
                     href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     aria-label="Build With Me"
-                    className="group relative inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-transparent border border-electric/30 text-white font-black text-base sm:text-lg rounded-2xl overflow-hidden transition-all hover:border-electric hover:bg-electric/10 hover:scale-105 active:scale-95 cursor-pointer w-full sm:w-auto shadow-[0_0_20px_rgba(0,240,255,0.1)]"
+                    className="group relative inline-flex items-center justify-center gap-3 px-6 py-3 sm:px-8 sm:py-4 bg-transparent border border-electric/30 text-white font-bold text-base sm:text-lg rounded-2xl overflow-hidden transition-all hover:border-electric hover:bg-electric/10 hover:scale-105 active:scale-95 cursor-pointer w-full sm:w-auto shadow-[0_0_20px_rgba(0,240,255,0.1)]"
                   >
                      <span className="relative z-10 flex items-center gap-3">
-                       {HERO_CONTENT.cta2} <Zap className="w-5 h-5 text-neonLime group-hover:text-electric transition-colors" />
+                       {HERO_CONTENT.cta2} <Zap className="w-5 h-5 text-electric transition-colors" />
                      </span>
                   </a>
                 </motion.div>

@@ -35,7 +35,7 @@ const WorkProof: React.FC = () => {
                     className="flex flex-col items-center text-center"
                   >
                     <Icon className={`w-8 h-8 mb-4 ${stat.color} opacity-80`} strokeWidth={1.5} />
-                    <h3 className={`text-4xl md:text-5xl font-black mb-2 tracking-tight ${stat.color} drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]`}>
+                    <h3 className={`text-4xl md:text-5xl font-bold mb-2 tracking-tight ${stat.color} drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]`}>
                       {stat.value}
                     </h3>
                     <p className="text-sm md:text-base font-bold uppercase tracking-widest text-slate-400 font-mono">

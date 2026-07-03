@@ -43,12 +43,12 @@ const ClientPitch: React.FC = () => {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto text-center mb-12"
         >
-          <span className="text-electric font-mono text-sm tracking-widest mb-4 block">FOR COMPANIES & CLIENTS</span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-5">
-            Hire me to build practical <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">AI + Web systems</span>
+          <span className="text-electric font-mono text-sm tracking-widest mb-4 block uppercase">Why Hire Me?</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-5 tracking-tight">
+            Turn your bottlenecks into <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-blue-300">Automated Revenue</span>
           </h2>
-          <p className="text-slate-400 text-base md:text-lg leading-relaxed">
-            This portfolio is designed as a client proof page: it shows what I can build, the business problem it solves, and how companies can quickly contact me for a project.
+          <p className="text-slate-400 text-base max-w-2xl mx-auto leading-relaxed">
+            I don't just write code. I build AI tools, chatbots, and automation systems that directly cut operational costs, save your team hours of manual work, and scale your business operations.
           </p>
         </motion.div>
 
@@ -64,7 +64,7 @@ const ClientPitch: React.FC = () => {
                 <Target size={28} />
               </div>
               <div>
-                <h3 className="text-2xl font-black text-white">What I can deliver</h3>
+                <h3 className="text-xl font-bold text-white">What I can deliver</h3>
                 <p className="text-slate-500 text-sm">Clear services for business decision makers</p>
               </div>
             </div>
@@ -86,7 +86,7 @@ const ClientPitch: React.FC = () => {
             </div>
 
             <div className="mt-8 rounded-2xl bg-electric/10 border border-electric/20 p-5">
-              <h4 className="text-white font-black mb-2 flex items-center gap-2"><ShieldCheck className="text-electric" size={20} /> Client-ready promise</h4>
+              <h4 className="text-white font-bold mb-2 flex items-center gap-2"><ShieldCheck className="text-electric" size={20} /> Client-ready promise</h4>
               <p className="text-slate-300 text-sm leading-relaxed">Every project is presented with a problem, solution, features, result/benefit, live demo link and direct WhatsApp contact so companies can trust the work quickly.</p>
             </div>
           </motion.div>
@@ -109,7 +109,7 @@ const ClientPitch: React.FC = () => {
                     </div>
                     <div className="flex-1">
                       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-2">
-                        <h3 className="text-xl font-black text-white group-hover:text-electric transition-colors">{pkg.title}</h3>
+                        <h3 className="text-xl font-bold text-white group-hover:text-electric transition-colors">{pkg.title}</h3>
                         <span className="inline-flex items-center gap-1 text-xs text-neonLime font-mono bg-neonLime/10 border border-neonLime/20 px-3 py-1 rounded-full w-fit"><Clock size={12} /> {pkg.timeline}</span>
                       </div>
                       <p className="text-slate-400 text-sm leading-relaxed">{pkg.desc}</p>
@@ -126,7 +126,7 @@ const ClientPitch: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-midnight font-black px-6 py-4 hover:bg-electric transition-colors"
+              className="inline-flex items-center justify-center gap-3 rounded-2xl bg-white text-midnight font-bold px-6 py-4 hover:bg-electric transition-colors"
             >
               Discuss a Company Project <MessageSquare size={20} /> <ArrowRight size={18} />
             </motion.a>

@@ -13,7 +13,7 @@ const Process: React.FC = () => {
           className="text-center mb-20"
         >
           <span className="text-electric font-mono text-sm tracking-widest mb-4 block">PIPELINE</span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6">How I Build AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Solutions</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">How I Build AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Solutions</span></h2>
         </motion.div>
 
         <div className="max-w-4xl mx-auto relative">

@@ -20,7 +20,7 @@ const SkillsDashboard: React.FC = () => {
           className="mb-16 max-w-2xl"
         >
           <span className="text-electric font-mono text-sm tracking-widest mb-4 block">CAPABILITIES_MATRIX</span>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6">Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Expertise</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">Technical <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Expertise</span></h2>
           <p className="text-slate-400 max-w-xl">A comprehensive dashboard of tools and technologies I use to architect scalable AI solutions. Click on any skill to view related projects.</p>
         </motion.div>
 

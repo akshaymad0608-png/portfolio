@@ -15,9 +15,9 @@ const Services: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-12 md:mb-16"
         >
-           <span className="text-electric font-mono text-sm tracking-widest mb-4 block">VALUE_PROPOSITION</span>
-           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Strategic <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Solutions</span></h2>
-           <p className="text-slate-400 max-w-2xl mx-auto">Going beyond code to deliver scalable, enterprise-grade AI architecture.</p>
+          <span className="text-electric font-mono text-sm tracking-widest mb-4 block uppercase">Services & Expertise</span>
+           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Solutions That <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-blue-300">Grow Your Business</span></h2>
+           <p className="text-slate-400 max-w-2xl mx-auto">Going beyond code to deliver scalable AI architecture, high-conversion websites, and time-saving automation systems.</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
@@ -44,7 +44,7 @@ const Services: React.FC = () => {
                     <Icon size={32} strokeWidth={1.5} />
                   </motion.div>
                   <div>
-                    <h3 className="text-xl sm:text-2xl font-black text-white mb-3 group-hover:text-electric transition-colors break-words">{service.title}</h3>
+                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-electric transition-colors break-words">{service.title}</h3>
                     <p className="text-slate-400 mb-6 leading-relaxed text-sm">{service.description}</p>
                     
                     <ul className="space-y-3">

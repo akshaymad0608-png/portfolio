@@ -2,12 +2,12 @@ import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, U
 import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory } from "./types";
 
 export const HERO_CONTENT = {
-  headline: "AI Portfolio Built to Win Clients & Company Projects",
-  subheadline: "Hi, I'm Akshay Mahajan — I build client-ready AI tools, automation workflows, chatbots and high-conversion websites that companies can review, trust and hire quickly.",
-  cta: "View Client Work",
-  cta2: "Start a Project",
+  headline: "I Build AI Automation & Smart Workflows to Scale Your Business",
+  subheadline: "Stop doing repetitive tasks. I'm Akshay Mahajan — I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue.",
+  cta: "See My Work",
+  cta2: "Hire Me Now",
   image: "./akshay_avatar.jpeg",
-  badges: ["AI Portfolio", "Client Projects", "AI Automation", "Chatbots", "Web Apps"]
+  badges: ["AI Automation", "Smart Chatbots", "Custom Web Apps", "Prompt Engineering"]
 };
 
 export const DASHBOARD_SKILLS: SkillCategory[] = [

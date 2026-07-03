@@ -91,7 +91,7 @@ const Experience: React.FC = () => {
           className="text-center mb-12"
         >
           <span className="text-electric font-mono text-sm tracking-widest mb-4 block">DEPLOYED_SOLUTIONS</span>
-          <h2 className="text-3xl md:text-5xl lg:text-6xl font-black text-white mb-4">Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Missions</span></h2>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Missions</span></h2>
           <p className="text-slate-400 max-w-2xl mx-auto font-mono text-sm mb-12">2024-2026 // PRODUCTION LOGS</p>
 
           <div className="flex flex-wrap justify-center items-center gap-3 mb-16 relative z-10">
@@ -194,7 +194,7 @@ const Experience: React.FC = () => {
                             <span className="text-slate-400 text-xs font-bold tracking-widest uppercase">{project.category}</span>
                         </div>
                         
-                        <h3 className="text-2xl sm:text-3xl font-black text-white mb-4 group-hover:text-electric transition-colors">{project.title}</h3>
+                        <h3 className="text-2xl sm:text-3xl font-bold text-white mb-4 group-hover:text-electric transition-colors">{project.title}</h3>
                         
                         <div className="space-y-4 mb-6">
                             <div>
@@ -275,7 +275,7 @@ const Experience: React.FC = () => {
               href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500/10 border border-green-500/30 text-white font-black text-lg rounded-2xl hover:bg-green-500/20 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(34,197,94,0.1)]"
+              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500/10 border border-green-500/30 text-white font-bold text-lg rounded-2xl hover:bg-green-500/20 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(34,197,94,0.1)]"
             >
               Discuss Your Project on WhatsApp <Zap className="w-5 h-5 text-green-400 font-bold" />
             </a>
@@ -315,7 +315,7 @@ const Experience: React.FC = () => {
                   </div>
                   <div className="p-5 sm:p-8 bg-slate-900">
                      <span className="text-electric font-mono text-xs tracking-widest px-3 py-1 rounded-full border border-electric/30 bg-electric/10 mb-2 sm:mb-4 inline-block">{selectedProject.category}</span>
-                     <h2 className="text-2xl sm:text-4xl md:text-5xl font-black text-white">{selectedProject.title}</h2>
+                     <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-white">{selectedProject.title}</h2>
                   </div>
                 </div>
               )}
@@ -368,7 +368,7 @@ const Experience: React.FC = () => {
                         href={selectedProject.link} 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-3 px-8 py-4 bg-electric text-midnight font-black rounded-xl hover:bg-white transition-colors"
+                        className="inline-flex items-center gap-3 px-8 py-4 bg-electric text-midnight font-bold rounded-xl hover:bg-white transition-colors"
                       >
                          Launch Project <ExternalLink size={20} />
                       </a>

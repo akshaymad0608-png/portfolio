@@ -59,7 +59,7 @@ const GitHubStats: React.FC = () => {
             <span className="font-mono text-xs text-neonLime tracking-[0.25em] uppercase flex items-center gap-2 mb-3">
               <Github className="w-4 h-4" /> Code Contributions
             </span>
-            <h2 className="font-display font-black text-white text-3xl md:text-5xl mb-4">
+            <h2 className="font-display font-bold text-white text-3xl md:text-5xl mb-4">
               Active <span className="text-transparent bg-clip-text bg-gradient-to-r from-neonLime to-electric">Engagement</span>
             </h2>
             <p className="text-slate-400 max-w-xl mx-auto text-sm md:text-base">

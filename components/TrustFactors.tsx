@@ -13,7 +13,7 @@ const TrustFactors: React.FC = () => {
             viewport={{ once: true }}
             className="text-center mb-16"
             >
-            <h2 className="text-3xl md:text-5xl font-black text-white">Why Work With Me?</h2>
+            <h2 className="text-3xl md:text-5xl font-bold text-white">Why Work With Me?</h2>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">

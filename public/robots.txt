@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://akshay.ai/sitemap.xml
+Sitemap: https://akshay.website/sitemap.xml

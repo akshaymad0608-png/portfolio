@@ -22,7 +22,9 @@
     "react-activity-calendar": "^3.2.0",
     "react-dom": "^19.2.3",
     "react-github-calendar": "^5.0.6",
+    "react-helmet-async": "^3.0.0",
     "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.18.1",
     "tsx": "^4.21.0"
   },
   "devDependencies": {

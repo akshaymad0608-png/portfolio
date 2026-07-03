@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 
 const NavBar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [isLightMode, setIsLightMode] = useState(false);
   const { scrollYProgress } = useScroll();
+  const location = useLocation();
+
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -19,42 +22,25 @@ const NavBar: React.FC = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const toggleTheme = () => {
     setIsLightMode(!isLightMode);
     document.documentElement.classList.toggle('light-mode', !isLightMode);
   };
 
-
   const navLinks = [
-    { name: 'Offer', href: '#client-offer' },
-    { name: 'Services', href: '#services' },
-    { name: 'Work', href: '#work' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Systems', href: '#systems' },
-    { name: 'Demo', href: '#lab' },
-    { name: 'Credentials', href: '#certifications' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'Home', href: '/' },
+    { name: 'Services & Pricing', href: '/services' },
+    { name: 'Work', href: '/work' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
-  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const handleLinkClick = () => {
     setIsOpen(false);
-    
-    const targetId = href.replace('#', '');
-    const element = document.getElementById(targetId);
-    
-    if (element) {
-      const headerOffset = 100;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.scrollY - headerOffset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth"
-      });
-    } else if (href === '#') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
   };
 
   return (
@@ -65,41 +51,47 @@ const NavBar: React.FC = () => {
           style={{ scaleX }}
         />
         <div className="container mx-auto px-6 max-w-7xl flex justify-between items-center relative z-50">
-            <a 
-              href="#" 
+            <Link 
+              to="/" 
               aria-label="Home"
               className="text-2xl font-bold tracking-tighter text-white cursor-pointer" 
-              onClick={(e) => handleScroll(e, '#')}
+              onClick={handleLinkClick}
             >
               AKSHAY<span className="text-electric">.AI</span>
-            </a>
+            </Link>
 
             {/* Desktop Menu */}
             <div className="hidden md:flex gap-8 items-center">
               {navLinks.map((link, i) => (
-                <motion.a 
+                <Link 
                   key={link.name} 
-                  href={link.href}
+                  to={link.href}
                   aria-label={`Navigate to ${link.name}`}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.1 }}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="relative text-sm font-medium text-slate-300 hover:text-white transition-colors cursor-pointer group"
+                  onClick={handleLinkClick}
+                  className={`relative text-sm font-medium transition-colors cursor-pointer group ${location.pathname === link.href ? 'text-electric' : 'text-slate-300 hover:text-white'}`}
                 >
                   {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-electric transition-all duration-300 group-hover:w-full shadow-[0_0_10px_#00f0ff]" />
-                </motion.a>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-electric transition-all duration-300 group-hover:w-full shadow-[0_0_10px_#00f0ff] ${location.pathname === link.href ? 'w-full' : 'w-0'}`} />
+                </Link>
               ))}
-              <motion.button
-                onClick={toggleTheme}
-                aria-label="Toggle theme"
-                className="p-2 rounded-full bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-colors border border-white/5"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {isLightMode ? <Moon size={18} /> : <Sun size={18} />}
-              </motion.button>
+              <div className="flex items-center gap-4 ml-4">
+                <motion.button
+                  onClick={toggleTheme}
+                  aria-label="Toggle theme"
+                  className="p-2 rounded-full bg-white/5 text-slate-300 hover:text-white hover:bg-white/10 transition-colors border border-white/5"
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {isLightMode ? <Moon size={18} /> : <Sun size={18} />}
+                </motion.button>
+                <Link 
+                  to="/contact"
+                  onClick={handleLinkClick}
+                  className="bg-electric text-midnight px-5 py-2 rounded-xl text-sm font-bold shadow-[0_0_15px_rgba(0,245,212,0.3)] hover:shadow-[0_0_25px_rgba(0,245,212,0.5)] transition-all hover:-translate-y-0.5 active:translate-y-0"
+                >
+                  Hire Me
+                </Link>
+              </div>
             </div>
 
             {/* Mobile Actions */}
@@ -138,17 +130,14 @@ const NavBar: React.FC = () => {
           >
             <div className="flex flex-col px-8 py-8 min-h-screen gap-2">
               {navLinks.map((link, i) => (
-                <motion.a 
+                <Link 
                   key={link.name} 
-                  href={link.href}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: i * 0.05 + 0.1 }}
-                  onClick={(e) => handleScroll(e, link.href)}
-                  className="text-2xl font-bold font-display text-slate-200 hover:text-electric cursor-pointer py-4 border-b border-white/5 last:border-0 transition-colors"
+                  to={link.href}
+                  onClick={handleLinkClick}
+                  className={`text-2xl font-bold font-display cursor-pointer py-4 border-b border-white/5 last:border-0 transition-colors ${location.pathname === link.href ? 'text-electric' : 'text-slate-200 hover:text-electric'}`}
                 >
                   {link.name}
-                </motion.a>
+                </Link>
               ))}
             </div>
           </motion.div>

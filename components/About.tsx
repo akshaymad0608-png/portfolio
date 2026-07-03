@@ -16,7 +16,7 @@ const About: React.FC = () => {
              <span className="text-electric font-mono text-sm tracking-widest block">ORIGIN_STORY</span>
              <span className="text-slate-500 font-mono text-xs flex items-center gap-1 border border-white/10 px-3 py-1 rounded-full bg-slate-900/50"><Clock size={12}/> 1 min read</span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-black text-white mb-6">From exploring AI tools to <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">building real AI solutions</span></h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">From exploring AI tools to <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">building real AI solutions</span></h2>
         </motion.div>
 
         <div className="max-w-3xl mx-auto mb-20">

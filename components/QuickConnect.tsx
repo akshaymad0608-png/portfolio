@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { MessageCircle, Mail, Linkedin, X } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg className={className} viewBox="0 0 24 24" fill="currentColor">
@@ -9,79 +8,18 @@ const WhatsAppIcon = ({ className }: { className?: string }) => (
 );
 
 const QuickConnect: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuRef = useRef<HTMLDivElement>(null);
-
-  // Close when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
-        setIsOpen(false);
-      }
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
-
   return (
-    <div ref={menuRef}>
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-24 right-4 md:right-8 w-64 backdrop-blur-xl bg-slate-900/95 rounded-2xl border border-white/10 shadow-[0_0_40px_rgba(0,0,0,0.5)] z-50 overflow-hidden"
-          >
-            <div className="p-4 border-b border-white/5 flex justify-between items-center">
-              <h3 className="font-display font-medium text-white shadow-sm">Let's Connect</h3>
-              <button 
-                onClick={() => setIsOpen(false)}
-                className="text-slate-400 hover:text-white transition-colors"
-                aria-label="Close menu"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-            <div className="p-2 flex flex-col gap-1">
-              <a href="mailto:akshaymad0608@gmail.com" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-all">
-                <div className="w-8 h-8 rounded-full bg-electric/20 flex items-center justify-center">
-                  <Mail className="w-4 h-4 text-electric" />
-                </div>
-                <span className="text-sm font-medium">Email Me</span>
-              </a>
-              <a href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-all">
-                <div className="w-8 h-8 rounded-full bg-green-500/20 flex items-center justify-center">
-                  <WhatsAppIcon className="w-4 h-4 text-green-400" />
-                </div>
-                <span className="text-sm font-medium">WhatsApp</span>
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 p-3 rounded-xl hover:bg-white/10 text-slate-200 hover:text-white transition-all">
-                <div className="w-8 h-8 rounded-full bg-blue-500/20 flex items-center justify-center">
-                  <Linkedin className="w-4 h-4 text-blue-400" />
-                </div>
-                <span className="text-sm font-medium">LinkedIn</span>
-              </a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-4 md:right-8 w-14 h-14 rounded-full bg-neonLime text-slate-900 flex items-center justify-center shadow-[0_0_20px_rgba(205,255,113,0.3)] hover:shadow-[0_0_30px_rgba(205,255,113,0.5)] transition-shadow z-50 group"
-        aria-label="Toggle contact menu"
-      >
-        {isOpen ? (
-          <X className="w-6 h-6" />
-        ) : (
-          <MessageCircle className="w-6 h-6 group-hover:animate-pulse" />
-        )}
-      </motion.button>
-    </div>
+    <motion.a
+      href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project"
+      target="_blank"
+      rel="noopener noreferrer"
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
+      className="fixed bottom-6 right-4 md:right-8 w-14 h-14 rounded-full bg-green-500 text-white flex items-center justify-center shadow-[0_0_20px_rgba(34,197,94,0.3)] hover:shadow-[0_0_30px_rgba(34,197,94,0.5)] transition-shadow z-50 group"
+      aria-label="Contact on WhatsApp"
+    >
+      <WhatsAppIcon className="w-8 h-8 group-hover:scale-110 transition-transform" />
+    </motion.a>
   );
 };
 
