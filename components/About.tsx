@@ -4,80 +4,89 @@ import { BookOpen, Globe2, Clock } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
-    <section id="about" className="py-20 md:py-32 bg-midnight relative border-t border-white/5 scroll-mt-20">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="about" className="py-24 bg-background relative border-t border-border overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="max-w-3xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-20"
         >
-          <div className="flex justify-center items-center gap-4 mb-4">
-             <span className="text-electric font-mono text-sm tracking-widest block">ORIGIN_STORY</span>
-             <span className="text-slate-500 font-mono text-xs flex items-center gap-1 border border-white/10 px-3 py-1 rounded-full bg-slate-900/50"><Clock size={12}/> 1 min read</span>
+          <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
+             <span className="text-primary font-mono text-sm tracking-wider uppercase bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100">
+               AI Engineer & Automation Architect
+             </span>
+             <span className="text-textSecondary font-mono text-xs flex items-center gap-2 border border-border bg-white px-3 py-1.5 rounded-full shadow-sm">
+               <Clock size={14}/> 1 min read
+             </span>
           </div>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">From exploring AI tools to <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">building real AI solutions</span></h2>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-text mb-8 leading-tight">
+            Building intelligent workflows and <br className="hidden md:block"/>
+            <span className="text-primary">architecting scalable AI systems.</span>
+          </h2>
         </motion.div>
 
-        <div className="max-w-3xl mx-auto mb-20">
-          <div className="relative border-l-2 border-electric/30 pl-8 ml-4 md:ml-0 space-y-12">
+        <div className="max-w-3xl mx-auto mb-24">
+          <div className="relative border-l-2 border-border pl-8 md:pl-12 ml-4 md:ml-0 space-y-16">
             
             <motion.div 
                initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
-               className="relative"
+               className="relative group"
             >
-              <div className="absolute w-4 h-4 rounded-full bg-electric -left-[41px] top-1 shadow-[0_0_10px_#00f0ff]" />
-              <span className="text-electric font-mono text-xs font-bold tracking-widest mb-2 block">2024</span>
-              <h3 className="text-xl font-bold text-white mb-2">Started AI Journey</h3>
-              <p className="text-slate-400">Diving deep into Prompt Engineering, LLMs, and understanding the core mechanics of how AI can solve real-world problems.</p>
+              <div className="absolute w-4 h-4 rounded-full bg-white border-4 border-slate-300 -left-[41px] md:-left-[57px] top-1 transition-colors" />
+              <span className="text-textSecondary font-mono text-sm font-semibold tracking-wider mb-3 block">PHASE 01 // 2024</span>
+              <h3 className="text-2xl font-bold text-text mb-3">The Exploration</h3>
+              <p className="text-textSecondary text-lg leading-relaxed">Diving deep into Prompt Engineering, Large Language Models, and understanding the core mechanics of how AI can solve real-world operational bottlenecks.</p>
             </motion.div>
 
             <motion.div 
                initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
-               className="relative"
+               className="relative group"
             >
-              <div className="absolute w-4 h-4 rounded-full bg-electric/50 border-2 border-electric -left-[41px] top-1" />
-              <span className="text-neonLime font-mono text-xs font-bold tracking-widest mb-2 block">2025</span>
-              <h3 className="text-xl font-bold text-white mb-2">Built AI Products</h3>
-              <p className="text-slate-400">Transitioned from research to development. Built and deployed custom AI tools, automations, and scalable web applications.</p>
+              <div className="absolute w-4 h-4 rounded-full bg-white border-4 border-blue-400 -left-[41px] md:-left-[57px] top-1 transition-colors" />
+              <span className="text-primary font-mono text-sm font-semibold tracking-wider mb-3 block">PHASE 02 // 2025</span>
+              <h3 className="text-2xl font-bold text-text mb-3">Product Engineering</h3>
+              <p className="text-textSecondary text-lg leading-relaxed">Transitioned from research to full-stack development. Built and deployed custom AI tools, automations, and highly scalable web applications processing real user data.</p>
             </motion.div>
 
             <motion.div 
                initial={{ opacity: 0, x: -20 }}
                whileInView={{ opacity: 1, x: 0 }}
                viewport={{ once: true }}
-               className="relative"
+               className="relative group"
             >
-              <div className="absolute w-4 h-4 rounded-full bg-midnight border-2 border-white/30 -left-[41px] top-1" />
-              <span className="text-white font-mono text-xs font-bold tracking-widest mb-2 block">2026</span>
-              <h3 className="text-xl font-bold text-white mb-2">Helping Businesses with AI</h3>
-              <p className="text-slate-400">Partnering with founders and businesses to integrate AI into their operational workflows, driving growth and reducing manual tasks.</p>
+              <div className="absolute w-4 h-4 rounded-full bg-white border-4 border-success -left-[41px] md:-left-[57px] top-1 transition-colors shadow-[0_0_10px_rgba(34,197,94,0.3)]" />
+              <span className="text-success font-mono text-sm font-semibold tracking-wider mb-3 block">PHASE 03 // 2026</span>
+              <h3 className="text-2xl font-bold text-text mb-3">Enterprise Integration</h3>
+              <p className="text-textSecondary text-lg leading-relaxed">Partnering with founders and agencies to architect custom AI systems into their workflows, driving operational scale and eliminating manual, repetitive tasks.</p>
             </motion.div>
 
           </div>
         </div>
 
         {/* Education and Languages */}
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-6 relative z-10">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 relative z-10">
             <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="bg-slate-900/60 border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-electric/30 transition-colors"
-                >
-                <div className="flex flex-col gap-4">
-                    <div className="p-3 bg-electric/10 rounded-xl w-fit">
-                    <BookOpen className="text-electric w-6 h-6" />
+                className="bg-cards border border-border shadow-sm rounded-3xl p-8 sm:p-10 hover:shadow-md transition-shadow group"
+            >
+                <div className="flex flex-col gap-6">
+                    <div className="p-4 bg-blue-50 text-primary rounded-2xl w-fit group-hover:scale-110 transition-transform">
+                      <BookOpen className="w-8 h-8" />
                     </div>
                     <div>
-                    <h3 className="text-xl font-bold text-white mb-2">Education</h3>
-                    <p className="text-slate-300 font-bold">Bachelor of Engineering</p>
-                    <p className="text-slate-400 mb-1">Electronics & Communication Engineering</p>
-                    <p className="text-slate-500 font-mono text-sm">Surat, India</p>
+                      <h3 className="text-2xl font-bold text-text mb-4">Education</h3>
+                      <div className="space-y-2">
+                        <p className="text-text text-lg font-semibold">Bachelor of Engineering</p>
+                        <p className="text-textSecondary">Electronics & Communication</p>
+                        <p className="text-primary font-mono text-sm pt-2">Surat, India</p>
+                      </div>
                     </div>
                 </div>
             </motion.div>
@@ -87,32 +96,32 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="bg-slate-900/60 border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-electric/30 transition-colors"
-                >
-                <div className="flex flex-col gap-4">
-                    <div className="p-3 bg-electric/10 rounded-xl w-fit">
-                    <Globe2 className="text-electric w-6 h-6" />
+                className="bg-cards border border-border shadow-sm rounded-3xl p-8 sm:p-10 hover:shadow-md transition-shadow group"
+            >
+                <div className="flex flex-col gap-6">
+                    <div className="p-4 bg-green-50 text-success rounded-2xl w-fit group-hover:scale-110 transition-transform">
+                      <Globe2 className="w-8 h-8" />
                     </div>
-                    <div>
-                    <h3 className="text-xl font-bold text-white mb-4">Languages</h3>
-                    <ul className="space-y-3">
-                        <li className="flex justify-between items-center text-slate-300">
-                        <span>English</span>
-                        <span className="text-electric font-mono text-sm">Professional</span>
-                        </li>
-                        <li className="flex justify-between items-center text-slate-300">
-                        <span>Hindi</span>
-                        <span className="text-neonLime font-mono text-sm">Native</span>
-                        </li>
-                        <li className="flex justify-between items-center text-slate-300">
-                        <span>Gujarati</span>
-                        <span className="text-neonLime font-mono text-sm">Native</span>
-                        </li>
-                        <li className="flex justify-between items-center text-slate-300">
-                        <span>Marathi</span>
-                        <span className="text-slate-500 font-mono text-sm">Conversational</span>
-                        </li>
-                    </ul>
+                    <div className="w-full">
+                      <h3 className="text-2xl font-bold text-text mb-6">Languages</h3>
+                      <ul className="space-y-4 w-full">
+                          <li className="flex justify-between items-center text-textSecondary border-b border-border pb-2">
+                            <span className="font-medium text-text">English</span>
+                            <span className="text-primary font-mono text-sm bg-blue-50 border border-blue-100 px-3 py-1 rounded-full">Professional</span>
+                          </li>
+                          <li className="flex justify-between items-center text-textSecondary border-b border-border pb-2">
+                            <span className="font-medium text-text">Hindi</span>
+                            <span className="text-success font-mono text-sm bg-green-50 border border-green-100 px-3 py-1 rounded-full">Native</span>
+                          </li>
+                          <li className="flex justify-between items-center text-textSecondary border-b border-border pb-2">
+                            <span className="font-medium text-text">Gujarati</span>
+                            <span className="text-success font-mono text-sm bg-green-50 border border-green-100 px-3 py-1 rounded-full">Native</span>
+                          </li>
+                          <li className="flex justify-between items-center text-textSecondary pb-2">
+                            <span className="font-medium text-text">Marathi</span>
+                            <span className="text-textSecondary font-mono text-sm bg-slate-100 border border-border px-3 py-1 rounded-full">Conversational</span>
+                          </li>
+                      </ul>
                     </div>
                 </div>
             </motion.div>

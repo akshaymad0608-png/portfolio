@@ -1,73 +1,108 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SERVICES } from '../constants';
-import { Check } from 'lucide-react';
+import { Bot, Zap, Globe, MessageSquare, Code, Search, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const SERVICES = [
+  {
+    id: "ai-agents",
+    icon: Bot,
+    title: "AI Agents",
+    description: "Intelligent autonomous agents that execute complex business tasks without human intervention.",
+    benefits: ["24/7 Availability", "Cost Reduction", "Error-free Execution"],
+  },
+  {
+    id: "ai-automation",
+    icon: Zap,
+    title: "AI Automation",
+    description: "Streamline your business operations by connecting your tools with custom AI pipelines.",
+    benefits: ["Faster Turnaround", "Scalable Processes", "Data Sync"],
+  },
+  {
+    id: "ai-chatbots",
+    icon: MessageSquare,
+    title: "AI Chatbots",
+    description: "Advanced conversational AI for customer support, lead generation, and internal knowledge bases.",
+    benefits: ["Instant Replies", "Higher Conversion", "Multilingual Support"],
+  },
+  {
+    id: "prompt-engineering",
+    icon: Code,
+    title: "Prompt Engineering",
+    description: "Optimizing LLM interactions to get precise, reliable, and high-quality outputs for your use case.",
+    benefits: ["Better Accuracy", "Lower API Costs", "Structured Data"],
+  },
+  {
+    id: "web-development",
+    icon: Globe,
+    title: "Website Development",
+    description: "High-performance, beautifully designed, and conversion-optimized websites and web apps.",
+    benefits: ["Modern UI/UX", "Lightning Fast", "Mobile Responsive"],
+  },
+  {
+    id: "seo",
+    icon: Search,
+    title: "SEO Optimization",
+    description: "Data-driven SEO strategies to rank higher on search engines and generate organic leads.",
+    benefits: ["More Traffic", "Better Rankings", "Quality Leads"],
+  }
+];
 
 const Services: React.FC = () => {
   return (
-    <section id="services" className="py-16 md:py-24 bg-midnight relative overflow-hidden">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 pointer-events-none" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
-        >
-          <span className="text-electric font-mono text-sm tracking-widest mb-4 block uppercase">Services & Expertise</span>
-           <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Solutions That <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-blue-300">Grow Your Business</span></h2>
-           <p className="text-slate-400 max-w-2xl mx-auto">Going beyond code to deliver scalable AI architecture, high-conversion websites, and time-saving automation systems.</p>
-        </motion.div>
+    <section className="py-24 bg-section relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
+            AI Engineering & <span className="text-primary">Automation Architecture</span>
+          </h2>
+          <p className="text-lg text-textSecondary leading-relaxed">
+            As an AI Engineer & Automation Architect, I build end-to-end intelligent systems that scale your operations, eliminate manual tasks, and increase revenue.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-          {SERVICES.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                whileHover={{ y: -10, scale: 1.02 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-                viewport={{ once: true, margin: "-50px" }}
-                className="group p-6 sm:p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-electric/50 hover:bg-white/[0.06] transition-all duration-300 backdrop-blur-sm shadow-lg hover:shadow-electric/10 relative overflow-hidden"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {SERVICES.map((service, index) => (
+            <motion.div
+              key={service.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              className="bg-cards border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col h-full"
+            >
+              <div className="w-14 h-14 bg-blue-50 text-primary rounded-xl flex items-center justify-center mb-6">
+                <service.icon size={28} />
+              </div>
+              <h3 className="text-2xl font-bold text-text mb-3">{service.title}</h3>
+              <p className="text-textSecondary mb-6 flex-grow">{service.description}</p>
+              
+              <ul className="space-y-3 mb-8">
+                {service.benefits.map((benefit, i) => (
+                  <li key={i} className="flex items-center gap-3 text-textSecondary text-sm font-medium">
+                    <CheckCircle2 className="w-5 h-5 text-success" />
+                    {benefit}
+                  </li>
+                ))}
+              </ul>
+
+              <Link 
+                to={`/services#${service.id}`}
+                className="inline-flex items-center gap-2 text-primary font-semibold hover:text-blue-700 transition-colors mt-auto group"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-electric/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                
-                <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
-                  <motion.div 
-                    whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
-                    transition={{ duration: 0.5 }}
-                    className="p-4 rounded-2xl bg-electric/10 text-electric group-hover:bg-electric group-hover:text-midnight transition-colors duration-300 shadow-[0_0_20px_rgba(0,240,255,0.2)]"
-                  >
-                    <Icon size={32} strokeWidth={1.5} />
-                  </motion.div>
-                  <div>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 group-hover:text-electric transition-colors break-words">{service.title}</h3>
-                    <p className="text-slate-400 mb-6 leading-relaxed text-sm">{service.description}</p>
-                    
-                    <ul className="space-y-3">
-                      {service.features.map((feature, i) => (
-                        <motion.li 
-                          key={i} 
-                          initial={{ opacity: 0, x: -10 }}
-                          whileInView={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.2 + (i * 0.1) }}
-                          className="flex items-center gap-3 text-sm text-slate-300"
-                        >
-                          <div className="w-5 h-5 rounded-full bg-neonLime/10 flex items-center justify-center">
-                            <Check size={12} className="text-neonLime" />
-                          </div>
-                          {feature}
-                        </motion.li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </motion.div>
-            );
-          })}
+                Learn More <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-16 text-center">
+          <Link 
+            to="/contact"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
+          >
+            Get a Free Quote
+          </Link>
         </div>
       </div>
     </section>

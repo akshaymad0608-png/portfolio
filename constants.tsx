@@ -12,32 +12,28 @@ export const HERO_CONTENT = {
 
 export const DASHBOARD_SKILLS: SkillCategory[] = [
   {
-    title: "Prompt Engineering",
-    skills: ["Prompt Design", "Chain-of-Thought", "Few/Zero-Shot", "System Architecture"]
+    title: "AI Strategy & Deployment",
+    skills: ["Real-World Problem Framing", "End-to-End Solutions", "The AI Generalist Mindset", "Ecosystem Deep Dive"]
   },
   {
-    title: "AI & LLMs",
-    skills: ["ChatGPT", "Claude", "Gemini", "DeepSeek", "Grok", "OpenAI API"]
+    title: "Automation & Operations",
+    skills: ["Workflow Automation", "AI System Design", "AI in Business Communication", "Team Leadership"]
   },
   {
-    title: "Agentic & Automation",
-    skills: ["n8n", "Make", "AI Agents", "Agent Workflows", "AI Pipeline Design"]
+    title: "Creative & Media AI",
+    skills: ["AI Image Generation", "AI Video Generation", "MidJourney", "Prompt Engineering"]
   },
   {
-    title: "Multimodal AI",
-    skills: ["MidJourney", "Runway", "ElevenLabs", "Sora", "HeyGen", "Veo"]
+    title: "Career & Branding",
+    skills: ["LinkedIn Optimization", "ATS Resume Writing", "Agentic Job Hunting", "Interview Skills"]
   },
   {
     title: "Web & Development",
-    skills: ["React", "Next.js", "Replit", "Lovable AI", "Vercel", "TailwindCSS"]
+    skills: ["React", "Next.js", "Web Deployment", "Client-Side Tools"]
   },
   {
-    title: "Marketing & SEO",
-    skills: ["SEO Strategy", "Marketing Automation", "Copywriting", "YouTube Growth"]
-  },
-  {
-    title: "Data & Productivity",
-    skills: ["Data Analysis", "Excel", "Julius AI", "Manus AI", "Nano Banana AI"]
+    title: "Business Growth",
+    skills: ["Make Money Using AI", "Marketing Automation", "Research using AI"]
   }
 ];
 
@@ -100,59 +96,59 @@ export { AI_SYSTEM_INSTRUCTION };
 
 export const SKILLS: Skill[] = [
   { 
-    name: "Prompt Engineering", 
-    level: 100, 
-    icon: Terminal, 
-    description: "Chain-of-Thought, System Architecture, & Zero-Shot mastery.",
+    name: "AI System Design & Workflow Automation", 
+    level: 98, 
+    icon: Network, 
+    description: "Designing end-to-end architectures, multi-agent systems, and scalable orchestration.",
+    demoLink: "#work" 
+  },
+  { 
+    name: "Generative AI Ecosystem Deep Dive", 
+    level: 96, 
+    icon: Cpu, 
+    description: "Mastery over LLMs, Prompt Engineering, and the broader AI Generalist Mindset.",
     demoLink: "#showcase" 
   },
   { 
-    name: "Agentic AI & Automation", 
-    level: 98, 
-    icon: Network, 
-    description: "Multi-agent systems, AI Agents, and scalable orchestration architectures.",
-    demoLink: "#work" 
-  },
-  { 
-    name: "Workflow Automation", 
-    level: 96, 
+    name: "AI Powered Image & Video Generation", 
+    level: 95, 
     icon: Layers, 
-    description: "Creating robust autonomous pipelines utilizing Make and n8n.",
+    description: "Creating high-quality visuals, marketing assets, and video content using cutting-edge AI.",
     demoLink: "#work" 
   },
   {
-    name: "Product Thinking & Building",
-    level: 92,
-    icon: Cpu,
-    description: "Tech 101 to deployment: rapid AI prototyping and MVP validation.",
+    name: "Real-World Problem Framing",
+    level: 94,
+    icon: Terminal,
+    description: "Identifying bottlenecks and framing them into actionable AI and automation solutions.",
     demoLink: "#work"
   },
   { 
-    name: "Data Analytics (AI & Excel)", 
-    level: 94, 
+    name: "AI in Business Communication", 
+    level: 92, 
     icon: Database, 
-    description: "Advanced data manipulation, numerous automation, and Excel formulas.",
+    description: "Leveraging AI for team leadership, process documentation, and seamless communication.",
     demoLink: "#work" 
   },
   { 
-    name: "Data Visualisation (Power BI)", 
+    name: "End-to-End Solution Deployment", 
     level: 90, 
-    icon: Activity, 
-    description: "AI-enhanced reporting, KPI dashboards, and structured visualizations.",
+    icon: Code2, 
+    description: "Full-stack development, Vercel deployments, and delivering client-ready products.",
     demoLink: "#work" 
   },
   {
-    name: "RAG & Vector Databases",
-    level: 90,
-    icon: Layers,
-    description: "Semantic search, context augmentation, and knowledge bases.",
+    name: "Agentic Job Hunting & Resume Writing",
+    level: 88,
+    icon: Activity,
+    description: "ATS optimization, interview skills, and deploying AI agents for job applications.",
     demoLink: "#work"
   },
   { 
-    name: "Web Development", 
-    level: 88, 
-    icon: Code2, 
-    description: "React, Vercel, client-side processing, mobile-first UI.",
+    name: "Research & LinkedIn Optimization", 
+    level: 90, 
+    icon: Layers, 
+    description: "Deep research methodologies and personal branding strategies using AI.",
     demoLink: "#work" 
   }
 ];
@@ -170,7 +166,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "Next.js", "TailwindCSS", "PostgreSQL"],
     year: "2024",
     link: "https://aimastertools.space",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=800",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://aimastertools.space",
     icon: Wrench,
     stat: "200+ AI TOOLS",
     elementId: "ai-master-tool"
@@ -187,7 +183,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "LLMs", "Client-Side Processing"],
     year: "2024",
     link: "https://quickresume.business",
-    image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=800",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://quickresume.business",
     icon: FileText,
     stat: "ATS-OPTIMIZED",
     elementId: "quickresume"
@@ -205,7 +201,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     link: "https://photoresizer.click",
     icon: Crop,
-    image: "https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&q=80&w=800",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://photoresizer.click",
     stat: "1M+ USERS",
     elementId: "photo-resizer"
   },
@@ -221,7 +217,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "AI Prompts", "Vercel"],
     year: "2025",
     link: "https://smartfit-8ikq.vercel.app",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://smartfit-8ikq.vercel.app",
     icon: HeartPulse,
     stat: "LIVE PLATFORM",
     elementId: "smartfit"
@@ -364,40 +360,45 @@ export const TESTIMONIALS: Testimonial[] = [
 export const CERTIFICATES: Certificate[] = [
   {
     id: 1,
-    title: "Certificate of Mastery — AI Generalist",
-    issuer: "be10X | AI Career Accelerator Program (ISO Certified | DPIIT Startup India)",
-    date: "May 2026",
+    title: "Capstone Project",
+    issuer: "be10X | AI Career Accelerator Program",
+    date: "July 6th, 2026",
     expertise: [
-      "AI Fundamentals & Ecosystem Mastery",
-      "AI Product Building",
-      "AI in Data Analytics",
-      "AI Agents & Autonomous Systems",
-      "AI Branding & Leadership"
+      "Real-World Problem Framing",
+      "AI System Design & Workflow Automation",
+      "End-to-End Solution Deployment"
     ]
   },
   {
     id: 2,
-    title: "Certificate of Mastery — Certified AI Foundations & Tools Specialist",
-    issuer: "be10X | AI Career Accelerator Program (ISO Certified | DPIIT Startup India)",
-    date: "May 2026",
+    title: "Phase 1.5 : AI Strategy, Branding & Leadership",
+    issuer: "be10X | AI Career Accelerator Program",
+    date: "July 6th, 2026",
     expertise: [
-      "AI Generalist Mindset",
-      "Generative AI Ecosystem Deep Dive",
-      "AI Tools for Research",
-      "10x Productivity"
+      "AI Powered Image & Video Generation",
+      "AI in Business Communication & Team leadership",
+      "Make Money Using AI"
     ]
   },
   {
     id: 3,
-    title: "Certificate of Mastery — AI Product Building, Storytelling & Analytics",
-    issuer: "be10X | AI Career Accelerator Program (ISO Certified | DPIIT Startup India)",
-    date: "May 2026",
+    title: "Phase 1.4 : Career Readiness Using AI",
+    issuer: "be10X | AI Career Accelerator Program",
+    date: "July 6th, 2026",
     expertise: [
-      "Workflow Automation with Make",
-      "Data Analysis with AI using Excel",
-      "Data Visualisation with AI using Power BI",
-      "Product Thinking & AI Innovation",
-      "Product Building & Tech 101"
+      "ATS Friendly Resume Writing + Interview Skills",
+      "Job Hunting and Job Application Using AI - (Agentic Process)"
+    ]
+  },
+  {
+    id: 4,
+    title: "Phase 1.1: AI Fundamentals & Ecosystem Mastery",
+    issuer: "be10X | AI Career Accelerator Program",
+    date: "July 6th, 2026",
+    expertise: [
+      "The AI Generalist Mindset",
+      "Generative AI Ecosystem Deep Dive",
+      "Research work using AI - Linkedin optimisation with AI"
     ]
   }
 ];

@@ -6,71 +6,50 @@
     <meta name="google-site-verification" content="OKrQe1gmGTch6hUqiREhg5pnE1uW6vlGTyEXHYm3b38" />
     
     <!-- Primary Meta Tags -->
-    <title>Akshay Mahajan | AI Automation & Web Developer</title>
-    <meta name="title" content="Akshay Mahajan | AI Automation & Web Developer" />
-    <meta name="description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue." />
-    <meta name="keywords" content="AI Automation, Chatbots, Web Development, React, Prompt Engineering, Akshay Mahajan, Portfolio, Workflows" />
+    <title>Akshay Mahajan | AI Engineer & Automation Architect</title>
+    <meta name="title" content="Akshay Mahajan | AI Engineer & Automation Architect" />
+    <meta name="description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work." />
+    <meta name="keywords" content="AI Automation, Chatbots, Web Development, React, Prompt Engineering, Akshay Mahajan, AI Agency, Workflows" />
     <meta name="author" content="Akshay Mahajan" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://akshay.website/" />
-    <meta property="og:title" content="Akshay Mahajan | AI Automation & Web Developer" />
-    <meta property="og:description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue." />
+    <meta property="og:title" content="Akshay Mahajan | AI Engineer & Automation Architect" />
+    <meta property="og:description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work." />
     <meta property="og:image" content="https://akshay.website/akshay_avatar.jpeg" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://akshay.website/" />
-    <meta property="twitter:title" content="Akshay Mahajan | AI Automation & Web Developer" />
-    <meta property="twitter:description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue." />
+    <meta property="twitter:title" content="Akshay Mahajan | AI Engineer & Automation Architect" />
+    <meta property="twitter:description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work." />
     <meta property="twitter:image" content="https://akshay.website/akshay_avatar.jpeg" />
 
-    <!-- Schema.org markup for Google+ -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Akshay Mahajan",
-      "jobTitle": "AI Automation & Web Developer",
-      "url": "https://akshay.website/",
-      "sameAs": [
-        "https://linkedin.com/in/akshay-mahajan-95bb86187",
-        "https://instagram.com/aiminivlogs4"
-      ],
-      "knowsAbout": ["Artificial Intelligence", "Prompt Engineering", "Web Development", "AI Automation", "Chatbots"]
-    }
-    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              midnight: '#0f172a',
-              ink: '#0f172a',
-              electric: '#3b82f6',
-              plasma: '#3b82f6',
-              neonLime: '#10b981',
-              volt: '#10b981',
-              ghost: 'rgba(255,255,255,0.06)'
+              primary: '#2563EB',
+              background: '#FFFFFF',
+              section: '#F8FAFC',
+              cards: '#FFFFFF',
+              border: '#E5E7EB',
+              text: '#111827',
+              textSecondary: '#6B7280',
+              success: '#22C55E',
+              midnight: '#FFFFFF', /* for backwards compat, though we should remove usages */
+              electric: '#2563EB', /* for backwards compat */
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              mono: ['JetBrains Mono', 'monospace'],
-              display: ['Inter', 'sans-serif']
+              display: ['Inter', 'sans-serif'] /* user wants simple modern font, we can use Inter for everything or keep Space Grotesk if we want */
             },
-            animation: {
-              'spin-slow': 'spin 12s linear infinite',
-              'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-              'float': 'float 6s ease-in-out infinite'
-            },
-            keyframes: {
-              float: { '0%,100%': { transform: 'translateY(0px)' }, '50%': { transform: 'translateY(-16px)' } }
-            }
           }
         }
       }
@@ -79,50 +58,11 @@
       html, body {
         overflow-x: hidden;
         width: 100%;
+        min-height: 100vh;
         position: relative;
+        background-color: #FFFFFF;
+        color: #111827;
       }
-      body {
-        margin: 0;
-        background-color: #050a14;
-        color: #e2e8f0;
-      }
-      /* Custom grid bg seen in previous version */
-      body::before {
-        content: '';
-        position: fixed;
-        inset: 0;
-        z-index: 0;
-        background-image:
-          linear-gradient(rgba(0,245,212,0.025) 1px, transparent 1px),
-          linear-gradient(90deg, rgba(0,245,212,0.025) 1px, transparent 1px);
-        background-size: 48px 48px;
-        pointer-events: none;
-      }
-      
-      /* Cyber-Light Theme */
-      html.light-mode body {
-        filter: invert(1) hue-rotate(180deg);
-      }
-      
-      html.light-mode img, 
-      html.light-mode video {
-        filter: invert(1) hue-rotate(180deg);
-      }
-      
-      /* Fix for project preview images */
-      .project-preview img {
-        opacity: 1 !important;
-        filter: none !important;
-      }
-      html.light-mode .project-preview img {
-        filter: invert(1) hue-rotate(180deg) !important;
-      }
-      
-      .project-preview::before,
-      .project-preview::after {
-        display: none !important;
-      }
-      
       .hide-scrollbar::-webkit-scrollbar {
           display: none;
       }

@@ -1,134 +1,127 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Calculator, DollarSign, Clock, ArrowRight } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Calculator, Clock, DollarSign, TrendingUp } from 'lucide-react';
 
 const ROICalculator: React.FC = () => {
   const [hours, setHours] = useState(20);
-  const [rate, setRate] = useState(25);
+  const [rate, setRate] = useState(50);
 
-  const yearlyCost = hours * rate * 52;
-  const automatedPercentage = 0.70; // 70% automation potential
-  const yearlySavings = Math.round(yearlyCost * automatedPercentage);
-  const hoursSaved = Math.round(hours * 52 * automatedPercentage);
+  const weeklySavings = hours * rate;
+  const monthlySavings = weeklySavings * 4;
+  const yearlySavings = monthlySavings * 12;
 
   return (
-    <section className="py-24 bg-midnight relative border-y border-white/5">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.05),transparent_70%)] pointer-events-none" />
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-16"
-        >
-          <span className="text-electric font-mono text-sm tracking-widest mb-4 block uppercase">Interactive Tool</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
-            Calculate Your <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-blue-300">AI ROI</span>
-          </h2>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
-            See exactly how much time and money you are losing to manual tasks. Let's find out how much AI automation can save you.
-          </p>
-        </motion.div>
+    <section className="py-20 bg-slate-50 border-t border-border">
+      <div className="container mx-auto px-6">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="text-primary font-mono text-sm tracking-widest mb-4 block uppercase font-semibold">Interactive Tool</span>
+            <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
+              Calculate Your <span className="text-primary">Automation ROI</span>
+            </h2>
+            <p className="text-textSecondary max-w-2xl mx-auto">
+              See how much time and money you can save by automating repetitive tasks in your business.
+            </p>
+          </div>
 
-        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-          {/* Controls */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-slate-900/50 border border-white/10 p-8 rounded-3xl"
-          >
-            <div className="mb-8">
-              <div className="flex justify-between items-end mb-4">
-                <label className="text-white font-bold text-lg">Manual Hours Per Week</label>
-                <span className="text-electric font-mono text-2xl font-bold">{hours}h</span>
-              </div>
-              <p className="text-slate-400 text-sm mb-4">Time spent on repetitive tasks (emails, data entry, reports).</p>
-              <input 
-                type="range" 
-                min="5" 
-                max="100" 
-                value={hours} 
-                onChange={(e) => setHours(Number(e.target.value))}
-                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-electric"
-              />
-              <div className="flex justify-between text-slate-500 text-xs mt-2 font-mono">
-                <span>5h</span>
-                <span>100h</span>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex justify-between items-end mb-4">
-                <label className="text-white font-bold text-lg">Average Hourly Cost ($)</label>
-                <span className="text-electric font-mono text-2xl font-bold">${rate}</span>
-              </div>
-              <p className="text-slate-400 text-sm mb-4">The average hourly wage for this work.</p>
-              <input 
-                type="range" 
-                min="10" 
-                max="150" 
-                step="5"
-                value={rate} 
-                onChange={(e) => setRate(Number(e.target.value))}
-                className="w-full h-2 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-electric"
-              />
-              <div className="flex justify-between text-slate-500 text-xs mt-2 font-mono">
-                <span>$10</span>
-                <span>$150</span>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Results */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="bg-gradient-to-br from-electric/10 to-blue-500/5 border border-electric/20 p-8 rounded-3xl relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 p-6 opacity-10">
-              <Calculator size={100} />
-            </div>
-            
-            <h3 className="text-xl font-bold text-white mb-6 relative z-10">Your Estimated Yearly Savings</h3>
-            
-            <div className="grid grid-cols-2 gap-6 mb-8 relative z-10">
-              <div>
-                <div className="flex items-center gap-2 text-slate-300 mb-2">
-                  <DollarSign size={18} className="text-electric" />
-                  <span className="text-sm">Money Saved</span>
-                </div>
-                <div className="text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                  ${yearlySavings.toLocaleString()}
-                </div>
-              </div>
-              
-              <div>
-                <div className="flex items-center gap-2 text-slate-300 mb-2">
-                  <Clock size={18} className="text-electric" />
-                  <span className="text-sm">Time Saved</span>
-                </div>
-                <div className="text-3xl lg:text-4xl font-bold text-white tracking-tight">
-                  {hoursSaved.toLocaleString()}h
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white/5 border border-white/10 rounded-xl p-4 mb-8 relative z-10">
-              <p className="text-sm text-slate-300">
-                Assuming a conservative <strong className="text-white">70% automation rate</strong>. An AI agent costs a fraction of your current manual workflow overhead.
-              </p>
-            </div>
-
-            <Link 
-              to="/contact"
-              className="inline-flex items-center justify-center w-full gap-2 py-4 bg-electric text-midnight font-bold rounded-xl hover:bg-white transition-colors relative z-10"
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Input Controls */}
+            <motion.div 
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="space-y-10 bg-white p-8 md:p-10 rounded-3xl border border-border shadow-sm"
             >
-              Start Automating Today <ArrowRight size={18} />
-            </Link>
-          </motion.div>
+              <div>
+                <div className="flex justify-between items-end mb-4">
+                  <label className="text-lg font-bold text-text">Hours spent on manual tasks</label>
+                  <span className="text-primary font-mono text-2xl font-bold">{hours}h</span>
+                </div>
+                <p className="text-sm text-textSecondary mb-6">Per week (data entry, scheduling, reporting, etc.)</p>
+                <input 
+                  type="range" 
+                  min="5" 
+                  max="100" 
+                  step="5"
+                  value={hours}
+                  onChange={(e) => setHours(parseInt(e.target.value))}
+                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                />
+                <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
+                  <span>5h</span>
+                  <span>100h</span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-end mb-4">
+                  <label className="text-lg font-bold text-text">Average hourly value/cost</label>
+                  <span className="text-primary font-mono text-2xl font-bold">${rate}</span>
+                </div>
+                <p className="text-sm text-textSecondary mb-6">Your hourly rate or employee cost</p>
+                <input 
+                  type="range" 
+                  min="15" 
+                  max="200" 
+                  step="5"
+                  value={rate}
+                  onChange={(e) => setRate(parseInt(e.target.value))}
+                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                />
+                <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
+                  <span>$15</span>
+                  <span>$200</span>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Results Display */}
+            <motion.div 
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="bg-blue-50 border border-blue-100 p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-sm"
+            >
+              <h3 className="text-2xl font-bold text-text mb-8 flex items-center gap-3">
+                <TrendingUp className="text-primary" /> Projected Savings
+              </h3>
+
+              <div className="space-y-6 mb-10">
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-white border border-border shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+                      <DollarSign size={18} className="text-primary" />
+                    </div>
+                    <span className="text-text font-medium">Monthly Savings</span>
+                  </div>
+                  <span className="text-xl font-bold text-text">${monthlySavings.toLocaleString()}</span>
+                </div>
+
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-white border border-border shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+                      <Clock size={18} className="text-primary" />
+                    </div>
+                    <span className="text-text font-medium">Time Recovered</span>
+                  </div>
+                  <span className="text-xl font-bold text-text">{hours * 4} hrs/mo</span>
+                </div>
+                
+                <div className="p-6 rounded-2xl bg-primary text-white shadow-md">
+                  <div className="text-sm font-medium opacity-80 mb-2">Estimated Yearly ROI</div>
+                  <div className="text-3xl md:text-5xl font-bold">${yearlySavings.toLocaleString()}</div>
+                </div>
+              </div>
+
+              <a 
+                href="/contact" 
+                className="inline-flex items-center justify-center w-full gap-2 py-4 bg-white text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-white transition-all shadow-sm"
+              >
+                <Calculator size={20} />
+                Get a Custom ROI Audit
+              </a>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

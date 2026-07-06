@@ -1,8 +1,9 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
-import QuickConnect from './components/QuickConnect';
 import AIChatBot from './components/AIChatBot';
+import FloatingWidgets from './components/FloatingWidgets';
+import ScrollProgress from './components/ScrollProgress';
 
 // Pages
 import Home from './pages/Home';
@@ -13,7 +14,8 @@ import Contact from './pages/Contact';
 
 const App: React.FC = () => {
   return (
-    <div className="bg-midnight min-h-[100dvh] text-slate-200 overflow-x-hidden w-full relative">
+    <div className="bg-background min-h-[100dvh] text-text overflow-x-hidden w-full relative font-sans">
+      <ScrollProgress />
       <NavBar />
       <main>
         <Routes>
@@ -24,8 +26,8 @@ const App: React.FC = () => {
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
-      <QuickConnect />
       <AIChatBot />
+      <FloatingWidgets />
     </div>
   );
 };

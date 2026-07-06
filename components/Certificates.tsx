@@ -1,24 +1,30 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Award, CheckCircle, Download } from 'lucide-react';
+import { Award, Check, ExternalLink } from 'lucide-react';
 import { CERTIFICATES } from '../constants';
 
 const Certificates: React.FC = () => {
   return (
-    <section id="certifications" className="py-16 md:py-24 bg-slate-900 border-t border-white/5 relative overflow-hidden scroll-mt-32">
-      <div className="container mx-auto px-6 relative z-10">
+    <section id="certifications" className="py-24 bg-section relative border-t border-border overflow-hidden">
+      <div className="container mx-auto px-6 relative z-10 max-w-7xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-16 max-w-3xl mx-auto"
         >
-          <span className="text-electric font-mono text-sm tracking-widest mb-4 block">CREDENTIALS</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-4">Certificates of <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Mastery</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto font-mono text-sm">VALIDATED EXPERTISE // BE10X ACCELERATOR</p>
+          <span className="text-primary font-mono text-sm tracking-wider uppercase bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100 mb-6 inline-block">
+            Credentials
+          </span>
+          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
+            Validated <span className="text-primary">Expertise</span>
+          </h2>
+          <p className="text-textSecondary text-lg leading-relaxed">
+            Continuous learning and rigorous certifications to ensure my AI and automation architectures meet the highest industry standards.
+          </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {CERTIFICATES.map((cert, index) => (
             <motion.div
               key={cert.id}
@@ -26,48 +32,48 @@ const Certificates: React.FC = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
               viewport={{ once: true }}
-              className="bg-midnight border border-white/10 rounded-2xl p-6 md:p-8 hover:border-electric/50 transition-colors group relative overflow-hidden flex flex-col"
+              className="bg-cards border border-border rounded-2xl p-8 hover:shadow-md transition-shadow flex flex-col h-full"
             >
-              <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                <Award size={100} className="text-electric transform rotate-12 group-hover:scale-110 transition-transform duration-500" />
+              <div className="flex items-start gap-5 mb-8">
+                <div className="p-4 bg-slate-50 border border-border rounded-xl shrink-0 text-primary">
+                  <Award className="w-8 h-8" />
+                </div>
+                <div className="pt-1">
+                  <h3 className="text-xl md:text-2xl font-bold text-text mb-2">
+                    {cert.title}
+                  </h3>
+                  <p className="text-sm text-textSecondary font-medium">
+                    {cert.issuer} <span className="mx-2 opacity-50">•</span> {cert.date}
+                  </p>
+                </div>
               </div>
               
-              <div className="relative z-10 flex flex-col flex-grow h-full">
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-3 bg-electric/10 rounded-xl">
-                    <Award className="text-electric w-6 h-6" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-bold text-white leading-tight">{cert.title}</h3>
-                    <p className="text-sm text-slate-400 font-mono mt-1">{cert.issuer} • {cert.date}</p>
-                  </div>
-                </div>
-
-                <div className="mt-4 flex-grow mb-6">
-                  <p className="text-sm text-electric mb-3 font-semibold uppercase tracking-wider">Core Expertise Gained:</p>
-                  <ul className="space-y-2">
-                    {cert.expertise.map((item, i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle className="w-4 h-4 text-neonLime shrink-0 mt-0.5" />
-                        <span className="text-sm text-slate-300">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                
-                {cert.downloadLink && (
-                  <div className="mt-auto pt-4 border-t border-white/5">
-                     <a 
-                      href={cert.downloadLink} 
-                      download
-                      className="inline-flex items-center gap-2 text-sm font-semibold text-white bg-white/5 hover:bg-electric/20 hover:text-electric px-4 py-2 rounded-lg transition-colors duration-300"
-                    >
-                      <Download className="w-4 h-4" />
-                      Download PDF
-                    </a>
-                  </div>
-                )}
+              <div className="flex-grow mb-6">
+                <p className="text-xs font-semibold text-textSecondary mb-4 uppercase tracking-widest">
+                  Core Capabilities
+                </p>
+                <ul className="space-y-3">
+                  {cert.expertise.map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-textSecondary text-sm font-medium">
+                      <Check className="w-5 h-5 text-success shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
+              
+              {cert.downloadLink && (
+                <div className="mt-auto pt-6 border-t border-border">
+                  <a 
+                    href={cert.downloadLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-primary font-semibold hover:text-blue-700 transition-colors"
+                  >
+                    View Credential <ExternalLink size={16} />
+                  </a>
+                </div>
+              )}
             </motion.div>
           ))}
         </div>

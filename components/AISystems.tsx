@@ -1,69 +1,125 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { AI_SYSTEMS } from '../constants';
-import { CheckCircle2, Zap } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+
+const PROJECTS = [
+  {
+    id: 1,
+    title: "AI Customer Support Agent",
+    description: "An intelligent chatbot that integrates with your knowledge base to provide instant, accurate answers to customer queries, reducing support tickets by 40%.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    tech: ["React", "Node.js", "OpenAI", "Pinecone"],
+    liveUrl: "/contact",
+    githubUrl: "/contact"
+  },
+  {
+    id: 2,
+    title: "Automated SEO Content Pipeline",
+    description: "A complete automation system that generates SEO-optimized blog posts, meta descriptions, and social media captions based on trending keywords.",
+    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    tech: ["Python", "Make.com", "ChatGPT API", "Airtable"],
+    liveUrl: "/contact",
+    githubUrl: "/contact"
+  },
+  {
+    id: 3,
+    title: "Enterprise Dashboard Application",
+    description: "A comprehensive analytics dashboard for tracking business metrics in real-time, featuring custom data visualization and AI-powered insights.",
+    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800",
+    tech: ["Next.js", "Tailwind CSS", "PostgreSQL", "D3.js"],
+    liveUrl: "/contact",
+    githubUrl: "/contact"
+  }
+];
 
 const AISystems: React.FC = () => {
   return (
-    <section id="systems" className="py-20 md:py-32 bg-[#050A15] relative border-t border-white/5 scroll-mt-20">
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-overlay pointer-events-none" />
-      
-      <div className="container mx-auto px-6 relative z-10">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="text-electric font-mono text-sm tracking-widest mb-4 block">AVAILABLE_AGENTS</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">AI Systems I Can <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric to-neonLime">Build</span></h2>
-          <p className="text-slate-400 max-w-2xl mx-auto">Custom autonomous agents designed to automate workflows and drive growth.</p>
-        </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          {AI_SYSTEMS.map((system, index) => {
-            const Icon = system.icon;
-            return (
-              <motion.div
-                key={system.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="group p-8 rounded-3xl bg-slate-900/40 border border-white/10 hover:border-electric/50 transition-all duration-500 backdrop-blur-sm shadow-[0_4px_20px_rgba(0,0,0,0.2)] hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] relative overflow-hidden"
-              >
-                <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
-                  <Icon size={80} />
-                </div>
-                
-                <div className="w-14 h-14 rounded-2xl bg-electric/10 flex items-center justify-center mb-6 border border-electric/20 text-electric">
-                  <Icon size={28} />
-                </div>
-                
-                <h3 className="text-xl font-bold text-white mb-6 pr-10">{system.title}</h3>
-                
-                <ul className="space-y-3">
-                  {system.features.map((feature, i) => (
-                    <li key={i} className="flex items-center gap-3 text-slate-300 text-sm">
-                      <CheckCircle2 size={16} className="text-neonLime shrink-0" />
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            )
-          })}
+    <section id="projects" className="py-24 bg-background relative overflow-hidden">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
+            AI & Automation <span className="text-primary">Portfolio</span>
+          </h2>
+          <p className="text-lg text-textSecondary leading-relaxed">
+            Real-world AI agents, web applications, and workflow automations architected to solve complex business problems.
+          </p>
         </div>
 
-        <div className="mt-16 text-center z-10 relative">
-            <a 
-              href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20an%20AI/Web%20project" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-green-500/10 border border-green-500/30 text-white font-bold text-lg rounded-2xl hover:bg-green-500/20 hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(34,197,94,0.1)]"
+        <div className="space-y-12 md:space-y-24">
+          {PROJECTS.map((project, index) => (
+            <motion.div 
+              key={project.id}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-12 items-center`}
             >
-              Discuss Your Project on WhatsApp <Zap className="w-5 h-5 text-green-400 font-bold" />
-            </a>
+              {/* Image Section */}
+              <div className="w-full md:w-1/2">
+                <div className="relative rounded-2xl overflow-hidden border border-border shadow-lg group">
+                  <div className="aspect-video w-full">
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
+                </div>
+              </div>
+
+              {/* Content Section */}
+              <div className="w-full md:w-1/2 flex flex-col justify-center">
+                <h3 className="text-2xl md:text-3xl font-bold text-text mb-4">{project.title}</h3>
+                <p className="text-textSecondary text-lg leading-relaxed mb-6">
+                  {project.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-8">
+                  {project.tech.map((tech, i) => (
+                    <span 
+                      key={i}
+                      className="px-3 py-1 bg-slate-100 text-textSecondary text-sm font-medium rounded-md border border-border"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <a 
+                    href={project.liveUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
+                  >
+                    Live Demo <ExternalLink size={18} />
+                  </a>
+                  <a 
+                    href={project.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-border text-text font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm"
+                  >
+                    GitHub <Github size={18} />
+                  </a>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        <div className="mt-20 text-center">
+          <a 
+            href="/contact" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
+          >
+            Start Your Project
+          </a>
         </div>
       </div>
     </section>
