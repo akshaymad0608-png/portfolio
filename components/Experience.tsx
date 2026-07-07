@@ -162,7 +162,7 @@ const Experience: React.FC = () => {
                   {selectedProject.link && (
                     <div className="pt-4">
                       <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors">
-                        Launch Live <ExternalLink size={16} />
+                        Request Demo <ExternalLink size={16} />
                       </a>
                     </div>
                   )}

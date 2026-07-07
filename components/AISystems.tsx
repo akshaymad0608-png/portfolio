@@ -95,7 +95,7 @@ const AISystems: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
                   >
-                    Live Demo <ExternalLink size={18} />
+                    Request Demo <ExternalLink size={18} />
                   </a>
                   <a 
                     href={project.githubUrl}
@@ -103,7 +103,7 @@ const AISystems: React.FC = () => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-border text-text font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm"
                   >
-                    GitHub <Github size={18} />
+                    Case Study <Github size={18} />
                   </a>
                 </div>
               </div>
