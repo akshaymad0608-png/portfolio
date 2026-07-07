@@ -48,9 +48,9 @@ const Contact: React.FC = () => {
                 </a>
                 
                 <a 
-                  href="https://linkedin.com/in/akshay-mahajan-95bb86187" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                  href="https://linkedin.com/in/akshay-mahajan-95bb86187" target="_blank" rel="noopener noreferrer" 
+                   
+                   
                   className="flex items-center gap-4 p-4 rounded-xl border border-border bg-white hover:bg-slate-50 transition-colors group shadow-sm"
                 >
                   <div className="p-3 bg-blue-50 rounded-lg text-primary group-hover:scale-110 transition-transform">
@@ -64,8 +64,8 @@ const Contact: React.FC = () => {
                 
                 <a 
                   href="mailto:akshaymad0608@gmail.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                   
+                   
                   className="flex items-center gap-4 p-4 rounded-xl border border-primary bg-primary hover:bg-blue-700 transition-colors group shadow-md"
                 >
                   <div className="p-3 bg-white/20 rounded-lg text-white group-hover:scale-110 transition-transform">

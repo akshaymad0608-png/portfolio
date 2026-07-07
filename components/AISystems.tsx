@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const PROJECTS = [
   {
@@ -89,22 +90,18 @@ const AISystems: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                  <a 
-                    href={project.liveUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link 
+                    to={project.liveUrl}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
                   >
                     Request Demo <ExternalLink size={18} />
-                  </a>
-                  <a 
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  </Link>
+                  <Link 
+                    to={project.githubUrl}
                     className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-border text-text font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm"
                   >
                     Case Study <Github size={18} />
-                  </a>
+                  </Link>
                 </div>
               </div>
             </motion.div>
@@ -112,14 +109,12 @@ const AISystems: React.FC = () => {
         </div>
 
         <div className="mt-20 text-center">
-          <a 
-            href="/contact" 
-            target="_blank" 
-            rel="noopener noreferrer"
+          <Link 
+            to="/contact" 
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
           >
             Start Your Project
-          </a>
+          </Link>
         </div>
       </div>
     </section>

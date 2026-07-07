@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, Clock, DollarSign, TrendingUp } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const ROICalculator: React.FC = () => {
   const [hours, setHours] = useState(20);
@@ -113,13 +114,13 @@ const ROICalculator: React.FC = () => {
                 </div>
               </div>
 
-              <a 
-                href="/contact" 
+              <Link 
+                to="/contact" 
                 className="inline-flex items-center justify-center w-full gap-2 py-4 bg-white text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-white transition-all shadow-sm"
               >
                 <Calculator size={20} />
                 Get a Custom ROI Audit
-              </a>
+              </Link>
             </motion.div>
           </div>
         </div>

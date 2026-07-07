@@ -165,7 +165,7 @@ export const PROJECTS: Project[] = [
     description: "Developed a comprehensive AI tools directory with a focus on SEO and performance.",
     tech: ["React", "Next.js", "TailwindCSS", "PostgreSQL"],
     year: "2024",
-    link: "/contact",
+    link: "https://aimastertools.space",
     image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://aimastertools.space",
     icon: Wrench,
     stat: "200+ AI TOOLS",
@@ -182,7 +182,7 @@ export const PROJECTS: Project[] = [
     description: "Built an AI-powered resume creation platform with LLM-based content generation for tailored summaries.",
     tech: ["React", "LLMs", "Client-Side Processing"],
     year: "2024",
-    link: "/contact",
+    link: "https://quickresume.business",
     image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://quickresume.business",
     icon: FileText,
     stat: "ATS-OPTIMIZED",
@@ -199,7 +199,7 @@ export const PROJECTS: Project[] = [
     description: "High-performance, 100% client-side image resizing tool for Indian government exam requirements.",
     tech: ["React", "Image Processing", "Web App"],
     year: "2024",
-    link: "/contact",
+    link: "https://photoresizer.click",
     icon: Crop,
     image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://photoresizer.click",
     stat: "1M+ USERS",
@@ -216,7 +216,7 @@ export const PROJECTS: Project[] = [
     description: "Responsive AI-based fitness web application providing real-time recommendations.",
     tech: ["React", "AI Prompts", "Vercel"],
     year: "2025",
-    link: "/contact",
+    link: "https://smartfit-8ikq.vercel.app",
     image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://smartfit-8ikq.vercel.app",
     icon: HeartPulse,
     stat: "LIVE PLATFORM",
@@ -238,7 +238,7 @@ export const EXPERIMENTS: Experiment[] = [
     description: "Scan your resume against a job description and get an ATS match score.",
     model: "Claude 3.5 Sonnet",
     status: "Live",
-    link: "/contact"
+    link: "https://quickresume.business"
   },
   {
     id: 3,
@@ -260,7 +260,7 @@ export const EXPERIMENTS: Experiment[] = [
     description: "Semantic search engine to find the exact AI tool you need.",
     model: "DeepSeek R1",
     status: "Live",
-    link: "/contact"
+    link: "https://aimastertools.space"
   }
 ];
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, X, Globe, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { PROJECTS } from '../constants';
 
 const filters = ["All", "AI Agents", "Automations", "Full-Stack SaaS", "Client-Side Apps"];
@@ -104,7 +105,7 @@ const Experience: React.FC = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm"
             onClick={() => setSelectedProject(null)}
           >
             <motion.div 
@@ -162,8 +163,8 @@ const Experience: React.FC = () => {
                   {selectedProject.link && (
                     <div className="pt-4">
                       <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors">
-                        Request Demo <ExternalLink size={16} />
-                      </a>
+                        Launch Live <ExternalLink size={16} />
+                      </a >
                     </div>
                   )}
                 </div>
