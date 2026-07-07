@@ -10,8 +10,9 @@ interface SEOProps {
 }
 
 const SEO: React.FC<SEOProps> = ({ title, description, keywords, canonical, schema }) => {
-  const currentUrl = canonical || window.location.href;
-  const baseUrl = window.location.origin;
+  const baseUrl = "https://akshay.website";
+  const path = typeof window !== 'undefined' ? window.location.pathname : '';
+  const currentUrl = canonical || `${baseUrl}${path}`;
 
   const defaultPersonSchema = {
     "@context": "https://schema.org",
