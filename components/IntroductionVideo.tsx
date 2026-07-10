@@ -54,8 +54,9 @@ const IntroductionVideo: React.FC = () => {
           {/* Replace src with your actual video path once uploaded to the public folder */}
           <video 
             ref={videoRef}
-            className="w-full h-full object-cover block"
+            className="absolute inset-0 w-full h-full object-cover block z-0"
             poster={posterImg}
+            src={videoFile}
             onClick={togglePlay}
             onEnded={() => setIsPlaying(false)}
             onError={() => {
@@ -64,12 +65,10 @@ const IntroductionVideo: React.FC = () => {
             }}
             playsInline
             muted={isMuted}
-            autoPlay={false}
-          >
-            <source src={videoFile} type="video/mp4" />
-          </video>
+            preload="metadata"
+          />
           
-          <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
+          <div className={`absolute inset-0 z-10 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
             <button 
               onClick={togglePlay}
               className="w-20 h-20 rounded-full bg-primary/90 text-white flex items-center justify-center hover:bg-primary transition-transform hover:scale-110 shadow-[0_0_30px_rgba(0,245,255,0.3)] backdrop-blur-md"
@@ -78,7 +77,7 @@ const IntroductionVideo: React.FC = () => {
             </button>
           </div>
 
-          <div className="absolute bottom-4 right-4 flex gap-2">
+          <div className="absolute bottom-4 right-4 flex gap-2 z-20">
             <button 
               onClick={toggleMute}
               className="w-10 h-10 rounded-full bg-black/50 text-white flex items-center justify-center hover:bg-black/80 transition-colors backdrop-blur-md"
