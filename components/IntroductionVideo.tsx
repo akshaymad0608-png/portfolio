@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Play, Pause, Volume2, VolumeX } from 'lucide-react';
+import posterImg from '../src/assets/akshay_avatar.png';
+import videoFile from '../src/assets/introduction.mp4';
 
 const IntroductionVideo: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -53,7 +55,7 @@ const IntroductionVideo: React.FC = () => {
           <video 
             ref={videoRef}
             className="w-full h-full object-cover block"
-            poster="/akshay_avatar.png"
+            poster={posterImg}
             onClick={togglePlay}
             onEnded={() => setIsPlaying(false)}
             onError={() => {
@@ -64,7 +66,7 @@ const IntroductionVideo: React.FC = () => {
             muted={isMuted}
             autoPlay={false}
           >
-            <source src="/introduction.mp4" type="video/mp4" />
+            <source src={videoFile} type="video/mp4" />
           </video>
           
           <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
