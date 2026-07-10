@@ -53,7 +53,7 @@ const IntroductionVideo: React.FC = () => {
           <video 
             ref={videoRef}
             className="w-full h-full object-cover block"
-            poster={`${import.meta.env.BASE_URL}akshay_avatar.png`}
+            poster="/akshay_avatar.png"
             onClick={togglePlay}
             onEnded={() => setIsPlaying(false)}
             onError={() => {
@@ -64,7 +64,7 @@ const IntroductionVideo: React.FC = () => {
             muted={isMuted}
             autoPlay={false}
           >
-            <source src={`${import.meta.env.BASE_URL}introduction.mp4`} type="video/mp4" />
+            <source src="/introduction.mp4" type="video/mp4" />
           </video>
           
           <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
