@@ -17,38 +17,39 @@
     <meta property="og:url" content="https://akshay.website/" />
     <meta property="og:title" content="Akshay Mahajan | AI Engineer & Automation Architect" />
     <meta property="og:description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work." />
-    <meta property="og:image" content="https://akshay.website/akshay_avatar.jpeg" />
+    <meta property="og:image" content="https://akshay.website/akshay_avatar.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content="https://akshay.website/" />
     <meta property="twitter:title" content="Akshay Mahajan | AI Engineer & Automation Architect" />
     <meta property="twitter:description" content="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work." />
-    <meta property="twitter:image" content="https://akshay.website/akshay_avatar.jpeg" />
+    <meta property="twitter:image" content="https://akshay.website/akshay_avatar.png" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              primary: '#2563EB',
-              background: '#FFFFFF',
-              section: '#F8FAFC',
+              background: '#F8FAFC',
+              section: '#FFFFFF',
               cards: '#FFFFFF',
-              border: '#E5E7EB',
-              text: '#111827',
-              textSecondary: '#6B7280',
-              success: '#22C55E',
-              midnight: '#FFFFFF', /* for backwards compat, though we should remove usages */
-              electric: '#2563EB', /* for backwards compat */
+              glass: 'rgba(255, 255, 255, 0.7)',
+              primary: '#4F46E5',
+              secondary: '#7C3AED',
+              accent: '#16A34A',
+              border: 'rgba(15, 23, 42, 0.1)',
+              text: '#0F172A',
+              textSecondary: '#475569',
+              muted: '#94A3B8',
             },
             fontFamily: {
               sans: ['Inter', 'sans-serif'],
-              display: ['Inter', 'sans-serif'] /* user wants simple modern font, we can use Inter for everything or keep Space Grotesk if we want */
+              display: ['Manrope', 'sans-serif'],
             },
           }
         }
@@ -60,15 +61,60 @@
         width: 100%;
         min-height: 100vh;
         position: relative;
-        background-color: #FFFFFF;
-        color: #111827;
+        background-color: #F8FAFC;
+        color: #0F172A;
       }
+
+
       .hide-scrollbar::-webkit-scrollbar {
           display: none;
       }
       .hide-scrollbar {
           -ms-overflow-style: none;
           scrollbar-width: none;
+      }
+      
+      h1, h2, h3, h4, h5, h6 {
+        font-family: 'Manrope', sans-serif;
+      }
+      
+      @media (prefers-reduced-motion: reduce) {
+        *, ::before, ::after {
+          animation-delay: -1ms !important;
+          animation-duration: 1ms !important;
+          animation-iteration-count: 1 !important;
+          background-attachment: initial !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0s !important;
+          transition-delay: 0s !important;
+        }
+      }
+
+      /* Base glass effect */
+      .glass-effect {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(15, 23, 42, 0.1);
+      }
+      
+      .glass-card {
+        background: #FFFFFF;
+        border: 1px solid rgba(15, 23, 42, 0.1);
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+        transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      }
+
+      .glass-card:hover {
+         transform: translateY(-2px);
+         box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+      
+      .text-gradient {
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(135deg, #6366F1 0%, #8B5CF6 100%);
       }
     </style>
   </head>

@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Bot, Layers, Workflow, Check, Sparkles, Code2, Headphones } from 'lucide-react';
+import TiltCard from './ui/TiltCard';
 
 const Pricing: React.FC = () => {
   const packages = [
@@ -67,75 +68,81 @@ const Pricing: React.FC = () => {
   ];
 
   return (
-    <section id="pricing" className="py-20 bg-background border-t border-border">
-      <div className="container mx-auto px-6">
+    <section id="pricing" className="py-32 relative overflow-hidden">
+      <div className="absolute top-1/4 -right-64 w-[500px] h-[500px] bg-secondary/10 blur-[150px] rounded-full pointer-events-none" />
+      
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-16 max-w-2xl mx-auto"
+          className="text-center mb-24 max-w-2xl mx-auto"
         >
           <span className="text-primary font-mono text-sm tracking-widest mb-4 block uppercase font-semibold">Investment</span>
-          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">Transparent <span className="text-primary">Pricing</span></h2>
-          <p className="text-textSecondary">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-text mb-6 font-display">Transparent <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">Pricing</span></h2>
+          <p className="text-textSecondary text-lg">
             Clear, project-based pricing. No hidden fees. Every project is scoped accurately based on your specific requirements.
           </p>
         </motion.div>
 
         {/* Core Packages Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-24 max-w-7xl mx-auto">
           {packages.map((pkg, idx) => {
             const Icon = pkg.icon;
             return (
-              <motion.div
-                key={pkg.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ delay: idx * 0.1 }}
-                viewport={{ once: true }}
-                className={`relative flex flex-col rounded-3xl p-8 transition-all duration-300 ${
-                  pkg.popular 
-                    ? 'bg-white border-2 border-primary shadow-lg' 
-                    : 'bg-white border border-border hover:border-primary/50 shadow-sm hover:shadow-md'
-                }`}
-              >
-                {pkg.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    Most Popular
-                  </div>
-                )}
-                
-                <div className="mb-6">
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-4 ${
-                    pkg.popular ? 'bg-blue-50 text-primary' : 'bg-slate-50 text-textSecondary'
-                  }`}>
-                    <Icon size={24} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-text mb-2">{pkg.title}</h3>
-                  <div className="text-primary font-mono font-bold text-xl mb-2">{pkg.price}</div>
-                  <p className="text-sm text-textSecondary">{pkg.desc}</p>
-                </div>
+              <TiltCard key={pkg.title} className="h-full">
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ delay: idx * 0.1, duration: 0.5 }}
+                  viewport={{ once: true }}
+                  className={`relative flex flex-col rounded-[2.5rem] p-10 h-full group transition-all duration-500 overflow-hidden ${
+                    pkg.popular 
+                      ? 'glass-card border border-primary/50 shadow-[0_0_30px_rgba(0,245,255,0.1)]' 
+                      : 'glass-card border border-border hover:border-primary/30'
+                  }`}
+                >
+                  {/* Internal Glow */}
+                  <div className={`absolute -inset-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-[40px] pointer-events-none ${pkg.popular ? 'bg-gradient-to-r from-primary/10 to-secondary/10 opacity-50' : 'bg-primary/5'}`} />
 
-                <div className="space-y-3 mb-8 flex-1">
-                  {pkg.features.map(feature => (
-                    <div key={feature} className="flex items-start gap-3">
-                      <CheckCircle2 size={18} className="text-success shrink-0 mt-0.5" />
-                      <span className="text-text text-sm leading-snug">{feature}</span>
+                  {pkg.popular && (
+                    <div className="absolute top-0 right-10 bg-gradient-to-b from-primary to-accent text-white text-xs font-bold px-4 py-2 rounded-b-xl uppercase tracking-wider shadow-lg">
+                      Most Popular
                     </div>
-                  ))}
-                </div>
+                  )}
+                  
+                  <div className="mb-8 relative z-10">
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-inner ${
+                      pkg.popular ? 'bg-[rgba(0,245,255,0.1)] text-primary border border-primary/20' : 'bg-[rgba(0,0,0,0.02)] text-text border border-border'
+                    }`}>
+                      <Icon size={28} />
+                    </div>
+                    <h3 className="text-2xl font-bold text-text mb-2 font-display">{pkg.title}</h3>
+                    <div className="text-primary font-mono font-bold text-2xl mb-4">{pkg.price}</div>
+                    <p className="text-textSecondary">{pkg.desc}</p>
+                  </div>
 
-                <div className="mt-auto pt-6 border-t border-border flex items-center justify-between text-sm">
-                  <span className="text-textSecondary font-medium">Est. Delivery</span>
-                  <span className="text-text font-bold">{pkg.delivery}</span>
-                </div>
-              </motion.div>
+                  <div className="space-y-4 mb-10 flex-1 relative z-10">
+                    {pkg.features.map(feature => (
+                      <div key={feature} className="flex items-start gap-3 group/item">
+                        <CheckCircle2 size={20} className="text-[#22C55E] shrink-0 mt-0.5 group-hover/item:scale-110 transition-transform" />
+                        <span className="text-text text-sm leading-snug group-hover/item:text-primary transition-colors">{feature}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto pt-6 border-t border-border flex items-center justify-between text-sm relative z-10">
+                    <span className="text-textSecondary font-medium">Est. Delivery</span>
+                    <span className="text-text font-bold font-mono bg-[rgba(0,0,0,0.05)] px-3 py-1 rounded-full">{pkg.delivery}</span>
+                  </div>
+                </motion.div>
+              </TiltCard>
             );
           })}
         </div>
 
         {/* Retainers & Consulting */}
-        <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {retainers.map((item, idx) => {
             const Icon = item.icon;
             return (
@@ -145,21 +152,21 @@ const Pricing: React.FC = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ delay: idx * 0.1 }}
                 viewport={{ once: true }}
-                className="rounded-3xl bg-slate-50 border border-border p-8 flex flex-col md:flex-row gap-8 items-center md:items-start shadow-sm"
+                className="rounded-[2rem] glass-card border border-border p-10 flex flex-col md:flex-row gap-8 items-center md:items-start group hover:border-[rgba(0,0,0,0.2)] transition-colors hover-target"
               >
                 <div className="shrink-0 text-center md:text-left">
-                  <div className="w-16 h-16 rounded-full bg-white border border-border flex items-center justify-center mb-4 mx-auto md:mx-0 shadow-sm">
-                    <Icon size={32} className="text-primary" />
+                  <div className="w-16 h-16 rounded-2xl bg-[rgba(0,0,0,0.02)] border border-border flex items-center justify-center mb-4 mx-auto md:mx-0 shadow-inner group-hover:scale-110 transition-transform duration-300">
+                    <Icon size={32} className="text-secondary" />
                   </div>
-                  <h3 className="text-xl font-bold text-text mb-2">{item.title}</h3>
-                  <div className="text-primary font-mono font-bold">{item.price}</div>
+                  <h3 className="text-xl font-bold text-text mb-2 font-display">{item.title}</h3>
+                  <div className="text-primary font-mono font-bold text-lg">{item.price}</div>
                 </div>
                 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3 flex-1 w-full mt-2 md:mt-0">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-4 flex-1 w-full mt-2 md:mt-0">
                   {item.features.map(feature => (
-                    <div key={feature} className="flex items-center gap-2">
-                      <div className="w-2 h-2 rounded-full bg-primary shrink-0" />
-                      <span className="text-textSecondary text-sm">{feature}</span>
+                    <div key={feature} className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-gradient-to-r from-primary to-primary shrink-0" />
+                      <span className="text-textSecondary text-sm font-medium">{feature}</span>
                     </div>
                   ))}
                 </div>

@@ -1,116 +1,157 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Bot, Zap, Code, Award } from 'lucide-react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative min-h-[90vh] flex flex-col justify-center overflow-hidden pt-32 pb-20 bg-background">
-      <div className="container mx-auto px-6 relative z-10">
-        <div className="flex flex-col items-center justify-center text-center max-w-4xl mx-auto">
+    <section className="relative flex flex-col items-center justify-center overflow-hidden py-20">
+      
+      {/* Subtle Background Elements */}
+      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,rgba(79,70,229,0.05)_0%,rgba(248,250,252,1)_70%)] pointer-events-none" />
+
+      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
+        
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6 }}
-            className="mb-8"
-          >
-            <img 
-              src="/akshay_avatar.jpeg" 
-              alt="Akshay Mahajan" 
-              className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover object-top shadow-lg border-4 border-white"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement;
-                target.src = "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&q=80&w=200";
-              }}
-            />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1, duration: 0.5 }}
-            className="flex flex-col items-center gap-3 mb-6"
-          >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-white text-textSecondary text-sm font-medium shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-success animate-pulse" /> 
-              Accepting New Projects & Consulting
-            </div>
-            <div className="text-primary font-mono text-xs sm:text-sm tracking-widest uppercase mt-2 text-center">
-              <span className="block sm:inline">Akshay Mahajan</span>
-              <span className="hidden sm:inline text-textSecondary mx-2">|</span>
-              <span className="block sm:inline mt-1 sm:mt-0">AI Engineer & Automation Architect</span>
-            </div>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-text mb-6 leading-tight"
-          >
-            Build AI Automation & Intelligent Applications <br className="hidden md:block" />
-            <span className="text-primary">for Modern Businesses</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-xl text-textSecondary max-w-2xl mx-auto mb-10 leading-relaxed"
-          >
-            I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work and accelerate business growth.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto"
-          >
-            <Link 
-              to="/work"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border border-border text-text font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm"
+          {/* Left Side */}
+          <div className="flex flex-col items-start text-left">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full glass-effect border border-primary/20 backdrop-blur-md"
             >
-              View Projects
-            </Link>
-            <Link 
-              to="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
-            >
-              Book Free Consultation
-            </Link>
-            <a 
-              href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20a%20project" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-success text-white font-semibold rounded-xl hover:bg-green-600 transition-colors shadow-md"
-            >
-              WhatsApp
-            </a>
-          </motion.div>
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              </span>
+              <span className="text-xs font-medium tracking-wide text-textSecondary uppercase">Available for freelance projects</span>
+            </motion.div>
 
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
+              className="text-[38px] md:text-[48px] lg:text-[64px] font-bold tracking-tight text-text mb-6 leading-[1.1] font-display"
+            >
+              I Build AI Systems That Save Time and Grow Businesses.
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="text-base md:text-[18px] text-textSecondary max-w-[650px] mb-10 leading-relaxed font-sans"
+            >
+              Prompt Engineer, Agentic AI Engineer and AI Automation Specialist helping businesses automate workflows, build AI products and generate more leads.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10"
+            >
+              <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-[#16a34a] hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_14px_0_rgba(34,197,94,0.39)]">
+                Book Free Consultation
+              </a>
+              <Link to="/work" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-cards text-text font-bold rounded-xl border border-border hover:bg-glass hover:-translate-y-1 transition-all duration-300">
+                View My Work
+                <ArrowRight size={18} />
+              </Link>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 1, delay: 0.6 }}
+              className="text-sm font-medium text-muted flex flex-wrap items-center gap-x-2 gap-y-1"
+            >
+              <span>AI Automation</span>
+              <span>•</span>
+              <span>Agentic AI</span>
+              <span>•</span>
+              <span>Web Development</span>
+              <span>•</span>
+              <span>Prompt Engineering</span>
+            </motion.div>
+          </div>
+
+          {/* Right Side - Lightweight Mockup */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6, duration: 0.8 }}
-            className="mt-20 pt-10 border-t border-border w-full grid grid-cols-2 md:grid-cols-4 gap-6"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
+            className="relative w-full h-full min-h-[400px] flex items-center justify-center hidden lg:flex"
           >
-            {[
-              { icon: Code, text: "50+ Projects Completed", title: "Projects" },
-              { icon: Bot, text: "15+ AI Technologies", title: "Tech Stack" },
-              { icon: Zap, text: "4+ Years Learning AI", title: "Experience" },
-              { icon: Award, text: "Top Certifications", title: "Credentials" }
-            ].map((stat, i) => (
-              <div key={i} className="flex flex-col items-center gap-2">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-primary mb-2">
-                  <stat.icon size={24} />
+            {/* Dashboard Mockup floating animation */}
+            <motion.div 
+              animate={{ y: [-10, 10, -10] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="relative w-full max-w-[500px] aspect-[4/3] glass-card rounded-2xl border border-border overflow-hidden shadow-2xl p-4 flex flex-col"
+            >
+              {/* Header */}
+              <div className="flex items-center justify-between border-b border-border pb-4 mb-4">
+                <div className="flex gap-2">
+                  <div className="w-3 h-3 rounded-full bg-border" />
+                  <div className="w-3 h-3 rounded-full bg-border" />
+                  <div className="w-3 h-3 rounded-full bg-border" />
                 </div>
-                <span className="text-xl font-bold text-text">{stat.title}</span>
-                <span className="text-sm text-textSecondary text-center">{stat.text}</span>
+                <div className="text-xs font-mono text-muted">AI SYSTEM ACTIVE</div>
               </div>
-            ))}
+              
+              {/* Content */}
+              <div className="flex-1 flex flex-col gap-4">
+                <div className="flex gap-4">
+                  <div className="flex-1 bg-background rounded-lg border border-border p-4">
+                     <div className="text-muted text-[10px] mb-2 uppercase">Tasks Automated</div>
+                     <div className="text-2xl font-display font-bold text-text">14,230</div>
+                     <div className="text-accent text-[10px] mt-1">+92% this week</div>
+                  </div>
+                  <div className="flex-1 bg-background rounded-lg border border-border p-4">
+                     <div className="text-muted text-[10px] mb-2 uppercase">Hours Saved</div>
+                     <div className="text-2xl font-display font-bold text-text">380h</div>
+                     <div className="text-accent text-[10px] mt-1">+24% this week</div>
+                  </div>
+                </div>
+                
+                <div className="flex-1 bg-background rounded-lg border border-border p-4 flex flex-col">
+                  <div className="text-muted text-[10px] mb-3 uppercase flex items-center gap-2">
+                    <Sparkles size={12} className="text-primary" />
+                    Agent Workflow Status
+                  </div>
+                  <div className="space-y-3 flex-1">
+                    <div className="w-full h-2 bg-cards rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: "100%" }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+                        className="h-full bg-gradient-to-r from-primary to-secondary"
+                      />
+                    </div>
+                    <div className="w-full h-2 bg-cards rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: "70%" }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                        className="h-full bg-gradient-to-r from-primary to-secondary"
+                      />
+                    </div>
+                    <div className="w-full h-2 bg-cards rounded-full overflow-hidden">
+                      <motion.div 
+                        initial={{ width: 0 }}
+                        animate={{ width: "40%" }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                        className="h-full bg-gradient-to-r from-primary to-secondary"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </motion.div>
+
         </div>
       </div>
     </section>

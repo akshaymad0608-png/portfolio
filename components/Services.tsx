@@ -1,109 +1,110 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Bot, Zap, Globe, MessageSquare, Code, Search, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Cpu, Bot, Code2, MessageSquare, Globe, PenTool, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const SERVICES = [
+const services = [
   {
-    id: "ai-agents",
-    icon: Bot,
-    title: "AI Agents",
-    description: "Intelligent autonomous agents that execute complex business tasks without human intervention.",
-    benefits: ["24/7 Availability", "Cost Reduction", "Error-free Execution"],
-  },
-  {
-    id: "ai-automation",
-    icon: Zap,
+    icon: <Cpu className="w-8 h-8 text-primary" />,
     title: "AI Automation",
-    description: "Streamline your business operations by connecting your tools with custom AI pipelines.",
-    benefits: ["Faster Turnaround", "Scalable Processes", "Data Sync"],
+    description: "End-to-end automation of repetitive tasks and workflows using intelligent AI systems."
   },
   {
-    id: "ai-chatbots",
-    icon: MessageSquare,
-    title: "AI Chatbots",
-    description: "Advanced conversational AI for customer support, lead generation, and internal knowledge bases.",
-    benefits: ["Instant Replies", "Higher Conversion", "Multilingual Support"],
+    icon: <Bot className="w-8 h-8 text-secondary" />,
+    title: "Agentic AI Solutions",
+    description: "Custom autonomous AI agents that can plan, reason, and execute complex multi-step processes."
   },
   {
-    id: "prompt-engineering",
-    icon: Code,
+    icon: <Code2 className="w-8 h-8 text-primary" />,
     title: "Prompt Engineering",
-    description: "Optimizing LLM interactions to get precise, reliable, and high-quality outputs for your use case.",
-    benefits: ["Better Accuracy", "Lower API Costs", "Structured Data"],
+    description: "Advanced prompt design and optimization to maximize LLM accuracy and performance."
   },
   {
-    id: "web-development",
-    icon: Globe,
-    title: "Website Development",
-    description: "High-performance, beautifully designed, and conversion-optimized websites and web apps.",
-    benefits: ["Modern UI/UX", "Lightning Fast", "Mobile Responsive"],
+    icon: <MessageSquare className="w-8 h-8 text-secondary" />,
+    title: "AI Chatbot Development",
+    description: "Intelligent conversational agents trained on your business data for customer support and sales."
   },
   {
-    id: "seo",
-    icon: Search,
-    title: "SEO Optimization",
-    description: "Data-driven SEO strategies to rank higher on search engines and generate organic leads.",
-    benefits: ["More Traffic", "Better Rankings", "Quality Leads"],
+    icon: <Globe className="w-8 h-8 text-primary" />,
+    title: "AI Website Development",
+    description: "High-performance, conversion-optimized websites built with modern frameworks and AI capabilities."
+  },
+  {
+    icon: <PenTool className="w-8 h-8 text-secondary" />,
+    title: "AI Content Systems",
+    description: "Automated content generation pipelines for blogs, social media, and marketing materials."
   }
 ];
 
 const Services: React.FC = () => {
   return (
-    <section className="py-24 bg-section relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
-            AI Engineering & <span className="text-primary">Automation Architecture</span>
-          </h2>
-          <p className="text-lg text-textSecondary leading-relaxed">
-            As an AI Engineer & Automation Architect, I build end-to-end intelligent systems that scale your operations, eliminate manual tasks, and increase revenue.
-          </p>
+    <section className="py-24 relative bg-section" id="services">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
+        
+        <div className="text-center mb-16 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs uppercase tracking-widest mb-6 font-mono font-medium inline-block"
+          >
+            Capabilities
+          </motion.div>
+          
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight text-text mb-6"
+          >
+            How I Can Help Your Business
+          </motion.h2>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            className="text-textSecondary text-base md:text-lg max-w-[600px]"
+          >
+            Strategic implementation of AI technologies to scale your operations, reduce costs, and accelerate growth.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((service, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
             <motion.div
-              key={service.id}
+              key={service.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-50px" }}
               transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-cards border border-border rounded-2xl p-8 hover:shadow-lg transition-all duration-300 flex flex-col h-full"
+              className="bg-cards border border-border p-8 rounded-2xl hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 group"
             >
-              <div className="w-14 h-14 bg-blue-50 text-primary rounded-xl flex items-center justify-center mb-6">
-                <service.icon size={28} />
+              <div className="w-16 h-16 rounded-xl bg-background border border-border flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
+                {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-text mb-3">{service.title}</h3>
-              <p className="text-textSecondary mb-6 flex-grow">{service.description}</p>
-              
-              <ul className="space-y-3 mb-8">
-                {service.benefits.map((benefit, i) => (
-                  <li key={i} className="flex items-center gap-3 text-textSecondary text-sm font-medium">
-                    <CheckCircle2 className="w-5 h-5 text-success" />
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
-
-              <Link 
-                to={`/services#${service.id}`}
-                className="inline-flex items-center gap-2 text-primary font-semibold hover:text-blue-700 transition-colors mt-auto group"
-              >
-                Learn More <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
+              <h3 className="text-xl font-bold text-text mb-3 font-display">
+                {service.title}
+              </h3>
+              <p className="text-textSecondary leading-relaxed">
+                {service.description}
+              </p>
             </motion.div>
           ))}
         </div>
 
-        <div className="mt-16 text-center">
-          <Link 
-            to="/contact"
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
-          >
-            Get a Free Quote
+        <motion.div 
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="mt-16 text-center"
+        >
+          <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-secondary transition-all duration-300">
+             Discuss Your Requirements
+             <ArrowRight size={18} />
           </Link>
-        </div>
+        </motion.div>
+        
       </div>
     </section>
   );

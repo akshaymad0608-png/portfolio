@@ -1,0 +1,18 @@
+--- pages/Home.tsx
++++ pages/Home.tsx
+@@ -4,6 +4,7 @@
+ import AISystems from '../components/AISystems';
+ import Testimonials from '../components/Testimonials';
+ import FinalCTA from '../components/FinalCTA';
++import IntroductionVideo from '../components/IntroductionVideo';
+ import SEO from '../components/SEO';
+ import PageTransition from '../components/PageTransition';
+ 
+@@ -16,6 +17,7 @@
+           description="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work."
+         />
+         <Hero />
++        <IntroductionVideo />
+         <ServicesComponent />
+         <AISystems />
+         <Testimonials />

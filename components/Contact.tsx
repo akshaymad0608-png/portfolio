@@ -1,11 +1,13 @@
+import TiltCard from './ui/TiltCard';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Linkedin, MessageSquare, Calendar, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-24 bg-section relative border-t border-border scroll-mt-24">
+    <section id="contact" className="py-24 bg-section relative border-t border-border scroll-mt-24" style={{ perspective: 1500 }}>
       <div className="container mx-auto px-6 relative z-10 max-w-7xl">
+        <TiltCard>
         <div className="bg-cards border border-border shadow-sm rounded-3xl p-8 md:p-16">
           <div className="grid md:grid-cols-2 gap-12 md:gap-24">
             
@@ -68,11 +70,11 @@ const Contact: React.FC = () => {
                    
                   className="flex items-center gap-4 p-4 rounded-xl border border-primary bg-primary hover:bg-blue-700 transition-colors group shadow-md"
                 >
-                  <div className="p-3 bg-white/20 rounded-lg text-white group-hover:scale-110 transition-transform">
+                  <div className="p-3 bg-white/20 rounded-lg text-text group-hover:scale-110 transition-transform">
                     <Calendar className="w-6 h-6" />
                   </div>
                   <div>
-                    <span className="block font-bold text-white">Book a Call</span>
+                    <span className="block font-bold text-text">Book a Call</span>
                     <span className="text-sm text-blue-100">Schedule 30-min strategy session</span>
                   </div>
                 </a>
@@ -111,6 +113,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
 
+        </TiltCard>
         {/* Footer Area */}
         <div className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <div className="text-left hidden md:block">

@@ -1,3 +1,4 @@
+import TiltCard from './ui/TiltCard';
 import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, Award, Zap, Code2, Clock } from 'lucide-react';
@@ -15,9 +16,10 @@ const WorkProof: React.FC = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="flex justify-center md:justify-end mb-8 max-w-6xl mx-auto">
-            <span className="text-slate-400 font-mono text-xs flex items-center gap-2 border border-white/10 px-4 py-2 rounded-full glass-card tracking-widest uppercase"><Clock size={14}/> Operational Metrics</span>
+            <span className="text-slate-400 font-mono text-xs flex items-center gap-2 border border-black/10 px-4 py-2 rounded-full glass-card tracking-widest uppercase"><Clock size={14}/> Operational Metrics</span>
         </div>
         
+        <TiltCard>
         <div className="max-w-6xl mx-auto rounded-[2.5rem] glass-card p-10 md:p-16 relative overflow-hidden">
             {/* Embedded glows */}
             <div className="absolute -top-32 -left-32 w-80 h-80 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
@@ -35,7 +37,7 @@ const WorkProof: React.FC = () => {
                     viewport={{ once: true }}
                     className="flex flex-col items-center text-center group"
                   >
-                    <div className={`p-4 rounded-2xl bg-white/5 border border-white/10 mb-6 group-hover:scale-110 transition-transform duration-300 ${stat.color}`}>
+                    <div className={`p-4 rounded-2xl bg-white/5 border border-black/10 mb-6 group-hover:scale-110 transition-transform duration-300 ${stat.color}`}>
                        <Icon className="w-8 h-8" strokeWidth={1.5} />
                     </div>
                     <h3 className={`text-5xl md:text-6xl font-display font-bold mb-3 tracking-tight ${stat.color} drop-shadow-[0_0_20px_rgb(var(--color-white) / 0.1)]`}>
@@ -49,6 +51,7 @@ const WorkProof: React.FC = () => {
               })}
             </div>
         </div>
+        </TiltCard>
       </div>
     </section>
   );

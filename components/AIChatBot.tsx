@@ -71,14 +71,14 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-24 left-4 sm:left-8 w-[calc(100vw-32px)] sm:w-[350px] max-h-[80vh] sm:max-h-[500px] border border-border bg-white rounded-2xl shadow-2xl z-[100] flex flex-col overflow-hidden"
+            className="fixed bottom-40 lg:bottom-24 left-4 sm:left-8 w-[calc(100vw-32px)] sm:w-[350px] max-h-[80vh] sm:max-h-[500px] border border-border glass-card bg-background/80 backdrop-blur-xl rounded-2xl shadow-2xl z-[100] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-slate-50 border-b border-border px-4 py-3 flex justify-between items-center">
+            <div className="bg-[rgba(0,0,0,0.02)] border-b border-border px-4 py-3 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center relative overflow-hidden border border-border">
-                    <img src={HERO_CONTENT.image} alt="Akshay" className="w-full h-full object-cover" />
+                  <div className="w-8 h-8 rounded-full bg-[rgba(0,0,0,0.05)] flex items-center justify-center relative overflow-hidden border border-border">
+                    <img loading="lazy" src={HERO_CONTENT.image} alt="Akshay" className="w-full h-full object-cover" />
                   </div>
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-success border-2 border-white rounded-full" />
                 </div>
@@ -98,13 +98,13 @@ const AIChatBot: React.FC = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[250px] bg-white">
+            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[250px] glass-card bg-background/80 backdrop-blur-xl">
               {messages.map(msg => (
                 <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                     msg.sender === 'user' 
                       ? 'bg-primary text-white rounded-br-sm' 
-                      : 'bg-slate-100 border border-border text-text rounded-bl-sm'
+                      : 'bg-[rgba(0,0,0,0.05)] border border-border text-text rounded-bl-sm'
                   }`}>
                     {msg.text}
                   </div>
@@ -113,7 +113,7 @@ const AIChatBot: React.FC = () => {
               
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-slate-100 border border-border text-textSecondary p-3 rounded-2xl rounded-bl-sm flex gap-1 items-center">
+                  <div className="bg-[rgba(0,0,0,0.05)] border border-border text-textSecondary p-3 rounded-2xl rounded-bl-sm flex gap-1 items-center">
                     <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
                     <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                     <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
@@ -125,12 +125,12 @@ const AIChatBot: React.FC = () => {
 
             {/* Suggested Questions */}
             {messages.length === 1 && (
-              <div className="px-4 pb-2 flex gap-2 overflow-x-auto snap-x bg-white" style={{ scrollbarWidth: 'none' }}>
+              <div className="px-4 pb-2 flex gap-2 overflow-x-auto snap-x glass-card bg-background/80 backdrop-blur-xl" style={{ scrollbarWidth: 'none' }}>
                 {SUGGESTED_QUESTIONS.map((q, i) => (
                   <button
                     key={i}
                     onClick={() => handleSend(q)}
-                    className="whitespace-nowrap flex-shrink-0 text-xs border border-border bg-slate-50 text-textSecondary px-4 py-2 rounded-full hover:bg-slate-100 hover:text-text transition-colors snap-start"
+                    className="whitespace-nowrap flex-shrink-0 text-xs border border-border bg-[rgba(0,0,0,0.02)] text-textSecondary px-4 py-2 rounded-full hover:bg-[rgba(0,0,0,0.05)] hover:text-text transition-colors snap-start"
                   >
                     {q}
                   </button>
@@ -139,7 +139,7 @@ const AIChatBot: React.FC = () => {
             )}
 
             {/* Input Area */}
-            <div className="p-3 border-t border-border bg-slate-50">
+            <div className="p-3 border-t border-border bg-[rgba(0,0,0,0.02)]">
               <div className="relative flex items-center">
                 <input
                   type="text"
@@ -147,7 +147,7 @@ const AIChatBot: React.FC = () => {
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend(inputValue)}
                   placeholder="Ask me anything..."
-                  className="w-full bg-white border border-border rounded-full pl-4 pr-12 py-3 text-sm text-text placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-sans"
+                  className="w-full glass-card bg-background/80 backdrop-blur-xl border border-border rounded-full pl-4 pr-12 py-3 text-sm text-text placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-sans"
                 />
                 <button
                   onClick={() => handleSend(inputValue)}
@@ -168,12 +168,12 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="fixed bottom-24 left-4 sm:left-8 bg-white border border-border text-textSecondary text-xs px-4 py-2 rounded-2xl shadow-lg z-[90] flex items-center gap-2 cursor-pointer font-medium"
+            className="fixed bottom-40 lg:bottom-24 left-4 sm:left-8 glass-card bg-background/80 backdrop-blur-xl border border-border text-textSecondary text-xs px-4 py-2 rounded-2xl shadow-lg z-[90] flex items-center gap-2 cursor-pointer font-medium"
             onClick={() => setIsOpen(true)}
           >
             <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
             Have a project? Ask my AI!
-            <div className="absolute -bottom-2 left-6 w-4 h-4 bg-white border-b border-r border-border transform rotate-45" />
+            <div className="absolute -bottom-2 left-6 w-4 h-4 glass-card bg-background/80 backdrop-blur-xl border-b border-r border-border transform rotate-45" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -182,7 +182,7 @@ const AIChatBot: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 left-4 sm:left-8 w-14 h-14 bg-white border border-border rounded-full flex items-center justify-center shadow-lg z-[90] group hover:bg-slate-50 transition-colors"
+        className="fixed bottom-24 lg:bottom-6 left-4 sm:left-8 w-14 h-14 glass-card bg-background/80 backdrop-blur-xl border border-border rounded-full flex items-center justify-center shadow-lg z-[90] group hover:bg-[rgba(0,0,0,0.02)] transition-colors"
       >
         {isOpen ? (
           <X className="text-textSecondary group-hover:text-text transition-colors" />

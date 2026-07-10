@@ -1,3 +1,4 @@
+import TiltCard from './ui/TiltCard';
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calculator, Clock, DollarSign, TrendingUp } from 'lucide-react';
@@ -12,7 +13,7 @@ const ROICalculator: React.FC = () => {
   const yearlySavings = monthlySavings * 12;
 
   return (
-    <section className="py-20 bg-slate-50 border-t border-border">
+    <section className="py-20 bg-transparent border-t border-border">
       <div className="container mx-auto px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
@@ -25,13 +26,14 @@ const ROICalculator: React.FC = () => {
             </p>
           </div>
 
+          <TiltCard>
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Input Controls */}
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="space-y-10 bg-white p-8 md:p-10 rounded-3xl border border-border shadow-sm"
+              className="space-y-10 glass-card bg-background/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-border shadow-sm"
             >
               <div>
                 <div className="flex justify-between items-end mb-4">
@@ -46,7 +48,7 @@ const ROICalculator: React.FC = () => {
                   step="5"
                   value={hours}
                   onChange={(e) => setHours(parseInt(e.target.value))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="w-full h-2 bg-[rgba(0,0,0,0.1)] rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
                   <span>5h</span>
@@ -67,7 +69,7 @@ const ROICalculator: React.FC = () => {
                   step="5"
                   value={rate}
                   onChange={(e) => setRate(parseInt(e.target.value))}
-                  className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="w-full h-2 bg-[rgba(0,0,0,0.1)] rounded-lg appearance-none cursor-pointer accent-primary"
                 />
                 <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
                   <span>$15</span>
@@ -81,16 +83,16 @@ const ROICalculator: React.FC = () => {
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="bg-blue-50 border border-blue-100 p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-sm"
+              className="bg-[rgba(37,99,235,0.1)] border border-[rgba(37,99,235,0.2)] p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-sm"
             >
               <h3 className="text-2xl font-bold text-text mb-8 flex items-center gap-3">
                 <TrendingUp className="text-primary" /> Projected Savings
               </h3>
 
               <div className="space-y-6 mb-10">
-                <div className="flex items-center justify-between p-4 rounded-2xl bg-white border border-border shadow-sm">
+                <div className="flex items-center justify-between p-4 rounded-2xl glass-card bg-background/80 backdrop-blur-xl border border-border shadow-sm">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-[rgba(37,99,235,0.1)] flex items-center justify-center">
                       <DollarSign size={18} className="text-primary" />
                     </div>
                     <span className="text-text font-medium">Monthly Savings</span>
@@ -98,9 +100,9 @@ const ROICalculator: React.FC = () => {
                   <span className="text-xl font-bold text-text">${monthlySavings.toLocaleString()}</span>
                 </div>
 
-                <div className="flex items-center justify-between p-4 rounded-2xl bg-white border border-border shadow-sm">
+                <div className="flex items-center justify-between p-4 rounded-2xl glass-card bg-background/80 backdrop-blur-xl border border-border shadow-sm">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-[rgba(37,99,235,0.1)] flex items-center justify-center">
                       <Clock size={18} className="text-primary" />
                     </div>
                     <span className="text-text font-medium">Time Recovered</span>
@@ -116,13 +118,14 @@ const ROICalculator: React.FC = () => {
 
               <Link 
                 to="/contact" 
-                className="inline-flex items-center justify-center w-full gap-2 py-4 bg-white text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-white transition-all shadow-sm"
+                className="inline-flex items-center justify-center w-full gap-2 py-4 glass-card bg-background/80 backdrop-blur-xl text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-text transition-all shadow-sm"
               >
                 <Calculator size={20} />
                 Get a Custom ROI Audit
               </Link>
             </motion.div>
           </div>
+          </TiltCard>
         </div>
       </div>
     </section>

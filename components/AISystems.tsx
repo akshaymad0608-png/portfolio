@@ -1,121 +1,127 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { ExternalLink, ArrowRight, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const PROJECTS = [
+const projects = [
   {
-    id: 1,
-    title: "AI Customer Support Agent",
-    description: "An intelligent chatbot that integrates with your knowledge base to provide instant, accurate answers to customer queries, reducing support tickets by 40%.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
-    tech: ["React", "Node.js", "OpenAI", "Pinecone"],
-    liveUrl: "/contact",
-    githubUrl: "/contact"
+    title: "AIMasterTools",
+    description: "A comprehensive suite of AI tools designed to enhance productivity and streamline digital workflows for content creators and marketers.",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://aimastertools.space",
+    tags: ["React", "Next.js", "OpenAI API", "TailwindCSS"],
+    liveUrl: "https://aimastertools.space",
+    caseStudyUrl: "/work"
   },
   {
-    id: 2,
-    title: "Automated SEO Content Pipeline",
-    description: "A complete automation system that generates SEO-optimized blog posts, meta descriptions, and social media captions based on trending keywords.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
-    tech: ["Python", "Make.com", "ChatGPT API", "Airtable"],
-    liveUrl: "/contact",
-    githubUrl: "/contact"
+    title: "QuickResume",
+    description: "An intelligent resume builder that uses AI to optimize content, match job descriptions, and generate professional layouts instantly.",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://quickresume.business",
+    tags: ["TypeScript", "Node.js", "Claude API", "PostgreSQL"],
+    liveUrl: "https://quickresume.business",
+    caseStudyUrl: "/work"
   },
   {
-    id: 3,
-    title: "Enterprise Dashboard Application",
-    description: "A comprehensive analytics dashboard for tracking business metrics in real-time, featuring custom data visualization and AI-powered insights.",
-    image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&q=80&w=800",
-    tech: ["Next.js", "Tailwind CSS", "PostgreSQL", "D3.js"],
-    liveUrl: "/contact",
-    githubUrl: "/contact"
+    title: "PhotoResizer",
+    description: "High-performance image processing tool powered by AI for intelligent cropping, upscaling, and format conversion.",
+    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://photoresizer.click",
+    tags: ["Python", "FastAPI", "React", "AWS"],
+    liveUrl: "https://photoresizer.click",
+    caseStudyUrl: "/work"
   }
 ];
 
 const AISystems: React.FC = () => {
   return (
-    <section id="projects" className="py-24 bg-background relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+    <section className="py-24 relative bg-background" id="projects">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
-            AI & Automation <span className="text-primary">Portfolio</span>
-          </h2>
-          <p className="text-lg text-textSecondary leading-relaxed">
-            Real-world AI agents, web applications, and workflow automations architected to solve complex business problems.
-          </p>
-        </div>
-
-        <div className="space-y-12 md:space-y-24">
-          {PROJECTS.map((project, index) => (
-            <motion.div 
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className={`flex flex-col ${index % 2 !== 0 ? 'md:flex-row-reverse' : 'md:flex-row'} gap-8 md:gap-12 items-center`}
+              className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs uppercase tracking-widest mb-6 font-mono font-medium inline-block"
             >
-              {/* Image Section */}
-              <div className="w-full md:w-1/2">
-                <div className="relative rounded-2xl overflow-hidden border border-border shadow-lg group">
-                  <div className="aspect-video w-full">
-                    <img 
-                      src={project.image} 
-                      alt={project.title}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-black/5 group-hover:bg-transparent transition-colors duration-500" />
-                </div>
-              </div>
+              Featured Work
+            </motion.div>
+            
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight text-text"
+            >
+              Recent Projects
+            </motion.h2>
+          </div>
+          
+          <motion.div
+             initial={{ opacity: 0, x: 20 }}
+             whileInView={{ opacity: 1, x: 0 }}
+             viewport={{ once: true }}
+          >
+             <Link to="/work" className="inline-flex items-center gap-2 text-textSecondary hover:text-primary transition-colors font-medium">
+               View All Projects <ArrowRight size={18} />
+             </Link>
+          </motion.div>
+        </div>
 
-              {/* Content Section */}
-              <div className="w-full md:w-1/2 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-text mb-4">{project.title}</h3>
-                <p className="text-textSecondary text-lg leading-relaxed mb-6">
-                  {project.description}
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: index * 0.1, duration: 0.6 }}
+              className="bg-cards border border-border rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-2 hover:border-primary/30 transition-all duration-300"
+            >
+              <div className="w-full aspect-[4/3] overflow-hidden relative border-b border-border">
+                <img 
+                  src={project.image} 
+                  alt={project.title} 
+                  loading="lazy"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+              </div>
+              
+              <div className="p-6 flex-1 flex flex-col">
+                <h3 className="text-xl font-bold text-text mb-2 font-display">{project.title}</h3>
+                <p className="text-textSecondary text-sm mb-6 flex-1">{project.description}</p>
                 
-                <div className="flex flex-wrap gap-2 mb-8">
-                  {project.tech.map((tech, i) => (
-                    <span 
-                      key={i}
-                      className="px-3 py-1 bg-slate-100 text-textSecondary text-sm font-medium rounded-md border border-border"
-                    >
-                      {tech}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {project.tags.map((tag) => (
+                    <span key={tag} className="px-2.5 py-1 bg-section border border-border rounded-md text-xs font-mono text-muted">
+                      {tag}
                     </span>
                   ))}
                 </div>
-
-                <div className="flex items-center gap-4">
-                  <Link 
-                    to={project.liveUrl}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-sm"
-                  >
-                    Request Demo <ExternalLink size={18} />
-                  </Link>
-                  <Link 
-                    to={project.githubUrl}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-border text-text font-semibold rounded-xl hover:bg-slate-50 transition-colors shadow-sm"
-                  >
-                    Case Study <Github size={18} />
+                
+                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
+                  <a href={project.liveUrl} className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-medium py-2.5 rounded-lg hover:bg-secondary transition-colors">
+                    Live Demo <ExternalLink size={14} />
+                  </a>
+                  <Link to={project.caseStudyUrl} className="flex-1 inline-flex items-center justify-center gap-2 bg-section border border-border text-text text-sm font-medium py-2.5 rounded-lg hover:bg-glass transition-colors">
+                    Case Study <FileText size={14} />
                   </Link>
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
-
-        <div className="mt-20 text-center">
-          <Link 
-            to="/contact" 
-            className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-semibold rounded-xl hover:bg-blue-700 transition-colors shadow-md"
-          >
-            Start Your Project
+        
+        <motion.div 
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+           className="mt-16 text-center block sm:hidden"
+        >
+          <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-secondary transition-all duration-300 w-full">
+             Start Your Project
+             <ArrowRight size={18} />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

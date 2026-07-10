@@ -1,73 +1,113 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Quote } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Quote, ChevronLeft, ChevronRight, Star } from 'lucide-react';
 
-const TESTIMONIALS = [
+const testimonials = [
   {
-    id: 1,
-    name: "Sarah Johnson",
-    role: "CEO",
-    company: "TechFlow Solutions",
-    content: "Akshay built an incredible AI agent for our customer support that reduced our response time by 80%. His understanding of automation and prompt engineering is unmatched.",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150"
+    name: "Sarah Jenkins",
+    role: "CTO, TechFlow",
+    image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150",
+    text: "Akshay completely transformed our internal processes. The AI agents he built reduced our manual data processing by 85%. The ROI was apparent within the first two weeks."
   },
   {
-    id: 2,
-    name: "Michael Chen",
-    role: "Founder",
-    company: "GrowthX",
-    content: "The website Akshay developed for us not only looks stunning but also converts 3x better than our previous one. The integration of AI chatbots was seamless and highly effective.",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150"
+    name: "Marcus Chen",
+    role: "Founder, ScaleGen",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150",
+    text: "Working with Akshay was a game-changer. His understanding of LLMs and how to apply them to real-world business problems is unmatched. A true AI visionary."
   },
   {
-    id: 3,
-    name: "Emma Davis",
-    role: "Marketing Director",
-    company: "Elevate Media",
-    content: "We hired Akshay for an SEO overhaul and automated content pipeline. Within 3 months, our organic traffic doubled. He is a true professional who delivers real results.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150"
+    name: "Elena Rodriguez",
+    role: "VP Operations, Nexus",
+    image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150",
+    text: "The automation pipelines built by Akshay are flawless. He didn't just write code; he architected a scalable ecosystem that our entire company relies on daily."
   }
 ];
 
 const Testimonials: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    }, 8000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+  const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+
   return (
-    <section className="py-24 bg-section relative border-t border-border">
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">Client <span className="text-primary">Success Stories</span></h2>
-          <p className="text-lg text-textSecondary max-w-2xl mx-auto">
-            See what industry leaders are saying about my work.
-          </p>
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((t, index) => (
+    <section className="py-24 relative overflow-hidden bg-section">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
+        <div className="text-center mb-16 flex flex-col items-center">
             <motion.div
-              key={t.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              viewport={{ once: true }}
-              className="relative p-8 rounded-2xl bg-cards border border-border shadow-sm flex flex-col hover:shadow-md transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs uppercase tracking-widest mb-6 font-mono font-medium inline-block"
+              >
+                Endorsements
+            </motion.div>
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight text-text mb-6"
+          >
+            Client Feedback
+          </motion.h2>
+        </div>
+
+        <div className="max-w-4xl mx-auto relative">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
             >
-              <div className="absolute top-6 right-8 text-slate-100">
-                <Quote size={40} fill="currentColor" />
-              </div>
-              <p className="text-text leading-relaxed mb-8 relative z-10">"{t.content}"</p>
-              
-              <div className="mt-auto flex items-center gap-4">
-                <img 
-                  src={t.avatar} 
-                  alt={t.name} 
-                  className="w-12 h-12 rounded-full object-cover"
-                />
-                <div>
-                  <h4 className="text-text font-bold">{t.name}</h4>
-                  <p className="text-sm text-textSecondary">{t.role}, {t.company}</p>
+              <div className="bg-cards border border-border rounded-3xl p-8 md:p-12 text-center relative shadow-lg">
+                <Quote className="absolute top-8 left-8 w-12 h-12 text-border" />
+                
+                <div className="flex justify-center gap-1 mb-8">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} className="w-5 h-5 text-accent fill-accent" />
+                  ))}
+                </div>
+                
+                <p className="text-xl md:text-2xl lg:text-3xl font-medium leading-relaxed mb-10 text-text font-display">
+                  "{testimonials[currentIndex].text}"
+                </p>
+                
+                <div className="flex flex-col items-center justify-center">
+                  <img 
+                    src={testimonials[currentIndex].image} 
+                    alt={testimonials[currentIndex].name}
+                    loading="lazy"
+                    className="w-16 h-16 rounded-full object-cover mb-4 border border-border"
+                  />
+                  <h4 className="text-lg font-bold font-display text-text">{testimonials[currentIndex].name}</h4>
+                  <span className="text-textSecondary text-sm mt-1">{testimonials[currentIndex].role}</span>
                 </div>
               </div>
             </motion.div>
-          ))}
+          </AnimatePresence>
+
+          <div className="flex justify-center gap-4 mt-10">
+            <button 
+              onClick={prev}
+              className="w-12 h-12 rounded-full bg-cards border border-border flex items-center justify-center hover:bg-background transition-colors text-text"
+            >
+              <ChevronLeft size={20} />
+            </button>
+            <button 
+              onClick={next}
+              className="w-12 h-12 rounded-full bg-cards border border-border flex items-center justify-center hover:bg-background transition-colors text-text"
+            >
+              <ChevronRight size={20} />
+            </button>
+          </div>
         </div>
       </div>
     </section>
