@@ -1,0 +1,5 @@
+<video id="v" playsinline><source src="/index.html" type="video/mp4"></video>
+<script>
+  const v = document.getElementById('v');
+  v.play().catch(e => console.log('Rejected:', e.name, e.message));
+</script>

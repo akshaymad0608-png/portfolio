@@ -47,13 +47,13 @@ const IntroductionVideo: React.FC = () => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative max-w-4xl mx-auto rounded-[2rem] overflow-hidden glass-card border border-border/50 shadow-2xl  group"
+          className="relative max-w-4xl mx-auto rounded-[2rem] overflow-hidden glass-card border border-border/50 shadow-2xl group aspect-video bg-slate-200"
         >
           {/* Replace src with your actual video path once uploaded to the public folder */}
           <video 
             ref={videoRef}
-            className="w-full h-auto block"
-            poster="/akshay_avatar.png"
+            className="w-full h-full object-cover block"
+            poster={`${import.meta.env.BASE_URL}akshay_avatar.png`}
             onClick={togglePlay}
             onEnded={() => setIsPlaying(false)}
             onError={() => {
@@ -61,8 +61,10 @@ const IntroductionVideo: React.FC = () => {
               setIsPlaying(false);
             }}
             playsInline
+            muted={isMuted}
+            autoPlay={false}
           >
-            <source src="/introduction.mp4" type="video/mp4" />
+            <source src={`${import.meta.env.BASE_URL}introduction.mp4`} type="video/mp4" />
           </video>
           
           <div className={`absolute inset-0 bg-black/40 flex items-center justify-center transition-opacity duration-300 ${isPlaying ? 'opacity-0 group-hover:opacity-100' : 'opacity-100'}`}>
