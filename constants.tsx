@@ -1,12 +1,13 @@
 import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target } from "lucide-react";
 import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory } from "./types";
+import { AVATAR_DATA_URI } from "./lib/avatarImage";
 
 export const HERO_CONTENT = {
   headline: "I Build AI Automation & Smart Workflows to Scale Your Business",
   subheadline: "Stop doing repetitive tasks. I'm Akshay Mahajan — I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue.",
   cta: "See My Work",
   cta2: "Hire Me Now",
-  image: "/akshay_avatar.png",
+  image: AVATAR_DATA_URI,
   badges: ["AI Automation", "Smart Chatbots", "Custom Web Apps", "Prompt Engineering"]
 };
 

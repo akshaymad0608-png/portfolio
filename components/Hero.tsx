@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Play, MessageSquareText, ImageOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import akshayAvatar from '../src/assets/akshay_avatar.png';
+import { AVATAR_DATA_URI } from '../lib/avatarImage';
 
 const Hero: React.FC = () => {
   const [imgFailed, setImgFailed] = useState(false);
@@ -95,7 +95,7 @@ const Hero: React.FC = () => {
               <div className="absolute inset-0 top-10 rounded-3xl overflow-hidden shadow-2xl border border-border bg-cards flex items-center justify-center">
                 {!imgFailed ? (
                   <img
-                    src={akshayAvatar}
+                    src={AVATAR_DATA_URI}
                     alt="Akshay Mahajan"
                     className="w-full h-full object-contain md:object-cover"
                     onError={() => setImgFailed(true)}
