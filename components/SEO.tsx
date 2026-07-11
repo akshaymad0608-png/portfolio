@@ -42,14 +42,14 @@ const SEO: React.FC<SEOProps> = ({ title, description, keywords, canonical, sche
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:image" content={`${baseUrl}/akshay_avatar.jpeg`} />
+      <meta property="og:image" content={`${baseUrl}/new_avatar.png`} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={currentUrl} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={`${baseUrl}/akshay_avatar.jpeg`} />
+      <meta name="twitter:image" content={`${baseUrl}/new_avatar.png`} />
 
       {/* JSON-LD Schema */}
       <script type="application/ld+json">

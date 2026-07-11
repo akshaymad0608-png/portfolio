@@ -1,17 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Sparkles } from 'lucide-react';
+import { Sparkles, Play, MessageSquareText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center overflow-hidden py-20">
-      
-      {/* Subtle Background Elements */}
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_top,rgba(79,70,229,0.05)_0%,rgba(248,250,252,1)_70%)] pointer-events-none" />
-
-      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
-        
+    <section className="relative flex flex-col items-center justify-center min-h-[100vh] bg-background overflow-hidden pb-20 pt-32 lg:pt-48">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1300px]">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
           {/* Left Side */}
@@ -20,140 +15,134 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="mb-6 inline-flex items-center gap-3 px-4 py-2 rounded-full glass-effect border border-primary/20 backdrop-blur-md"
+              className="mb-6 inline-flex items-center gap-3"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
+              <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/30">
+                <Sparkles className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-2xl font-bold text-text tracking-tight font-display">
+                Akshay Mahajan
               </span>
-              <span className="text-xs font-medium tracking-wide text-textSecondary uppercase">Available for freelance projects</span>
             </motion.div>
-
+            
             <motion.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
-              className="text-[38px] md:text-[48px] lg:text-[64px] font-bold tracking-tight text-text mb-6 leading-[1.1] font-display"
+              className="text-[42px] md:text-[56px] lg:text-[72px] font-bold tracking-tight text-text mb-6 leading-[1.05] font-display"
             >
-              I Build AI Systems That Save Time and Grow Businesses.
+              AI-powered automation <br className="hidden md:block" /> for work
             </motion.h1>
-
+            
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-              className="text-base md:text-[18px] text-textSecondary max-w-[650px] mb-10 leading-relaxed font-sans"
+              className="text-lg md:text-[22px] text-textSecondary max-w-[600px] mb-10 leading-relaxed font-sans"
             >
-              Prompt Engineer, Agentic AI Engineer and AI Automation Specialist helping businesses automate workflows, build AI products and generate more leads.
+              Prompt Engineer and AI Automation Specialist helping businesses automate workflows, build intelligent products, and generate more leads with AI.
             </motion.p>
-
+            
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
-              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto mb-10"
+              className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
             >
-              <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-[#16a34a] hover:-translate-y-1 transition-all duration-300 shadow-[0_4px_14px_0_rgba(34,197,94,0.39)]">
-                Book Free Consultation
+              <a 
+                href="https://calendly.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#1a73e8] text-white font-medium rounded-full hover:bg-blue-700 transition-colors duration-300 text-lg"
+              >
+                Book Consultation
               </a>
-              <Link to="/work" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-cards text-text font-bold rounded-xl border border-border hover:bg-glass hover:-translate-y-1 transition-all duration-300">
+              <Link 
+                to="/work" 
+                className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-background text-[#1a73e8] border border-gray-200 font-medium rounded-full hover:bg-gray-50 transition-colors duration-300 text-lg shadow-sm"
+              >
                 View My Work
-                <ArrowRight size={18} />
               </Link>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 1, delay: 0.6 }}
-              className="text-sm font-medium text-muted flex flex-wrap items-center gap-x-2 gap-y-1"
-            >
-              <span>AI Automation</span>
-              <span>•</span>
-              <span>Agentic AI</span>
-              <span>•</span>
-              <span>Web Development</span>
-              <span>•</span>
-              <span>Prompt Engineering</span>
             </motion.div>
           </div>
 
-          {/* Right Side - Lightweight Mockup */}
+          {/* Right Side - Image Collage */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, scale: 0.95, x: 20 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.4, ease: "easeOut" }}
-            className="relative w-full h-full min-h-[400px] flex items-center justify-center hidden lg:flex"
+            className="relative w-full h-full min-h-[400px] flex flex-col items-center justify-center lg:pl-10 mt-10 lg:mt-0"
           >
-            {/* Dashboard Mockup floating animation */}
-            <motion.div 
-              animate={{ y: [-10, 10, -10] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative w-full max-w-[500px] aspect-[4/3] glass-card rounded-2xl border border-border overflow-hidden shadow-2xl p-4 flex flex-col"
-            >
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-border pb-4 mb-4">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-border" />
-                  <div className="w-3 h-3 rounded-full bg-border" />
-                  <div className="w-3 h-3 rounded-full bg-border" />
-                </div>
-                <div className="text-xs font-mono text-muted">AI SYSTEM ACTIVE</div>
-              </div>
+            <div className="relative w-full aspect-[4/3] max-w-[650px]">
               
-              {/* Content */}
-              <div className="flex-1 flex flex-col gap-4">
-                <div className="flex gap-4">
-                  <div className="flex-1 bg-background rounded-lg border border-border p-4">
-                     <div className="text-muted text-[10px] mb-2 uppercase">Tasks Automated</div>
-                     <div className="text-2xl font-display font-bold text-text">14,230</div>
-                     <div className="text-accent text-[10px] mt-1">+92% this week</div>
-                  </div>
-                  <div className="flex-1 bg-background rounded-lg border border-border p-4">
-                     <div className="text-muted text-[10px] mb-2 uppercase">Hours Saved</div>
-                     <div className="text-2xl font-display font-bold text-text">380h</div>
-                     <div className="text-accent text-[10px] mt-1">+24% this week</div>
-                  </div>
+              {/* Floating Header Tag */}
+              <motion.div 
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 left-10 z-20 bg-background px-4 py-2 rounded-full shadow-lg border border-border flex items-center gap-2"
+              >
+                <div className="w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center">
+                  <Play className="w-3 h-3 text-blue-600 fill-current" />
                 </div>
-                
-                <div className="flex-1 bg-background rounded-lg border border-border p-4 flex flex-col">
-                  <div className="text-muted text-[10px] mb-3 uppercase flex items-center gap-2">
-                    <Sparkles size={12} className="text-primary" />
-                    Agent Workflow Status
-                  </div>
-                  <div className="space-y-3 flex-1">
-                    <div className="w-full h-2 bg-cards rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: "100%" }}
-                        transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                        className="h-full bg-gradient-to-r from-primary to-secondary"
-                      />
-                    </div>
-                    <div className="w-full h-2 bg-cards rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: "70%" }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                        className="h-full bg-gradient-to-r from-primary to-secondary"
-                      />
-                    </div>
-                    <div className="w-full h-2 bg-cards rounded-full overflow-hidden">
-                      <motion.div 
-                        initial={{ width: 0 }}
-                        animate={{ width: "40%" }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                        className="h-full bg-gradient-to-r from-primary to-secondary"
-                      />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
+                <span className="text-sm font-medium text-text">
+                  <span className="text-blue-600 font-semibold">Hello, User.</span> Let's automate.
+                </span>
+              </motion.div>
 
+              {/* Main Avatar Image */}
+              <div className="absolute inset-0 top-10 rounded-3xl overflow-hidden shadow-2xl border border-border bg-cards flex items-center justify-center">
+                <img 
+                  src="/akshay_avatar.png" 
+                  alt="Akshay Mahajan" 
+                  className="w-full h-full object-contain md:object-cover"
+                  onError={(e) => {
+                    e.currentTarget.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80';
+                  }}
+                />
+              </div>
+
+              {/* Floating UI Widget (Transcript/Stats mockup) */}
+              <motion.div 
+                animate={{ y: [5, -5, 5] }}
+                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                className="absolute -bottom-10 -left-6 z-20 bg-background rounded-2xl shadow-xl border border-border p-4 w-[280px]"
+              >
+                <div className="flex items-center justify-between mb-4 border-b border-border pb-3">
+                  <div className="flex items-center gap-2">
+                    <MessageSquareText className="w-4 h-4 text-textSecondary" />
+                    <span className="text-sm font-semibold text-text">Automations</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-xs font-medium bg-blue-50 text-blue-600 px-2 py-1 rounded-full">Active</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  <p className="text-xs text-textSecondary leading-relaxed">
+                    Let's take a look at how the workflow is structured. Tasks are <span className="bg-blue-100 text-blue-800 px-1 rounded">prioritized</span> and assigned to specific agents to keep everything moving <span className="bg-[#1a73e8] text-white px-1.5 py-0.5 rounded shadow-sm">efficiently</span>.
+                  </p>
+                </div>
+              </motion.div>
+
+            </div>
+          </motion.div>
         </div>
       </div>
+
+      {/* Floating Bottom Nav Bar */}
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.8 }}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 bg-background rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-border px-8 py-4 hidden md:flex items-center gap-8 z-30"
+      >
+        <span className="text-sm font-semibold text-text cursor-pointer hover:text-[#1a73e8] transition-colors">Use cases</span>
+        <span className="text-sm font-medium text-textSecondary cursor-pointer hover:text-[#1a73e8] transition-colors">Create</span>
+        <span className="text-sm font-medium text-textSecondary cursor-pointer hover:text-[#1a73e8] transition-colors">Automate</span>
+        <span className="text-sm font-medium text-textSecondary cursor-pointer hover:text-[#1a73e8] transition-colors">Generate</span>
+        <span className="text-sm font-medium text-textSecondary cursor-pointer hover:text-[#1a73e8] transition-colors">Customise</span>
+        <span className="text-sm font-medium text-textSecondary cursor-pointer hover:text-[#1a73e8] transition-colors">Collaborate</span>
+        <span className="text-sm font-medium text-textSecondary cursor-pointer hover:text-[#1a73e8] transition-colors">FAQ</span>
+      </motion.div>
     </section>
   );
 };

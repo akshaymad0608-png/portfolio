@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Bot } from 'lucide-react';
+import { X, Send, Bot, MessageSquareText } from 'lucide-react';
 import { HERO_CONTENT } from '../constants';
 
 interface Message {
@@ -71,7 +71,7 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-40 lg:bottom-24 left-4 sm:left-8 w-[calc(100vw-32px)] sm:w-[350px] max-h-[80vh] sm:max-h-[500px] border border-border glass-card bg-background/80 backdrop-blur-xl rounded-2xl shadow-2xl z-[100] flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-4 sm:right-8 w-[calc(100vw-32px)] sm:w-[350px] max-h-[80vh] sm:max-h-[500px] border border-border glass-card bg-background/80 backdrop-blur-xl rounded-2xl shadow-2xl z-[100] flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-[rgba(0,0,0,0.02)] border-b border-border px-4 py-3 flex justify-between items-center">
@@ -168,12 +168,11 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="fixed bottom-40 lg:bottom-24 left-4 sm:left-8 glass-card bg-background/80 backdrop-blur-xl border border-border text-textSecondary text-xs px-4 py-2 rounded-2xl shadow-lg z-[90] flex items-center gap-2 cursor-pointer font-medium"
+            className="fixed bottom-24 right-4 sm:right-8 bg-white border border-slate-100 text-slate-800 text-sm px-5 py-3 rounded-2xl shadow-xl z-[90] flex items-center gap-2 cursor-pointer font-medium max-w-[250px]"
             onClick={() => setIsOpen(true)}
           >
-            <span className="w-2 h-2 rounded-full bg-success animate-pulse" />
-            Have a project? Ask my AI!
-            <div className="absolute -bottom-2 left-6 w-4 h-4 glass-card bg-background/80 backdrop-blur-xl border-b border-r border-border transform rotate-45" />
+            Hi there 👋 What brings you to Akshay's site today?
+            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-slate-100 transform rotate-45" />
           </motion.div>
         )}
       </AnimatePresence>
@@ -182,15 +181,12 @@ const AIChatBot: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-24 lg:bottom-6 left-4 sm:left-8 w-14 h-14 glass-card bg-background/80 backdrop-blur-xl border border-border rounded-full flex items-center justify-center shadow-lg z-[90] group hover:bg-[rgba(0,0,0,0.02)] transition-colors"
+        className="fixed bottom-6 right-4 sm:right-8 w-14 h-14 bg-[#1a73e8] rounded-full flex items-center justify-center shadow-lg z-[90] hover:bg-blue-700 transition-colors"
       >
         {isOpen ? (
-          <X className="text-textSecondary group-hover:text-text transition-colors" />
+          <X className="text-white" />
         ) : (
-          <>
-            <Bot className="text-primary group-hover:text-blue-700 transition-colors" />
-            <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full border-2 border-white" />
-          </>
+          <MessageSquareText className="text-white w-6 h-6" />
         )}
       </motion.button>
     </>

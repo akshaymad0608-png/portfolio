@@ -6,7 +6,7 @@ export const HERO_CONTENT = {
   subheadline: "Stop doing repetitive tasks. I'm Akshay Mahajan — I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue.",
   cta: "See My Work",
   cta2: "Hire Me Now",
-  image: "/akshay_avatar.jpeg",
+  image: "/akshay_avatar.png",
   badges: ["AI Automation", "Smart Chatbots", "Custom Web Apps", "Prompt Engineering"]
 };
 
