@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[100vh] bg-background overflow-hidden pb-20 pt-32 lg:pt-48">
-      <div className="container mx-auto px-6 relative z-10 max-w-[1300px]">
+    <section className="relative flex flex-col items-center min-h-[100vh] bg-background overflow-hidden pb-20 pt-32 lg:pt-40">
+      <div className="container mx-auto px-6 relative z-10 max-w-[1300px] mt-auto mb-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
           {/* Left Side */}
@@ -92,12 +92,9 @@ const Hero: React.FC = () => {
               {/* Main Avatar Image */}
               <div className="absolute inset-0 top-10 rounded-3xl overflow-hidden shadow-2xl border border-border bg-cards flex items-center justify-center">
                 <img 
-                  src="/akshay_avatar.png" 
+                  src="/akshay_avatar.png?v=2" 
                   alt="Akshay Mahajan" 
                   className="w-full h-full object-contain md:object-cover"
-                  onError={(e) => {
-                    e.currentTarget.src = 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80';
-                  }}
                 />
               </div>
 
@@ -105,7 +102,7 @@ const Hero: React.FC = () => {
               <motion.div 
                 animate={{ y: [5, -5, 5] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute -bottom-10 -left-6 z-20 bg-background rounded-2xl shadow-xl border border-border p-4 w-[280px]"
+                className="absolute -bottom-10 -left-6 lg:-left-12 z-20 bg-background rounded-2xl shadow-xl border border-border p-4 w-[280px]"
               >
                 <div className="flex items-center justify-between mb-4 border-b border-border pb-3">
                   <div className="flex items-center gap-2">
