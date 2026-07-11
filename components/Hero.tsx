@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
               {/* Main Avatar Image */}
               <div className="absolute inset-0 top-10 rounded-3xl overflow-hidden shadow-2xl border border-border bg-cards flex items-center justify-center">
                 <img 
-                  src="/akshay_avatar.png?v=2" 
+                  src="/akshay_avatar.png"
                   alt="Akshay Mahajan" 
                   className="w-full h-full object-contain md:object-cover"
                 />
