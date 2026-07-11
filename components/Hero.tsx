@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Play, MessageSquareText } from 'lucide-react';
+import { Sparkles, Play, MessageSquareText, ImageOff } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import akshayAvatar from '../src/assets/akshay_avatar.png';
 
 const Hero: React.FC = () => {
+  const [imgFailed, setImgFailed] = useState(false);
   return (
     <section className="relative flex flex-col items-center min-h-[100vh] bg-background overflow-hidden pb-20 pt-32 lg:pt-40">
       <div className="container mx-auto px-6 relative z-10 max-w-[1300px] mt-auto mb-auto">
@@ -91,11 +93,19 @@ const Hero: React.FC = () => {
 
               {/* Main Avatar Image */}
               <div className="absolute inset-0 top-10 rounded-3xl overflow-hidden shadow-2xl border border-border bg-cards flex items-center justify-center">
-                <img 
-                  src="/akshay_avatar.png"
-                  alt="Akshay Mahajan" 
-                  className="w-full h-full object-contain md:object-cover"
-                />
+                {!imgFailed ? (
+                  <img
+                    src={akshayAvatar}
+                    alt="Akshay Mahajan"
+                    className="w-full h-full object-contain md:object-cover"
+                    onError={() => setImgFailed(true)}
+                  />
+                ) : (
+                  <div className="w-full h-full flex flex-col items-center justify-center gap-2 text-slate-400">
+                    <ImageOff className="w-10 h-10" />
+                    <span className="text-sm font-mono">Image unavailable</span>
+                  </div>
+                )}
               </div>
 
               {/* Floating UI Widget (Transcript/Stats mockup) */}
