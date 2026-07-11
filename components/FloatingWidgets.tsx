@@ -67,7 +67,7 @@ const FloatingWidgets: React.FC = () => {
       {/* Mobile Sticky CTA */}
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-background/80 backdrop-blur-xl border-t border-border z-[50] lg:hidden flex gap-4">
          <a 
-           href="https://calendly.com" 
+           href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20a%20project" 
            target="_blank" 
            rel="noopener noreferrer"
            className="flex-1 bg-gradient-to-r from-primary to-accent text-white font-bold py-3 rounded-xl flex items-center justify-center gap-2 hover:shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-all"

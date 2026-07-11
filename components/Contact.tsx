@@ -65,7 +65,7 @@ const Contact: React.FC = () => {
                 </a>
                 
                 <a 
-                  href="mailto:akshaymad0608@gmail.com" 
+                  href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20book%20a%20strategy%20session" target="_blank" rel="noopener noreferrer" 
                    
                    
                   className="flex items-center gap-4 p-4 rounded-xl border border-primary bg-primary hover:bg-blue-700 transition-colors group shadow-md"

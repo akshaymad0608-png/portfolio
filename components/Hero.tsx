@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
             >
               <a 
-                href="https://calendly.com" 
+                href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20a%20project" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#1a73e8] text-white font-medium rounded-full hover:bg-blue-700 transition-colors duration-300 text-lg"
