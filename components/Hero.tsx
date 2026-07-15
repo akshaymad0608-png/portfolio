@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
               className="text-[42px] md:text-[56px] lg:text-[72px] font-bold tracking-tight text-text mb-6 leading-[1.05] font-display"
             >
-              AI-powered automation <br className="hidden md:block" /> for work
+              Mastering Gen AI & Automation <br className="hidden md:block" /> for the future of work
             </motion.h1>
             
             <motion.p
@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               className="text-lg md:text-[22px] text-textSecondary max-w-[600px] mb-10 leading-relaxed font-sans"
             >
-              Prompt Engineer and AI Automation Specialist helping businesses automate workflows, build intelligent products, and generate more leads with AI.
+              Gen AI & AI Tool Expert, Prompt Engineer, and Automation Specialist helping businesses automate workflows, master image and video generation, and build intelligent products with AI.
             </motion.p>
             
             <motion.div

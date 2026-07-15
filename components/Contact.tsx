@@ -1,7 +1,7 @@
 import TiltCard from './ui/TiltCard';
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, MessageSquare, Calendar, ArrowRight } from 'lucide-react';
+import { Mail, Linkedin, Instagram, MessageSquare, Calendar, ArrowRight } from 'lucide-react';
 
 const Contact: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const Contact: React.FC = () => {
                 Ready to <span className="text-primary">Automate</span>?
               </h2>
               <p className="text-textSecondary text-lg leading-relaxed mb-10 max-w-md">
-                As an AI Engineer & Automation Architect, I help businesses integrate advanced AI workflows to save hours of manual work and scale revenue. Let's discuss your project.
+                As an Gen AI Expert & Automation Architect, I help businesses integrate advanced AI workflows to save hours of manual work and scale revenue. Let's discuss your project.
               </p>
               
               <div className="space-y-4">
@@ -64,6 +64,19 @@ const Contact: React.FC = () => {
                   </div>
                 </a>
                 
+                <a 
+                  href="https://instagram.com/akshay.website" target="_blank" rel="noopener noreferrer" 
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-white hover:bg-slate-50 transition-colors group shadow-sm"
+                >
+                  <div className="p-3 bg-pink-50 rounded-lg text-pink-600 group-hover:scale-110 transition-transform">
+                    <Instagram className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="block font-bold text-text">Instagram</span>
+                    <span className="text-sm text-textSecondary">@akshay.website</span>
+                  </div>
+                </a>
+
                 <a 
                   href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20book%20a%20strategy%20session" target="_blank" rel="noopener noreferrer" 
                    
@@ -118,7 +131,7 @@ const Contact: React.FC = () => {
         <div className="mt-24 pt-8 border-t border-border flex flex-col md:flex-row justify-between items-center gap-4 text-center">
           <div className="text-left hidden md:block">
             <p className="text-text font-bold mb-1">Akshay Mahajan</p>
-            <p className="text-textSecondary text-sm">AI Engineer & Automation Architect</p>
+            <p className="text-textSecondary text-sm">Gen AI Expert & Automation Architect</p>
           </div>
           
           <p className="text-textSecondary text-sm">

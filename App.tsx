@@ -6,6 +6,7 @@ import Lenis from 'lenis';
 import NavBar from './components/NavBar';
 import AIChatBot from './components/AIChatBot';
 import FloatingWidgets from './components/FloatingWidgets';
+import CustomCursor from './components/CustomCursor';
 
 // Pages
 import Home from './pages/Home';
@@ -64,6 +65,7 @@ const App: React.FC = () => {
       <Footer />
       <AIChatBot />
       <FloatingWidgets />
+      <CustomCursor />
     </div>
   );
 };

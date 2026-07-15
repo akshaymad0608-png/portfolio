@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin, Twitter, Mail, ArrowUpRight, Send, Check } from 'lucide-react';
+import { Github, Linkedin, Twitter, Instagram, Mail, ArrowUpRight, Send, Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer: React.FC = () => {
@@ -32,14 +32,17 @@ const Footer: React.FC = () => {
                Architecting intelligent automation systems and high-conversion digital experiences for forward-thinking brands.
              </p>
              <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-textSecondary hover:text-primary hover:border-primary/50 transition-all hover-target hover:-translate-y-1">
+                <a href="#" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-[#333333] hover:border-[#333333]/50 transition-all hover-target hover:-translate-y-1">
                    <Github size={20} />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-textSecondary hover:text-primary hover:border-primary/50 transition-all hover-target hover:-translate-y-1">
+                <a href="https://linkedin.com/in/akshay-mahajan-95bb86187" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-[#0077b5] hover:border-[#0077b5]/50 transition-all hover-target hover:-translate-y-1">
                    <Linkedin size={20} />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-textSecondary hover:text-primary hover:border-primary/50 transition-all hover-target hover:-translate-y-1">
+                <a href="#" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-[#1DA1F2] hover:border-[#1DA1F2]/50 transition-all hover-target hover:-translate-y-1">
                    <Twitter size={20} />
+                </a>
+                <a href="https://instagram.com/akshay.website" target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full glass-card flex items-center justify-center text-[#E1306C] hover:border-[#E1306C]/50 transition-all hover-target hover:-translate-y-1">
+                   <Instagram size={20} />
                 </a>
              </div>
           </div>

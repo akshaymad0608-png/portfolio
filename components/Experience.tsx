@@ -29,7 +29,7 @@ const Experience: React.FC = () => {
             Project <span className="text-primary">Portfolio</span>
           </h2>
           <p className="text-lg text-textSecondary mb-8 max-w-2xl mx-auto">
-            A selection of my recent work as an AI Engineer & Automation Architect.
+            A selection of my recent work as an Gen AI Expert & Automation Architect.
           </p>
 
           <div className="flex flex-wrap justify-center gap-3">

@@ -15,7 +15,7 @@ const About: React.FC = () => {
         >
           <div className="flex flex-wrap justify-center items-center gap-4 mb-6">
              <span className="text-primary font-mono text-sm tracking-widest uppercase bg-[rgba(245,158,11,0.05)] border border-[rgba(245,158,11,0.2)] px-4 py-1.5 rounded-full shadow-inner">
-               AI Engineer & Automation Architect
+               Gen AI Expert & Automation Architect
              </span>
              <span className="text-textSecondary font-mono text-xs flex items-center gap-2 border border-border bg-[rgba(0,0,0,0.02)] px-3 py-1.5 rounded-full">
                <Clock size={14}/> 1 min read
