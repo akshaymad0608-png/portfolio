@@ -7,7 +7,7 @@ import { AVATAR_DATA_URI } from '../lib/avatarImage';
 const Hero: React.FC = () => {
   const [imgFailed, setImgFailed] = useState(false);
   return (
-    <section className="relative flex flex-col items-center min-h-[100vh] bg-background overflow-hidden pb-20 pt-32 lg:pt-40">
+    <section className="relative flex flex-col items-center min-h-[100vh] bg-background overflow-hidden pb-20 pt-40 lg:pt-48">
       <div className="container mx-auto px-6 relative z-10 max-w-[1300px] mt-auto mb-auto">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
           
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
               className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto"
             >
               <a 
-                href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20a%20project" 
+                href="https://calendly.com/akshaymad0608" 
                 target="_blank" 
                 rel="noopener noreferrer" 
                 className="w-full sm:w-auto inline-flex items-center justify-center px-8 py-3.5 bg-[#1a73e8] text-white font-medium rounded-full hover:bg-blue-700 transition-colors duration-300 text-lg"

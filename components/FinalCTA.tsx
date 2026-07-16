@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+
 import { ArrowRight } from 'lucide-react';
 
 const FinalCTA: React.FC = () => {
@@ -23,9 +23,9 @@ const FinalCTA: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link to="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-[#16a34a] transition-all shadow-[0_4px_14px_0_rgba(34,197,94,0.39)]">
+            <a href="https://calendly.com/akshaymad0608" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-[#16a34a] transition-all shadow-[0_4px_14px_0_rgba(34,197,94,0.39)]">
               Book Free Consultation
-            </Link>
+            </a>
             <a href="mailto:akshaymad0608@gmail.com" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-cards text-text border border-border font-bold rounded-xl hover:bg-background transition-all">
               Email Me Directly <ArrowRight size={18} />
             </a>

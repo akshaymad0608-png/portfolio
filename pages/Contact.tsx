@@ -5,12 +5,53 @@ import PageTransition from '../components/PageTransition';
 import SEO from '../components/SEO';
 
 const Contact: React.FC = () => {
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const handleSubmit = (e: React.FormEvent) => {
+    const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    whatsapp: '',
+    service: '',
+    budget: '',
+    details: ''
+  });
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 2000); // Simulate send
+    setSubmitError(null);
+
+    try {
+      const response = await fetch('https://formspree.io/f/mbdndbdr', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        setSubmitSuccess(true);
+      } else {
+        const data = await response.json();
+        if (Object.hasOwn(data, 'errors')) {
+          setSubmitError(data["errors"].map((error: any) => error["message"]).join(", "));
+        } else {
+          setSubmitError("Oops! There was a problem submitting your form");
+        }
+      }
+    } catch (error) {
+      setSubmitError("Oops! There was a problem submitting your form");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -46,12 +87,29 @@ const Contact: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <form onSubmit={handleSubmit} className="bg-cards border border-border rounded-2xl p-8 flex flex-col gap-6 shadow-xl">
+              {submitSuccess ? (
+                <div className="bg-cards border border-success rounded-2xl p-8 flex flex-col items-center text-center shadow-xl">
+                  <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center text-success mb-4">
+                    <MessageSquare size={32} />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-2 font-display">Thanks!</h3>
+                  <p className="text-textSecondary">I'll get back to you within 24 hours.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="bg-cards border border-border rounded-2xl p-8 flex flex-col gap-6 shadow-xl">
+                  {submitError && (
+                    <div className="bg-accent/10 border border-accent rounded-xl p-4 text-accent text-sm text-center">
+                      {submitError}
+                    </div>
+                  )}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-textSecondary">Name *</label>
                     <input 
                       type="text" 
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       required
                       className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
                       placeholder="John Doe"
@@ -61,6 +119,9 @@ const Contact: React.FC = () => {
                     <label className="text-sm font-medium text-textSecondary">Email *</label>
                     <input 
                       type="email" 
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                       className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
                       placeholder="john@company.com"
@@ -73,13 +134,16 @@ const Contact: React.FC = () => {
                     <label className="text-sm font-medium text-textSecondary">WhatsApp Number</label>
                     <input 
                       type="tel" 
+                      name="whatsapp"
+                      value={formData.whatsapp}
+                      onChange={handleChange}
                       className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
                       placeholder="+1 234 567 8900"
                     />
                   </div>
                   <div className="flex flex-col gap-2">
                     <label className="text-sm font-medium text-textSecondary">Service Required</label>
-                    <select className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer">
+                    <select name="service" value={formData.service} onChange={handleChange} className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer">
                       <option value="">Select a service</option>
                       <option value="AI Automation">AI Automation</option>
                       <option value="AI Agents">AI Agents</option>
@@ -92,7 +156,7 @@ const Contact: React.FC = () => {
 
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-textSecondary">Project Budget</label>
-                  <select className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer">
+                  <select name="service" value={formData.service} onChange={handleChange} className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer">
                     <option value="">Select a budget range</option>
                     <option value="< $1000">&lt; $1,000</option>
                     <option value="$1000 - $5000">$1,000 - $5,000</option>
@@ -104,6 +168,9 @@ const Contact: React.FC = () => {
                 <div className="flex flex-col gap-2">
                   <label className="text-sm font-medium text-textSecondary">Project Details *</label>
                   <textarea 
+                    name="details"
+                    value={formData.details}
+                    onChange={handleChange}
                     rows={4}
                     required
                     className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all resize-none"
@@ -120,6 +187,7 @@ const Contact: React.FC = () => {
                   {!isSubmitting && <Send size={18} />}
                 </button>
               </form>
+              )}
             </motion.div>
 
             {/* Contact Info */}
@@ -162,7 +230,7 @@ const Contact: React.FC = () => {
                <div className="mt-8 bg-section border border-border p-8 rounded-2xl text-center">
                  <h3 className="text-xl font-bold font-display text-white mb-3">Prefer a face-to-face chat?</h3>
                  <p className="text-textSecondary mb-6">Book a free 30-minute discovery call to discuss your business needs.</p>
-                 <a href="https://calendly.com" target="_blank" rel="noopener noreferrer" className="inline-block w-full bg-background border border-border text-white font-bold py-3 rounded-xl hover:bg-cards transition-colors">
+                 <a href="https://calendly.com/akshaymad0608" target="_blank" rel="noopener noreferrer" className="inline-block w-full bg-background border border-border text-white font-bold py-3 rounded-xl hover:bg-cards transition-colors">
                     Book Free Consultation
                  </a>
                </div>
