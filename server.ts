@@ -23,7 +23,7 @@ async function startServer() {
   );
 
   // Limit JSON payload size to prevent DOS
-  app.use(express.json({ limit: "10kb" }));
+  app.use(express.json({ limit: "1mb" }));
 
   // Rate limiting for the AI chat endpoint to prevent abuse
   const chatLimiter = rateLimit({
@@ -51,13 +51,13 @@ async function startServer() {
       // Ensure each message is valid and truncate overly long text
       const sanitizedMessages = messages.map((m: any) => ({
         role: m.role === 'user' ? 'user' : 'model',
-        text: typeof m.text === 'string' ? m.text.substring(0, 1000) : ''
-      })).filter(m => m.text.length > 0);
+        parts: [{ text: typeof m.text === 'string' ? m.text.substring(0, 1000) : '' }]
+      })).filter(m => m.parts[0].text.length > 0);
 
       const ai = new GoogleGenAI({ apiKey });
       const stream = await ai.models.generateContentStream({
         model: 'gemini-2.5-flash',
-        contents: sanitizedMessages.map(m => m.text).join('\n'),
+        contents: sanitizedMessages,
         config: {
           systemInstruction: AI_SYSTEM_INSTRUCTION || 'You are Akshay Mahajan\'s AI assistant. Follow the persona.',
           temperature: 0.7,
@@ -93,8 +93,10 @@ async function startServer() {
     // Serve the prerendered per-route document so crawlers get real <head>
     // metadata. Falls back to the 404 document, which is marked noindex.
     app.get('*all', (req, res) => {
-      const routeFile = path.join(distPath, req.path, 'index.html');
-      if (routeFile.startsWith(distPath) && fs.existsSync(routeFile)) {
+      const safePath = path.normalize(req.path).replace(/^(\.\.[\/\\])+/, '');
+      const routeFile = path.join(distPath, safePath, 'index.html');
+      
+      if (routeFile.startsWith(path.join(distPath, '/')) && fs.existsSync(routeFile)) {
         return res.sendFile(routeFile);
       }
       res.status(404).sendFile(path.join(distPath, '404.html'));
