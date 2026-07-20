@@ -1,103 +1,95 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import SectionHeading from './ui/SectionHeading';
+import Reveal from './ui/Reveal';
 
 export const FAQ_DATA = [
   {
-    q: "How long does a typical automation project take?",
-    a: "Most custom automation projects and MVP builds take between 2 to 4 weeks depending on the complexity of the workflow, integrations required, and data sources. We begin with a scoping call to give you a precise timeline."
+    q: 'How long does a project take?',
+    a: "Most automations and MVP builds land in two to four weeks, depending on how many systems have to talk to each other. You get a firm timeline after the scoping call, before any money moves.",
   },
   {
-    q: "How much do your services cost?",
-    a: "Pricing is project-based. Small automation scripts and simple workflow setups typically start at around $1,500. Comprehensive AI agents, custom chatbots, and full-stack solutions require custom quoting based on your specific needs."
+    q: 'What does it cost?',
+    a: "Pricing is per project, not per hour. A single workflow or script starts around $1,500. Agents, chatbots and full builds get quoted once I know the scope. You'll always see the number before we start.",
   },
   {
-    q: "Which tools and platforms do you work with?",
-    a: "I specialize in modern AI and automation stacks: n8n, Zapier, Make for workflows; OpenAI, Anthropic (Claude), and Google Gemini for LLMs; and React/Next.js/Node.js for custom web solutions."
+    q: 'Do I have to switch tools?',
+    a: "No. Most of what I build sits between the tools you already use — Sheets, Slack, Notion, HubSpot, WhatsApp, your CRM — so nothing on your team's side changes.",
   },
   {
-    q: "Is my data safe when you build automations?",
-    a: "Absolutely. We follow strict security practices. API keys are encrypted and stored securely. For sensitive information, we can deploy solutions directly onto your own cloud infrastructure (AWS, GCP, Azure) so data never leaves your environment."
+    q: 'Where does my data go?',
+    a: "API keys are encrypted and stored separately from the code. If your data can't leave your environment, I'll deploy into your own cloud account instead of mine.",
   },
   {
-    q: "Do you offer support after the project is delivered?",
-    a: "Yes. Every project includes a standard 30-day warranty for bug fixes. Extended retainer agreements are available for ongoing maintenance, prompt optimization, and workflow scaling."
+    q: 'What happens after handover?',
+    a: 'Every project ships with 30 days of bug fixes included, plus written documentation of how the thing works. Ongoing tuning and scaling is available on a retainer if you want it.',
   },
   {
-    q: "Can you work with my existing tools/stack?",
-    a: "Yes! Most automations are built specifically to bridge the gap between tools you already use (like Salesforce, HubSpot, Slack, Notion, and Google Workspace) without disrupting your current processes."
-  }
+    q: 'What if the automation breaks?',
+    a: "Flows are built with error branches and alerts, so you hear about a failure before your customer does. Within the warranty window I fix it; after that it's covered by the retainer.",
+  },
 ];
 
 const FAQ: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
-
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+  const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section className="py-24 relative overflow-hidden bg-background">
-      <div className="container mx-auto px-6 max-w-[1000px] relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <span className="text-primary font-mono text-sm tracking-widest uppercase mb-4 inline-block">
-            Questions & Answers
-          </span>
-          <h2 className="text-3xl md:text-5xl font-bold font-display text-text mb-6">
-            Frequently Asked Questions
-          </h2>
-          <p className="text-textSecondary text-lg max-w-2xl mx-auto">
-            Everything you need to know about working together, from timelines to tools and data privacy.
-          </p>
-        </motion.div>
+    <section className="relative py-24 md:py-32">
+      <div className="container mx-auto max-w-4xl px-6">
+        <SectionHeading
+          eyebrow="Before you ask"
+          title="The six questions I always get"
+          align="center"
+          className="mb-14"
+        />
 
-        <div className="space-y-4">
-          {FAQ_DATA.map((faq, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="glass-card rounded-2xl overflow-hidden border border-border"
-            >
-              <button
-                onClick={() => toggleFAQ(index)}
-                className="w-full flex items-center justify-between p-6 text-left focus:outline-none"
-              >
-                <span className="text-lg font-bold text-text font-display pr-8">
-                  {faq.q}
-                </span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-shrink-0 text-textSecondary"
-                >
-                  <ChevronDown className="w-6 h-6" />
-                </motion.div>
-              </button>
-              
-              <AnimatePresence>
-                {openIndex === index && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+        <div className="divide-y divide-[rgba(150,155,180,0.16)] border-y border-border">
+          {FAQ_DATA.map((faq, i) => {
+            const isOpen = open === i;
+            return (
+              <Reveal key={faq.q} delay={i * 0.04}>
+                <div>
+                  <button
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    aria-expanded={isOpen}
+                    className="flex w-full items-center justify-between gap-6 py-6 text-left"
                   >
-                    <div className="px-6 pb-6 pt-0 text-textSecondary leading-relaxed text-base">
-                      {faq.a}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          ))}
+                    <span
+                      className={`font-display text-lg font-bold transition-colors md:text-xl ${
+                        isOpen ? 'text-wire' : 'text-text'
+                      }`}
+                    >
+                      {faq.q}
+                    </span>
+                    <motion.span
+                      animate={{ rotate: isOpen ? 45 : 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-border text-textSecondary"
+                    >
+                      <Plus size={16} />
+                    </motion.span>
+                  </button>
+
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                        className="overflow-hidden"
+                      >
+                        <p className="max-w-2xl pb-7 text-[15.5px] leading-relaxed text-textSecondary">
+                          {faq.a}
+                        </p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>

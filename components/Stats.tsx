@@ -1,75 +1,32 @@
-import React, { useRef, useState, useEffect } from 'react';
-import { motion, useInView } from 'framer-motion';
+import React from 'react';
+import Counter from './ui/Counter';
+import Reveal from './ui/Reveal';
 
-const STATS_DATA = [
-  { value: "40+", label: "Projects delivered" },
-  { value: "10,000+", label: "Hours automated" },
-  { value: "4+", label: "Years experience" },
-  { value: "35", label: "Happy clients" }
+const STATS = [
+  { value: 4, suffix: '', label: 'Products live in production', note: 'built end to end, solo' },
+  { value: 1, suffix: 'M+', label: 'People served by Photo Resizer', note: 'zero server cost, all client-side' },
+  { value: 200, suffix: '+', label: 'AI tools indexed on AI Master Tools', note: 'across 10 categories' },
+  { value: 60, suffix: '%', label: 'Less time on content pipelines', note: 'after handing them to agents' },
 ];
 
-const StatItem = ({ stat, index }: { stat: typeof STATS_DATA[0]; index: number }) => {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
-  
-  const numericValue = parseInt(stat.value.replace(/[^0-9]/g, '')) || 0;
-  const suffix = stat.value.replace(/[0-9,]/g, '');
-  
-  const [count, setCount] = useState(0);
-  
-  useEffect(() => {
-    if (isInView) {
-      if (numericValue === 0) return;
-      
-      const duration = 2000; // 2 seconds
-      const steps = Math.min(100, numericValue);
-      const stepSize = Math.max(1, Math.floor(numericValue / steps));
-      
-      let current = 0;
-      const timer = setInterval(() => {
-        current += stepSize;
-        if (current >= numericValue) {
-          setCount(numericValue);
-          clearInterval(timer);
-        } else {
-          setCount(current);
-        }
-      }, duration / steps);
-      
-      return () => clearInterval(timer);
-    }
-  }, [isInView, numericValue]);
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 20 }}
-      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="flex flex-col items-center text-center glass-card p-6 md:p-8 rounded-2xl border border-border"
-    >
-      <span className="text-4xl md:text-5xl font-bold font-display text-text mb-2">
-        {count.toLocaleString()}{suffix}
-      </span>
-      <span className="text-textSecondary text-sm md:text-base font-medium">
-        {stat.label}
-      </span>
-    </motion.div>
-  );
-}
-
-const Stats: React.FC = () => {
-  return (
-    <section className="py-16 md:py-24 relative bg-background">
-      <div className="container mx-auto px-6 max-w-[1100px] relative z-10">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {STATS_DATA.map((stat, index) => (
-            <StatItem key={index} stat={stat} index={index} />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
+const Stats: React.FC = () => (
+  <section className="relative border-y border-border bg-panel py-16 md:py-20">
+    <div className="container mx-auto max-w-shell px-6">
+      <dl className="grid gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
+        {STATS.map((stat, i) => (
+          <Reveal key={stat.label} delay={i * 0.08}>
+            <div className="lg:border-l lg:border-border lg:pl-6">
+              <dd className="font-display text-[42px] font-bold leading-none tracking-tightest text-text md:text-5xl">
+                <Counter value={stat.value} suffix={stat.suffix} />
+              </dd>
+              <dt className="mt-3 text-[15px] font-medium text-text">{stat.label}</dt>
+              <p className="mt-1 font-mono text-[11.5px] text-muted">{stat.note}</p>
+            </div>
+          </Reveal>
+        ))}
+      </dl>
+    </div>
+  </section>
+);
 
 export default Stats;

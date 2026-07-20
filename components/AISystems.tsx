@@ -1,127 +1,149 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, ArrowRight, FileText } from 'lucide-react';
+import { ArrowUpRight, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { PROJECTS } from '../constants';
+import SectionHeading from './ui/SectionHeading';
+import Reveal from './ui/Reveal';
+import ProjectShot from './ui/ProjectShot';
 
-const projects = [
-  {
-    title: "AIMasterTools",
-    description: "A comprehensive suite of AI tools designed to enhance productivity and streamline digital workflows for content creators and marketers.",
-    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://aimastertools.space",
-    tags: ["React", "Next.js", "OpenAI API", "TailwindCSS"],
-    liveUrl: "https://aimastertools.space",
-    caseStudyUrl: "/work"
-  },
-  {
-    title: "QuickResume",
-    description: "An intelligent resume builder that uses AI to optimize content, match job descriptions, and generate professional layouts instantly.",
-    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://quickresume.business",
-    tags: ["TypeScript", "Node.js", "Claude API", "PostgreSQL"],
-    liveUrl: "https://quickresume.business",
-    caseStudyUrl: "/work"
-  },
-  {
-    title: "PhotoResizer",
-    description: "High-performance image processing tool powered by AI for intelligent cropping, upscaling, and format conversion.",
-    image: "https://image.thum.io/get/width/1200/crop/800/noanimate/https://photoresizer.click",
-    tags: ["Python", "FastAPI", "React", "AWS"],
-    liveUrl: "https://photoresizer.click",
-    caseStudyUrl: "/work"
-  }
-];
+interface AISystemsProps {
+  limit?: number;
+  detailed?: boolean;
+  heading?: boolean;
+}
 
-const AISystems: React.FC = () => {
+/** Case studies: what was broken, what I built, what changed. */
+const AISystems: React.FC<AISystemsProps> = ({ limit, detailed = false, heading = true }) => {
+  const projects = limit ? PROJECTS.slice(0, limit) : PROJECTS;
+
   return (
-    <section className="py-24 relative bg-background" id="projects">
-      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
-        
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
-          <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs uppercase tracking-widest mb-6 font-mono font-medium inline-block"
-            >
-              Featured Work
-            </motion.div>
-            
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight text-text"
-            >
-              Recent Projects
-            </motion.h2>
+    <section id="projects" className="relative py-24 md:py-32">
+      <div className="container mx-auto max-w-shell px-6">
+        {heading && (
+          <div className="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+            <SectionHeading
+              eyebrow="Case studies"
+              title={<>Things I shipped,<br className="hidden md:block" /> and what they changed.</>}
+              lead="Every one of these is live right now. Click through and use them."
+            />
+            {limit && (
+              <Reveal delay={0.15}>
+                <Link
+                  to="/work"
+                  className="group inline-flex min-h-[28px] shrink-0 items-center gap-2 py-1 text-sm font-medium text-textSecondary transition-colors hover:text-wire"
+                >
+                  All case studies
+                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+                </Link>
+              </Reveal>
+            )}
           </div>
-          
-          <motion.div
-             initial={{ opacity: 0, x: 20 }}
-             whileInView={{ opacity: 1, x: 0 }}
-             viewport={{ once: true }}
-          >
-             <Link to="/work" className="inline-flex items-center gap-2 text-textSecondary hover:text-primary transition-colors font-medium">
-               View All Projects <ArrowRight size={18} />
-             </Link>
-          </motion.div>
-        </div>
+        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              className="bg-cards border border-border rounded-2xl overflow-hidden flex flex-col group hover:-translate-y-2 hover:border-primary/30 transition-all duration-300"
-            >
-              <div className="w-full aspect-[4/3] overflow-hidden relative border-b border-border">
-                <img 
-                  src={project.image} 
-                  alt={project.title} 
-                  loading="lazy"
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-              </div>
-              
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="text-xl font-bold text-text mb-2 font-display">{project.title}</h3>
-                <p className="text-textSecondary text-sm mb-6 flex-1">{project.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-6">
-                  {project.tags.map((tag) => (
-                    <span key={tag} className="px-2.5 py-1 bg-section border border-border rounded-md text-xs font-mono text-muted">
-                      {tag}
+        <div className="space-y-6">
+          {projects.map((project, i) => {
+            const Icon = project.icon;
+            const flip = i % 2 === 1;
+
+            return (
+              <Reveal key={project.id} delay={0.04}>
+                <article
+                  id={project.elementId}
+                  className="panel ticked group grid scroll-mt-28 overflow-hidden lg:grid-cols-2"
+                >
+                  {/* screenshot */}
+                  <div
+                    className={`relative min-h-[260px] overflow-hidden border-border bg-panel lg:min-h-[400px] ${
+                      flip ? 'lg:order-2 lg:border-l' : 'lg:border-r'
+                    }`}
+                  >
+                    <ProjectShot src={project.image} link={project.link} title={project.title} icon={Icon} />
+                    <span className="absolute bottom-4 left-4 rounded-full border border-wire/35 bg-ink/85 px-3 py-1.5 font-mono text-[11px] tracking-widest text-wire backdrop-blur">
+                      {project.stat}
                     </span>
-                  ))}
-                </div>
-                
-                <div className="flex items-center gap-3 mt-auto pt-4 border-t border-border">
-                  <a href={project.liveUrl} className="flex-1 inline-flex items-center justify-center gap-2 bg-primary text-white text-sm font-medium py-2.5 rounded-lg hover:bg-secondary transition-colors">
-                    Live Demo <ExternalLink size={14} />
-                  </a>
-                  <Link to={project.caseStudyUrl} className="flex-1 inline-flex items-center justify-center gap-2 bg-section border border-border text-text text-sm font-medium py-2.5 rounded-lg hover:bg-glass transition-colors">
-                    Case Study <FileText size={14} />
-                  </Link>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+                  </div>
+
+                  {/* the story */}
+                  <div className="flex flex-col p-7 md:p-10">
+                    <div className="mb-5 flex items-center gap-3">
+                      {Icon && (
+                        <span className="flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-ink text-wire">
+                          <Icon size={18} />
+                        </span>
+                      )}
+                      <div>
+                        <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                          {project.category} &middot; {project.year}
+                        </span>
+                      </div>
+                    </div>
+
+                    <h3 className="font-display text-2xl font-bold text-text md:text-[28px]">
+                      {project.title}
+                    </h3>
+
+                    <dl className="mt-6 space-y-4 border-t border-border pt-6">
+                      <div className="grid gap-1 sm:grid-cols-[88px_1fr] sm:gap-4">
+                        <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted sm:pt-1">
+                          Problem
+                        </dt>
+                        <dd className="text-[15px] leading-relaxed text-textSecondary">{project.problem}</dd>
+                      </div>
+                      <div className="grid gap-1 sm:grid-cols-[88px_1fr] sm:gap-4">
+                        <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted sm:pt-1">
+                          Built
+                        </dt>
+                        <dd className="text-[15px] leading-relaxed text-textSecondary">{project.solution}</dd>
+                      </div>
+                      <div className="grid gap-1 sm:grid-cols-[88px_1fr] sm:gap-4">
+                        <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-signal sm:pt-1">
+                          Result
+                        </dt>
+                        <dd className="text-[15px] leading-relaxed text-text">{project.results}</dd>
+                      </div>
+                    </dl>
+
+                    {detailed && (
+                      <ul className="mt-6 grid gap-2 sm:grid-cols-2">
+                        {project.features.map((f) => (
+                          <li key={f} className="flex items-start gap-2 text-[14px] text-textSecondary">
+                            <span className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-wire" />
+                            {f}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+
+                    <div className="mt-7 flex flex-wrap items-center gap-2 border-t border-border pt-6">
+                      {project.tech.map((t) => (
+                        <span
+                          key={t}
+                          className="rounded-md border border-border bg-ink px-2.5 py-1 font-mono text-[11px] text-muted"
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.link && (
+                      <motion.a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ x: 3 }}
+                        className="mt-6 inline-flex min-h-[28px] w-fit items-center gap-2 py-1 text-[15px] font-semibold text-wire"
+                      >
+                        Open {project.title}
+                        <ArrowUpRight size={17} />
+                      </motion.a>
+                    )}
+                  </div>
+                </article>
+              </Reveal>
+            );
+          })}
         </div>
-        
-        <motion.div 
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="mt-16 text-center block sm:hidden"
-        >
-          <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-secondary transition-all duration-300 w-full">
-             Start Your Project
-             <ArrowRight size={18} />
-          </Link>
-        </motion.div>
       </div>
     </section>
   );

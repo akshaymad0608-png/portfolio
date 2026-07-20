@@ -1,39 +1,64 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
+import Reveal from './ui/Reveal';
 
-import { ArrowRight } from 'lucide-react';
+const FinalCTA: React.FC = () => (
+  <section className="relative py-24 md:py-32">
+    <div className="container mx-auto max-w-shell px-6">
+      <Reveal>
+        <div className="panel ticked relative overflow-hidden px-7 py-14 text-center md:px-16 md:py-20">
+          <div className="absolute inset-0 blueprint opacity-40" aria-hidden="true" />
+          <div
+            className="pointer-events-none absolute -bottom-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full"
+            style={{ background: 'radial-gradient(closest-side, rgba(214,255,63,0.14), transparent)' }}
+            aria-hidden="true"
+          />
 
-const FinalCTA: React.FC = () => {
-  return (
-    <section className="py-24 relative bg-background">
-      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-section border border-border rounded-[2rem] p-10 md:p-16 text-center relative overflow-hidden"
-        >
-          <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-secondary" />
-          
-          <h2 className="text-3xl md:text-5xl font-bold font-display text-text mb-6">
-            Ready to scale your business with AI?
-          </h2>
-          <p className="text-lg text-textSecondary max-w-2xl mx-auto mb-10">
-            Let's discuss how custom AI automation and intelligent web applications can save you time, reduce costs, and accelerate your growth.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://calendly.com/akshaymad0608" target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white font-bold rounded-xl hover:bg-[#16a34a] transition-all shadow-[0_4px_14px_0_rgba(34,197,94,0.39)]">
-              Book Free Consultation
-            </a>
-            <a href="mailto:akshaymad0608@gmail.com" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-cards text-text border border-border font-bold rounded-xl hover:bg-background transition-all">
-              Email Me Directly <ArrowRight size={18} />
+          <div className="relative">
+            <div className="mb-6 flex items-center justify-center gap-3">
+              <span className="h-px w-8 bg-signal/50" />
+              <span className="eyebrow text-signal">Next step</span>
+              <span className="h-px w-8 bg-signal/50" />
+            </div>
+
+            <h2 className="mx-auto max-w-2xl font-display text-[32px] font-bold leading-[1.06] tracking-tightest text-text md:text-[46px]">
+              Bring me the task nobody on your team wants to do.
+            </h2>
+            <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-textSecondary md:text-lg">
+              Twenty minutes, no pitch. You describe the workflow, I tell you whether automating it is
+              worth the money — including when it isn't.
+            </p>
+
+            <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+              <a
+                href="https://calendly.com/akshaymad0608"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-signal inline-flex w-full items-center justify-center gap-2 px-7 py-3.5 text-[15px] sm:w-auto"
+              >
+                Book the call <ArrowRight size={17} />
+              </a>
+              <a
+                href="https://wa.me/917600885080?text=Hi%20Akshay%2C%20I%27d%20like%20to%20discuss%20a%20project"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-ghost inline-flex w-full items-center justify-center gap-2 px-7 py-3.5 text-[15px] font-medium sm:w-auto"
+              >
+                <MessageCircle size={17} /> WhatsApp me
+              </a>
+            </div>
+
+            <a
+              href="mailto:akshaymad0608@gmail.com"
+              className="mt-8 inline-flex min-h-[28px] items-center gap-2 py-1 font-mono text-[13px] text-textSecondary transition-colors hover:text-wire"
+            >
+              <Mail size={14} /> akshaymad0608@gmail.com
             </a>
           </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-};
+        </div>
+      </Reveal>
+    </div>
+  </section>
+);
 
 export default FinalCTA;

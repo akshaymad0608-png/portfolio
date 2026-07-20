@@ -1,0 +1,46 @@
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    './index.html',
+    './index.tsx',
+    './App.tsx',
+    './constants.tsx',
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './lib/**/*.{ts,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        ink: '#070B18',
+        background: '#070B18',
+        panel: '#0D1526',
+        section: '#0D1526',
+        cards: '#111A2E',
+        raised: '#16203A',
+        wire: '#37E0C7',
+        wireDim: '#1E8C7E',
+        signal: '#FFB347',
+        signalDim: '#C97F18',
+        primary: '#37E0C7',
+        secondary: '#7FB2FF',
+        accent: '#FFB347',
+        success: '#37E0C7',
+        glass: 'rgba(17, 26, 46, 0.72)',
+        border: 'rgba(125, 158, 214, 0.16)',
+        text: '#E9EEF9',
+        textSecondary: '#93A4C4',
+        muted: '#66779A',
+      },
+      fontFamily: {
+        sans: ['Instrument Sans', 'system-ui', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'Instrument Sans', 'sans-serif'],
+        mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+      },
+      letterSpacing: { tightest: '-0.045em' },
+      maxWidth: { shell: '1240px' },
+      spacing: { 13: '3.25rem' },
+    },
+  },
+  plugins: [],
+};

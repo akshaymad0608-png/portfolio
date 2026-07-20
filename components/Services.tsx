@@ -1,110 +1,101 @@
 import React from 'react';
-import { motion } from 'framer-motion';
-import { Cpu, Bot, Code2, MessageSquare, Globe, PenTool, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { SERVICES } from '../constants';
+import SectionHeading from './ui/SectionHeading';
+import SpotlightCard from './ui/SpotlightCard';
+import Reveal from './ui/Reveal';
 
-const services = [
-  {
-    icon: <Cpu className="w-8 h-8 text-primary" />,
-    title: "AI Automation",
-    description: "End-to-end automation of repetitive tasks and workflows using intelligent AI systems."
-  },
-  {
-    icon: <Bot className="w-8 h-8 text-secondary" />,
-    title: "Agentic AI Solutions",
-    description: "Custom autonomous AI agents that can plan, reason, and execute complex multi-step processes."
-  },
-  {
-    icon: <Code2 className="w-8 h-8 text-primary" />,
-    title: "Prompt Engineering",
-    description: "Advanced prompt design and optimization to maximize LLM accuracy and performance."
-  },
-  {
-    icon: <MessageSquare className="w-8 h-8 text-secondary" />,
-    title: "AI Chatbot Development",
-    description: "Intelligent conversational agents trained on your business data for customer support and sales."
-  },
-  {
-    icon: <Globe className="w-8 h-8 text-primary" />,
-    title: "AI Website Development",
-    description: "High-performance, conversion-optimized websites built with modern frameworks and AI capabilities."
-  },
-  {
-    icon: <PenTool className="w-8 h-8 text-secondary" />,
-    title: "AI Content Systems",
-    description: "Automated content generation pipelines for blogs, social media, and marketing materials."
-  }
-];
+interface ServicesProps {
+  limit?: number;
+  showCta?: boolean;
+}
 
-const Services: React.FC = () => {
+const Services: React.FC<ServicesProps> = ({ limit, showCta = true }) => {
+  const items = limit ? SERVICES.slice(0, limit) : SERVICES;
+
   return (
-    <section className="py-24 relative bg-section" id="services">
-      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
-        
-        <div className="text-center mb-16 flex flex-col items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="px-4 py-1.5 rounded-full border border-primary/20 bg-primary/10 text-primary text-xs uppercase tracking-widest mb-6 font-mono font-medium inline-block"
-          >
-            Capabilities
-          </motion.div>
-          
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-3xl md:text-4xl lg:text-5xl font-bold font-display tracking-tight text-text mb-6"
-          >
-            How I Can Help Your Business
-          </motion.h2>
-          
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-textSecondary text-base md:text-lg max-w-[600px]"
-          >
-            Strategic implementation of AI technologies to scale your operations, reduce costs, and accelerate growth.
-          </motion.p>
+    <section id="services" className="relative py-24 md:py-32">
+      <div className="container mx-auto max-w-shell px-6">
+        <div className="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
+          <SectionHeading
+            eyebrow="What I build"
+            title={<>The work I get asked for<br className="hidden md:block" /> over and over.</>}
+            lead="Each one starts as a bottleneck you describe on a call and ends as something running on its own."
+          />
+          {showCta && (
+            <Reveal delay={0.15}>
+              <Link
+                to="/services"
+                className="group inline-flex min-h-[28px] shrink-0 items-center gap-2 py-1 text-sm font-medium text-textSecondary transition-colors hover:text-wire"
+              >
+                Scope &amp; pricing
+                <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+              </Link>
+            </Reveal>
+          )}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {services.map((service, index) => (
-            <motion.div
-              key={service.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
-              className="bg-cards border border-border p-8 rounded-2xl hover:-translate-y-2 hover:border-primary/50 hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)] transition-all duration-300 group"
-            >
-              <div className="w-16 h-16 rounded-xl bg-background border border-border flex items-center justify-center mb-6 group-hover:bg-primary/10 transition-colors">
-                {service.icon}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {items.map((service, i) => {
+            const Icon = service.icon;
+            // first card spans two columns on wide screens — it's the one most people come for
+            const wide = i === 0;
+            return (
+              <Reveal key={service.id} delay={Math.min(i, 5) * 0.05} className={wide ? 'lg:col-span-2' : ''}>
+                <SpotlightCard className="group flex h-full flex-col p-7">
+                  <div className="mb-6 flex items-start justify-between">
+                    <span className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-ink text-wire transition-colors duration-300 group-hover:border-wire/45">
+                      <Icon className="h-[21px] w-[21px]" />
+                    </span>
+                    <span className="font-mono text-[11px] text-muted">
+                      {String(service.id).padStart(2, '0')}
+                    </span>
+                  </div>
+
+                  <h3 className="font-display text-xl font-bold leading-snug text-text">
+                    {service.title}
+                  </h3>
+                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-textSecondary">
+                    {service.description}
+                  </p>
+
+                  <ul className={`mt-6 flex flex-wrap gap-2 ${wide ? '' : ''}`}>
+                    {service.features.slice(0, wide ? 4 : 3).map((f) => (
+                      <li
+                        key={f}
+                        className="rounded-md border border-border bg-ink px-2.5 py-1 font-mono text-[11px] text-muted"
+                      >
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </SpotlightCard>
+              </Reveal>
+            );
+          })}
+        </div>
+
+        {showCta && (
+          <Reveal delay={0.1}>
+            <div className="mt-12 flex flex-col items-center gap-4 rounded-2xl border border-border bg-panel p-8 text-center sm:flex-row sm:justify-between sm:text-left">
+              <div>
+                <p className="font-display text-lg font-bold text-text">Not sure which one you need?</p>
+                <p className="mt-1 text-sm text-textSecondary">
+                  Describe the bottleneck on a call and I'll tell you whether it's worth automating.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-text mb-3 font-display">
-                {service.title}
-              </h3>
-              <p className="text-textSecondary leading-relaxed">
-                {service.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-
-        <motion.div 
-           initial={{ opacity: 0, y: 20 }}
-           whileInView={{ opacity: 1, y: 0 }}
-           viewport={{ once: true }}
-           className="mt-16 text-center"
-        >
-          <Link to="/contact" className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-white font-bold rounded-xl hover:bg-secondary transition-all duration-300">
-             Discuss Your Requirements
-             <ArrowRight size={18} />
-          </Link>
-        </motion.div>
-        
+              <a
+                href="https://calendly.com/akshaymad0608"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-signal inline-flex shrink-0 items-center gap-2 px-6 py-3 text-sm"
+              >
+                Book a call <ArrowUpRight size={16} />
+              </a>
+            </div>
+          </Reveal>
+        )}
       </div>
     </section>
   );

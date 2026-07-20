@@ -1,131 +1,109 @@
-import TiltCard from './ui/TiltCard';
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import { Calculator, Clock, DollarSign, TrendingUp } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
+import SectionHeading from './ui/SectionHeading';
+import Reveal from './ui/Reveal';
+
+const currency = (n: number) => `$${n.toLocaleString()}`;
 
 const ROICalculator: React.FC = () => {
   const [hours, setHours] = useState(20);
   const [rate, setRate] = useState(50);
 
-  const weeklySavings = hours * rate;
-  const monthlySavings = weeklySavings * 4;
-  const yearlySavings = monthlySavings * 12;
+  const monthly = hours * rate * 4;
+  const yearly = monthly * 12;
 
   return (
-    <section className="py-20 bg-transparent border-t border-border">
-      <div className="container mx-auto px-6">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-primary font-mono text-sm tracking-widest mb-4 block uppercase font-semibold">Interactive Tool</span>
-            <h2 className="text-3xl md:text-5xl font-bold text-text mb-6">
-              Calculate Your <span className="text-primary">Automation ROI</span>
-            </h2>
-            <p className="text-textSecondary max-w-2xl mx-auto">
-              See how much time and money you can save by automating repetitive tasks in your business.
-            </p>
-          </div>
+    <section className="relative border-y border-border bg-panel py-24 md:py-32">
+      <div className="container mx-auto max-w-shell px-6">
+        <SectionHeading
+          eyebrow="Rough maths"
+          title="What the manual version is costing you"
+          lead="Move the sliders to your own numbers. This is a back-of-envelope figure, not a quote."
+          align="center"
+          className="mb-14"
+        />
 
-          <TiltCard>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Input Controls */}
-            <motion.div 
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="space-y-10 glass-card bg-background/80 backdrop-blur-xl p-8 md:p-10 rounded-3xl border border-border shadow-sm"
-            >
+        <div className="mx-auto grid max-w-4xl gap-4 lg:grid-cols-2">
+          <Reveal>
+            <div className="panel h-full space-y-10 p-8">
               <div>
-                <div className="flex justify-between items-end mb-4">
-                  <label className="text-lg font-bold text-text">Hours spent on manual tasks</label>
-                  <span className="text-primary font-mono text-2xl font-bold">{hours}h</span>
+                <div className="mb-1 flex items-end justify-between">
+                  <label htmlFor="roi-hours" className="text-[15px] font-semibold text-text">
+                    Hours on manual work
+                  </label>
+                  <span className="font-mono text-2xl font-bold text-wire">{hours}h</span>
                 </div>
-                <p className="text-sm text-textSecondary mb-6">Per week (data entry, scheduling, reporting, etc.)</p>
-                <input 
-                  type="range" 
-                  min="5" 
-                  max="100" 
-                  step="5"
+                <p className="mb-5 text-[13.5px] text-muted">
+                  Per week, across the team — data entry, replies, reporting.
+                </p>
+                <input
+                  id="roi-hours"
+                  type="range" min={5} max={100} step={5}
                   value={hours}
                   onChange={(e) => setHours(parseInt(e.target.value))}
-                  className="w-full h-2 bg-[rgba(0,0,0,0.1)] rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="range-wire"
                 />
-                <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
-                  <span>5h</span>
-                  <span>100h</span>
+                <div className="mt-2 flex justify-between font-mono text-[11px] text-muted">
+                  <span>5h</span><span>100h</span>
                 </div>
               </div>
 
               <div>
-                <div className="flex justify-between items-end mb-4">
-                  <label className="text-lg font-bold text-text">Average hourly value/cost</label>
-                  <span className="text-primary font-mono text-2xl font-bold">${rate}</span>
+                <div className="mb-1 flex items-end justify-between">
+                  <label htmlFor="roi-rate" className="text-[15px] font-semibold text-text">
+                    Cost of an hour
+                  </label>
+                  <span className="font-mono text-2xl font-bold text-wire">${rate}</span>
                 </div>
-                <p className="text-sm text-textSecondary mb-6">Your hourly rate or employee cost</p>
-                <input 
-                  type="range" 
-                  min="15" 
-                  max="200" 
-                  step="5"
+                <p className="mb-5 text-[13.5px] text-muted">
+                  Loaded hourly cost of whoever is doing it now.
+                </p>
+                <input
+                  id="roi-rate"
+                  type="range" min={15} max={200} step={5}
                   value={rate}
                   onChange={(e) => setRate(parseInt(e.target.value))}
-                  className="w-full h-2 bg-[rgba(0,0,0,0.1)] rounded-lg appearance-none cursor-pointer accent-primary"
+                  className="range-wire"
                 />
-                <div className="flex justify-between text-xs text-slate-400 mt-2 font-mono">
-                  <span>$15</span>
-                  <span>$200</span>
+                <div className="mt-2 flex justify-between font-mono text-[11px] text-muted">
+                  <span>$15</span><span>$200</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </Reveal>
 
-            {/* Results Display */}
-            <motion.div 
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-[rgba(37,99,235,0.1)] border border-[rgba(37,99,235,0.2)] p-8 md:p-10 rounded-3xl relative overflow-hidden shadow-sm"
-            >
-              <h3 className="text-2xl font-bold text-text mb-8 flex items-center gap-3">
-                <TrendingUp className="text-primary" /> Projected Savings
-              </h3>
-
-              <div className="space-y-6 mb-10">
-                <div className="flex items-center justify-between p-4 rounded-2xl glass-card bg-background/80 backdrop-blur-xl border border-border shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[rgba(37,99,235,0.1)] flex items-center justify-center">
-                      <DollarSign size={18} className="text-primary" />
-                    </div>
-                    <span className="text-text font-medium">Monthly Savings</span>
-                  </div>
-                  <span className="text-xl font-bold text-text">${monthlySavings.toLocaleString()}</span>
-                </div>
-
-                <div className="flex items-center justify-between p-4 rounded-2xl glass-card bg-background/80 backdrop-blur-xl border border-border shadow-sm">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-[rgba(37,99,235,0.1)] flex items-center justify-center">
-                      <Clock size={18} className="text-primary" />
-                    </div>
-                    <span className="text-text font-medium">Time Recovered</span>
-                  </div>
-                  <span className="text-xl font-bold text-text">{hours * 4} hrs/mo</span>
-                </div>
-                
-                <div className="p-6 rounded-2xl bg-primary text-white shadow-md">
-                  <div className="text-sm font-medium opacity-80 mb-2">Estimated Yearly ROI</div>
-                  <div className="text-3xl md:text-5xl font-bold">${yearlySavings.toLocaleString()}</div>
-                </div>
+          <Reveal delay={0.1}>
+            <div className="panel ticked flex h-full flex-col p-8">
+              <span className="eyebrow">Recovered per year</span>
+              <div className="mt-3 font-display text-[46px] font-bold leading-none tracking-tightest text-signal md:text-[56px]">
+                {currency(yearly)}
               </div>
 
-              <Link 
-                to="/contact" 
-                className="inline-flex items-center justify-center w-full gap-2 py-4 glass-card bg-background/80 backdrop-blur-xl text-primary font-bold rounded-xl border border-primary/20 hover:bg-primary hover:text-text transition-all shadow-sm"
+              <dl className="mt-8 space-y-3 border-t border-border pt-6">
+                <div className="flex items-center justify-between">
+                  <dt className="text-[14.5px] text-textSecondary">Monthly cost of doing it by hand</dt>
+                  <dd className="font-mono text-[15px] font-semibold text-text">{currency(monthly)}</dd>
+                </div>
+                <div className="flex items-center justify-between">
+                  <dt className="text-[14.5px] text-textSecondary">Hours back per month</dt>
+                  <dd className="font-mono text-[15px] font-semibold text-text">{hours * 4} hrs</dd>
+                </div>
+              </dl>
+
+              <p className="mt-6 rounded-xl border border-border bg-ink p-4 text-[13.5px] leading-relaxed text-muted">
+                Automation won't recover all of it — plan on 60–80% for a well-scoped workflow, and
+                a build cost paid once against a saving that repeats.
+              </p>
+
+              <Link
+                to="/contact"
+                className="btn-signal mt-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-[15px]"
               >
-                <Calculator size={20} />
-                Get a Custom ROI Audit
+                Get a real number for your case <ArrowRight size={16} />
               </Link>
-            </motion.div>
-          </div>
-          </TiltCard>
+            </div>
+          </Reveal>
         </div>
       </div>
     </section>

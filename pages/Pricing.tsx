@@ -1,4 +1,28 @@
+import React from 'react';
 import PageTransition from '../components/PageTransition';
-import React from 'react';import PricingComponent from '../components/Pricing';import SEO from '../components/SEO';const Pricing: React.FC = () => {  return (
-    <PageTransition>    <div className="pt-32">      <SEO         title="Pricing | Akshay Mahajan"         description="Transparent pricing for AI automation, web development, and agentic workflows."      />      <PricingComponent />    </div>
-    </PageTransition>  );};export default Pricing;
+import PageHero from '../components/ui/PageHero';
+import Pricing from '../components/Pricing';
+import ROICalculator from '../components/ROICalculator';
+import FAQ from '../components/FAQ';
+import FinalCTA from '../components/FinalCTA';
+import SEO from '../components/SEO';
+
+const PricingPage: React.FC = () => (
+  <PageTransition>
+    <SEO
+      title="Pricing | Akshay Mahajan"
+      description="Project-based pricing for automation setups, AI agents and full builds. Quoted up front, no hourly surprises."
+    />
+    <PageHero
+      eyebrow="Pricing"
+      title={<>Quoted up front.<br className="hidden md:block" /> No hourly surprises.</>}
+      lead="Three starting points, and an honest note on what each one does and doesn't include."
+    />
+    <Pricing />
+    <ROICalculator />
+    <FAQ />
+    <FinalCTA />
+  </PageTransition>
+);
+
+export default PricingPage;

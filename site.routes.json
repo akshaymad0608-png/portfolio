@@ -1,0 +1,64 @@
+{
+  "baseUrl": "https://akshay.website",
+  "siteName": "Akshay Mahajan",
+  "locale": "en_IN",
+  "ogImage": "/og-image.jpg",
+  "routes": [
+    {
+      "path": "/",
+      "title": "AI Agents & Automation for Business | Akshay Mahajan",
+      "description": "I build AI agents, chatbots and automation pipelines that take over repetitive work \u2014 lead intake, support replies, content and reporting. Based in Surat, India.",
+      "priority": "1.0",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/services",
+      "title": "AI Automation Services | Akshay Mahajan",
+      "description": "AI agents, chatbots, workflow automation and custom builds. What each one involves, what it costs and how long it takes, plus a free scoping call.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/work",
+      "title": "Case Studies: AI Products I've Shipped | Akshay Mahajan",
+      "description": "Four live AI products \u2014 a tools directory, an ATS resume builder, an image utility used by over a million people, and a fitness planner. What broke, what I built.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing for AI Automation Projects | Akshay Mahajan",
+      "description": "Project-based pricing for automation setups, AI agents and full builds. Quoted up front after a scoping call, with no hourly surprises.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/about",
+      "title": "About Akshay Mahajan | AI & Automation Engineer, Surat",
+      "description": "AI and automation engineer based in Surat, India. No agency layer and no account manager \u2014 the person you brief is the person who builds it.",
+      "priority": "0.7",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/testimonials",
+      "title": "Client Feedback | Akshay Mahajan",
+      "description": "What clients say after handover \u2014 the automations, agents and products I built for them, and what actually changed on their side afterwards.",
+      "priority": "0.6",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/blog",
+      "title": "Writing on AI Agents & Automation | Akshay Mahajan",
+      "description": "Write-ups on building AI agents, wiring automation pipelines and shipping products with LLMs. First posts in progress \u2014 here's what's queued.",
+      "priority": "0.4",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Akshay Mahajan | AI Automation Engineer",
+      "description": "Tell me which repetitive task keeps coming back every week. I reply within one working day \u2014 by email, WhatsApp, or on a 20-minute scoping call.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    }
+  ]
+}

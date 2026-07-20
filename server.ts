@@ -2,18 +2,40 @@ import express from "express";
 import path from "path";
 import { createServer as createViteServer } from "vite";
 import { GoogleGenAI } from "@google/genai";
-import { AI_SYSTEM_INSTRUCTION } from "./constants.js"; // note: you might need to adjust this depending on how constants is exported
-
+import { AI_SYSTEM_INSTRUCTION } from "./constants.js"; // Use .js extension for compiled output
 import fs from "fs";
+import helmet from "helmet";
+import rateLimit from "express-rate-limit";
 
 async function startServer() {
   const app = express();
   const PORT = 3000;
 
-  app.use(express.json());
+  // Trust proxy for rate limiting behind reverse proxies (e.g. Cloud Run/nginx)
+  app.set("trust proxy", 1);
+
+  // Security headers - disable contentSecurityPolicy in dev or configure it for Vite
+  app.use(
+    helmet({
+      contentSecurityPolicy: false, // Disabling CSP to ensure inline scripts/styles from Vite and Framer Motion work seamlessly
+      crossOriginEmbedderPolicy: false,
+    })
+  );
+
+  // Limit JSON payload size to prevent DOS
+  app.use(express.json({ limit: "10kb" }));
+
+  // Rate limiting for the AI chat endpoint to prevent abuse
+  const chatLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 50, // limit each IP to 50 requests per windowMs
+    message: { error: "Too many requests from this IP, please try again after 15 minutes." },
+    standardHeaders: true,
+    legacyHeaders: false,
+  });
 
   // Wait for the API KEY on the first request if not set, or fail fast
-  app.post("/api/chat", async (req, res) => {
+  app.post("/api/chat", chatLimiter, async (req, res) => {
     try {
       const apiKey = process.env.GEMINI_API_KEY;
       if (!apiKey) {
@@ -21,12 +43,23 @@ async function startServer() {
       }
       const { messages } = req.body;
       
+      // Basic input validation
+      if (!Array.isArray(messages) || messages.length === 0 || messages.length > 20) {
+        return res.status(400).json({ error: 'Invalid or too many messages.' });
+      }
+
+      // Ensure each message is valid and truncate overly long text
+      const sanitizedMessages = messages.map((m: any) => ({
+        role: m.role === 'user' ? 'user' : 'model',
+        text: typeof m.text === 'string' ? m.text.substring(0, 1000) : ''
+      })).filter(m => m.text.length > 0);
+
       const ai = new GoogleGenAI({ apiKey });
       const stream = await ai.models.generateContentStream({
         model: 'gemini-2.5-flash',
-        contents: messages.map((m: any) => m.text).join('\n'),
+        contents: sanitizedMessages.map(m => m.text).join('\n'),
         config: {
-          systemInstruction: 'You are Akshay Mahajan\'s AI assistant. Follow the persona.', // fallback
+          systemInstruction: AI_SYSTEM_INSTRUCTION || 'You are Akshay Mahajan\'s AI assistant. Follow the persona.',
           temperature: 0.7,
         }
       });
@@ -55,9 +88,16 @@ async function startServer() {
     });
     app.use(vite.middlewares);
   } else {
-    app.use(express.static(distPath));
+    app.use(express.static(distPath, { extensions: ['html'] }));
+    
+    // Serve the prerendered per-route document so crawlers get real <head>
+    // metadata. Falls back to the 404 document, which is marked noindex.
     app.get('*all', (req, res) => {
-      res.sendFile(path.join(distPath, 'index.html'));
+      const routeFile = path.join(distPath, req.path, 'index.html');
+      if (routeFile.startsWith(distPath) && fs.existsSync(routeFile)) {
+        return res.sendFile(routeFile);
+      }
+      res.status(404).sendFile(path.join(distPath, '404.html'));
     });
   }
 

@@ -1,4 +1,26 @@
+import React from 'react';
 import PageTransition from '../components/PageTransition';
-import React from 'react';import TestimonialsComponent from '../components/Testimonials';import SEO from '../components/SEO';const Testimonials: React.FC = () => {  return (
-    <PageTransition>    <div className="pt-32">      <SEO         title="Testimonials | Akshay Mahajan"         description="Read what clients have to say about my AI automation and web development services."      />      <TestimonialsComponent />    </div>
-    </PageTransition>  );};export default Testimonials;
+import PageHero from '../components/ui/PageHero';
+import Testimonials from '../components/Testimonials';
+import Achievements from '../components/Achievements';
+import FinalCTA from '../components/FinalCTA';
+import SEO from '../components/SEO';
+
+const TestimonialsPage: React.FC = () => (
+  <PageTransition>
+    <SEO
+      title="Client Feedback | Akshay Mahajan"
+      description="What clients say about the automations, agents and products I built for them."
+    />
+    <PageHero
+      eyebrow="Client feedback"
+      title="What people say after the handover"
+      lead="Names are withheld where clients asked. I'm happy to set up a reference call before you commit to anything."
+    />
+    <Testimonials />
+    <Achievements />
+    <FinalCTA />
+  </PageTransition>
+);
+
+export default TestimonialsPage;

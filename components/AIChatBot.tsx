@@ -35,7 +35,14 @@ const AIChatBot: React.FC = () => {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [showNudge, setShowNudge] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // the greeting waits until you've had a moment to read the page
+  useEffect(() => {
+    const t = setTimeout(() => setShowNudge(true), 9000);
+    return () => clearTimeout(t);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -47,7 +54,7 @@ const AIChatBot: React.FC = () => {
     }
   }, [messages, isOpen]);
 
-  const handleSend = (text: string) => {
+  const handleSend = async (text: string) => {
     if (!text.trim()) return;
     
     const userMessage: Message = { id: Date.now().toString(), sender: 'user', text };
@@ -55,12 +62,52 @@ const AIChatBot: React.FC = () => {
     setInputValue('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      const responseText = RESPONSES[text] || "I'm a simplified AI preview! For detailed questions about your specific project, please use the WhatsApp button to chat with the real Akshay.";
-      const aiMessage: Message = { id: (Date.now() + 1).toString(), sender: 'ai', text: responseText };
-      setMessages(prev => [...prev, aiMessage]);
+    try {
+      const response = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map(m => ({
+            role: m.sender,
+            text: m.text
+          }))
+        })
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+
       setIsTyping(false);
-    }, 1000);
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      
+      if (!reader) return;
+
+      const aiMessageId = (Date.now() + 1).toString();
+      setMessages(prev => [...prev, { id: aiMessageId, sender: 'ai', text: '' }]);
+
+      let accumulatedText = '';
+      while (true) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        
+        accumulatedText += decoder.decode(value, { stream: true });
+        setMessages(prev => 
+          prev.map(msg => 
+            msg.id === aiMessageId ? { ...msg, text: accumulatedText } : msg
+          )
+        );
+      }
+    } catch (error) {
+      console.error('Chat error:', error);
+      setIsTyping(false);
+      setMessages(prev => [...prev, { 
+        id: (Date.now() + 1).toString(), 
+        sender: 'ai', 
+        text: "I'm having trouble connecting to my neural net right now. Please reach out via WhatsApp!" 
+      }]);
+    }
   };
 
   return (
@@ -71,21 +118,21 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            className="fixed bottom-24 right-4 sm:right-8 w-[calc(100vw-32px)] sm:w-[350px] max-h-[80vh] sm:max-h-[500px] border border-border glass-card bg-background/80 backdrop-blur-xl rounded-2xl shadow-2xl z-[100] flex flex-col overflow-hidden"
+            className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[360px] max-h-[78vh] sm:max-h-[520px] panel ticked shadow-2xl z-[100] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-[rgba(0,0,0,0.02)] border-b border-border px-4 py-3 flex justify-between items-center">
+            <div className="bg-[#0D0E14] border-b border-border px-4 py-3 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-8 h-8 rounded-full bg-[rgba(0,0,0,0.05)] flex items-center justify-center relative overflow-hidden border border-border">
-                    <img loading="lazy" src={HERO_CONTENT.image} alt="Akshay" className="w-full h-full object-cover" />
+                  <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center relative overflow-hidden border border-wire/30">
+                    <img loading="lazy" src={HERO_CONTENT.image} alt="" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
                   </div>
-                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-success border-2 border-white rounded-full" />
+                  <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-wire border-2 border-ink rounded-full" />
                 </div>
                 <div>
-                  <h4 className="text-text text-sm font-bold">Akshay's AI Clone</h4>
-                  <p className="text-success text-[10px] font-mono tracking-wider flex items-center gap-1">
-                    <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" /> ONLINE
+                  <h4 className="text-text text-sm font-bold font-display">Ask about the work</h4>
+                  <p className="text-wire text-[10px] font-mono tracking-[0.16em] flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-wire pulse-soft" /> AUTO-REPLY
                   </p>
                 </div>
               </div>
@@ -98,13 +145,13 @@ const AIChatBot: React.FC = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-[250px] glass-card bg-background/80 backdrop-blur-xl">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[250px] bg-ink">
               {messages.map(msg => (
                 <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                     msg.sender === 'user' 
-                      ? 'bg-primary text-white rounded-br-sm' 
-                      : 'bg-[rgba(0,0,0,0.05)] border border-border text-text rounded-bl-sm'
+                      ? 'bg-wire text-ink font-medium rounded-br-sm' 
+                      : 'bg-cards border border-border text-text rounded-bl-sm'
                   }`}>
                     {msg.text}
                   </div>
@@ -113,10 +160,10 @@ const AIChatBot: React.FC = () => {
               
               {isTyping && (
                 <div className="flex justify-start">
-                  <div className="bg-[rgba(0,0,0,0.05)] border border-border text-textSecondary p-3 rounded-2xl rounded-bl-sm flex gap-1 items-center">
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
-                    <span className="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
+                  <div className="bg-cards border border-border p-3 rounded-2xl rounded-bl-sm flex gap-1 items-center">
+                    <span className="w-1.5 h-1.5 bg-wire/70 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                    <span className="w-1.5 h-1.5 bg-wire/70 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
+                    <span className="w-1.5 h-1.5 bg-wire/70 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
                 </div>
               )}
@@ -125,12 +172,12 @@ const AIChatBot: React.FC = () => {
 
             {/* Suggested Questions */}
             {messages.length === 1 && (
-              <div className="px-4 pb-2 flex gap-2 overflow-x-auto snap-x glass-card bg-background/80 backdrop-blur-xl" style={{ scrollbarWidth: 'none' }}>
+              <div className="px-4 pb-3 flex gap-2 overflow-x-auto snap-x bg-ink hide-scrollbar" style={{ scrollbarWidth: 'none' }}>
                 {SUGGESTED_QUESTIONS.map((q, i) => (
                   <button
                     key={i}
                     onClick={() => handleSend(q)}
-                    className="whitespace-nowrap flex-shrink-0 text-xs border border-border bg-[rgba(0,0,0,0.02)] text-textSecondary px-4 py-2 rounded-full hover:bg-[rgba(0,0,0,0.05)] hover:text-text transition-colors snap-start"
+                    className="whitespace-nowrap flex-shrink-0 text-xs border border-border bg-cards text-textSecondary px-4 py-2 rounded-full hover:border-wire/40 hover:text-wire transition-colors snap-start"
                   >
                     {q}
                   </button>
@@ -139,20 +186,20 @@ const AIChatBot: React.FC = () => {
             )}
 
             {/* Input Area */}
-            <div className="p-3 border-t border-border bg-[rgba(0,0,0,0.02)]">
+            <div className="p-3 border-t border-border bg-[#0D0E14]">
               <div className="relative flex items-center">
                 <input
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend(inputValue)}
-                  placeholder="Ask me anything..."
-                  className="w-full glass-card bg-background/80 backdrop-blur-xl border border-border rounded-full pl-4 pr-12 py-3 text-sm text-text placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all font-sans"
+                  placeholder="Ask about pricing, timelines, tools…"
+                  className="w-full bg-ink border border-border rounded-full pl-4 pr-12 py-3 text-sm text-text placeholder-muted focus:outline-none focus:border-wire/50 transition-colors font-sans"
                 />
                 <button
                   onClick={() => handleSend(inputValue)}
                   disabled={!inputValue.trim() || isTyping}
-                  className="absolute right-2 p-2 text-primary disabled:text-textSecondary hover:bg-blue-50 rounded-full transition-colors"
+                  className="absolute right-2 p-2 text-wire disabled:text-muted hover:bg-wire/10 rounded-full transition-colors"
                 >
                   <Send size={16} />
                 </button>
@@ -163,16 +210,22 @@ const AIChatBot: React.FC = () => {
       </AnimatePresence>
 
       <AnimatePresence>
-        {!isOpen && (
+        {!isOpen && showNudge && (
           <motion.div
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="fixed bottom-24 right-4 sm:right-8 bg-white border border-slate-100 text-slate-800 text-sm px-5 py-3 rounded-2xl shadow-xl z-[90] flex items-center gap-2 cursor-pointer font-medium max-w-[250px]"
+            className="fixed bottom-24 right-4 sm:right-6 panel text-text text-[13.5px] px-4 py-3 shadow-xl z-[90] flex items-start gap-3 cursor-pointer max-w-[260px]"
             onClick={() => setIsOpen(true)}
           >
-            Hi there 👋 What brings you to Akshay's site today?
-            <div className="absolute -bottom-2 right-6 w-4 h-4 bg-white border-b border-r border-slate-100 transform rotate-45" />
+            <span className="leading-snug">Questions about scope or price? Ask here — answers are instant.</span>
+            <button
+              onClick={(e) => { e.stopPropagation(); setShowNudge(false); }}
+              aria-label="Dismiss"
+              className="shrink-0 text-muted hover:text-text transition-colors"
+            >
+              <X size={15} />
+            </button>
           </motion.div>
         )}
       </AnimatePresence>
@@ -181,12 +234,12 @@ const AIChatBot: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="fixed bottom-6 right-4 sm:right-8 w-14 h-14 bg-[#1a73e8] rounded-full flex items-center justify-center shadow-lg z-[90] hover:bg-blue-700 transition-colors"
+        className="fixed bottom-6 right-4 sm:right-6 w-14 h-14 btn-signal flex items-center justify-center z-[90]"
       >
         {isOpen ? (
-          <X className="text-white" />
+          <X className="text-ink" size={22} />
         ) : (
-          <MessageSquareText className="text-white w-6 h-6" />
+          <MessageSquareText className="text-ink w-6 h-6" />
         )}
       </motion.button>
     </>

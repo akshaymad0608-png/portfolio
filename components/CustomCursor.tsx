@@ -1,59 +1,52 @@
 import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 
+/** A soft ring that trails the pointer and snaps wider over anything clickable. */
 const CustomCursor: React.FC = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
+  const [enabled, setEnabled] = useState(false);
+  const [active, setActive] = useState(false);
+
+  const x = useMotionValue(-100);
+  const y = useMotionValue(-100);
+  const sx = useSpring(x, { stiffness: 400, damping: 32, mass: 0.4 });
+  const sy = useSpring(y, { stiffness: 400, damping: 32, mass: 0.4 });
 
   useEffect(() => {
-    const updateMousePosition = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
+    const fine = window.matchMedia('(pointer: fine)').matches;
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!fine || reduced) return;
+    setEnabled(true);
+
+    const move = (e: MouseEvent) => {
+      x.set(e.clientX);
+      y.set(e.clientY);
+      const el = e.target as HTMLElement;
+      setActive(Boolean(el.closest('a, button, input, textarea, select, [role="button"], .hover-target')));
     };
 
-    const handleMouseOver = (e: MouseEvent) => {
-      if (
-        (e.target as HTMLElement).closest('a') ||
-        (e.target as HTMLElement).closest('button') ||
-        (e.target as HTMLElement).closest('.hover-target')
-      ) {
-        setIsHovering(true);
-      } else {
-        setIsHovering(false);
-      }
-    };
+    window.addEventListener('mousemove', move, { passive: true });
+    return () => window.removeEventListener('mousemove', move);
+  }, [x, y]);
 
-    window.addEventListener('mousemove', updateMousePosition);
-    window.addEventListener('mouseover', handleMouseOver);
-
-    return () => {
-      window.removeEventListener('mousemove', updateMousePosition);
-      window.removeEventListener('mouseover', handleMouseOver);
-    };
-  }, []);
+  if (!enabled) return null;
 
   return (
-    <>
+    <motion.div
+      aria-hidden="true"
+      style={{ x: sx, y: sy }}
+      className="pointer-events-none fixed left-0 top-0 z-[9999] hidden md:block"
+    >
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border-2 pointer-events-none z-[9999] mix-blend-difference hidden md:block"
         animate={{
-          x: mousePosition.x - 16,
-          y: mousePosition.y - 16,
-          scale: isHovering ? 1.5 : 1,
-          borderColor: isHovering ? '#f59e0b' : '#ffffff',
-          backgroundColor: isHovering ? 'rgba(245, 158, 11, 0.2)' : 'transparent',
+          width: active ? 40 : 20,
+          height: active ? 40 : 20,
+          opacity: active ? 1 : 0.6,
+          borderColor: active ? '#D6FF3F' : '#A9A6FF',
         }}
-        transition={{ type: 'spring', stiffness: 300, damping: 28, mass: 0.5 }}
+        transition={{ type: 'spring', stiffness: 380, damping: 26 }}
+        className="-translate-x-1/2 -translate-y-1/2 rounded-full border"
       />
-      <motion.div
-        className="fixed top-0 left-0 w-2 h-2 rounded-full bg-white pointer-events-none z-[9999] mix-blend-difference hidden md:block"
-        animate={{
-          x: mousePosition.x - 4,
-          y: mousePosition.y - 4,
-          scale: isHovering ? 0 : 1,
-        }}
-        transition={{ type: 'spring', stiffness: 500, damping: 28, mass: 0.1 }}
-      />
-    </>
+    </motion.div>
   );
 };
 

@@ -1,27 +1,26 @@
-import PageTransition from '../components/PageTransition';
 import React from 'react';
-import Experience from '../components/Experience';
+import PageTransition from '../components/PageTransition';
+import About from '../components/About';
 import SkillsDashboard from '../components/SkillsDashboard';
-import AboutComponent from '../components/About';
 import Achievements from '../components/Achievements';
 import Certificates from '../components/Certificates';
+import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
 
-const About: React.FC = () => {
-  return (
-    <PageTransition>
-      <div className="pt-32">
-        <SEO 
-          title="About Akshay Mahajan | AI Engineer & Developer" 
-          description="Learn about my journey in AI automation, technical skills, certifications, and experience in building robust digital systems."
-        />
-        <AboutComponent />
-        <Experience />
-        <SkillsDashboard />
-        <Achievements />
-        <Certificates />
-      </div>
-    </PageTransition>
-  );
-};
-export default About;
+const AboutPage: React.FC = () => (
+  <PageTransition>
+    <SEO
+      title="About | Akshay Mahajan"
+      description="AI and automation engineer in Surat, India. No agency layer — the person you talk to is the person who builds it."
+    />
+    <div className="pt-32 md:pt-40">
+      <About />
+    </div>
+    <SkillsDashboard />
+    <Achievements />
+    <Certificates />
+    <FinalCTA />
+  </PageTransition>
+);
+
+export default AboutPage;

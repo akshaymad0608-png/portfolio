@@ -1,31 +1,26 @@
-import PageTransition from '../components/PageTransition';
 import React from 'react';
+import PageTransition from '../components/PageTransition';
+import PageHero from '../components/ui/PageHero';
 import AISystems from '../components/AISystems';
-import SEO from '../components/SEO';
+import Stats from '../components/Stats';
 import FinalCTA from '../components/FinalCTA';
+import SEO from '../components/SEO';
 
-const Work: React.FC = () => {
-  return (
-    <PageTransition>
-      <div className="pt-32 bg-background min-h-screen">
-        <SEO 
-          title="AI Automation Portfolio & Case Studies | Akshay Mahajan" 
-          description="View my AI projects, custom ChatGPT implementations, lead generation bots, and workflow automations built for real businesses."
-        />
-        
-        <div className="container mx-auto px-6 max-w-[1200px] mb-12 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-display mb-6 tracking-tight">Case <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Studies</span></h1>
-          <p className="text-lg text-textSecondary max-w-2xl mx-auto">
-            Explore a selection of my recent projects where I helped businesses scale using modern web development and AI automation.
-          </p>
-        </div>
-
-        <AISystems />
-        
-        <FinalCTA />
-      </div>
-    </PageTransition>
-  );
-};
+const Work: React.FC = () => (
+  <PageTransition>
+    <SEO
+      title="Case Studies | Akshay Mahajan"
+      description="Four AI products built end to end — what was broken, what I built, and what changed afterwards. All of them are live."
+    />
+    <PageHero
+      eyebrow="Case studies"
+      title={<>Four builds, all live,<br className="hidden md:block" /> all still running.</>}
+      lead="Each one started as somebody's repetitive problem. Open them and try them yourself — nothing here is a mockup."
+    />
+    <Stats />
+    <AISystems detailed heading={false} />
+    <FinalCTA />
+  </PageTransition>
+);
 
 export default Work;

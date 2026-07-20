@@ -1,241 +1,262 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Send, MessageSquare, MapPin } from 'lucide-react';
+import { Mail, MapPin, Clock, Check, ArrowRight, MessageCircle } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import SEO from '../components/SEO';
+import Reveal from '../components/ui/Reveal';
+
+const SERVICES = [
+  'Automation setup (n8n / Make / Zapier)',
+  'AI agent or chatbot',
+  'Full product build',
+  'Prompt engineering / content systems',
+  'SEO & content automation',
+  'Not sure yet',
+];
+
+const BUDGETS = ['Under $1,000', '$1,000 – $3,000', '$3,000 – $10,000', 'Over $10,000', 'Need guidance'];
+
+const fieldClass =
+  'w-full rounded-xl border border-border bg-ink px-4 py-3 text-[15px] text-text placeholder-muted transition-colors focus:border-wire/50 focus:outline-none';
 
 const Contact: React.FC = () => {
-    const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [submitError, setSubmitError] = useState<string | null>(null);
-
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    whatsapp: '',
-    service: '',
-    budget: '',
-    details: ''
+  const [submitting, setSubmitting] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [form, setForm] = useState({
+    name: '', email: '', whatsapp: '', service: '', budget: '', details: '',
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
+  const update = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitError(null);
-
+    setSubmitting(true);
+    setError(null);
     try {
-      const response = await fetch('https://formspree.io/f/mbdndbdr', {
+      const res = await fetch('https://formspree.io/f/mbdndbdr', {
         method: 'POST',
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(formData)
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
       });
-
-      if (response.ok) {
-        setSubmitSuccess(true);
+      if (res.ok) {
+        setSent(true);
       } else {
-        const data = await response.json();
-        if (Object.hasOwn(data, 'errors')) {
-          setSubmitError(data["errors"].map((error: any) => error["message"]).join(", "));
-        } else {
-          setSubmitError("Oops! There was a problem submitting your form");
-        }
+        const data = await res.json();
+        setError(
+          data?.errors?.map((x: any) => x.message).join(', ') ||
+            "That didn't go through. Email me directly at akshaymad0608@gmail.com and I'll pick it up.",
+        );
       }
-    } catch (error) {
-      setSubmitError("Oops! There was a problem submitting your form");
+    } catch {
+      setError("That didn't go through. Check your connection, or email akshaymad0608@gmail.com.");
     } finally {
-      setIsSubmitting(false);
+      setSubmitting(false);
     }
   };
 
   return (
     <PageTransition>
-      <div className="pt-32 pb-24 relative min-h-screen bg-background">
-        <SEO title="Contact | Akshay Mahajan" description="Get in touch for AI consulting and automation projects." />
-        
-        <div className="container mx-auto px-6 max-w-[1200px] relative z-10">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <motion.h1 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold font-display mb-6 tracking-tight text-white"
-            >
-              Let's Build Something <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Great</span>
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              className="text-lg text-textSecondary"
-            >
-              Ready to automate your workflows or build a custom AI solution? Fill out the form below.
-            </motion.p>
+      <div className="relative min-h-screen overflow-hidden pt-32 pb-24">
+        <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
+        <SEO
+          title="Contact | Akshay Mahajan"
+          description="Tell me about the workflow you want automated. I reply within one working day."
+        />
+
+        <div className="container relative z-10 mx-auto max-w-shell px-6">
+          <div className="mb-14 max-w-2xl">
+            <Reveal>
+              <div className="mb-6 flex items-center gap-3">
+                <span className="h-px w-8 bg-wire/50" />
+                <span className="eyebrow">Get in touch</span>
+              </div>
+            </Reveal>
+            <Reveal delay={0.05}>
+              <h1 className="font-display text-[38px] font-bold leading-[1.05] tracking-tightest text-text md:text-[54px]">
+                Tell me what keeps
+                <br className="hidden md:block" /> coming back every week.
+              </h1>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <p className="mt-6 text-lg leading-relaxed text-textSecondary">
+                The more specific you are about the task, the more useful my first reply will be.
+                I answer within one working day.
+              </p>
+            </Reveal>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-            
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              {submitSuccess ? (
-                <div className="bg-cards border border-success rounded-2xl p-8 flex flex-col items-center text-center shadow-xl">
-                  <div className="w-16 h-16 rounded-full bg-success/10 flex items-center justify-center text-success mb-4">
-                    <MessageSquare size={32} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-2 font-display">Thanks!</h3>
-                  <p className="text-textSecondary">I'll get back to you within 24 hours.</p>
+          <div className="grid gap-4 lg:grid-cols-[1.5fr_1fr]">
+            {/* form */}
+            <Reveal>
+              {sent ? (
+                <div className="panel ticked flex flex-col items-center justify-center p-12 text-center">
+                  <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border border-wire/40 bg-ink text-wire">
+                    <Check size={26} />
+                  </span>
+                  <h2 className="font-display text-2xl font-bold text-text">Message received</h2>
+                  <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-textSecondary">
+                    I'll reply within one working day, usually with a couple of questions about the
+                    workflow before I quote anything.
+                  </p>
+                  <a
+                    href="https://calendly.com/akshaymad0608"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-ghost mt-7 inline-flex items-center gap-2 px-6 py-3 text-[14.5px] font-medium"
+                  >
+                    Skip ahead and book a call <ArrowRight size={15} />
+                  </a>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="bg-cards border border-border rounded-2xl p-8 flex flex-col gap-6 shadow-xl">
-                  {submitError && (
-                    <div className="bg-accent/10 border border-accent rounded-xl p-4 text-accent text-sm text-center">
-                      {submitError}
-                    </div>
+                <form onSubmit={submit} className="panel flex flex-col gap-5 p-7 md:p-9">
+                  {error && (
+                    <p className="rounded-xl border border-signal/40 bg-signal/10 px-4 py-3 text-[14px] text-signal">
+                      {error}
+                    </p>
                   )}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-textSecondary">Name *</label>
-                    <input 
-                      type="text" 
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-textSecondary">Email *</label>
-                    <input 
-                      type="email" 
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
-                      placeholder="john@company.com"
-                    />
-                  </div>
-                </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-textSecondary">WhatsApp Number</label>
-                    <input 
-                      type="tel" 
-                      name="whatsapp"
-                      value={formData.whatsapp}
-                      onChange={handleChange}
-                      className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all"
-                      placeholder="+1 234 567 8900"
-                    />
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <div>
+                      <label htmlFor="name" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
+                        Your name
+                      </label>
+                      <input id="name" name="name" required value={form.name} onChange={update}
+                             placeholder="Priya Shah" className={fieldClass} />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
+                        Email
+                      </label>
+                      <input id="email" name="email" type="email" required value={form.email} onChange={update}
+                             placeholder="priya@company.com" className={fieldClass} />
+                    </div>
                   </div>
-                  <div className="flex flex-col gap-2">
-                    <label className="text-sm font-medium text-textSecondary">Service Required</label>
-                    <select name="service" value={formData.service} onChange={handleChange} className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer">
-                      <option value="">Select a service</option>
-                      <option value="AI Automation">AI Automation</option>
-                      <option value="AI Agents">AI Agents</option>
-                      <option value="Chatbots">Chatbots</option>
-                      <option value="Web Development">Web Development</option>
-                      <option value="Other">Other</option>
+
+                  <div className="grid gap-5 md:grid-cols-2">
+                    <div>
+                      <label htmlFor="whatsapp" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
+                        WhatsApp <span className="text-muted">(optional)</span>
+                      </label>
+                      <input id="whatsapp" name="whatsapp" value={form.whatsapp} onChange={update}
+                             placeholder="+91 00000 00000" className={fieldClass} />
+                    </div>
+                    <div>
+                      <label htmlFor="budget" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
+                        Budget range
+                      </label>
+                      <select id="budget" name="budget" value={form.budget} onChange={update} className={fieldClass}>
+                        <option value="">Select a range</option>
+                        {BUDGETS.map((b) => <option key={b} value={b}>{b}</option>)}
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="service" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
+                      What do you need
+                    </label>
+                    <select id="service" name="service" value={form.service} onChange={update} className={fieldClass}>
+                      <option value="">Select the closest fit</option>
+                      {SERVICES.map((s) => <option key={s} value={s}>{s}</option>)}
                     </select>
                   </div>
-                </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-textSecondary">Project Budget</label>
-                  <select name="service" value={formData.service} onChange={handleChange} className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all appearance-none cursor-pointer">
-                    <option value="">Select a budget range</option>
-                    <option value="< $1000">&lt; $1,000</option>
-                    <option value="$1000 - $5000">$1,000 - $5,000</option>
-                    <option value="$5000 - $10000">$5,000 - $10,000</option>
-                    <option value="$10000+">$10,000+</option>
-                  </select>
-                </div>
+                  <div>
+                    <label htmlFor="details" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
+                      Describe the task
+                    </label>
+                    <textarea id="details" name="details" rows={5} required value={form.details} onChange={update}
+                              placeholder="Every morning someone copies new orders from email into our sheet, then messages the customer. Roughly 2 hours a day."
+                              className={`${fieldClass} resize-y`} />
+                    <p className="mt-2 font-mono text-[11.5px] text-muted">
+                      Who does it, how often, and which tools are involved — that's all I need to scope it.
+                    </p>
+                  </div>
 
-                <div className="flex flex-col gap-2">
-                  <label className="text-sm font-medium text-textSecondary">Project Details *</label>
-                  <textarea 
-                    name="details"
-                    value={formData.details}
-                    onChange={handleChange}
-                    rows={4}
-                    required
-                    className="w-full bg-background border border-border rounded-xl px-4 py-3 text-white focus:outline-none focus:border-primary transition-all resize-none"
-                    placeholder="Tell me about your business and what you want to achieve..."
-                  />
-                </div>
-
-                <button 
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full bg-accent text-white font-bold py-4 rounded-xl mt-2 flex justify-center items-center gap-2 hover:bg-[#16a34a] transition-all shadow-[0_4px_14px_0_rgba(34,197,94,0.39)] disabled:opacity-70 disabled:cursor-not-allowed"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Project Request'}
-                  {!isSubmitting && <Send size={18} />}
-                </button>
-              </form>
+                  <motion.button
+                    type="submit"
+                    disabled={submitting}
+                    whileTap={{ scale: 0.98 }}
+                    className="btn-signal mt-1 inline-flex items-center justify-center gap-2 px-7 py-3.5 text-[15px] disabled:cursor-not-allowed disabled:opacity-60"
+                  >
+                    {submitting ? 'Sending…' : 'Send it over'}
+                    {!submitting && <ArrowRight size={17} />}
+                  </motion.button>
+                </form>
               )}
-            </motion.div>
+            </Reveal>
 
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex flex-col gap-6"
-            >
-               <a href="mailto:akshaymad0608@gmail.com" className="bg-cards border border-border p-6 rounded-2xl flex items-center gap-6 group hover:border-primary/50 transition-colors">
-                  <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
-                     <Mail size={24} />
+            {/* aside */}
+            <div className="flex flex-col gap-4">
+              <Reveal delay={0.08}>
+                <div className="panel p-7">
+                  <h2 className="mb-5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
+                    Faster than a form
+                  </h2>
+                  <div className="space-y-3">
+                    <a href="https://calendly.com/akshaymad0608" target="_blank" rel="noopener noreferrer"
+                       className="btn-signal flex items-center justify-center gap-2 px-5 py-3 text-[14.5px]">
+                      Book a 20-minute call <ArrowRight size={15} />
+                    </a>
+                    <a href="https://wa.me/917600885080?text=Hi%20Akshay%2C%20I%27d%20like%20to%20discuss%20a%20project"
+                       target="_blank" rel="noopener noreferrer"
+                       className="btn-ghost flex items-center justify-center gap-2 px-5 py-3 text-[14.5px] font-medium">
+                      <MessageCircle size={16} /> WhatsApp me
+                    </a>
                   </div>
-                  <div>
-                     <h3 className="text-textSecondary font-medium text-sm mb-1">Email Me</h3>
-                     <p className="text-lg font-bold font-display text-white">akshaymad0608@gmail.com</p>
-                  </div>
-               </a>
-               
-               <a href="https://wa.me/917600885080" target="_blank" rel="noopener noreferrer" className="bg-cards border border-border p-6 rounded-2xl flex items-center gap-6 group hover:border-primary/50 transition-colors">
-                  <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-[#25D366] group-hover:scale-110 transition-transform">
-                     <MessageSquare size={24} />
-                  </div>
-                  <div>
-                     <h3 className="text-textSecondary font-medium text-sm mb-1">WhatsApp Me</h3>
-                     <p className="text-lg font-bold font-display text-white">+91 76008 85080</p>
-                  </div>
-               </a>
+                </div>
+              </Reveal>
 
-               <div className="bg-cards border border-border p-6 rounded-2xl flex items-center gap-6 group">
-                  <div className="w-14 h-14 rounded-full bg-background flex items-center justify-center text-secondary group-hover:scale-110 transition-transform">
-                     <MapPin size={24} />
+              <Reveal delay={0.14}>
+                <div className="panel space-y-5 p-7">
+                  <div className="flex items-start gap-3">
+                    <Mail size={17} className="mt-0.5 shrink-0 text-wire" />
+                    <div>
+                      <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Email</div>
+                      <a href="mailto:akshaymad0608@gmail.com" className="text-[15px] text-text hover:text-wire">
+                        akshaymad0608@gmail.com
+                      </a>
+                    </div>
                   </div>
-                  <div>
-                     <h3 className="text-textSecondary font-medium text-sm mb-1">Location</h3>
-                     <p className="text-lg font-bold font-display text-white">Global / Remote</p>
+                  <div className="flex items-start gap-3">
+                    <MapPin size={17} className="mt-0.5 shrink-0 text-wire" />
+                    <div>
+                      <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Based in</div>
+                      <p className="text-[15px] text-text">Surat, Gujarat &middot; working IST, flexible for calls</p>
+                    </div>
                   </div>
-               </div>
+                  <div className="flex items-start gap-3">
+                    <Clock size={17} className="mt-0.5 shrink-0 text-wire" />
+                    <div>
+                      <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Reply time</div>
+                      <p className="text-[15px] text-text">Within one working day</p>
+                    </div>
+                  </div>
+                </div>
+              </Reveal>
 
-               <div className="mt-8 bg-section border border-border p-8 rounded-2xl text-center">
-                 <h3 className="text-xl font-bold font-display text-white mb-3">Prefer a face-to-face chat?</h3>
-                 <p className="text-textSecondary mb-6">Book a free 30-minute discovery call to discuss your business needs.</p>
-                 <a href="https://calendly.com/akshaymad0608" target="_blank" rel="noopener noreferrer" className="inline-block w-full bg-background border border-border text-white font-bold py-3 rounded-xl hover:bg-cards transition-colors">
-                    Book Free Consultation
-                 </a>
-               </div>
-            </motion.div>
-            
+              <Reveal delay={0.2}>
+                <div className="panel p-7">
+                  <h2 className="mb-3 font-display text-[16px] font-bold text-text">
+                    What happens next
+                  </h2>
+                  <ol className="space-y-3">
+                    {[
+                      'I read it and reply with questions or a straight answer.',
+                      'Short call to walk through the workflow as it runs today.',
+                      'Fixed quote and timeline, in writing, before anything starts.',
+                    ].map((step, i) => (
+                      <li key={i} className="flex gap-3 text-[14.5px] leading-relaxed text-textSecondary">
+                        <span className="font-mono text-[12px] text-wire">{i + 1}</span>
+                        {step}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </Reveal>
+            </div>
           </div>
         </div>
       </div>

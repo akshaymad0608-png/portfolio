@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ink: #070B18;
+  --panel: #0D1526;
+  --cards: #111A2E;
+  --wire: #37E0C7;
+  --signal: #FFB347;
+  --line: rgba(125, 158, 214, 0.16);
+}
+
+@layer base {
+  html, body {
+    overflow-x: hidden;
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    background-color: var(--ink);
+    color: #E9EEF9;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body { font-family: 'Instrument Sans', system-ui, sans-serif; }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
+    letter-spacing: -0.035em;
+    font-weight: 700;
+  }
+
+  ::selection { background: var(--wire); color: #041210; }
+
+  :focus-visible {
+    outline: 2px solid var(--wire);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: #070B18; }
+  ::-webkit-scrollbar-thumb { background: #1d2a46; border-radius: 999px; border: 2px solid #070B18; }
+  ::-webkit-scrollbar-thumb:hover { background: #2a3d63; }
+}
+
+@layer components {
+  /* the page is a schematic sheet */
+  .blueprint {
+    background-image:
+      linear-gradient(rgba(125,158,214,0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125,158,214,0.055) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+  .blueprint-fade {
+    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 100%);
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 100%);
+  }
+
+  .panel {
+    background: linear-gradient(180deg, rgba(22,32,58,0.9) 0%, rgba(13,21,38,0.9) 100%);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+  .glass-effect, .glass-card {
+    background: rgba(17, 26, 46, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line);
+    border-radius: 18px;
+  }
+
+  /* corner ticks — schematic detailing */
+  .ticked { position: relative; }
+  .ticked::before, .ticked::after {
+    content: ''; position: absolute; width: 9px; height: 9px; pointer-events: none;
+    border-color: rgba(55,224,199,0.55); opacity: .75; z-index: 5;
+  }
+  .ticked::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
+  .ticked::after  { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
+
+  .eyebrow {
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--wire);
+  }
+  .text-gradient {
+    background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-image: linear-gradient(100deg, #37E0C7 0%, #7FB2FF 55%, #FFB347 100%);
+  }
+
+  .btn-signal {
+    background: var(--signal);
+    color: #201401;
+    font-weight: 700;
+    border-radius: 999px;
+    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+    box-shadow: 0 6px 26px -8px rgba(255,179,71,0.65);
+  }
+  .btn-signal:hover { transform: translateY(-2px); background: #FFC169; box-shadow: 0 12px 34px -10px rgba(255,179,71,0.8); }
+
+  .btn-ghost {
+    border: 1px solid var(--line);
+    color: #E9EEF9;
+    border-radius: 999px;
+    background: rgba(17,26,46,0.5);
+    transition: border-color .2s ease, transform .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover { border-color: rgba(55,224,199,0.5); transform: translateY(-2px); background: rgba(55,224,199,0.07); }
+
+  .spotlight { position: relative; overflow: hidden; }
+  .spotlight::after {
+    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    transition: opacity .35s ease;
+    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(55,224,199,0.12), transparent 65%);
+  }
+  .spotlight:hover::after { opacity: 1; }
+
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+@layer utilities {
+  /* signature: a signal travelling a wire */
+  @keyframes wire-dash { to { stroke-dashoffset: -400; } }
+  .wire-flow { stroke-dasharray: 6 14; animation: wire-dash 9s linear infinite; }
+
+  @keyframes pulse-soft { 0%,100% { opacity: .35; } 50% { opacity: 1; } }
+  .pulse-soft { animation: pulse-soft 2.6s ease-in-out infinite; }
+
+  @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+  .marquee-track { animation: marquee 38s linear infinite; }
+  .marquee-track:hover { animation-play-state: paused; }
+
+  @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+  .float-y { animation: float-y 6s ease-in-out infinite; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

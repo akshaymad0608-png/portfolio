@@ -1,56 +1,62 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import { PROCESS_STEPS } from '../constants';
+import SectionHeading from './ui/SectionHeading';
+import Reveal from './ui/Reveal';
 
+/** A real sequence, so it earns its numbering — and the wire that draws through it. */
 const Process: React.FC = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start 75%', 'end 55%'],
+  });
+  const drawn = useSpring(scrollYProgress, { stiffness: 90, damping: 26, restDelta: 0.001 });
+
   return (
-    <section id="process" className="py-20 md:py-32 bg-section relative border-t border-border scroll-mt-20">
-      <div className="container mx-auto px-6 relative z-10 max-w-[1200px]">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-20"
-        >
-          <span className="text-primary font-mono text-sm tracking-widest mb-4 block uppercase font-bold">Pipeline</span>
-          <h2 className="text-3xl md:text-5xl font-bold font-display text-text mb-6">How I Architect <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">AI & Automation</span></h2>
-        </motion.div>
-        
-        <div className="max-w-4xl mx-auto relative">
-          <div className="absolute left-[28px] md:left-1/2 top-4 bottom-4 w-0.5 bg-border md:-translate-x-1/2" />
-          
-          <div className="space-y-12 md:space-y-24">
-            {PROCESS_STEPS.map((step, index) => {
-              const isEven = index % 2 === 0;
+    <section id="process" className="relative scroll-mt-24 border-y border-border bg-panel py-24 md:py-32">
+      <div className="container mx-auto max-w-shell px-6">
+        <SectionHeading
+          eyebrow="How a project runs"
+          title={<>Five steps, two to four weeks,<br className="hidden md:block" /> no mystery in between.</>}
+          lead="You always know which step we're on and what comes out of it."
+          align="center"
+          className="mb-16"
+        />
+
+        <div ref={ref} className="relative">
+          {/* the wire: horizontal on desktop, vertical on mobile */}
+          <div className="absolute left-[27px] top-4 bottom-4 w-px bg-border md:hidden" aria-hidden="true">
+            <motion.div style={{ scaleY: drawn }} className="h-full w-full origin-top bg-wire" />
+          </div>
+          <div className="absolute left-0 right-0 top-[27px] hidden h-px bg-border md:block" aria-hidden="true">
+            <motion.div style={{ scaleX: drawn }} className="h-full w-full origin-left bg-wire" />
+          </div>
+
+          <ol className="relative grid gap-10 md:grid-cols-5 md:gap-6">
+            {PROCESS_STEPS.map((step, i) => {
               const Icon = step.icon;
-              
               return (
-                <motion.div 
-                  key={step.id}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className={`relative flex flex-col md:flex-row items-start md:items-center ${isEven ? 'md:flex-row-reverse' : ''}`}
-                >
-                  <div className={`hidden md:block w-1/2 ${isEven ? 'pl-16' : 'pr-16 text-right'}`}>
-                    <h3 className="text-2xl font-bold font-display text-text mb-4">{step.title}</h3>
-                    <p className="text-textSecondary text-lg">{step.description}</p>
-                  </div>
-                  
-                  <div className="absolute left-0 md:left-1/2 w-14 h-14 rounded-full bg-cards border-2 border-primary flex items-center justify-center transform md:-translate-x-1/2 z-10 text-primary shadow-lg">
-                    <Icon size={24} />
-                  </div>
-                  
-                  <div className="ml-20 md:hidden pb-4">
-                    <span className="text-primary font-mono text-xs mb-2 block font-bold uppercase tracking-widest">Step {step.id}</span>
-                    <h3 className="text-xl font-bold font-display text-text mb-3">{step.title}</h3>
-                    <p className="text-textSecondary text-base">{step.description}</p>
-                  </div>
-                </motion.div>
+                <li key={step.id} className="relative pl-[68px] md:pl-0">
+                  <Reveal delay={i * 0.08}>
+                    <span className="absolute left-0 top-0 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-ink text-wire md:relative md:mb-6">
+                      <Icon size={21} />
+                    </span>
+
+                    <div className="md:pr-4">
+                      <span className="font-mono text-[11px] tracking-[0.2em] text-muted">
+                        STEP {String(step.id).padStart(2, '0')}
+                      </span>
+                      <h3 className="mt-2 font-display text-lg font-bold text-text">{step.title}</h3>
+                      <p className="mt-2 text-[14.5px] leading-relaxed text-textSecondary">
+                        {step.description}
+                      </p>
+                    </div>
+                  </Reveal>
+                </li>
               );
             })}
-          </div>
+          </ol>
         </div>
       </div>
     </section>

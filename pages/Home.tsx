@@ -1,63 +1,56 @@
 import React from 'react';
 import Hero from '../components/Hero';
-import ServicesComponent from '../components/Services';
+import Services from '../components/Services';
+import Process from '../components/Process';
 import AISystems from '../components/AISystems';
+import Stats from '../components/Stats';
 import Testimonials from '../components/Testimonials';
+import FAQ, { FAQ_DATA } from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
 import PageTransition from '../components/PageTransition';
-import FAQ, { FAQ_DATA } from '../components/FAQ';
-import Stats from '../components/Stats';
-import TechStack from '../components/TechStack';
+import WireDivider from '../components/ui/WireDivider';
 
-
-
-const Home: React.FC = () => {
-  const defaultPersonSchema = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Akshay Mahajan",
-    "url": "https://akshay.website",
-    "jobTitle": "AI Engineer & Founder",
-    "sameAs": [
-      "https://github.com/akshay",
-      "https://linkedin.com/in/akshay"
-    ]
-  };
-
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": FAQ_DATA.map(item => ({
-      "@type": "Question",
-      "name": item.q,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.a
-      }
-    }))
-  };
-
-  return (
-    <PageTransition>
-      <div className="bg-background">
-        <SEO 
-          schema={[defaultPersonSchema, faqSchema]}
-
-          title="Akshay Mahajan | Premium AI Agency & Automation Architect" 
-          description="I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hundreds of hours of manual work."
-        />
-        <Hero />
-        <Stats />
-        <ServicesComponent />
-        <TechStack />
-        <AISystems />
-        <Testimonials />
-        <FAQ />
-        <FinalCTA />
-      </div>
-    </PageTransition>
-  );
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Akshay Mahajan',
+  url: 'https://akshay.website',
+  jobTitle: 'AI & Automation Engineer',
+  address: { '@type': 'PostalAddress', addressLocality: 'Surat', addressRegion: 'Gujarat', addressCountry: 'IN' },
+  sameAs: [
+    'https://linkedin.com/in/akshay-mahajan-95bb86187',
+    'https://instagram.com/akshay.website',
+  ],
 };
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ_DATA.map((item) => ({
+    '@type': 'Question',
+    name: item.q,
+    acceptedAnswer: { '@type': 'Answer', text: item.a },
+  })),
+};
+
+const Home: React.FC = () => (
+  <PageTransition>
+    <SEO
+      schema={[personSchema, faqSchema]}
+      title="Akshay Mahajan | AI Agents & Automation for Businesses"
+      description="I build AI agents, chatbots and automation pipelines that take over repetitive work — lead intake, support replies, content and reporting — and keep running without you."
+    />
+    <Hero />
+    <Services limit={6} />
+    <WireDivider />
+    <Process />
+    <AISystems limit={2} />
+    <Stats />
+    <Testimonials />
+    <FAQ />
+    <FinalCTA />
+  </PageTransition>
+);
 
 export default Home;
