@@ -1,4 +1,4 @@
-import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target } from "lucide-react";
+import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target, Languages } from "lucide-react";
 import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory } from "./types";
 import { AVATAR_DATA_URI } from "./lib/avatarImage";
 
@@ -222,6 +222,23 @@ export const PROJECTS: Project[] = [
     icon: HeartPulse,
     stat: "LIVE PLATFORM",
     elementId: "smartfit"
+  },
+  {
+    id: 5,
+    title: "Language Translator",
+    category: "AI Translation Tool",
+    problem: "Traditional machine translators struggle with nuance, context, and formatting across complex multi-language content.",
+    solution: "An instant AI-driven translation platform delivering context-aware, fluent translations across global languages with side-by-side processing.",
+    features: ["Context-Aware AI Engine", "Multi-Language Support", "Side-by-Side View", "High-Speed Inference"],
+    results: "Delivers fluent, high-accuracy translations in seconds with an intuitive user experience.",
+    description: "An AI-powered language translator that provides context-aware, high-accuracy translations across languages.",
+    tech: ["React", "AI Translation", "TailwindCSS", "Vite"],
+    year: "2025",
+    link: "https://languagetransalator.com/",
+    image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://languagetransalator.com/",
+    icon: Languages,
+    stat: "LIVE PLATFORM",
+    elementId: "language-translator"
   }
 ];
 

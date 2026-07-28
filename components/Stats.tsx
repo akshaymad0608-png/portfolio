@@ -3,7 +3,7 @@ import Counter from './ui/Counter';
 import Reveal from './ui/Reveal';
 
 const STATS = [
-  { value: 4, suffix: '', label: 'Products live in production', note: 'built end to end, solo' },
+  { value: 5, suffix: '', label: 'Products live in production', note: 'built end to end, solo' },
   { value: 1, suffix: 'M+', label: 'People served by Photo Resizer', note: 'zero server cost, all client-side' },
   { value: 200, suffix: '+', label: 'AI tools indexed on AI Master Tools', note: 'across 10 categories' },
   { value: 60, suffix: '%', label: 'Less time on content pipelines', note: 'after handing them to agents' },
