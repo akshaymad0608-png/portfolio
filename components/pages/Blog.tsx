@@ -1,0 +1,24 @@
+import React from 'react';
+import PageTransition from '../components/PageTransition';
+import PageHero from '../components/ui/PageHero';
+import BlogList from '../components/BlogList';
+import FinalCTA from '../components/FinalCTA';
+import SEO from '../components/SEO';
+
+const Blog: React.FC = () => (
+  <PageTransition>
+    <SEO
+      title="Blog | Akshay Mahajan"
+      description="Notes on full-stack web development, building with LLMs, and shipping products fast with AI."
+    />
+    <PageHero
+      eyebrow="Writing"
+      title="Notes from the build"
+      lead="What worked, what cost me a weekend, and the code and workflows you can copy straight into your own stack."
+    />
+    <BlogList />
+    <FinalCTA />
+  </PageTransition>
+);
+
+export default Blog;

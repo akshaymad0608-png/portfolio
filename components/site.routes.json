@@ -1,0 +1,71 @@
+{
+  "baseUrl": "https://akshay.website",
+  "siteName": "Akshay Mahajan",
+  "locale": "en_IN",
+  "ogImage": "/akshay_avatar.png",
+  "routes": [
+    {
+      "path": "/",
+      "title": "Full-Stack & AI Web Developer | Akshay Mahajan",
+      "description": "I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter. Based in Surat, India.",
+      "priority": "1.0",
+      "changefreq": "weekly"
+    },
+    {
+      "path": "/services",
+      "title": "Web Development & AI Services | Akshay Mahajan",
+      "description": "Full-stack web development, custom AI tools, chatbots, agents and workflow automation. What each one involves, what it costs and how long it takes, plus a free scoping call.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/work",
+      "title": "Case Studies: AI Products I've Shipped | Akshay Mahajan",
+      "description": "Five live AI products \u2014 a tools directory, an ATS resume builder, an image utility used by over a million people, a fitness planner, and a language translator. What broke, what I built.",
+      "priority": "0.9",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/pricing",
+      "title": "Pricing for AI Automation Projects | Akshay Mahajan",
+      "description": "Project-based pricing for automation setups, AI agents and full builds. Quoted up front after a scoping call, with no hourly surprises.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/ai-guide",
+      "title": "AI Guide | What is AI, LLMs, Generative & Agentic AI — Akshay Mahajan",
+      "description": "A plain-English guide to AI: what it is, its history, types of AI, machine learning vs deep learning vs generative AI, what an LLM and a model are, and how AI agents and agentic AI work.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/about",
+      "title": "About Akshay Mahajan | Full-Stack & AI Web Developer, Surat",
+      "description": "Full-stack web developer based in Surat, India, building with AI. No agency layer and no account manager \u2014 the person you brief is the person who builds it.",
+      "priority": "0.7",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/testimonials",
+      "title": "Client Feedback | Akshay Mahajan",
+      "description": "What clients say after handover \u2014 the websites, tools, agents and automations I built for them, and what actually changed on their side afterwards.",
+      "priority": "0.6",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/blog",
+      "title": "Writing on Full-Stack & AI Development | Akshay Mahajan",
+      "description": "Write-ups on full-stack web development, building with LLMs and shipping products fast with AI. First posts in progress \u2014 here's what's queued.",
+      "priority": "0.4",
+      "changefreq": "monthly"
+    },
+    {
+      "path": "/contact",
+      "title": "Contact Akshay Mahajan | Full-Stack & AI Web Developer",
+      "description": "Tell me what you want to build \u2014 a website, a web app or an AI tool. I reply within one working day, by email, WhatsApp, or on a 20-minute scoping call.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    }
+  ]
+}
