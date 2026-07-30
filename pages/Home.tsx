@@ -16,7 +16,7 @@ const personSchema = {
   '@type': 'Person',
   name: 'Akshay Mahajan',
   url: 'https://akshay.website',
-  jobTitle: 'AI & Automation Engineer',
+  jobTitle: 'Full-Stack & AI Web Developer',
   address: { '@type': 'PostalAddress', addressLocality: 'Surat', addressRegion: 'Gujarat', addressCountry: 'IN' },
   sameAs: [
     'https://linkedin.com/in/akshay-mahajan-95bb86187',
@@ -38,8 +38,8 @@ const Home: React.FC = () => (
   <PageTransition>
     <SEO
       schema={[personSchema, faqSchema]}
-      title="Akshay Mahajan | AI Agents & Automation for Businesses"
-      description="I build AI agents, chatbots and automation pipelines that take over repetitive work — lead intake, support replies, content and reporting — and keep running without you."
+      title="Akshay Mahajan | Full-Stack & AI Web Developer"
+      description="I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter."
     />
     <Hero />
     <Services limit={6} />

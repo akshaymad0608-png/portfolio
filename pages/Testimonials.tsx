@@ -10,7 +10,7 @@ const TestimonialsPage: React.FC = () => (
   <PageTransition>
     <SEO
       title="Client Feedback | Akshay Mahajan"
-      description="What clients say about the automations, agents and products I built for them."
+      description="What clients say about the websites, tools, agents and automations I built for them."
     />
     <PageHero
       eyebrow="Client feedback"

@@ -6,11 +6,11 @@ import SEO from '../components/SEO';
 import Reveal from '../components/ui/Reveal';
 
 const SERVICES = [
-  'Automation setup (n8n / Make / Zapier)',
+  'Website / web app build',
+  'Custom AI tool or micro-SaaS',
   'AI agent or chatbot',
-  'Full product build',
+  'Automation setup (n8n / Make / Zapier)',
   'Prompt engineering / content systems',
-  'SEO & content automation',
   'Not sure yet',
 ];
 
@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
         <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
         <SEO
           title="Contact | Akshay Mahajan"
-          description="Tell me about the workflow you want automated. I reply within one working day."
+          description="Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day."
         />
 
         <div className="container relative z-10 mx-auto max-w-shell px-6">
@@ -75,13 +75,13 @@ const Contact: React.FC = () => {
             </Reveal>
             <Reveal delay={0.05}>
               <h1 className="font-display text-[38px] font-bold leading-[1.05] tracking-tightest text-text md:text-[54px]">
-                Tell me what keeps
-                <br className="hidden md:block" /> coming back every week.
+                Tell me what
+                <br className="hidden md:block" /> you want to build.
               </h1>
             </Reveal>
             <Reveal delay={0.1}>
               <p className="mt-6 text-lg leading-relaxed text-textSecondary">
-                The more specific you are about the task, the more useful my first reply will be.
+                The more specific you are about the project, the more useful my first reply will be.
                 I answer within one working day.
               </p>
             </Reveal>
@@ -98,7 +98,7 @@ const Contact: React.FC = () => {
                   <h2 className="font-display text-2xl font-bold text-text">Message received</h2>
                   <p className="mt-3 max-w-sm text-[15px] leading-relaxed text-textSecondary">
                     I'll reply within one working day, usually with a couple of questions about the
-                    workflow before I quote anything.
+                    build before I quote anything.
                   </p>
                   <a
                     href="https://calendly.com/akshaymad0608"
@@ -165,13 +165,13 @@ const Contact: React.FC = () => {
 
                   <div>
                     <label htmlFor="details" className="mb-2 block text-[13.5px] font-medium text-textSecondary">
-                      Describe the task
+                      Describe the project
                     </label>
                     <textarea id="details" name="details" rows={5} required value={form.details} onChange={update}
-                              placeholder="Every morning someone copies new orders from email into our sheet, then messages the customer. Roughly 2 hours a day."
+                              placeholder="We need a landing page and a small dashboard where customers can log in and see their orders. Ideally live in a few weeks, with a chatbot for support later."
                               className={`${fieldClass} resize-y`} />
                     <p className="mt-2 font-mono text-[11.5px] text-muted">
-                      Who does it, how often, and which tools are involved — that's all I need to scope it.
+                      What you want built, who it's for, and any tools it needs to talk to — that's all I need to scope it.
                     </p>
                   </div>
 
@@ -245,7 +245,7 @@ const Contact: React.FC = () => {
                   <ol className="space-y-3">
                     {[
                       'I read it and reply with questions or a straight answer.',
-                      'Short call to walk through the workflow as it runs today.',
+                      'Short call to walk through exactly what you want built.',
                       'Fixed quote and timeline, in writing, before anything starts.',
                     ].map((step, i) => (
                       <li key={i} className="flex gap-3 text-[14.5px] leading-relaxed text-textSecondary">

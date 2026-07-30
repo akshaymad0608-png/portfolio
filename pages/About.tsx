@@ -11,7 +11,7 @@ const AboutPage: React.FC = () => (
   <PageTransition>
     <SEO
       title="About | Akshay Mahajan"
-      description="AI and automation engineer in Surat, India. No agency layer — the person you talk to is the person who builds it."
+      description="Full-stack web developer in Surat, India, building fast with AI. No agency layer — the person you talk to is the person who builds it."
     />
     <div className="pt-32 md:pt-40">
       <About />

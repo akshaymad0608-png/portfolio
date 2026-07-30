@@ -9,12 +9,12 @@ const Blog: React.FC = () => (
   <PageTransition>
     <SEO
       title="Blog | Akshay Mahajan"
-      description="Notes on AI engineering, workflow automation and building products with LLMs."
+      description="Notes on full-stack web development, building with LLMs, and shipping products fast with AI."
     />
     <PageHero
       eyebrow="Writing"
       title="Notes from the build"
-      lead="What worked, what cost me a weekend, and the workflows you can copy straight into your own stack."
+      lead="What worked, what cost me a weekend, and the code and workflows you can copy straight into your own stack."
     />
     <BlogList />
     <FinalCTA />

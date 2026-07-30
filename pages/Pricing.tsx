@@ -11,7 +11,7 @@ const PricingPage: React.FC = () => (
   <PageTransition>
     <SEO
       title="Pricing | Akshay Mahajan"
-      description="Project-based pricing for automation setups, AI agents and full builds. Quoted up front, no hourly surprises."
+      description="Project-based pricing for full-stack builds, custom AI tools, agents and automation. Quoted up front, no hourly surprises."
     />
     <PageHero
       eyebrow="Pricing"
