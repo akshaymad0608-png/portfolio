@@ -20,8 +20,8 @@ const Services: React.FC<ServicesProps> = ({ limit, showCta = true }) => {
         <div className="mb-14 flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
           <SectionHeading
             eyebrow="What I build"
-            title={<>The work I get asked for<br className="hidden md:block" /> over and over.</>}
-            lead="Each one starts as a bottleneck you describe on a call and ends as something running on its own."
+            title={<>Full-stack builds first,<br className="hidden md:block" /> AI in everything.</>}
+            lead="It starts with the website or app you actually need — then the AI, chatbots and automation that make it pull its weight."
           />
           {showCta && (
             <Reveal delay={0.15}>
@@ -82,7 +82,7 @@ const Services: React.FC<ServicesProps> = ({ limit, showCta = true }) => {
               <div>
                 <p className="font-display text-lg font-bold text-text">Not sure which one you need?</p>
                 <p className="mt-1 text-sm text-textSecondary">
-                  Describe the bottleneck on a call and I'll tell you whether it's worth automating.
+                  Describe what you want to build on a call and I'll tell you the fastest way to ship it.
                 </p>
               </div>
               <a

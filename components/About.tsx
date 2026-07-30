@@ -13,12 +13,12 @@ const TIMELINE = [
   {
     phase: '2025',
     title: 'Shipping instead of experimenting',
-    body: 'Moved from notebooks to production. Built and deployed four tools that real people use daily, one of which crossed a million users.',
+    body: 'Moved from notebooks to production. Designed and built five full-stack web products that real people use daily, one of which crossed a million users.',
   },
   {
     phase: '2026',
-    title: 'Building inside other people\u2019s businesses',
-    body: 'Working with founders and agencies to put agents and automations into their existing stack, so the repetitive work stops coming back.',
+    title: 'Building for founders and agencies',
+    body: 'Working with founders and agencies to ship websites, web apps and custom tools fast \u2014 with AI, chatbots and automation built in where they earn their keep.',
   },
 ];
 
@@ -55,17 +55,17 @@ const About: React.FC = () => (
             <div className="mt-8 max-w-2xl space-y-5 text-[17px] leading-relaxed text-textSecondary">
               <p>
                 No agency layer, no account manager, no handoff to a junior. You talk to me on the
-                scoping call and I'm the same person writing the workflow, tuning the prompts and
-                answering the message when something breaks at 9pm.
+                scoping call and I'm the same person writing the code, wiring up the AI and answering
+                the message when something breaks at 9pm.
               </p>
               <p>
-                My background is electronics engineering, which mostly means I'm comfortable taking
-                a system apart to find where the signal is getting lost. These days the system is
-                usually someone's operations, and the lost signal is four people re-typing the same
-                data into three tools.
+                I'm a full-stack developer who builds fast with LLMs — the vibe-coding way. Websites,
+                web apps and custom tools, shipped end to end. My background is electronics engineering,
+                which mostly means I'm comfortable taking a system apart to find where the signal is
+                getting lost.
               </p>
               <p>
-                I care more about whether something is worth automating than about whether it can be.
+                I care more about whether something is worth building than about whether it can be.
                 Some things shouldn't be — I'll tell you when that's the case.
               </p>
             </div>
@@ -105,7 +105,7 @@ const About: React.FC = () => (
           </picture>
           <div className="border-t border-border bg-[#0D0E14] px-4 py-3">
             <p className="font-display text-[15px] font-bold text-text">Akshay Mahajan</p>
-            <p className="mt-0.5 font-mono text-[11px] text-muted">AI &amp; automation engineer</p>
+            <p className="mt-0.5 font-mono text-[11px] text-muted">Full-stack &amp; AI web developer</p>
           </div>
         </motion.div>
       </div>

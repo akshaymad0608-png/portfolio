@@ -104,7 +104,14 @@ const NavBar: React.FC = () => {
             })}
           </nav>
 
-          <div className="hidden lg:block">
+          <div className="hidden items-center gap-4 lg:flex">
+            <span className="flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-textSecondary">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-wire opacity-60" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-wire" />
+              </span>
+              Available
+            </span>
             <a
               href="https://calendly.com/akshaymad0608"
               target="_blank"

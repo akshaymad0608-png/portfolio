@@ -7,8 +7,9 @@ import Marquee from './ui/Marquee';
 import { availabilityMonth } from '../lib/availability';
 
 const STACK = [
-  'n8n', 'Make', 'Zapier', 'OpenAI', 'Claude', 'Gemini', 'LangChain',
-  'React', 'Next.js', 'Node.js', 'Supabase', 'Airtable', 'Midjourney', 'HeyGen', 'ElevenLabs',
+  'React', 'Next.js', 'Node.js', 'TypeScript', 'Tailwind', 'Supabase',
+  'GitHub', 'Vercel', 'Google AI Studio', 'Claude', 'OpenAI', 'Gemini',
+  'n8n', 'Make', 'Midjourney', 'HeyGen', 'ElevenLabs',
 ];
 
 const rise = {
@@ -47,16 +48,15 @@ const Hero: React.FC = () => {
 
             <motion.h1 custom={1} variants={rise} initial="hidden" animate="show"
                        className="font-display text-[40px] font-bold leading-[1.02] tracking-tightest text-text sm:text-[52px] lg:text-[68px]">
-              I wire the busywork
+              I build full-stack
               <br />
-              out of your business.
+              websites, <span className="text-gradient">wired with AI.</span>
             </motion.h1>
 
             <motion.p custom={2} variants={rise} initial="hidden" animate="show"
                       className="mt-7 max-w-[560px] text-lg leading-relaxed text-textSecondary md:text-xl">
-              I'm Akshay Mahajan. I build AI agents, chatbots and automation pipelines that pick up
-              the repetitive work &mdash; lead intake, support replies, content, reporting &mdash; and keep
-              running it after I've gone.
+              I'm Akshay Mahajan &mdash; a full-stack developer who ships fast with LLMs. Websites, web
+              apps and custom tools, plus the AI agents and automation that make them smarter.
             </motion.p>
 
             <motion.div custom={3} variants={rise} initial="hidden" animate="show"
@@ -91,9 +91,9 @@ const Hero: React.FC = () => {
             <motion.div custom={5} variants={rise} initial="hidden" animate="show"
                         className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-border pt-7">
               {[
-                ['4', 'products live in production'],
+                ['5', 'web products live in production'],
                 ['1M+', 'people using Photo Resizer'],
-                ['200+', 'AI tools indexed & ranked'],
+                ['2–4 wk', 'idea to launched build'],
               ].map(([n, label]) => (
                 <div key={label}>
                   <div className="font-display text-2xl font-bold text-text">{n}</div>
@@ -112,7 +112,7 @@ const Hero: React.FC = () => {
           >
             <FlowCanvas />
             <p className="mt-4 text-center font-mono text-[11px] leading-relaxed text-muted">
-              An actual intake flow &mdash; three ways a lead arrives, one agent, two things done about it.
+              One of the systems I ship &mdash; three ways a lead arrives, one agent, two things done about it.
             </p>
           </motion.div>
         </div>

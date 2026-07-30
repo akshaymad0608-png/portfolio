@@ -58,7 +58,7 @@ const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, noinde
       <meta property="og:image" content={image} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="Akshay Mahajan — AI agents, chatbots and automation" />
+      <meta property="og:image:alt" content="Akshay Mahajan — full-stack & AI web developer" />
 
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:url" content={url} />

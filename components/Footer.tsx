@@ -1,7 +1,7 @@
 import Logo from './ui/Logo';
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowUpRight, Send, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Send, Check, MessageCircle, Mail } from 'lucide-react';
 
 const NAV = [
   { heading: 'Work with me', links: [
@@ -30,10 +30,30 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="relative overflow-hidden border-t border-border bg-panel pt-20 pb-10">
+    <footer className="relative overflow-hidden border-t border-border bg-panel pt-16 pb-10">
       <div className="absolute inset-0 blueprint opacity-50" aria-hidden="true" />
 
       <div className="container relative z-10 mx-auto max-w-shell px-6">
+        {/* build CTA band — present on every page */}
+        <div className="mb-16 flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-cards/60 px-7 py-8 sm:flex-row sm:items-center">
+          <div>
+            <p className="font-display text-2xl font-bold tracking-tightest text-text">
+              Let's build something worth shipping.
+            </p>
+            <p className="mt-1.5 text-[15px] text-textSecondary">
+              A website, a web app or a tool — from idea to live, fast.
+            </p>
+          </div>
+          <a
+            href="https://calendly.com/akshaymad0608"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-signal inline-flex shrink-0 items-center gap-2 px-6 py-3.5 text-[15px]"
+          >
+            Start a project <ArrowRight size={16} />
+          </a>
+        </div>
+
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <Link to="/" className="inline-flex items-center gap-2.5">
@@ -41,8 +61,8 @@ const Footer: React.FC = () => {
             </Link>
 
             <p className="mt-5 max-w-sm text-[15px] leading-relaxed text-textSecondary">
-              AI agents, chatbots and automation pipelines for businesses that are tired of doing the
-              same thing by hand every week.
+              Full-stack websites, web apps and AI tools — built fast, with LLMs doing the heavy lifting.
+              Automation, chatbots and agents when the build needs them.
             </p>
 
             <div className="mt-7 flex gap-3">
@@ -59,6 +79,20 @@ const Footer: React.FC = () => {
                 className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-cards text-textSecondary transition-all hover:-translate-y-0.5 hover:border-wire/40 hover:text-wire"
               >
                 <svg viewBox="0 0 24 24" className="h-[18px] w-[18px] fill-current"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+              </a>
+              <a
+                href="https://wa.me/917600885080"
+                target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-cards text-textSecondary transition-all hover:-translate-y-0.5 hover:border-wire/40 hover:text-wire"
+              >
+                <MessageCircle className="h-[18px] w-[18px]" />
+              </a>
+              <a
+                href="mailto:akshaymad0608@gmail.com"
+                aria-label="Email"
+                className="flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-cards text-textSecondary transition-all hover:-translate-y-0.5 hover:border-wire/40 hover:text-wire"
+              >
+                <Mail className="h-[18px] w-[18px]" />
               </a>
             </div>
           </div>
@@ -89,10 +123,10 @@ const Footer: React.FC = () => {
 
           <div className="lg:col-span-3">
             <h2 className="mb-5 font-mono text-[11px] uppercase tracking-[0.18em] text-muted">
-              One automation a week
+              One build a week
             </h2>
             <p className="mb-4 text-[15px] leading-relaxed text-textSecondary">
-              A short email with one workflow you can copy. No course, no upsell.
+              A short email with one thing I built or shipped with AI. No course, no upsell.
             </p>
             <form onSubmit={subscribe} className="relative">
               <label htmlFor="footer-email" className="sr-only">Email address</label>

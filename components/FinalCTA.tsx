@@ -22,11 +22,11 @@ const FinalCTA: React.FC = () => (
             </div>
 
             <h2 className="mx-auto max-w-2xl font-display text-[32px] font-bold leading-[1.06] tracking-tightest text-text md:text-[46px]">
-              Bring me the task nobody on your team wants to do.
+              Got a website or product in mind? Let's build it.
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-textSecondary md:text-lg">
-              Twenty minutes, no pitch. You describe the workflow, I tell you whether automating it is
-              worth the money — including when it isn't.
+              Twenty minutes, no pitch. You describe what you want to build, I tell you the fastest way
+              to ship it — and a straight quote, including when it isn't worth it.
             </p>
 
             <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
