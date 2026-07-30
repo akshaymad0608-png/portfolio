@@ -7,6 +7,7 @@ import Logo from './ui/Logo';
 const NAV_LINKS = [
   { name: 'Services', href: '/services' },
   { name: 'Work', href: '/work' },
+  { name: 'AI Guide', href: '/ai-guide' },
   { name: 'About', href: '/about' },
   { name: 'Pricing', href: '/pricing' },
   { name: 'Contact', href: '/contact' },
