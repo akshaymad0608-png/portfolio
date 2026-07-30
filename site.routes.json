@@ -33,6 +33,13 @@
       "changefreq": "monthly"
     },
     {
+      "path": "/ai-guide",
+      "title": "AI Guide | What is AI, LLMs, Generative & Agentic AI — Akshay Mahajan",
+      "description": "A plain-English guide to AI: what it is, its history, types of AI, machine learning vs deep learning vs generative AI, what an LLM and a model are, and how AI agents and agentic AI work.",
+      "priority": "0.8",
+      "changefreq": "monthly"
+    },
+    {
       "path": "/about",
       "title": "About Akshay Mahajan | Full-Stack & AI Web Developer, Surat",
       "description": "Full-stack web developer based in Surat, India, building with AI. No agency layer and no account manager \u2014 the person you brief is the person who builds it.",
