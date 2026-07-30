@@ -4,6 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FlowCanvas from './ui/FlowCanvas';
 import Marquee from './ui/Marquee';
+import TiltCard from './ui/TiltCard';
 import { availabilityMonth } from '../lib/availability';
 
 const STACK = [
@@ -27,7 +28,7 @@ const Hero: React.FC = () => {
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
       <div
         className="absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(closest-side, rgba(169,166,255,0.10), transparent)' }}
+        style={{ background: 'radial-gradient(closest-side, rgba(91,75,245,0.10), transparent)' }}
         aria-hidden="true"
       />
 
@@ -110,7 +111,9 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
             className="lg:pl-4"
           >
-            <FlowCanvas />
+            <TiltCard max={6}>
+              <FlowCanvas />
+            </TiltCard>
             <p className="mt-4 text-center font-mono text-[11px] leading-relaxed text-muted">
               One of the systems I ship &mdash; three ways a lead arrives, one agent, two things done about it.
             </p>

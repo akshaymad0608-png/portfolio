@@ -3,12 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --ink: #070B18;
-  --panel: #0D1526;
-  --cards: #111A2E;
-  --wire: #37E0C7;
-  --signal: #FFB347;
-  --line: rgba(125, 158, 214, 0.16);
+  --ink: #F6F6F3;        /* page background — warm off-white */
+  --panel: #FFFFFF;      /* sections & cards */
+  --cards: #FFFFFF;
+  --frame: #EFEFEA;      /* subtle chrome/header surface */
+  --wire: #5B4BF5;       /* electric indigo-violet — the accent */
+  --signal: #5B4BF5;     /* primary CTA */
+  --line: rgba(17, 17, 34, 0.10);
 }
 
 @layer base {
@@ -18,20 +19,20 @@
     min-height: 100vh;
     position: relative;
     background-color: var(--ink);
-    color: #E9EEF9;
+    color: #0D0D12;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  body { font-family: 'Instrument Sans', system-ui, sans-serif; }
+  body { font-family: 'Sora', system-ui, sans-serif; }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
-    letter-spacing: -0.035em;
+    font-family: 'Space Grotesk', 'Sora', sans-serif;
+    letter-spacing: -0.03em;
     font-weight: 700;
   }
 
-  ::selection { background: var(--wire); color: #041210; }
+  ::selection { background: var(--wire); color: #FFFFFF; }
 
   :focus-visible {
     outline: 2px solid var(--wire);
@@ -40,17 +41,17 @@
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #070B18; }
-  ::-webkit-scrollbar-thumb { background: #1d2a46; border-radius: 999px; border: 2px solid #070B18; }
-  ::-webkit-scrollbar-thumb:hover { background: #2a3d63; }
+  ::-webkit-scrollbar-track { background: #F6F6F3; }
+  ::-webkit-scrollbar-thumb { background: #D6D6DE; border-radius: 999px; border: 2px solid #F6F6F3; }
+  ::-webkit-scrollbar-thumb:hover { background: #BFBFCB; }
 }
 
 @layer components {
-  /* the page is a schematic sheet */
+  /* the page is a light schematic sheet */
   .blueprint {
     background-image:
-      linear-gradient(rgba(125,158,214,0.055) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(125,158,214,0.055) 1px, transparent 1px);
+      linear-gradient(rgba(20, 20, 55, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(20, 20, 55, 0.045) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .blueprint-fade {
@@ -59,12 +60,13 @@
   }
 
   .panel {
-    background: linear-gradient(180deg, rgba(22,32,58,0.9) 0%, rgba(13,21,38,0.9) 100%);
+    background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 18px;
+    box-shadow: 0 1px 2px rgba(17, 17, 34, 0.04), 0 18px 48px -30px rgba(17, 17, 34, 0.18);
   }
   .glass-effect, .glass-card {
-    background: rgba(17, 26, 46, 0.72);
+    background: rgba(255, 255, 255, 0.72);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--line);
@@ -75,7 +77,7 @@
   .ticked { position: relative; }
   .ticked::before, .ticked::after {
     content: ''; position: absolute; width: 9px; height: 9px; pointer-events: none;
-    border-color: rgba(55,224,199,0.55); opacity: .75; z-index: 5;
+    border-color: rgba(91, 75, 245, 0.55); opacity: .8; z-index: 5;
   }
   .ticked::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
   .ticked::after  { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
@@ -89,33 +91,33 @@
   }
   .text-gradient {
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(100deg, #37E0C7 0%, #7FB2FF 55%, #FFB347 100%);
+    background-image: linear-gradient(100deg, #5B4BF5 0%, #8B5CF6 55%, #2E9BFF 100%);
   }
 
   .btn-signal {
     background: var(--signal);
-    color: #201401;
-    font-weight: 700;
+    color: #FFFFFF;
+    font-weight: 600;
     border-radius: 999px;
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    box-shadow: 0 6px 26px -8px rgba(255,179,71,0.65);
+    box-shadow: 0 8px 24px -8px rgba(91, 75, 245, 0.55);
   }
-  .btn-signal:hover { transform: translateY(-2px); background: #FFC169; box-shadow: 0 12px 34px -10px rgba(255,179,71,0.8); }
+  .btn-signal:hover { transform: translateY(-2px); background: #4F46E5; box-shadow: 0 14px 34px -10px rgba(91, 75, 245, 0.7); }
 
   .btn-ghost {
     border: 1px solid var(--line);
-    color: #E9EEF9;
+    color: #0D0D12;
     border-radius: 999px;
-    background: rgba(17,26,46,0.5);
+    background: #FFFFFF;
     transition: border-color .2s ease, transform .2s ease, background .2s ease;
   }
-  .btn-ghost:hover { border-color: rgba(55,224,199,0.5); transform: translateY(-2px); background: rgba(55,224,199,0.07); }
+  .btn-ghost:hover { border-color: rgba(91, 75, 245, 0.5); transform: translateY(-2px); background: rgba(91, 75, 245, 0.05); }
 
   .spotlight { position: relative; overflow: hidden; }
   .spotlight::after {
     content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
     transition: opacity .35s ease;
-    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(55,224,199,0.12), transparent 65%);
+    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(91, 75, 245, 0.10), transparent 65%);
   }
   .spotlight:hover::after { opacity: 1; }
 

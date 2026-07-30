@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { MapPin } from 'lucide-react';
 import Reveal from './ui/Reveal';
+import TiltCard from './ui/TiltCard';
 import { availabilityMonth } from '../lib/availability';
 
 const TIMELINE = [
@@ -82,31 +83,32 @@ const About: React.FC = () => (
           </Reveal>
         </div>
 
-        {/* portrait, framed like a node */}
+        {/* portrait, framed like a node — tilts toward the cursor */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          className="panel ticked overflow-hidden"
         >
-          <div className="flex items-center justify-between border-b border-border bg-[#0D0E14] px-4 py-2.5">
-            <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted">operator</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />
-          </div>
-          <picture>
-            <img
-              src="/akshay-portrait.jpg"
-              alt="Akshay Mahajan"
-              width={900}
-              height={506}
-              className="aspect-[4/5] w-full object-cover"
-              style={{ objectPosition: 'center 22%' }}
-            />
-          </picture>
-          <div className="border-t border-border bg-[#0D0E14] px-4 py-3">
-            <p className="font-display text-[15px] font-bold text-text">Akshay Mahajan</p>
-            <p className="mt-0.5 font-mono text-[11px] text-muted">Full-stack &amp; AI web developer</p>
-          </div>
+          <TiltCard max={9} className="panel ticked overflow-hidden">
+            <div className="flex items-center justify-between border-b border-border bg-[#EFEFEA] px-4 py-2.5">
+              <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted">operator</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />
+            </div>
+            <picture>
+              <img
+                src="/akshay-portrait.jpg"
+                alt="Akshay Mahajan"
+                width={900}
+                height={506}
+                className="aspect-[4/5] w-full object-cover"
+                style={{ objectPosition: 'center 22%' }}
+              />
+            </picture>
+            <div className="border-t border-border bg-[#EFEFEA] px-4 py-3">
+              <p className="font-display text-[15px] font-bold text-text">Akshay Mahajan</p>
+              <p className="mt-0.5 font-mono text-[11px] text-muted">Full-stack &amp; AI web developer</p>
+            </div>
+          </TiltCard>
         </motion.div>
       </div>
 

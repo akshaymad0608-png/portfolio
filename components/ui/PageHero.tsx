@@ -13,7 +13,7 @@ const PageHero: React.FC<PageHeroProps> = ({ eyebrow, title, lead, children }) =
     <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
     <div
       className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[820px] -translate-x-1/2 rounded-full"
-      style={{ background: 'radial-gradient(closest-side, rgba(169,166,255,0.09), transparent)' }}
+      style={{ background: 'radial-gradient(closest-side, rgba(91,75,245,0.09), transparent)' }}
       aria-hidden="true"
     />
     <div className="container relative z-10 mx-auto max-w-shell px-6">
