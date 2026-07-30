@@ -3,12 +3,12 @@ import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, C
 import { AVATAR_DATA_URI } from "./lib/avatarImage";
 
 export const HERO_CONTENT = {
-  headline: "I Build AI Automation & Smart Workflows to Scale Your Business",
-  subheadline: "Stop doing repetitive tasks. I'm Akshay Mahajan — I build intelligent AI agents, chatbots, automation pipelines, and high-conversion websites that save hours of manual work and boost your revenue.",
+  headline: "I build full-stack websites, wired with AI.",
+  subheadline: "I'm Akshay Mahajan — a full-stack developer who ships fast with LLMs. Websites, web apps and custom tools, plus the AI agents and automation that make them smarter.",
   cta: "See My Work",
   cta2: "Hire Me Now",
   image: AVATAR_DATA_URI,
-  badges: ["AI Automation", "Smart Chatbots", "Custom Web Apps", "Prompt Engineering"]
+  badges: ["Full-Stack Web Dev", "AI Web Apps", "Custom AI Tools", "Automation"]
 };
 
 export const DASHBOARD_SKILLS: SkillCategory[] = [
@@ -30,7 +30,7 @@ export const DASHBOARD_SKILLS: SkillCategory[] = [
   },
   {
     title: "Web & Development",
-    skills: ["React", "Next.js", "Web Deployment", "Client-Side Tools"]
+    skills: ["React", "Next.js", "Node.js", "GitHub", "Vercel", "Google AI Studio"]
   },
   {
     title: "Business Growth",
@@ -72,11 +72,11 @@ export const AI_SYSTEMS: AIPortfolioAgent[] = [
 ];
 
 export const PROCESS_STEPS: ProcessStep[] = [
-  { id: 1, title: "Share Idea", description: "Deep dive into your business bottlenecks and identify areas where AI can drive ROI.", icon: Target },
-  { id: 2, title: "Plan Solution", description: "Architect a custom, scalable AI integrated solution tailored specifically to your needs.", icon: Brain },
-  { id: 3, title: "Build Prototype", description: "Develop and train the MVP, chaining prompts and connecting backend AI models.", icon: Code2 },
-  { id: 4, title: "Review", description: "Rigorous testing, edge-case mitigation, prompt optimization and refinement.", icon: Settings },
-  { id: 5, title: "Launch", description: "Deployment, system monitoring, scaling, and handing over the keys to automation.", icon: Rocket }
+  { id: 1, title: "Share Idea", description: "We dig into what you want to build, who it's for, and where AI genuinely earns its place.", icon: Target },
+  { id: 2, title: "Plan Solution", description: "Architect the build — pages, data, and the AI wired in — as a scope you can see and sign off.", icon: Brain },
+  { id: 3, title: "Build It", description: "Ship the MVP fast: front-end, back-end and any AI, chatbots or automation it needs.", icon: Code2 },
+  { id: 4, title: "Review", description: "Rigorous testing, edge cases, performance and polish until it holds up in the real world.", icon: Settings },
+  { id: 5, title: "Launch", description: "Deploy, monitor, scale — and hand over something you own and can keep running.", icon: Rocket }
 ];
 
 export const TRUST_FACTORS: TrustFactor[] = [
@@ -88,8 +88,9 @@ export const TRUST_FACTORS: TrustFactor[] = [
 ];
 
 export const TECH_STACK = [
-  "ChatGPT", "Claude", "Gemini", "DeepSeek", "Meta AI", "Grok", 
-  "Make", "n8n", "Power BI", "Excel (AI)", "MidJourney", "HeyGen", "ElevenLabs", "React", "AutoGPT", "Copilot"
+  "React", "Next.js", "Node.js", "TypeScript", "Tailwind", "Supabase",
+  "GitHub", "Vercel", "Google AI Studio", "Claude", "ChatGPT", "Gemini",
+  "n8n", "Make", "MidJourney", "HeyGen", "ElevenLabs"
 ];
 
 import { AI_SYSTEM_INSTRUCTION } from './prompt';
@@ -292,59 +293,59 @@ export const PROMPT_SHOWCASE: PromptShowcaseItem = {
 export const SERVICES: Service[] = [
   {
     id: 1,
-    title: "AI Chatbot Development",
-    icon: MessageSquare,
-    description: "Client-facing chatbots trained on your business data to capture leads, answer FAQs and support customers 24/7.",
-    features: ["Custom Knowledge Base", "Lead Generation", "Human Handoff", "Multi-channel Support"]
+    title: "Full-Stack Web Development",
+    icon: Globe,
+    description: "The core of what I do — fast, modern websites and web apps built end to end. Landing pages, dashboards, SaaS front-ends and everything behind them, shipped in weeks with AI doing the heavy lifting.",
+    features: ["React & Next.js", "Node & APIs", "Responsive UI/UX", "SEO & Performance", "Vercel Deploy"]
   },
   {
     id: 2,
-    title: "AI Automation with n8n/Zapier",
-    icon: Layers,
-    description: "Connect your business apps and automate repetitive work such as leads, emails, reports, CRM updates and content tasks.",
-    features: ["Data Entry Automation", "CRM Syncing", "Email Triaging", "Custom Workflows"]
+    title: "Custom AI Tools & Micro-SaaS",
+    icon: Wrench,
+    description: "Web tools and micro-SaaS MVPs that solve one clear problem and are easy to demo — like Photo Resizer (1M+ users) and QuickResume. From idea to live product.",
+    features: ["MVP Development", "Client-Side Processing", "API Integration", "Monetizable Utilities"]
   },
   {
     id: 3,
-    title: "AI Agent Development",
-    icon: Rocket,
-    description: "Build practical AI agents that research, summarize, draft, route information and complete multi-step business tasks.",
-    features: ["Multi-Agent Systems", "Task Orchestration", "API Integration", "Autonomous Research"]
+    title: "AI Chatbot Development",
+    icon: MessageSquare,
+    description: "Client-facing chatbots trained on your business data to capture leads, answer FAQs and support customers 24/7 — embedded straight into your site.",
+    features: ["Custom Knowledge Base", "Lead Generation", "Human Handoff", "Multi-channel Support"]
   },
   {
     id: 4,
-    title: "Prompt Engineering",
-    icon: Terminal,
-    description: "Create reliable prompt systems, content workflows and AI instructions for consistent business outputs.",
-    features: ["Zero/Few-Shot Prompting", "Chain-of-Thought", "Output Structuring", "Cost Optimization"]
+    title: "AI Agent Development",
+    icon: Rocket,
+    description: "Practical AI agents that research, summarize, draft, route information and complete multi-step tasks — built into the products I ship.",
+    features: ["Multi-Agent Systems", "Task Orchestration", "API Integration", "Autonomous Research"]
   },
   {
     id: 5,
-    title: "SEO & Content Automation",
-    icon: Search,
-    description: "Scale SEO blogs, social media captions, reels scripts and marketing content with repeatable AI workflows.",
-    features: ["Programmatic SEO", "Blog Generation", "Social Media Auto-posting", "Keyword Targeting"]
+    title: "AI Automation with n8n/Make",
+    icon: Layers,
+    description: "Connect your business apps and automate the repetitive work — leads, emails, reports, CRM updates and content tasks — so it runs without you.",
+    features: ["Data Entry Automation", "CRM Syncing", "Email Triaging", "Custom Workflows"]
   },
   {
     id: 6,
-    title: "AI Website Development",
-    icon: Globe,
-    description: "Build premium, fast-loading portfolio, product, service and landing pages that help companies understand your offer quickly.",
-    features: ["Responsive Design", "Next.js & React", "High Performance", "Modern UI/UX"]
+    title: "Prompt Engineering",
+    icon: Terminal,
+    description: "Reliable prompt systems, content workflows and AI instructions that give consistent, production-ready outputs instead of one-off luck.",
+    features: ["Zero/Few-Shot Prompting", "Chain-of-Thought", "Output Structuring", "Cost Optimization"]
   },
   {
     id: 7,
-    title: "AI Image/Video Generation",
-    icon: Crop,
-    description: "Create AI visuals, product creatives, reel assets, avatars and video prompts for business marketing.",
-    features: ["Midjourney Mastery", "HeyGen Avatars", "Brand Consistency", "Marketing Assets"]
+    title: "SEO & Content Automation",
+    icon: Search,
+    description: "Scale SEO blogs, social captions, reels scripts and marketing content with repeatable AI workflows — the same programmatic SEO behind my own tools.",
+    features: ["Programmatic SEO", "Blog Generation", "Social Media Auto-posting", "Keyword Targeting"]
   },
   {
     id: 8,
-    title: "Custom AI Tools",
-    icon: Wrench,
-    description: "Build custom web tools and micro-SaaS MVPs that solve one clear business problem and are easy to demo.",
-    features: ["Client-Side Processing", "API Integration", "MVP Development", "Monetizable Utilities"]
+    title: "AI Image/Video Generation",
+    icon: Crop,
+    description: "Product creatives, reel assets, avatars and video prompts for marketing — Midjourney, HeyGen and ElevenLabs, on brand.",
+    features: ["Midjourney Mastery", "HeyGen Avatars", "Brand Consistency", "Marketing Assets"]
   }
 ];
 
