@@ -2,7 +2,7 @@
   "baseUrl": "https://akshay.website",
   "siteName": "Akshay Mahajan",
   "locale": "en_IN",
-  "ogImage": "/og-image.jpg",
+  "ogImage": "/akshay_avatar.png",
   "routes": [
     {
       "path": "/",

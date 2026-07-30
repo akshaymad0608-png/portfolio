@@ -96,12 +96,13 @@ const About: React.FC = () => (
             </div>
             <picture>
               <img
-                src="/akshay-portrait.jpg"
-                alt="Akshay Mahajan"
+                src="/akshay_avatar.png"
+                alt="Akshay Mahajan — full-stack & AI web developer based in Surat, India"
                 width={900}
                 height={506}
+                loading="lazy"
                 className="aspect-[4/5] w-full object-cover"
-                style={{ objectPosition: 'center 22%' }}
+                style={{ objectPosition: 'center 20%' }}
               />
             </picture>
             <div className="border-t border-border bg-[#EFEFEA] px-4 py-3">

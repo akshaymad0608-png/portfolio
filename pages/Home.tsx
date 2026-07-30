@@ -10,6 +10,7 @@ import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
 import PageTransition from '../components/PageTransition';
 import WireDivider from '../components/ui/WireDivider';
+import { PROJECTS } from '../constants';
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -17,11 +18,33 @@ const personSchema = {
   name: 'Akshay Mahajan',
   url: 'https://akshay.website',
   jobTitle: 'Full-Stack & AI Web Developer',
+  knowsAbout: [
+    'Full-Stack Web Development', 'React', 'Next.js', 'Node.js', 'TypeScript',
+    'Large Language Models', 'AI Agents', 'Chatbots', 'Workflow Automation', 'Prompt Engineering',
+  ],
   address: { '@type': 'PostalAddress', addressLocality: 'Surat', addressRegion: 'Gujarat', addressCountry: 'IN' },
   sameAs: [
     'https://linkedin.com/in/akshay-mahajan-95bb86187',
     'https://instagram.com/akshay.website',
   ],
+};
+
+// Structured data for the shipped products — helps search engines surface the work.
+const projectsSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Products built by Akshay Mahajan',
+  itemListElement: PROJECTS.map((p, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    item: {
+      '@type': 'CreativeWork',
+      name: p.title,
+      description: p.description,
+      url: p.link,
+      creator: { '@type': 'Person', name: 'Akshay Mahajan' },
+    },
+  })),
 };
 
 const faqSchema = {
@@ -37,7 +60,7 @@ const faqSchema = {
 const Home: React.FC = () => (
   <PageTransition>
     <SEO
-      schema={[personSchema, faqSchema]}
+      schema={[personSchema, faqSchema, projectsSchema]}
       title="Akshay Mahajan | Full-Stack & AI Web Developer"
       description="I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter."
     />
@@ -45,7 +68,7 @@ const Home: React.FC = () => (
     <Services limit={6} />
     <WireDivider />
     <Process />
-    <AISystems limit={2} />
+    <AISystems limit={3} />
     <Stats />
     <Testimonials />
     <FAQ />

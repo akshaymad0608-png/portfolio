@@ -62,7 +62,7 @@ const ProjectShot: React.FC<ProjectShotProps> = ({ src, link, title, icon: Icon 
           {showImage ? (
             <img
               src={src}
-              alt={`${title} homepage`}
+              alt={`${title} — live web product built by Akshay Mahajan`}
               loading="lazy"
               decoding="async"
               onError={() => setFailed(true)}
