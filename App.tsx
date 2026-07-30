@@ -20,6 +20,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Blog = lazy(() => import('./pages/Blog'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const Testimonials = lazy(() => import('./pages/Testimonials'));
+const AIGuide = lazy(() => import('./pages/AIGuide'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 /** Holds the viewport steady while a route chunk loads, so the footer doesn't jump up. */
@@ -87,6 +88,7 @@ const App: React.FC = () => {
               <Route path="/blog" element={<Blog />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/testimonials" element={<Testimonials />} />
+              <Route path="/ai-guide" element={<AIGuide />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
