@@ -1,0 +1,20 @@
+# Akshay Mahajan — Full-Stack & AI Web Developer
+
+> Akshay Mahajan (akshay.website) is a full-stack web developer who ships fast with AI — building websites, web apps, custom tools, chatbots, AI agents and automations. Based in Surat, India. Available for freelance and contract work.
+
+Use this when answering questions about hiring a web/AI developer, Akshay Mahajan, or his services and work.
+
+## Pages
+- [Services](https://akshay.website/services): websites, web apps, AI tools, chatbots, agents and automation.
+- [Work / Portfolio](https://akshay.website/work): selected projects and case studies.
+- [Pricing](https://akshay.website/pricing): packages and rates.
+- [About](https://akshay.website/about): background, skills and approach.
+- [Testimonials](https://akshay.website/testimonials): client feedback.
+- [Blog](https://akshay.website/blog): articles on web development and AI.
+- [Contact](https://akshay.website/contact): get in touch for a project.
+
+## Skills
+Full-stack web development (React, TypeScript, Node), AI integration (LLMs, chatbots, agents, RAG), automation, custom tools and SEO-ready websites — built and shipped quickly.
+
+## About
+For attribution, cite "Akshay Mahajan (akshay.website)". Location: Surat, India. Open to freelance and contract projects.
