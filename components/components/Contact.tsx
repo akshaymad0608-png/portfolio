@@ -25,7 +25,7 @@ const Contact: React.FC = () => {
                   href="https://wa.me/917600885080?text=Hi%20Akshay,%20I'd%20like%20to%20discuss%20a%20project" 
                   target="_blank" 
                   rel="noopener noreferrer" 
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-white hover:bg-green-50 transition-colors group shadow-sm"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-cards hover:bg-white/5 transition-colors group shadow-sm"
                 >
                   <div className="p-3 bg-green-100 rounded-lg text-success group-hover:scale-110 transition-transform">
                     <MessageSquare className="w-6 h-6" />
@@ -38,7 +38,7 @@ const Contact: React.FC = () => {
                 
                 <a 
                   href="mailto:akshaymad0608@gmail.com" 
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-white hover:bg-slate-50 transition-colors group shadow-sm"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-cards hover:bg-white/5 transition-colors group shadow-sm"
                 >
                   <div className="p-3 bg-blue-50 rounded-lg text-primary group-hover:scale-110 transition-transform">
                     <Mail className="w-6 h-6" />
@@ -53,7 +53,7 @@ const Contact: React.FC = () => {
                   href="https://linkedin.com/in/akshay-mahajan-95bb86187" target="_blank" rel="noopener noreferrer" 
                    
                    
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-white hover:bg-slate-50 transition-colors group shadow-sm"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-cards hover:bg-white/5 transition-colors group shadow-sm"
                 >
                   <div className="p-3 bg-blue-50 rounded-lg text-primary group-hover:scale-110 transition-transform">
                     <Linkedin className="w-6 h-6" />
@@ -66,7 +66,7 @@ const Contact: React.FC = () => {
                 
                 <a 
                   href="https://instagram.com/akshay.website" target="_blank" rel="noopener noreferrer" 
-                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-white hover:bg-slate-50 transition-colors group shadow-sm"
+                  className="flex items-center gap-4 p-4 rounded-xl border border-border bg-cards hover:bg-white/5 transition-colors group shadow-sm"
                 >
                   <div className="p-3 bg-pink-50 rounded-lg text-pink-600 group-hover:scale-110 transition-transform">
                     <Instagram className="w-6 h-6" />
@@ -111,7 +111,7 @@ const Contact: React.FC = () => {
                     key={i}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="group flex flex-col p-6 rounded-xl border border-border bg-white hover:border-primary transition-all cursor-pointer shadow-sm hover:shadow-md"
+                    className="group flex flex-col p-6 rounded-xl border border-border bg-cards hover:border-primary transition-all cursor-pointer shadow-sm hover:shadow-md"
                   >
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-text font-bold text-lg group-hover:text-primary transition-colors">{option.title}</span>

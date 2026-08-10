@@ -121,7 +121,7 @@ const AIChatBot: React.FC = () => {
             className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[360px] max-h-[78vh] sm:max-h-[520px] panel ticked shadow-2xl z-[100] flex flex-col overflow-hidden"
           >
             {/* Header */}
-            <div className="bg-[#EFEFEA] border-b border-border px-4 py-3 flex justify-between items-center">
+            <div className="bg-frame border-b border-border px-4 py-3 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center relative overflow-hidden border border-wire/30">
@@ -186,7 +186,7 @@ const AIChatBot: React.FC = () => {
             )}
 
             {/* Input Area */}
-            <div className="p-3 border-t border-border bg-[#EFEFEA]">
+            <div className="p-3 border-t border-border bg-frame">
               <div className="relative flex items-center">
                 <input
                   type="text"

@@ -91,7 +91,7 @@ const About: React.FC = () => (
           transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
         >
           <TiltCard max={9} className="panel ticked overflow-hidden">
-            <div className="flex items-center justify-between border-b border-border bg-[#EFEFEA] px-4 py-2.5">
+            <div className="flex items-center justify-between border-b border-border bg-frame px-4 py-2.5">
               <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted">operator</span>
               <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />
             </div>
@@ -105,7 +105,7 @@ const About: React.FC = () => (
                 style={{ objectPosition: 'center 20%' }}
               />
             </picture>
-            <div className="border-t border-border bg-[#EFEFEA] px-4 py-3">
+            <div className="border-t border-border bg-frame px-4 py-3">
               <p className="font-display text-[15px] font-bold text-text">Akshay Mahajan</p>
               <p className="mt-0.5 font-mono text-[11px] text-muted">Full-stack &amp; AI web developer</p>
             </div>

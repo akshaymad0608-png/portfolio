@@ -44,13 +44,13 @@ const ProjectShot: React.FC<ProjectShotProps> = ({ src, link, title, icon: Icon 
         aria-hidden="true"
       />
 
-      <div className="relative w-full overflow-hidden rounded-xl border border-border bg-cards shadow-[0_24px_60px_-24px_rgba(17,17,34,0.14)] transition-transform duration-500 ease-out group-hover:-translate-y-1">
+      <div className="relative w-full overflow-hidden rounded-xl border border-border bg-cards shadow-[0_24px_60px_-24px_rgba(255, 255, 255,0.14)] transition-transform duration-500 ease-out group-hover:-translate-y-1">
         {/* chrome */}
-        <div className="flex items-center gap-2.5 border-b border-border bg-[#EFEFEA] px-3.5 py-2.5">
+        <div className="flex items-center gap-2.5 border-b border-border bg-frame px-3.5 py-2.5">
           <span className="flex gap-1.5" aria-hidden="true">
-            <span className="h-2 w-2 rounded-full bg-[#CFCFD8]" />
-            <span className="h-2 w-2 rounded-full bg-[#CFCFD8]" />
-            <span className="h-2 w-2 rounded-full bg-[#CFCFD8]" />
+            <span className="h-2 w-2 rounded-full bg-[#3A3A42]" />
+            <span className="h-2 w-2 rounded-full bg-[#3A3A42]" />
+            <span className="h-2 w-2 rounded-full bg-[#3A3A42]" />
           </span>
           <span className="ml-1 flex-1 truncate rounded-md bg-ink/70 px-2.5 py-1 font-mono text-[10.5px] text-muted">
             {domainOf(link) || title.toLowerCase().replace(/\s+/g, '')}
