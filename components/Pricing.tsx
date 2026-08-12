@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Bot, Layers, Workflow, Headphones, Code2, ArrowRight } from 'lucide-react';
+import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, ArrowRight } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 import SpotlightCard from './ui/SpotlightCard';
@@ -22,18 +22,18 @@ const detectCurrency = (): Currency => {
 
 const PACKAGES = [
   {
-    title: 'Automation setup',
-    price: 'from $500',
-    priceINR: 'from ₹45,000',
+    title: 'Website',
+    price: 'from $450',
+    priceINR: 'from ₹40,000',
     delivery: '1–2 weeks',
-    icon: Workflow,
-    desc: 'For the repetitive weekly task that keeps eating someone\u2019s afternoon.',
+    icon: Globe,
+    desc: 'A business site that loads fast, reads well on a phone, and is built to be found.',
     features: [
-      'n8n, Make or Zapier build',
-      'Up to 3 multi-step workflows',
-      'API connections configured',
-      'Error branches and alerts',
-      '30 days of fixes included',
+      'Up to 6 pages, designed and built',
+      'Responsive down to small phones',
+      'SEO structure, metadata and sitemap',
+      'Contact form and analytics wired in',
+      'Live on your own domain',
     ],
     popular: false,
   },
@@ -72,6 +72,20 @@ const PACKAGES = [
 ];
 
 const RETAINERS = [
+  {
+    title: 'SEO & AI search',
+    price: 'from $250 / month',
+    priceINR: 'from ₹20,000 / month',
+    icon: Search,
+    features: ['Technical audit and fixes', 'On-page copy and schema', 'Found by ChatGPT and Perplexity', 'Search Console tracking'],
+  },
+  {
+    title: 'Automation setup',
+    price: 'from $500',
+    priceINR: 'from ₹45,000',
+    icon: Workflow,
+    features: ['n8n, Make or Zapier build', 'Up to 3 multi-step workflows', 'API connections configured', 'Error alerts that reach you'],
+  },
   {
     title: 'Advice only',
     price: '$150 / hour',
