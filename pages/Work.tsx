@@ -3,6 +3,7 @@ import PageTransition from '../components/PageTransition';
 import PageHero from '../components/ui/PageHero';
 import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
+import BuildLog from '../components/BuildLog';
 import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
 
@@ -19,6 +20,7 @@ const Work: React.FC = () => (
     />
     <Stats />
     <AISystems detailed heading={false} />
+    <BuildLog />
     <FinalCTA />
   </PageTransition>
 );

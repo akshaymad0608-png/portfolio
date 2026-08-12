@@ -4,6 +4,8 @@ import Services from '../components/Services';
 import Process from '../components/Process';
 import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
+import Playground from '../components/Playground';
+import BuildLog from '../components/BuildLog';
 import Testimonials from '../components/Testimonials';
 import FAQ, { FAQ_DATA } from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
@@ -69,7 +71,9 @@ const Home: React.FC = () => (
     <WireDivider />
     <Process />
     <AISystems limit={3} />
+    <Playground />
     <Stats />
+    <BuildLog />
     <Testimonials />
     <FAQ />
     <FinalCTA />
