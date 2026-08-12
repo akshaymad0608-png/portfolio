@@ -1,13 +1,30 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Check, Bot, Layers, Workflow, Headphones, Code2, ArrowRight } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 import SpotlightCard from './ui/SpotlightCard';
 
+type Currency = 'USD' | 'INR';
+
+/** Indian clients think in rupees; everyone else in dollars. Default to whichever
+ *  the visitor's own device suggests, and let them switch either way. */
+const detectCurrency = (): Currency => {
+  if (typeof window === 'undefined') return 'USD';
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    const locale = navigator.language || '';
+    if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta' || /-IN$/i.test(locale)) return 'INR';
+  } catch {
+    /* fall through to USD */
+  }
+  return 'USD';
+};
+
 const PACKAGES = [
   {
     title: 'Automation setup',
     price: 'from $500',
+    priceINR: 'from ₹45,000',
     delivery: '1–2 weeks',
     icon: Workflow,
     desc: 'For the repetitive weekly task that keeps eating someone\u2019s afternoon.',
@@ -23,6 +40,7 @@ const PACKAGES = [
   {
     title: 'AI agent or chatbot',
     price: 'from $1,500',
+    priceINR: 'from ₹1,40,000',
     delivery: '3–4 weeks',
     icon: Bot,
     desc: 'For work that needs judgement, not just steps \u2014 replies, research, routing.',
@@ -38,6 +56,7 @@ const PACKAGES = [
   {
     title: 'Full product build',
     price: 'from $3,000',
+    priceINR: 'from ₹2,80,000',
     delivery: '4–8 weeks',
     icon: Layers,
     desc: 'For when the thing you need doesn\u2019t exist yet and has to be built.',
@@ -56,18 +75,25 @@ const RETAINERS = [
   {
     title: 'Advice only',
     price: '$150 / hour',
+    priceINR: '₹14,000 / hour',
     icon: Headphones,
     features: ['Architecture review', 'Stack selection', 'Code review', 'AI strategy'],
   },
   {
     title: 'Monthly retainer',
     price: 'quoted per scope',
+    priceINR: 'quoted per scope',
     icon: Code2,
     features: ['Ongoing maintenance', 'New features', 'Priority response', 'Reserved hours'],
   },
 ];
 
-const Pricing: React.FC = () => (
+const Pricing: React.FC = () => {
+  const [currency, setCurrency] = useState<Currency>(detectCurrency);
+  const amount = (item: { price: string; priceINR: string }) =>
+    currency === 'INR' ? item.priceINR : item.price;
+
+  return (
   <section id="pricing" className="relative py-24 md:py-32">
     <div className="container mx-auto max-w-shell px-6">
       <SectionHeading
@@ -75,8 +101,34 @@ const Pricing: React.FC = () => (
         title="What things cost"
         lead="Project-based, quoted up front. The number you see on the call is the number on the invoice."
         align="center"
-        className="mb-14"
+        className="mb-8"
       />
+
+      <Reveal>
+        <div className="mb-12 flex justify-center">
+          <div
+            role="group"
+            aria-label="Currency"
+            className="inline-flex items-center gap-1 rounded-full border border-border bg-panel p-1"
+          >
+            {(['INR', 'USD'] as Currency[]).map((c) => (
+              <button
+                key={c}
+                type="button"
+                onClick={() => setCurrency(c)}
+                aria-pressed={currency === c}
+                className={`min-h-[40px] rounded-full px-5 py-2 font-mono text-[12.5px] tracking-wider transition-colors ${
+                  currency === c
+                    ? 'bg-signal text-ink'
+                    : 'text-textSecondary hover:text-text'
+                }`}
+              >
+                {c === 'INR' ? '₹ INR' : '$ USD'}
+              </button>
+            ))}
+          </div>
+        </div>
+      </Reveal>
 
       <div className="grid gap-4 lg:grid-cols-3">
         {PACKAGES.map((pkg, i) => {
@@ -99,7 +151,7 @@ const Pricing: React.FC = () => (
                 </span>
 
                 <h3 className="font-display text-xl font-bold text-text">{pkg.title}</h3>
-                <div className="mt-2 font-mono text-2xl font-semibold text-signal">{pkg.price}</div>
+                <div className="mt-2 font-mono text-2xl font-semibold text-signal">{amount(pkg)}</div>
                 <p className="mt-4 text-[15px] leading-relaxed text-textSecondary">{pkg.desc}</p>
 
                 <ul className="mt-7 flex-1 space-y-3 border-t border-border pt-6">
@@ -132,7 +184,7 @@ const Pricing: React.FC = () => (
                 </span>
                 <div className="flex-1">
                   <h3 className="font-display text-lg font-bold text-text">{item.title}</h3>
-                  <div className="mt-1 font-mono text-[15px] text-signal">{item.price}</div>
+                  <div className="mt-1 font-mono text-[15px] text-signal">{amount(item)}</div>
                   <ul className="mt-4 grid gap-2 sm:grid-cols-2">
                     {item.features.map((f) => (
                       <li key={f} className="flex items-center gap-2.5 text-[14px] text-textSecondary">
@@ -163,6 +215,7 @@ const Pricing: React.FC = () => (
       </Reveal>
     </div>
   </section>
-);
+  );
+};
 
 export default Pricing;
