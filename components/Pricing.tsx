@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, ArrowRight } from 'lucide-react';
+import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, Image as ImageIcon, Video, ArrowRight } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 import SpotlightCard from './ui/SpotlightCard';
@@ -22,7 +22,7 @@ const detectCurrency = (): Currency => {
 
 const PACKAGES = [
   {
-    title: 'Website',
+    title: 'Website development',
     price: 'from $450',
     priceINR: 'from ₹40,000',
     delivery: '1–2 weeks',
@@ -85,6 +85,20 @@ const RETAINERS = [
     priceINR: 'from ₹45,000',
     icon: Workflow,
     features: ['n8n, Make or Zapier build', 'Up to 3 multi-step workflows', 'API connections configured', 'Error alerts that reach you'],
+  },
+  {
+    title: 'AI images',
+    price: 'from $120 / batch',
+    priceINR: 'from ₹10,000 / batch',
+    icon: ImageIcon,
+    features: ['20 finished, ready-to-post images', 'Product shots, ads or thumbnails', 'Matched to your brand colours', 'Source files included'],
+  },
+  {
+    title: 'AI video',
+    price: 'from $175 / video',
+    priceINR: 'from ₹15,000 / video',
+    icon: Video,
+    features: ['Up to 60 seconds, reel or ad format', 'AI avatar or voiceover', 'Subtitles and background music', 'Two rounds of revisions'],
   },
   {
     title: 'Advice only',
