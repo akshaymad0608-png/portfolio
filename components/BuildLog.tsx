@@ -18,6 +18,10 @@ type Summary = { repos: number | null; stars: number | null; contributions: numb
 
 const BuildLog: React.FC = () => {
   const [summary, setSummary] = useState<Summary>({ repos: null, stars: null, contributions: null });
+  // The public contributions API is rate-limited and goes down now and then.
+  // We probe it ourselves and only mount the calendar when it answers —
+  // otherwise the widget prints its own raw error onto the page.
+  const [calendarOk, setCalendarOk] = useState<boolean | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -48,10 +52,15 @@ const BuildLog: React.FC = () => {
             data?.total && typeof data.total === 'object'
               ? (Object.values(data.total) as number[]).reduce((a, b) => a + b, 0)
               : null;
-          if (!cancelled) setSummary((s) => ({ ...s, contributions: total }));
+          if (!cancelled) {
+            setSummary((s) => ({ ...s, contributions: total }));
+            setCalendarOk(true);
+          }
+        } else if (!cancelled) {
+          setCalendarOk(false);
         }
       } catch {
-        /* ignore */
+        if (!cancelled) setCalendarOk(false);
       }
     };
 
@@ -108,17 +117,24 @@ const BuildLog: React.FC = () => {
             </div>
 
             <div className="overflow-x-auto p-5 md:p-7">
-              <div className="min-w-[680px]">
-                <GitHubCalendar
-                  username={GITHUB_USER}
-                  colorScheme="dark"
-                  theme={{ dark: ['#17171A', '#312D66', '#4B4499', '#6459CC', '#7C74FF'] }}
-                  fontSize={12}
-                  blockSize={11}
-                  blockMargin={3}
-                  labels={{ totalCount: '{{count}} contributions in the last year' }}
-                />
-              </div>
+              {calendarOk === false ? (
+                <p className="py-6 text-center font-mono text-[12px] text-muted">
+                  GitHub is not answering right now — the numbers below are still live.
+                </p>
+              ) : (
+                <div className="min-w-[680px]">
+                  <GitHubCalendar
+                    username={GITHUB_USER}
+                    colorScheme="light"
+                    theme={{ light: ['#F1F1F3', '#D9D6F8', '#B3ADF0', '#8078E8', '#4F46E5'] }}
+                    fontSize={12}
+                    blockSize={11}
+                    blockMargin={3}
+                    labels={{ totalCount: '{{count}} contributions in the last year' }}
+                    errorMessage="GitHub is not answering right now."
+                  />
+                </div>
+              )}
             </div>
 
             <dl className="grid gap-px border-t border-border bg-border sm:grid-cols-3">

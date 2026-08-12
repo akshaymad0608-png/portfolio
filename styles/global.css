@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --ink: #0A0A0B;        /* page background — neutral near-black */
-  --panel: #131316;      /* sections & cards */
-  --cards: #131316;
-  --frame: #141417;      /* subtle chrome/header surface */
-  --wire: #7C74FF;       /* refined indigo — the accent */
-  --signal: #7C74FF;     /* primary CTA */
-  --line: rgba(255, 255, 255, 0.09);
+  --ink: #FFFFFF;        /* page background — clean white */
+  --panel: #FFFFFF;      /* sections & cards */
+  --cards: #FFFFFF;
+  --frame: #F4F4F5;      /* subtle chrome/header surface */
+  --wire: #4F46E5;       /* refined indigo — the accent */
+  --signal: #4F46E5;     /* primary CTA */
+  --line: rgba(24, 24, 27, 0.09);
 }
 
 @layer base {
@@ -19,7 +19,7 @@
     min-height: 100vh;
     position: relative;
     background-color: var(--ink);
-    color: #FAFAFA;
+    color: #18181B;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -32,7 +32,7 @@
     font-weight: 700;
   }
 
-  ::selection { background: var(--wire); color: #0A0A0B; }
+  ::selection { background: var(--wire); color: #FFFFFF; }
 
   :focus-visible {
     outline: 2px solid var(--wire);
@@ -41,17 +41,17 @@
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #0A0A0B; }
-  ::-webkit-scrollbar-thumb { background: #2A2A30; border-radius: 999px; border: 2px solid #0A0A0B; }
-  ::-webkit-scrollbar-thumb:hover { background: #3A3A42; }
+  ::-webkit-scrollbar-track { background: #FFFFFF; }
+  ::-webkit-scrollbar-thumb { background: #D4D4D8; border-radius: 999px; border: 2px solid #FFFFFF; }
+  ::-webkit-scrollbar-thumb:hover { background: #B4B4BB; }
 }
 
 @layer components {
-  /* the page is a dark schematic sheet */
+  /* the page is a pale schematic sheet */
   .blueprint {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+      linear-gradient(rgba(24, 24, 27, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(24, 24, 27, 0.035) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .blueprint-fade {
@@ -63,10 +63,10 @@
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 18px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 18px 48px -30px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 12px 32px -20px rgba(24, 24, 27, 0.18);
   }
   .glass-effect, .glass-card {
-    background: rgba(19, 19, 22, 0.72);
+    background: rgba(255, 255, 255, 0.75);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--line);
@@ -77,7 +77,7 @@
   .ticked { position: relative; }
   .ticked::before, .ticked::after {
     content: ''; position: absolute; width: 9px; height: 9px; pointer-events: none;
-    border-color: rgba(124, 116, 255, 0.6); opacity: .8; z-index: 5;
+    border-color: rgba(79, 70, 229, 0.5); opacity: .8; z-index: 5;
   }
   .ticked::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
   .ticked::after  { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
@@ -91,33 +91,33 @@
   }
   .text-gradient {
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(100deg, #8B83FF 0%, #A78BFA 100%);
+    background-image: linear-gradient(100deg, #4F46E5 0%, #6366F1 100%);
   }
 
   .btn-signal {
     background: var(--signal);
-    color: #0A0A0B;
+    color: #FFFFFF;
     font-weight: 600;
     border-radius: 999px;
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    box-shadow: 0 8px 24px -8px rgba(124, 116, 255, 0.5);
+    box-shadow: 0 8px 22px -10px rgba(79, 70, 229, 0.55);
   }
-  .btn-signal:hover { transform: translateY(-2px); background: #948DFF; box-shadow: 0 14px 34px -10px rgba(124, 116, 255, 0.65); }
+  .btn-signal:hover { transform: translateY(-2px); background: #4338CA; box-shadow: 0 14px 30px -12px rgba(79, 70, 229, 0.6); }
 
   .btn-ghost {
     border: 1px solid var(--line);
-    color: #FAFAFA;
+    color: #18181B;
     border-radius: 999px;
-    background: transparent;
+    background: #FFFFFF;
     transition: border-color .2s ease, transform .2s ease, background .2s ease;
   }
-  .btn-ghost:hover { border-color: rgba(124, 116, 255, 0.5); transform: translateY(-2px); background: rgba(124, 116, 255, 0.08); }
+  .btn-ghost:hover { border-color: rgba(79, 70, 229, 0.45); transform: translateY(-2px); background: rgba(79, 70, 229, 0.04); }
 
   .spotlight { position: relative; overflow: hidden; }
   .spotlight::after {
     content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
     transition: opacity .35s ease;
-    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(124, 116, 255, 0.12), transparent 65%);
+    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(79, 70, 229, 0.07), transparent 65%);
   }
   .spotlight:hover::after { opacity: 1; }
 

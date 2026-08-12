@@ -48,9 +48,9 @@ const ProjectShot: React.FC<ProjectShotProps> = ({ src, link, title, icon: Icon 
         {/* chrome */}
         <div className="flex items-center gap-2.5 border-b border-border bg-frame px-3.5 py-2.5">
           <span className="flex gap-1.5" aria-hidden="true">
-            <span className="h-2 w-2 rounded-full bg-[#3A3A42]" />
-            <span className="h-2 w-2 rounded-full bg-[#3A3A42]" />
-            <span className="h-2 w-2 rounded-full bg-[#3A3A42]" />
+            <span className="h-2 w-2 rounded-full bg-zinc-300" />
+            <span className="h-2 w-2 rounded-full bg-zinc-300" />
+            <span className="h-2 w-2 rounded-full bg-zinc-300" />
           </span>
           <span className="ml-1 flex-1 truncate rounded-md bg-ink/70 px-2.5 py-1 font-mono text-[10.5px] text-muted">
             {domainOf(link) || title.toLowerCase().replace(/\s+/g, '')}
