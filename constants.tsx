@@ -219,7 +219,10 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "TailwindCSS", "jsPDF", "Vite"],
     year: "2025",
     link: "https://fitsmart.space",
-    image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://fitsmart.space",
+    // wait/8 lets the app hydrate before the shot, otherwise it captures skeletons.
+    // The ?v suffix is a cache key — thum.io keys on the exact URL, so bump it
+    // whenever the site changes visibly and the old screenshot needs retiring.
+    image: "https://image.thum.io/get/wait/8/width/1200/crop/750/noanimate/https://fitsmart.space/?v=3",
     icon: HeartPulse,
     stat: "6 FREE CALCULATORS",
     elementId: "smartfit"
@@ -236,7 +239,7 @@ export const PROJECTS: Project[] = [
     tech: ["Web Speech API", "WebRTC / PeerJS", "JavaScript", "Static HTML"],
     year: "2025",
     link: "https://languagetransalator.com/",
-    image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://languagetransalator.com/",
+    image: "https://image.thum.io/get/wait/8/width/1200/crop/750/noanimate/https://languagetransalator.com/?v=2",
     icon: Languages,
     stat: "40+ LANGUAGES",
     elementId: "language-translator"
