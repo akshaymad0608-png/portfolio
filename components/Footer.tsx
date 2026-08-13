@@ -154,8 +154,11 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 sm:flex-row">
+          {/* Name, place and number together on every page — the same trio the
+              Google Business Profile carries, so the two agree. */}
           <p className="font-mono text-[12px] text-muted">
-            &copy; {new Date().getFullYear()} Akshay Mahajan &middot; Surat, India
+            &copy; {new Date().getFullYear()} Akshay Mahajan &middot; Surat, Gujarat, India &middot;{' '}
+            <a href="tel:+917600885080" className="hover:text-wire">+91 76008 85080</a>
           </p>
           <p className="flex items-center gap-2 font-mono text-[12px] text-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />

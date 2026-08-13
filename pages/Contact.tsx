@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Clock, Check, ArrowRight, MessageCircle } from 'lucide-react';
+import { Mail, MapPin, Clock, Check, ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
 import SEO from '../components/SEO';
 import Reveal from '../components/ui/Reveal';
@@ -220,11 +220,23 @@ const Contact: React.FC = () => {
                       </a>
                     </div>
                   </div>
+                  {/* Written out in full, not just hidden inside a wa.me link —
+                      search engines match this against the Google Business
+                      Profile, and it has to be the same number in both places. */}
+                  <div className="flex items-start gap-3">
+                    <Phone size={17} className="mt-0.5 shrink-0 text-wire" />
+                    <div>
+                      <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Phone</div>
+                      <a href="tel:+917600885080" className="text-[15px] text-text hover:text-wire">
+                        +91 76008 85080
+                      </a>
+                    </div>
+                  </div>
                   <div className="flex items-start gap-3">
                     <MapPin size={17} className="mt-0.5 shrink-0 text-wire" />
                     <div>
                       <div className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">Based in</div>
-                      <p className="text-[15px] text-text">Surat, Gujarat &middot; working IST, flexible for calls</p>
+                      <p className="text-[15px] text-text">Surat, Gujarat, India &middot; working IST, flexible for calls</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
