@@ -82,7 +82,7 @@ const service = {
   '@id': `${baseUrl}/#service`,
   name: 'Akshay Mahajan — Web Development & AI',
   url: baseUrl,
-  image: `${baseUrl}/akshay_avatar.png`,
+  image: `${baseUrl}/akshay-portrait.jpg`,
   description:
     'Freelance full-stack web developer in Surat, Gujarat. Websites, web apps, AI chatbots, agents, automation and SEO — built directly, with no agency layer.',
   provider: { '@id': `${baseUrl}/#akshay` },
@@ -151,8 +151,8 @@ const buildHead = (route) => {
     `<meta property="og:title" content="${esc(route.title)}" />`,
     `<meta property="og:description" content="${esc(route.description)}" />`,
     `<meta property="og:image" content="${baseUrl}${ogImage}" />`,
-    `<meta property="og:image:width" content="1200" />`,
-    `<meta property="og:image:height" content="630" />`,
+    `<meta property="og:image:width" content="1672" />`,
+    `<meta property="og:image:height" content="941" />`,
     `<meta property="og:image:alt" content="Akshay Mahajan — AI agents, chatbots and automation" />`,
     `<meta name="twitter:card" content="summary_large_image" />`,
     `<meta name="twitter:title" content="${esc(route.title)}" />`,
@@ -165,6 +165,40 @@ const buildHead = (route) => {
   ].join('\n    ');
 };
 
+/* ------------------------------------------------------------- shell body -- */
+
+/**
+ * Bake each route's own words into #root.
+ *
+ * The head metadata above is enough for link-preview crawlers, but not for
+ * readers: robots.txt invites GPTBot, PerplexityBot and ClaudeBot, and those
+ * fetch the HTML without running JavaScript. They were being handed an empty
+ * <div id="root"> on every page — nine blank documents, no matter how good the
+ * schema was. So the same heading, intro and key points the page renders are
+ * written into the markup too.
+ *
+ * index.tsx mounts with createRoot, which clears the container, so React drops
+ * this the moment it boots and the visitor never navigates it. It is the real
+ * page content rather than a keyword list precisely so the two agree.
+ */
+const buildBody = (route) => {
+  const nav = routes
+    .filter((r) => r.path !== route.path)
+    .map((r) => `<li><a href="${r.path}">${esc(r.title.split('|')[0].trim())}</a></li>`)
+    .join('');
+
+  return `
+      <main>
+        <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
+        <p>${esc(route.lead || route.description)}</p>
+        ${route.points?.length ? `<ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
+        <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
+          <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·
+          <a href="tel:+917600885080">+91 76008 85080</a></p>
+      </main>
+      <nav aria-label="Site"><ul>${nav}</ul></nav>`;
+};
+
 /* ----------------------------------------------------------------- write -- */
 
 if (!existsSync(dist)) {
@@ -173,7 +207,9 @@ if (!existsSync(dist)) {
 }
 
 for (const route of routes) {
-  const html = template.replace('</head>', `  ${buildHead(route)}\n  </head>`);
+  const html = template
+    .replace('</head>', `  ${buildHead(route)}\n  </head>`)
+    .replace('<div id="root"></div>', `<div id="root">${buildBody(route)}\n    </div>`);
   const outDir = route.path === '/' ? dist : join(dist, route.path);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), html);

@@ -5,7 +5,7 @@ import { PlayCircle, VideoOff, Loader2 } from 'lucide-react';
 interface IntroductionVideoProps {
   /** Path to video file inside /public, e.g. "/intro.mp4" */
   src: string;
-  /** Optional poster image shown before the video loads/plays, e.g. "/new_avatar.png" */
+  /** Optional poster image shown before the video loads/plays, e.g. "/akshay-portrait.jpg" */
   poster?: string;
   /** Autoplay muted looping background-style video vs a click-to-play video with controls */
   variant?: 'background' | 'player';

@@ -72,7 +72,7 @@ const PromptBuilder: React.FC = () => {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="space-y-4">
+      <div className="min-w-0 space-y-4">
         <label className="block">
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted">What do you need done?</span>
           <input
@@ -121,7 +121,7 @@ const PromptBuilder: React.FC = () => {
         </label>
       </div>
 
-      <div className="flex flex-col rounded-xl border border-border bg-ink">
+      <div className="min-w-0 flex flex-col rounded-xl border border-border bg-ink">
         <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted">prompt.md</span>
           <CopyButton text={prompt} />
@@ -170,7 +170,7 @@ const ImageResizer: React.FC = () => {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <div className="space-y-4">
+      <div className="min-w-0 space-y-4">
         <label className="block">
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
             Target size — {targetKb} KB
@@ -199,7 +199,7 @@ const ImageResizer: React.FC = () => {
         </label>
       </div>
 
-      <div className="flex flex-col items-center justify-center rounded-xl border border-border bg-ink p-5">
+      <div className="min-w-0 flex flex-col items-center justify-center rounded-xl border border-border bg-ink p-5">
         {busy && <p className="font-mono text-[12px] text-muted">compressing…</p>}
         {!busy && !out && <p className="font-mono text-[12px] text-muted">output appears here</p>}
         {!busy && out && (
@@ -236,7 +236,7 @@ const JsonFormatter: React.FC = () => {
 
   return (
     <div className="grid gap-6 lg:grid-cols-2">
-      <label className="flex flex-col">
+      <label className="min-w-0 flex flex-col">
         <span className="font-mono text-[11px] uppercase tracking-widest text-muted">Paste JSON</span>
         <textarea
           value={raw}
@@ -247,7 +247,7 @@ const JsonFormatter: React.FC = () => {
         />
       </label>
 
-      <div className="flex flex-col rounded-xl border border-border bg-ink">
+      <div className="min-w-0 flex flex-col rounded-xl border border-border bg-ink">
         <div className="flex items-center justify-between border-b border-border px-4 py-2.5">
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted">
             {result.ok ? 'formatted' : 'invalid json'}

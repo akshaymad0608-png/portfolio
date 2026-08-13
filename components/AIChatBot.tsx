@@ -75,7 +75,11 @@ const AIChatBot: React.FC = () => {
       });
 
       if (!response.ok) {
-        throw new Error('Failed to send message');
+        // The endpoint explains itself when it can't answer — an unset API key
+        // reads very differently from an outage, and the visitor deserves the
+        // real reason rather than a generic failure.
+        const reason = await response.json().then((d) => d?.error).catch(() => null);
+        throw new Error(reason || 'Failed to send message');
       }
 
       setIsTyping(false);
@@ -104,8 +108,10 @@ const AIChatBot: React.FC = () => {
       setIsTyping(false);
       setMessages(prev => [...prev, { 
         id: (Date.now() + 1).toString(), 
-        sender: 'ai', 
-        text: "I'm having trouble connecting to my neural net right now. Please reach out via WhatsApp!" 
+        sender: 'ai',
+        text: error instanceof Error && error.message !== 'Failed to send message'
+          ? error.message
+          : "I can't reach the chat service right now. Ping me on WhatsApp and I'll answer myself.",
       }]);
     }
   };
@@ -222,7 +228,9 @@ const AIChatBot: React.FC = () => {
             <button
               onClick={(e) => { e.stopPropagation(); setShowNudge(false); }}
               aria-label="Dismiss"
-              className="shrink-0 text-muted hover:text-text transition-colors"
+              /* The icon stays 15px; the button is padded out to a 28px box so it
+                 clears the minimum target size without changing how it looks. */
+              className="-m-1 flex h-7 w-7 shrink-0 items-center justify-center text-muted transition-colors hover:text-text"
             >
               <X size={15} />
             </button>
@@ -234,6 +242,8 @@ const AIChatBot: React.FC = () => {
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
+        aria-label={isOpen ? 'Close the chat' : 'Open the chat'}
+        aria-expanded={isOpen}
         className="fixed bottom-6 right-4 sm:right-6 w-14 h-14 btn-signal flex items-center justify-center z-[90]"
       >
         {isOpen ? (
