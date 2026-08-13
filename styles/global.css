@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --ink: #FFFFFF;        /* page background — clean white */
+  --ink: #FDFBF7;        /* page background — warm paper */
   --panel: #FFFFFF;      /* sections & cards */
   --cards: #FFFFFF;
-  --frame: #F4F4F5;      /* subtle chrome/header surface */
-  --wire: #4F46E5;       /* refined indigo — the accent */
-  --signal: #4F46E5;     /* primary CTA */
-  --line: rgba(24, 24, 27, 0.09);
+  --frame: #F2EDE4;      /* subtle chrome/header surface */
+  --wire: #B0512F;       /* deep terracotta — the accent */
+  --signal: #B0512F;     /* primary CTA */
+  --line: rgba(31, 28, 24, 0.11);
 }
 
 @layer base {
@@ -19,20 +19,21 @@
     min-height: 100vh;
     position: relative;
     background-color: var(--ink);
-    color: #18181B;
+    color: #1F1C18;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  body { font-family: 'Sora', system-ui, sans-serif; }
+  body { font-family: 'Karla', system-ui, sans-serif; line-height: 1.65; }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', 'Sora', sans-serif;
-    letter-spacing: -0.03em;
-    font-weight: 700;
+    font-family: 'Newsreader', Georgia, serif;
+    letter-spacing: -0.011em;
+    font-weight: 600;
+    line-height: 1.14;
   }
 
-  ::selection { background: var(--wire); color: #FFFFFF; }
+  ::selection { background: rgba(176, 81, 47, 0.18); color: #1F1C18; }
 
   :focus-visible {
     outline: 2px solid var(--wire);
@@ -41,17 +42,17 @@
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #FFFFFF; }
-  ::-webkit-scrollbar-thumb { background: #D4D4D8; border-radius: 999px; border: 2px solid #FFFFFF; }
-  ::-webkit-scrollbar-thumb:hover { background: #B4B4BB; }
+  ::-webkit-scrollbar-track { background: #FDFBF7; }
+  ::-webkit-scrollbar-thumb { background: #DCD5C9; border-radius: 999px; border: 2px solid #FDFBF7; }
+  ::-webkit-scrollbar-thumb:hover { background: #C4BAA9; }
 }
 
 @layer components {
   /* the page is a pale schematic sheet */
   .blueprint {
     background-image:
-      linear-gradient(rgba(24, 24, 27, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(24, 24, 27, 0.035) 1px, transparent 1px);
+      linear-gradient(rgba(31, 28, 24, 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(31, 28, 24, 0.035) 1px, transparent 1px);
     background-size: 56px 56px;
   }
   .blueprint-fade {
@@ -63,10 +64,10 @@
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 18px;
-    box-shadow: 0 1px 2px rgba(24, 24, 27, 0.04), 0 12px 32px -20px rgba(24, 24, 27, 0.18);
+    box-shadow: 0 1px 2px rgba(31, 28, 24, 0.04), 0 12px 32px -20px rgba(31, 28, 24, 0.16);
   }
   .glass-effect, .glass-card {
-    background: rgba(255, 255, 255, 0.75);
+    background: rgba(253, 251, 247, 0.78);
     backdrop-filter: blur(14px);
     -webkit-backdrop-filter: blur(14px);
     border: 1px solid var(--line);
@@ -77,7 +78,7 @@
   .ticked { position: relative; }
   .ticked::before, .ticked::after {
     content: ''; position: absolute; width: 9px; height: 9px; pointer-events: none;
-    border-color: rgba(79, 70, 229, 0.5); opacity: .8; z-index: 5;
+    border-color: rgba(176, 81, 47, 0.5); opacity: .8; z-index: 5;
   }
   .ticked::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
   .ticked::after  { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
@@ -91,7 +92,7 @@
   }
   .text-gradient {
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(100deg, #4F46E5 0%, #6366F1 100%);
+    background-image: linear-gradient(100deg, #B0512F 0%, #C4673F 100%);
   }
 
   .btn-signal {
@@ -100,24 +101,24 @@
     font-weight: 600;
     border-radius: 999px;
     transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    box-shadow: 0 8px 22px -10px rgba(79, 70, 229, 0.55);
+    box-shadow: 0 8px 22px -10px rgba(176, 81, 47, 0.55);
   }
-  .btn-signal:hover { transform: translateY(-2px); background: #4338CA; box-shadow: 0 14px 30px -12px rgba(79, 70, 229, 0.6); }
+  .btn-signal:hover { transform: translateY(-2px); background: #8E3F23; box-shadow: 0 14px 30px -12px rgba(176, 81, 47, 0.6); }
 
   .btn-ghost {
     border: 1px solid var(--line);
-    color: #18181B;
+    color: #1F1C18;
     border-radius: 999px;
     background: #FFFFFF;
     transition: border-color .2s ease, transform .2s ease, background .2s ease;
   }
-  .btn-ghost:hover { border-color: rgba(79, 70, 229, 0.45); transform: translateY(-2px); background: rgba(79, 70, 229, 0.04); }
+  .btn-ghost:hover { border-color: rgba(176, 81, 47, 0.45); transform: translateY(-2px); background: rgba(176, 81, 47, 0.04); }
 
   .spotlight { position: relative; overflow: hidden; }
   .spotlight::after {
     content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
     transition: opacity .35s ease;
-    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(79, 70, 229, 0.07), transparent 65%);
+    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(176, 81, 47, 0.07), transparent 65%);
   }
   .spotlight:hover::after { opacity: 1; }
 

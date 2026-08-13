@@ -48,12 +48,12 @@ const NodeCard: React.FC<{
     transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
     style={{ transformOrigin: `${x + w / 2}px ${y}px` }}
   >
-    <rect x={x} y={y - 27} width={w} height={54} rx={11} fill="#FFFFFF" stroke="rgba(24,24,27,0.12)" />
+    <rect x={x} y={y - 27} width={w} height={54} rx={11} fill="#FFFFFF" stroke="rgba(31,28,24,0.12)" />
     <rect x={x} y={y - 27} width={3} height={54} rx={1.5} fill={accent} />
-    <text x={x + 15} y={y - 7} fill="#71717A" fontFamily="JetBrains Mono, monospace" fontSize="8.5" letterSpacing="1.6">
+    <text x={x + 15} y={y - 7} fill="#8B837A" fontFamily="JetBrains Mono, monospace" fontSize="8.5" letterSpacing="1.6">
       {tag}
     </text>
-    <text x={x + 15} y={y + 12} fill="#18181B" fontFamily="Sora, sans-serif" fontSize="13" fontWeight="500">
+    <text x={x + 15} y={y + 12} fill="#1F1C18" fontFamily="Sora, sans-serif" fontSize="13" fontWeight="500">
       {label}
     </text>
   </motion.g>
@@ -67,7 +67,7 @@ const Wires: React.FC<{ wires: Wire[]; reduced: boolean }> = ({ wires, reduced }
         <motion.path
           d={wire.d}
           fill="none"
-          stroke={wire.out ? '#2E9BFF' : '#4F46E5'}
+          stroke={wire.out ? '#2E9BFF' : '#B0512F'}
           strokeWidth={1.5}
           strokeOpacity={0.55}
           className={reduced ? '' : 'wire-flow'}
@@ -76,7 +76,7 @@ const Wires: React.FC<{ wires: Wire[]; reduced: boolean }> = ({ wires, reduced }
           transition={{ duration: 1, delay: 0.5 + i * 0.12, ease: 'easeOut' }}
         />
         {!reduced && (
-          <circle r={3.4} fill={wire.out ? '#2E9BFF' : '#4F46E5'}>
+          <circle r={3.4} fill={wire.out ? '#2E9BFF' : '#B0512F'}>
             <animateMotion dur={`${wire.dur}s`} repeatCount="indefinite" begin={`${wire.delay}s`} path={wire.d} />
             <animate attributeName="opacity" values="0;1;1;0" dur={`${wire.dur}s`} repeatCount="indefinite" begin={`${wire.delay}s`} />
           </circle>
@@ -107,10 +107,10 @@ const AgentNode: React.FC<{ cx: number; top: number; clipId: string }> = ({ cx, 
         </svg>
       </g>
       <circle cx={cx} cy={top + 78} r={53} fill="none" stroke="rgba(91,75,245,0.4)" strokeWidth={1.2} />
-      <text x={cx} y={top + 22} textAnchor="middle" fill="#4F46E5" fontFamily="JetBrains Mono, monospace" fontSize="8.5" letterSpacing="1.8">
+      <text x={cx} y={top + 22} textAnchor="middle" fill="#B0512F" fontFamily="JetBrains Mono, monospace" fontSize="8.5" letterSpacing="1.8">
         AGENT
       </text>
-      <text x={cx} y={top + 155} textAnchor="middle" fill="#18181B" fontFamily="Sora, sans-serif" fontSize="13.5" fontWeight="600">
+      <text x={cx} y={top + 155} textAnchor="middle" fill="#1F1C18" fontFamily="Sora, sans-serif" fontSize="13.5" fontWeight="600">
         Akshay
       </text>
     </motion.g>
@@ -120,8 +120,8 @@ const AgentNode: React.FC<{ cx: number; top: number; clipId: string }> = ({ cx, 
 const Defs = () => (
   <defs>
     <radialGradient id="agentGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stopColor="#4F46E5" stopOpacity="0.28" />
-      <stop offset="100%" stopColor="#4F46E5" stopOpacity="0" />
+      <stop offset="0%" stopColor="#B0512F" stopOpacity="0.28" />
+      <stop offset="100%" stopColor="#B0512F" stopOpacity="0" />
     </radialGradient>
   </defs>
 );
@@ -160,7 +160,7 @@ const FlowCanvas: React.FC<{ className?: string }> = ({ className = '' }) => {
           { y: 206, label: 'New email' },
           { y: 316, label: 'WhatsApp msg' },
         ].map((t, i) => (
-          <NodeCard key={t.label} x={12} y={t.y} w={114} label={t.label} tag="TRIGGER" accent="#4F46E5" delay={0.15 + i * 0.1} />
+          <NodeCard key={t.label} x={12} y={t.y} w={114} label={t.label} tag="TRIGGER" accent="#B0512F" delay={0.15 + i * 0.1} />
         ))}
         <AgentNode cx={300} top={126} clipId="avatarClipWide" />
         {[
@@ -175,7 +175,7 @@ const FlowCanvas: React.FC<{ className?: string }> = ({ className = '' }) => {
       <svg viewBox="0 0 360 500" className="h-auto w-full sm:hidden" role="img" aria-label={label}>
         <Defs />
         <Wires wires={TALL_WIRES} reduced={reduced} />
-        <NodeCard x={100} y={67} w={160} label="New lead arrives" tag="TRIGGER" accent="#4F46E5" delay={0.15} />
+        <NodeCard x={100} y={67} w={160} label="New lead arrives" tag="TRIGGER" accent="#B0512F" delay={0.15} />
         <AgentNode cx={180} top={170} clipId="avatarClipTall" />
         <NodeCard x={8} y={440} w={160} label="CRM updated" tag="ACTION" accent="#2E9BFF" delay={0.55} />
         <NodeCard x={192} y={440} w={160} label="Reply drafted" tag="ACTION" accent="#2E9BFF" delay={0.65} />

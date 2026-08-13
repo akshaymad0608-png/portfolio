@@ -294,7 +294,7 @@ const Playground: React.FC = () => {
                     onClick={() => setTab(t.id)}
                     aria-pressed={active}
                     className={`inline-flex shrink-0 items-center gap-2 rounded-lg px-3.5 py-2 text-[13px] font-medium transition-colors ${
-                      active ? 'bg-wire text-ink' : 'text-textSecondary hover:bg-zinc-50 hover:text-text'
+                      active ? 'bg-wire text-ink' : 'text-textSecondary hover:bg-frame hover:text-text'
                     }`}
                   >
                     <Icon size={14} />
