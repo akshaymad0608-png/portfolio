@@ -18,7 +18,7 @@ const ServicesPage: React.FC = () => (
     <PageHero
       eyebrow="Services"
       title={<>Tell me what to build.<br className="hidden md:block" /> I'll ship it fast.</>}
-      lead="Eight kinds of work I take on — from full-stack builds to the AI inside them — what each one costs, and a rough calculation of what doing it the slow way is costing you now."
+      lead="Twelve kinds of work I take on — from full-stack builds to the AI inside them, plus the search and rescue work on sites that already exist — what each one costs, and a rough calculation of what doing it the slow way is costing you now."
     >
       <div className="flex flex-col gap-3 sm:flex-row">
         <a href="https://calendly.com/akshaymad0608" target="_blank" rel="noopener noreferrer"

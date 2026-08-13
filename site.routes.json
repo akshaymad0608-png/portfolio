@@ -24,11 +24,11 @@
     {
       "path": "/services",
       "title": "Web Development & AI Services | Akshay Mahajan",
-      "description": "Full-stack web development, custom AI tools, chatbots, agents and workflow automation. What each one involves, what it costs and how long it takes, plus a free scoping call.",
+      "description": "Twelve services: full-stack web development, custom AI tools, chatbots, agents, automation, technical SEO and AI search, site audits and local SEO.",
       "priority": "0.9",
       "changefreq": "monthly",
       "heading": "Tell me what to build. I'll ship it fast.",
-      "lead": "Eight kinds of work I take on — from full-stack builds to the AI inside them — what each one costs, and a rough calculation of what doing it the slow way is costing you now.",
+      "lead": "Twelve kinds of work I take on — from full-stack builds to the AI inside them, plus the search and rescue work on sites that already exist — what each one costs, and a rough calculation of what doing it the slow way is costing you now.",
       "points": [
         "Full-Stack Web Development",
         "Custom AI Tools & Micro-SaaS",
@@ -36,7 +36,12 @@
         "AI Agent Development",
         "AI Automation with n8n/Make",
         "Prompt Engineering",
-        "SEO & Content Automation"
+        "SEO & Content Automation",
+        "AI Image/Video Generation",
+        "Technical SEO & AI Search",
+        "Site Audit & Rescue",
+        "Local SEO & Google Business",
+        "Installable & Offline Web Apps"
       ]
     },
     {
@@ -71,7 +76,10 @@
         "Automation setup",
         "AI images",
         "AI video",
-        "Advice only"
+        "Site audit & rescue",
+        "Local SEO setup",
+        "Advice only",
+        "Monthly retainer"
       ]
     },
     {

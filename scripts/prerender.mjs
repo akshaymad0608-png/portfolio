@@ -104,11 +104,17 @@ const service = {
     name: 'Services',
     itemListElement: [
       'Website development',
+      'Custom AI tools and micro-SaaS',
       'AI chatbot development',
       'AI agent development',
       'Workflow automation',
-      'SEO and AI search optimisation',
+      'Prompt engineering',
+      'SEO and content automation',
       'AI image and video generation',
+      'Technical SEO and AI search optimisation',
+      'Website audit and repair',
+      'Local SEO and Google Business Profile',
+      'Progressive web app development',
     ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
   },
   address: {

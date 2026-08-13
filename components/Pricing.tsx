@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, Image as ImageIcon, Video, ArrowRight } from 'lucide-react';
+import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, Image as ImageIcon, Video, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 import SpotlightCard from './ui/SpotlightCard';
@@ -99,6 +99,20 @@ const RETAINERS = [
     priceINR: 'from ₹15,000 / video',
     icon: Video,
     features: ['Up to 60 seconds, reel or ad format', 'AI avatar or voiceover', 'Subtitles and background music', 'Two rounds of revisions'],
+  },
+  {
+    title: 'Site audit & rescue',
+    price: 'from $300',
+    priceINR: 'from ₹25,000',
+    icon: ShieldCheck,
+    features: ['Indexing and soft-404 fixes', 'Mobile and layout bugs', 'Broken links, assets and previews', 'Written findings you keep'],
+  },
+  {
+    title: 'Local SEO setup',
+    price: 'from $200',
+    priceINR: 'from ₹17,000',
+    icon: MapPin,
+    features: ['Name, address and phone made consistent', 'LocalBusiness schema with coordinates', 'Google Business Profile set up', 'Service-area pages'],
   },
   {
     title: 'Advice only',

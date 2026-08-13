@@ -349,6 +349,34 @@ export const SERVICES: Service[] = [
     icon: Crop,
     description: "Product creatives, reel assets, avatars and video prompts for marketing — Midjourney, HeyGen and ElevenLabs, on brand.",
     features: ["Midjourney Mastery", "HeyGen Avatars", "Brand Consistency", "Marketing Assets"]
+  },
+  {
+    id: 9,
+    title: "Technical SEO & AI Search",
+    icon: Target,
+    description: "The half of SEO that happens in the markup: structured data, pre-rendered pages, canonicals and crawl budget — plus the newer job of being readable to ChatGPT, Perplexity and Google's AI answers, which don't run your JavaScript.",
+    features: ["JSON-LD Structured Data", "Pre-rendering for Crawlers", "llms.txt & GEO/AEO", "Core Web Vitals", "Search Console Fixes"]
+  },
+  {
+    id: 10,
+    title: "Site Audit & Rescue",
+    icon: ShieldCheck,
+    description: "You already have a site and something is wrong with it — pages not indexing, zero clicks, a broken mobile layout, link previews showing nothing. I go through it end to end, find what's actually breaking, and fix it.",
+    features: ["Indexing & Soft-404 Fixes", "Mobile & Layout Bugs", "Broken Links & Assets", "Accessibility Pass", "Written Findings"]
+  },
+  {
+    id: 11,
+    title: "Local SEO & Google Business",
+    icon: Navigation,
+    description: "For businesses that need to be found in one city. Consistent name, address and phone across your site and listing, local schema with real coordinates, service-area pages and a Google Business Profile that agrees with all of it.",
+    features: ["NAP Consistency", "LocalBusiness Schema", "Google Business Profile", "Service-Area Pages", "Map Pack Targeting"]
+  },
+  {
+    id: 12,
+    title: "Installable & Offline Web Apps",
+    icon: Zap,
+    description: "Web apps that install to the home screen and keep working with no signal — service workers, offline fallbacks and an install prompt. The same setup running on AI Master Tools and Photo Resizer.",
+    features: ["Service Workers", "Offline Fallback", "Install Prompt", "App Manifest", "Cache Strategy"]
   }
 ];
 
