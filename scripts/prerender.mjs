@@ -80,13 +80,37 @@ const website = {
 const service = {
   '@type': 'ProfessionalService',
   '@id': `${baseUrl}/#service`,
-  name: 'Akshay Mahajan — AI & Automation',
+  name: 'Akshay Mahajan — Web Development & AI',
   url: baseUrl,
-  image: `${baseUrl}/og-image.jpg`,
+  image: `${baseUrl}/akshay_avatar.png`,
   description:
-    'AI agents, chatbots and workflow automation built for businesses that are tired of doing the same thing by hand every week.',
+    'Freelance full-stack web developer in Surat, Gujarat. Websites, web apps, AI chatbots, agents, automation and SEO — built directly, with no agency layer.',
   provider: { '@id': `${baseUrl}/#akshay` },
-  areaServed: { '@type': 'Country', name: 'Worldwide' },
+  telephone: '+91-76008-85080',
+  email: 'akshaymad0608@gmail.com',
+  // Local results are built from where you are and which areas you cover, so
+  // name the city and state explicitly rather than only claiming "Worldwide".
+  areaServed: [
+    { '@type': 'City', name: 'Surat' },
+    { '@type': 'State', name: 'Gujarat' },
+    { '@type': 'Country', name: 'India' },
+    { '@type': 'Country', name: 'Worldwide' },
+  ],
+  geo: { '@type': 'GeoCoordinates', latitude: 21.1702, longitude: 72.8311 },
+  currenciesAccepted: 'INR, USD',
+  knowsLanguage: ['en', 'hi', 'gu'],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Services',
+    itemListElement: [
+      'Website development',
+      'AI chatbot development',
+      'AI agent development',
+      'Workflow automation',
+      'SEO and AI search optimisation',
+      'AI image and video generation',
+    ].map((name) => ({ '@type': 'Offer', itemOffered: { '@type': 'Service', name } })),
+  },
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Surat',
