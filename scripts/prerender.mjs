@@ -197,7 +197,7 @@ const buildBody = (route) => {
       <main>
         <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
         <p>${esc(route.lead || route.description)}</p>
-        ${route.points?.length ? `<ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
+        ${route.points?.length ? `<h2>${esc(route.pointsHeading || 'Highlights')}</h2><ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·
           <a href="tel:+917600885080">+91 76008 85080</a></p>

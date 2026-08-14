@@ -7,11 +7,12 @@
     {
       "path": "/",
       "title": "Full-Stack & AI Web Developer | Akshay Mahajan",
-      "description": "I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter. Based in Surat, India.",
+      "description": "I'm Akshay Mahajan, a full-stack web developer who ships fast with AI — websites, web apps, custom tools, and the agents that make them smarter. Surat, India.",
       "priority": "1.0",
       "changefreq": "weekly",
       "heading": "I build full-stack websites, wired with AI.",
       "lead": "I'm Akshay Mahajan — a full-stack developer who ships fast with LLMs. Websites, web apps and custom tools, plus the AI agents and automation that make them smarter. Based in Surat, Gujarat, working with clients in India and worldwide.",
+      "pointsHeading": "What I build",
       "points": [
         "Full-stack web development — sites, web apps and custom tools",
         "Custom AI tools and micro-SaaS",
@@ -29,6 +30,7 @@
       "changefreq": "monthly",
       "heading": "Tell me what to build. I'll ship it fast.",
       "lead": "Twelve kinds of work I take on — from full-stack builds to the AI inside them, plus the search and rescue work on sites that already exist — what each one costs, and a rough calculation of what doing it the slow way is costing you now.",
+      "pointsHeading": "The twelve services",
       "points": [
         "Full-Stack Web Development",
         "Custom AI Tools & Micro-SaaS",
@@ -52,6 +54,7 @@
       "changefreq": "monthly",
       "heading": "Five builds, all live, all still running.",
       "lead": "Each one started as somebody's repetitive problem. Open them and try them yourself — nothing here is a mockup.",
+      "pointsHeading": "The five products",
       "points": [
         "AI Master Tools — a searchable directory of 640+ AI tools across 49 categories",
         "QuickResume.Business — an AI resume builder that writes ATS-readable resumes",
@@ -68,6 +71,7 @@
       "changefreq": "monthly",
       "heading": "Quoted up front. No hourly surprises.",
       "lead": "Fixed quotes in writing before anything starts, priced in both US dollars and Indian rupees. Three starting points, and an honest note on what each one does and doesn't include.",
+      "pointsHeading": "What's quoted",
       "points": [
         "Website development",
         "AI agent or chatbot",
@@ -90,6 +94,7 @@
       "changefreq": "monthly",
       "heading": "AI, explained simply — history to agentic AI.",
       "lead": "No hype, no jargon walls. What AI actually is, where it came from, and the words everyone throws around — models, LLMs, generative AI, agents — in plain English.",
+      "pointsHeading": "What's covered",
       "points": [
         "What is Artificial Intelligence?",
         "From a question in 1950 to AI that acts",
@@ -107,6 +112,7 @@
       "changefreq": "monthly",
       "heading": "I'm Akshay. I'm the one who actually builds the thing.",
       "lead": "No agency layer, no account manager, no handoff to a junior. You talk to me on the scoping call and I'm the same person writing the code, wiring up the AI and answering the message when something breaks at 9pm.",
+      "pointsHeading": "Quick facts",
       "points": [
         "Full-stack developer building fast with LLMs",
         "Background in electronics engineering",
@@ -123,6 +129,7 @@
       "changefreq": "monthly",
       "heading": "What people say after the handover",
       "lead": "Names are withheld where clients asked. I'm happy to set up a reference call before you commit to anything.",
+      "pointsHeading": "In short",
       "points": [
         "What changed on their side",
         "Six things worth pointing at"
@@ -136,6 +143,7 @@
       "changefreq": "monthly",
       "heading": "Notes from the build",
       "lead": "What worked, what cost me a weekend, and the code and workflows you can copy straight into your own stack.",
+      "pointsHeading": "Coming up",
       "points": [
         "How to build an AI agent that survives contact with real users",
         "The parts of web development generative AI is genuinely good at",
@@ -150,6 +158,7 @@
       "changefreq": "monthly",
       "heading": "Tell me what you want to build.",
       "lead": "The more specific you are about the project, the more useful my first reply will be. I answer within one working day.",
+      "pointsHeading": "Get in touch",
       "points": [
         "Email akshaymad0608@gmail.com",
         "Phone and WhatsApp +91 76008 85080",
