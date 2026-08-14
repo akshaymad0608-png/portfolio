@@ -193,11 +193,19 @@ const buildBody = (route) => {
     .map((r) => `<li><a href="${r.path}">${esc(r.title.split('|')[0].trim())}</a></li>`)
     .join('');
 
+  // Optional extra h2-tagged sections beyond the single points list — used on
+  // the homepage to surface the real /work case-study list without touching
+  // the other 8 routes' existing single-points shape.
+  const extraSections = (route.sections || [])
+    .map((s) => `<h2>${esc(s.h2)}</h2><ul>${s.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`)
+    .join('');
+
   return `
       <main>
         <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
         <p>${esc(route.lead || route.description)}</p>
         ${route.points?.length ? `<h2>${esc(route.pointsHeading || 'Highlights')}</h2><ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
+        ${extraSections}
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·
           <a href="tel:+917600885080">+91 76008 85080</a></p>

@@ -20,6 +20,21 @@
         "Workflow automation with n8n, Make and Zapier",
         "SEO and AI search optimisation",
         "AI image and video generation"
+      ],
+      "sections": [
+        { "h2": "Recent work — five products, all live", "points": [
+          "AI Master Tools — a searchable directory of 640+ AI tools across 49 categories",
+          "QuickResume.Business — an AI resume builder that writes ATS-readable resumes",
+          "Photo Resizer — a client-side image resizer used by over a million people",
+          "FitSmart — a fitness platform with health calculators and an AI coach",
+          "Rosetta — a browser translator with voice, live conversation and video-call subtitles"
+        ] },
+        { "h2": "About", "points": [
+          "Full-stack developer building fast with LLMs",
+          "Background in electronics engineering",
+          "Based in Surat, Gujarat — working IST, flexible for calls",
+          "Works in English, Hindi and Gujarati"
+        ] }
       ]
     },
     {
