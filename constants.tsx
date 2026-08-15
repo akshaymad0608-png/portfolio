@@ -1,5 +1,5 @@
 import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target, Languages } from "lucide-react";
-import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory } from "./types";
+import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory, InternalBuild } from "./types";
 import { AVATAR_DATA_URI } from "./lib/avatarImage";
 
 export const HERO_CONTENT = {
@@ -146,12 +146,54 @@ export const SKILLS: Skill[] = [
     description: "ATS optimization, interview skills, and deploying AI agents for job applications.",
     demoLink: "#work"
   },
-  { 
-    name: "Research & LinkedIn Optimization", 
-    level: 90, 
-    icon: Layers, 
+  {
+    name: "Research & LinkedIn Optimization",
+    level: 90,
+    icon: Layers,
     description: "Deep research methodologies and personal branding strategies using AI.",
-    demoLink: "#work" 
+    demoLink: "#work"
+  },
+  {
+    name: "React, TypeScript & Vite",
+    level: 95,
+    icon: Code2,
+    description: "The stack behind every product here — typed components, fast builds, deployed on Vercel.",
+    demoLink: "#work"
+  },
+  {
+    name: "Technical SEO & Structured Data",
+    level: 93,
+    icon: Target,
+    description: "JSON-LD graphs, canonicals, sitemaps and Search Console work — the markup search engines actually read.",
+    demoLink: "#work"
+  },
+  {
+    name: "Pre-rendering & AI Crawlability",
+    level: 92,
+    icon: Search,
+    description: "Baking real content into static HTML so ChatGPT, Perplexity and Google's first pass see a page, not an empty shell.",
+    demoLink: "#work"
+  },
+  {
+    name: "PWAs & Offline-First Web",
+    level: 90,
+    icon: Zap,
+    description: "Service workers, offline fallbacks and install prompts — shipping on tools used by a million people.",
+    demoLink: "#work"
+  },
+  {
+    name: "Performance & Accessibility",
+    level: 89,
+    icon: ShieldCheck,
+    description: "Core Web Vitals, contrast ratios, tap targets and keyboard paths — checked, not assumed.",
+    demoLink: "#work"
+  },
+  {
+    name: "n8n, Docker & Self-Hosting",
+    level: 88,
+    icon: Database,
+    description: "Containerised workflow stacks with backups, health checks and one-command deploys.",
+    demoLink: "#work"
   }
 ];
 
@@ -451,4 +493,45 @@ export const CERTIFICATES: Certificate[] = [
       "Research work using AI - Linkedin optimisation with AI"
     ]
   }
+];
+
+/**
+ * Builds with no public URL. They sit apart from PROJECTS on purpose — the
+ * case-study section promises "open it and try it yourself", and these cannot
+ * honour that. Described plainly instead, with no button that goes nowhere.
+ */
+export const INTERNAL_BUILDS: InternalBuild[] = [
+  {
+    id: 1,
+    title: "Akshay LinkedIn OS",
+    kind: "Automation stack",
+    status: "Running privately",
+    icon: Network,
+    summary: "A self-hosted LinkedIn content and lead system: ten n8n workflows on a Google Sheets brain, driven from Telegram.",
+    detail: "Content drafting, AI-news collection, lead generation, engagement, connection handling, DM classification and profile optimisation each run as their own workflow, sharing a set of subworkflows. The whole stack comes up with one command, with backups, health checks and a restore path.",
+    tech: ["n8n", "Docker Compose", "Postgres", "Google Sheets", "Telegram Bot API"],
+    facts: ["10 workflows", "200-prompt library", "69 passing tests", "One-command deploy"],
+  },
+  {
+    id: 2,
+    title: "Sweet Crumbs",
+    kind: "E-commerce build",
+    status: "Demo build",
+    icon: Sparkles,
+    summary: "A bakery storefront with a real cart and checkout, built to show a full commerce flow without a backend behind it.",
+    detail: "Fourteen products across five categories with filtering, a slide-out cart that survives a refresh through localStorage, quantity controls and a complete checkout flow. Entirely client-side, so it deploys anywhere static.",
+    tech: ["React", "TypeScript", "Vite", "TailwindCSS"],
+    facts: ["14 products, 5 categories", "Cart persisted locally", "Full checkout flow", "No backend required"],
+  },
+  {
+    id: 3,
+    title: "SEO Audit Toolkit",
+    kind: "Internal tooling",
+    status: "Internal tool",
+    icon: Target,
+    summary: "The zero-dependency Node CLI I run against my own sites every week, plus the page generators that came out of it.",
+    detail: "Point it at a URL and it reports titles, descriptions, canonicals, heading structure, structured data and crawlability. Alongside it sit Search Console analysis scripts and the generators that produced the programmatic pages on several of the products listed above.",
+    tech: ["Node.js", "Zero dependencies", "Search Console API"],
+    facts: ["Run weekly on 6 sites", "No install step", "Schema + canonical checks", "Feeds the page generators"],
+  },
 ];

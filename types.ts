@@ -91,3 +91,21 @@ export interface Certificate {
   expertise: string[];
   downloadLink?: string;
 }
+
+/**
+ * Something built and run, but with no public URL to send anyone to — an
+ * internal tool, a private automation stack, a demo storefront. Deliberately
+ * has no `link`: listing these next to the shipped products with a dead button
+ * would be worse than describing them plainly.
+ */
+export interface InternalBuild {
+  id: number;
+  title: string;
+  kind: string;
+  summary: string;
+  detail: string;
+  tech: string[];
+  facts: string[];
+  status: 'Running privately' | 'Demo build' | 'Internal tool';
+  icon?: any;
+}

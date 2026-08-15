@@ -22,19 +22,25 @@
         "AI image and video generation"
       ],
       "sections": [
-        { "h2": "Recent work — five products, all live", "points": [
-          "AI Master Tools — a searchable directory of 640+ AI tools across 49 categories",
-          "QuickResume.Business — an AI resume builder that writes ATS-readable resumes",
-          "Photo Resizer — a client-side image resizer used by over a million people",
-          "FitSmart — a fitness platform with health calculators and an AI coach",
-          "Rosetta — a browser translator with voice, live conversation and video-call subtitles"
-        ] },
-        { "h2": "About", "points": [
-          "Full-stack developer building fast with LLMs",
-          "Background in electronics engineering",
-          "Based in Surat, Gujarat — working IST, flexible for calls",
-          "Works in English, Hindi and Gujarati"
-        ] }
+        {
+          "h2": "Recent work — five products, all live",
+          "points": [
+            "AI Master Tools — a searchable directory of 640+ AI tools across 49 categories",
+            "QuickResume.Business — an AI resume builder that writes ATS-readable resumes",
+            "Photo Resizer — a client-side image resizer used by over a million people",
+            "FitSmart — a fitness platform with health calculators and an AI coach",
+            "Rosetta — a browser translator with voice, live conversation and video-call subtitles"
+          ]
+        },
+        {
+          "h2": "About",
+          "points": [
+            "Full-stack developer building fast with LLMs",
+            "Background in electronics engineering",
+            "Based in Surat, Gujarat — working IST, flexible for calls",
+            "Works in English, Hindi and Gujarati"
+          ]
+        }
       ]
     },
     {
@@ -64,7 +70,7 @@
     {
       "path": "/work",
       "title": "Case Studies: AI Products I've Shipped | Akshay Mahajan",
-      "description": "Five live AI products — a tools directory, an ATS resume builder, an image utility used by over a million people, a fitness platform, and a voice and video-call translator. What broke, what I built.",
+      "description": "Five live AI products built end to end, plus the private automation stack and internal tooling behind them. What was broken, what I built, what changed.",
       "priority": "0.9",
       "changefreq": "monthly",
       "heading": "Five builds, all live, all still running.",
@@ -75,7 +81,10 @@
         "QuickResume.Business — an AI resume builder that writes ATS-readable resumes",
         "Photo Resizer — a client-side image resizer used by over a million people",
         "FitSmart — a fitness platform with six health calculators and an AI coach",
-        "Rosetta — a browser translator with voice, live conversation and video-call subtitles"
+        "Rosetta — a browser translator with voice, live conversation and video-call subtitles",
+        "Akshay LinkedIn OS — 10 n8n workflows, 200-prompt library, one-command Docker deploy",
+        "Sweet Crumbs — bakery storefront with a working cart and checkout",
+        "SEO Audit Toolkit — zero-dependency Node CLI run weekly on six sites"
       ]
     },
     {

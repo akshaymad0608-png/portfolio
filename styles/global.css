@@ -2,14 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+/**
+ * Swiss technical.
+ *
+ * White paper, near-black ink, one red. Structure comes from a strict grid and
+ * hairline rules rather than shadows, tints or rounded corners — surfaces sit
+ * flat on the page and are separated by a 1px line, the way a printed spec
+ * sheet does it. Radii are 4px at most so nothing reads as a soft "card".
+ */
+
 :root {
-  --ink: #FDFBF7;        /* page background — warm paper */
-  --panel: #FFFFFF;      /* sections & cards */
+  --ink: #FFFFFF;        /* page */
+  --panel: #FFFFFF;      /* sections & cards — same white, told apart by rules */
   --cards: #FFFFFF;
-  --frame: #F2EDE4;      /* subtle chrome/header surface */
-  --wire: #B0512F;       /* deep terracotta — the accent */
-  --signal: #B0512F;     /* primary CTA */
-  --line: rgba(31, 28, 24, 0.11);
+  --frame: #FAFAFA;      /* the only off-white, for banded sections */
+  --wire: #DC2B26;       /* the single accent */
+  --signal: #DC2B26;
+  --line: rgba(10, 10, 10, 0.12);
+  --line-strong: rgba(10, 10, 10, 0.24);
 }
 
 @layer base {
@@ -19,115 +29,123 @@
     min-height: 100vh;
     position: relative;
     background-color: var(--ink);
-    color: #1F1C18;
+    color: #0A0A0A;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
 
-  body { font-family: 'Karla', system-ui, sans-serif; line-height: 1.65; }
-
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Newsreader', Georgia, serif;
-    letter-spacing: -0.011em;
-    font-weight: 600;
-    line-height: 1.14;
+  body {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    /* Inter's tabular figures keep price and stat columns from shifting. */
+    font-feature-settings: 'cv05' 1, 'ss01' 1;
   }
 
-  ::selection { background: rgba(176, 81, 47, 0.18); color: #1F1C18; }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    letter-spacing: -0.03em;
+    font-weight: 700;
+    line-height: 1.05;
+  }
+
+  ::selection { background: #DC2B26; color: #FFFFFF; }
 
   :focus-visible {
     outline: 2px solid var(--wire);
-    outline-offset: 3px;
-    border-radius: 6px;
+    outline-offset: 2px;
+    border-radius: 0;
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #FDFBF7; }
-  ::-webkit-scrollbar-thumb { background: #DCD5C9; border-radius: 999px; border: 2px solid #FDFBF7; }
-  ::-webkit-scrollbar-thumb:hover { background: #C4BAA9; }
+  ::-webkit-scrollbar-track { background: #FFFFFF; }
+  ::-webkit-scrollbar-thumb { background: #D4D4D4; border: 3px solid #FFFFFF; }
+  ::-webkit-scrollbar-thumb:hover { background: #767676; }
 }
 
 @layer components {
-  /* the page is a pale schematic sheet */
+  /* The grid is the design. Kept crisp rather than faded. */
   .blueprint {
     background-image:
-      linear-gradient(rgba(31, 28, 24, 0.035) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(31, 28, 24, 0.035) 1px, transparent 1px);
-    background-size: 56px 56px;
+      linear-gradient(rgba(10, 10, 10, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(10, 10, 10, 0.045) 1px, transparent 1px);
+    background-size: 64px 64px;
   }
   .blueprint-fade {
-    -webkit-mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 100%);
-    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, #000 30%, transparent 100%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 90%);
+    mask-image: linear-gradient(180deg, #000 0%, transparent 90%);
   }
 
+  /* No shadow, no radius to speak of — a ruled box. */
   .panel {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 18px;
-    box-shadow: 0 1px 2px rgba(31, 28, 24, 0.04), 0 12px 32px -20px rgba(31, 28, 24, 0.16);
+    border-radius: 4px;
   }
   .glass-effect, .glass-card {
-    background: rgba(253, 251, 247, 0.78);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--line);
-    border-radius: 18px;
+    border-radius: 4px;
   }
 
-  /* corner ticks — schematic detailing */
+  /* Register marks, as on a print sheet. */
   .ticked { position: relative; }
   .ticked::before, .ticked::after {
-    content: ''; position: absolute; width: 9px; height: 9px; pointer-events: none;
-    border-color: rgba(176, 81, 47, 0.5); opacity: .8; z-index: 5;
+    content: ''; position: absolute; width: 8px; height: 8px; pointer-events: none;
+    border-color: var(--wire); opacity: 1; z-index: 5;
   }
-  .ticked::before { top: -1px; left: -1px; border-top: 1px solid; border-left: 1px solid; }
-  .ticked::after  { bottom: -1px; right: -1px; border-bottom: 1px solid; border-right: 1px solid; }
+  .ticked::before { top: -1px; left: -1px; border-top: 2px solid; border-left: 2px solid; }
+  .ticked::after  { bottom: -1px; right: -1px; border-bottom: 2px solid; border-right: 2px solid; }
 
   .eyebrow {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
     font-size: 11px;
-    letter-spacing: 0.22em;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--wire);
   }
+  /* One flat red — a gradient here would undo the whole point. */
   .text-gradient {
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(100deg, #B0512F 0%, #C4673F 100%);
+    background-image: linear-gradient(100deg, #DC2B26 0%, #DC2B26 100%);
   }
 
   .btn-signal {
     background: var(--signal);
     color: #FFFFFF;
     font-weight: 600;
-    border-radius: 999px;
-    transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
-    box-shadow: 0 8px 22px -10px rgba(176, 81, 47, 0.55);
+    border-radius: 2px;
+    border: 1px solid var(--signal);
+    transition: background .15s ease, border-color .15s ease, color .15s ease;
   }
-  .btn-signal:hover { transform: translateY(-2px); background: #8E3F23; box-shadow: 0 14px 30px -12px rgba(176, 81, 47, 0.6); }
+  .btn-signal:hover { background: #BA1C18; border-color: #BA1C18; }
 
   .btn-ghost {
-    border: 1px solid var(--line);
-    color: #1F1C18;
-    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    color: #0A0A0A;
+    border-radius: 2px;
     background: #FFFFFF;
-    transition: border-color .2s ease, transform .2s ease, background .2s ease;
+    font-weight: 600;
+    transition: border-color .15s ease, background .15s ease, color .15s ease;
   }
-  .btn-ghost:hover { border-color: rgba(176, 81, 47, 0.45); transform: translateY(-2px); background: rgba(176, 81, 47, 0.04); }
+  .btn-ghost:hover { border-color: #0A0A0A; background: #0A0A0A; color: #FFFFFF; }
 
-  .spotlight { position: relative; overflow: hidden; }
+  /* Hover fills the rule rather than washing the surface. */
+  .spotlight { position: relative; overflow: hidden; transition: border-color .15s ease; }
   .spotlight::after {
-    content: ''; position: absolute; inset: 0; pointer-events: none; opacity: 0;
-    transition: opacity .35s ease;
-    background: radial-gradient(340px circle at var(--mx,50%) var(--my,50%), rgba(176, 81, 47, 0.07), transparent 65%);
+    content: ''; position: absolute; left: 0; right: 0; top: 0; height: 2px;
+    pointer-events: none; background: var(--wire);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .25s ease;
   }
-  .spotlight:hover::after { opacity: 1; }
+  .spotlight:hover::after { transform: scaleX(1); }
 
   .hide-scrollbar::-webkit-scrollbar { display: none; }
   .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 }
 
 @layer utilities {
-  /* signature: a signal travelling a wire */
   @keyframes wire-dash { to { stroke-dashoffset: -400; } }
   .wire-flow { stroke-dasharray: 6 14; animation: wire-dash 9s linear infinite; }
 

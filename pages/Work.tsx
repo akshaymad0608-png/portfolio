@@ -4,6 +4,7 @@ import PageHero from '../components/ui/PageHero';
 import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
 import BuildLog from '../components/BuildLog';
+import InternalBuilds from '../components/InternalBuilds';
 import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
 
@@ -11,7 +12,7 @@ const Work: React.FC = () => (
   <PageTransition>
     <SEO
       title="Case Studies | Akshay Mahajan"
-      description="Five AI products built end to end — what was broken, what I built, and what changed afterwards. All of them are live."
+      description="Five live AI products built end to end, plus the private automation stack and internal tooling behind them. What was broken, what I built, what changed."
     />
     <PageHero
       eyebrow="Case studies"
@@ -20,6 +21,7 @@ const Work: React.FC = () => (
     />
     <Stats />
     <AISystems detailed heading={false} />
+    <InternalBuilds />
     <BuildLog />
     <FinalCTA />
   </PageTransition>
