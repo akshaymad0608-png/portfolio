@@ -97,7 +97,7 @@ const AgentNode: React.FC<{ cx: number; top: number; clipId: string }> = ({ cx, 
       style={{ transformOrigin: `${cx}px ${cy}px` }}
     >
       <circle cx={cx} cy={cy} r={104} fill="url(#agentGlow)" />
-      <rect x={cx - 64} y={top} width={128} height={172} rx={18} fill="#FFFFFF" stroke="rgba(91,75,245,0.4)" />
+      <rect x={cx - 64} y={top} width={128} height={172} rx={18} fill="#FFFFFF" stroke="rgba(10,10,10,0.14)" />
       <clipPath id={clipId}>
         <rect x={cx - 52} y={top + 26} width={104} height={104} rx={52} />
       </clipPath>
@@ -106,7 +106,7 @@ const AgentNode: React.FC<{ cx: number; top: number; clipId: string }> = ({ cx, 
           <image href={AVATAR_DATA_URI} x="0" y="0" width="400" height="400" preserveAspectRatio="xMidYMid slice" />
         </svg>
       </g>
-      <circle cx={cx} cy={top + 78} r={53} fill="none" stroke="rgba(91,75,245,0.4)" strokeWidth={1.2} />
+      <circle cx={cx} cy={top + 78} r={53} fill="none" stroke="rgba(10,10,10,0.14)" strokeWidth={1.2} />
       <text x={cx} y={top + 22} textAnchor="middle" fill="#DC2B26" fontFamily="JetBrains Mono, monospace" fontSize="8.5" letterSpacing="1.8">
         AGENT
       </text>

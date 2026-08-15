@@ -15,7 +15,7 @@ const PricingPage: React.FC = () => (
     />
     <PageHero
       eyebrow="Pricing"
-      title={<>Quoted up front.<br className="hidden md:block" /> No hourly surprises.</>}
+      title="Quoted up front. No hourly surprises."
       lead="Three starting points, and an honest note on what each one does and doesn't include."
     />
     <Pricing />

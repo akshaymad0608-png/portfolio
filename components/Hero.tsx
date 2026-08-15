@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import RevealText from './ui/RevealText';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import FlowCanvas from './ui/FlowCanvas';
@@ -26,9 +27,13 @@ const Hero: React.FC = () => {
   return (
     <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
-      <div
-        className="absolute -top-40 left-1/2 h-[520px] w-[900px] -translate-x-1/2 rounded-full pointer-events-none"
-        style={{ background: 'radial-gradient(closest-side, rgba(91,75,245,0.10), transparent)' }}
+      {/* A rule across the top of the grid, drawn on load — the page setting
+          its own baseline before any type lands on it. */}
+      <motion.div
+        className="pointer-events-none absolute inset-x-0 top-28 h-px origin-left bg-border"
+        initial={{ scaleX: 0 }}
+        animate={{ scaleX: 1 }}
+        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         aria-hidden="true"
       />
 
@@ -47,12 +52,9 @@ const Hero: React.FC = () => {
               </span>
             </motion.div>
 
-            <motion.h1 custom={1} variants={rise} initial="hidden" animate="show"
-                       className="font-display text-[40px] font-bold leading-[1.02] tracking-tightest text-text sm:text-[52px] lg:text-[68px]">
-              I build full-stack
-              <br />
-              websites, <span className="text-gradient">wired with AI.</span>
-            </motion.h1>
+            <h1 className="font-display text-[40px] font-bold leading-[1.02] tracking-tightest text-text sm:text-[52px] lg:text-[68px]">
+              <RevealText onMount delay={0.12}>I build full-stack websites, wired with AI.</RevealText>
+            </h1>
 
             <motion.p custom={2} variants={rise} initial="hidden" animate="show"
                       className="mt-7 max-w-[560px] text-lg leading-relaxed text-textSecondary md:text-xl">

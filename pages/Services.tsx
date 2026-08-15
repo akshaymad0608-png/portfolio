@@ -17,7 +17,7 @@ const ServicesPage: React.FC = () => (
     />
     <PageHero
       eyebrow="Services"
-      title={<>Tell me what to build.<br className="hidden md:block" /> I'll ship it fast.</>}
+      title="Tell me what to build. I&apos;ll ship it fast."
       lead="Twelve kinds of work I take on — from full-stack builds to the AI inside them, plus the search and rescue work on sites that already exist — what each one costs, and a rough calculation of what doing it the slow way is costing you now."
     >
       <div className="flex flex-col gap-3 sm:flex-row">

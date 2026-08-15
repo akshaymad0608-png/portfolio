@@ -40,7 +40,7 @@ const ProjectShot: React.FC<ProjectShotProps> = ({ src, link, title, icon: Icon 
       <div className="absolute inset-0 blueprint opacity-40" aria-hidden="true" />
       <div
         className="pointer-events-none absolute inset-0"
-        style={{ background: 'radial-gradient(closest-side at 50% 0%, rgba(91,75,245,0.12), transparent)' }}
+        style={{ background: 'radial-gradient(closest-side at 50% 0%, rgba(220,43,38,0.07), transparent)' }}
         aria-hidden="true"
       />
 
