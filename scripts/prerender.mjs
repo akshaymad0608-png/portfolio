@@ -81,6 +81,11 @@ const service = {
   '@type': 'ProfessionalService',
   '@id': `${baseUrl}/#service`,
   name: 'Akshay Mahajan — Web Development & AI',
+  // The Google Business Profile is filed under a different name. Until the two
+  // agree, alternateName is what tells Google they are one business rather than
+  // two — without it the listing and the site look like separate entities and
+  // neither inherits the other's signals.
+  alternateName: ['Akshay Mahajan', 'AkshayAI Solutions', 'Akshay'],
   url: baseUrl,
   image: `${baseUrl}/akshay-portrait.jpg`,
   description:
