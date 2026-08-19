@@ -91,8 +91,6 @@ const AIGuide: React.FC = () => (
   <PageTransition>
     <SEO
       schema={[guideSchema]}
-      title="AI Guide | What is AI, LLMs, Generative & Agentic AI — Akshay Mahajan"
-      description="A plain-English guide to AI: what it is, its history, types of AI, ML vs deep learning vs generative AI, what an LLM and a model are, and how AI agents & agentic AI work."
     />
 
     <PageHero

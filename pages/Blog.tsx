@@ -8,8 +8,6 @@ import SEO from '../components/SEO';
 const Blog: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Blog | Akshay Mahajan"
-      description="Notes on full-stack web development, building with LLMs, and shipping products fast with AI."
     />
     <PageHero
       eyebrow="Writing"

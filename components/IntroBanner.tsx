@@ -123,19 +123,21 @@ const IntroBanner: React.FC = () => {
               className="absolute bottom-0 left-1/2 h-[76%] w-[74%] -translate-x-1/2 rounded-[4px] bg-wire/10"
             />
             <img
-              src="/akshay-pointing-1010.webp"
-              srcSet="/akshay-pointing-620.webp 620w, /akshay-pointing-1010.webp 1010w"
+              src="/akshay-pointing-900.webp"
+              srcSet="/akshay-pointing-620.webp 620w, /akshay-pointing-900.webp 900w"
               /* The column renders around 520px wide on desktop. Declaring less
                  than that made the browser settle for the 620w file, which is
                  short of what a 2x screen needs. */
               sizes="(min-width: 1024px) 520px, 88vw"
-              width={1010}
-              height={1507}
+              width={900}
+              height={1343}
               alt="Akshay Mahajan"
               className="relative block w-full select-none"
               /* Neither lazy nor deprioritised: this band sits directly under
                  the hero, so on most screens it is in view before either would
-                 release it, and both only buy a visible pop-in. 134 KB. */
+                 release it, and both only buy a visible pop-in. 90 KB — it was
+                 1010w/134 KB, over the 100 KB budget; 900w at a higher quality
+                 setting beats 1010w crushed to fit, and is still 1.7x the slot. */
               decoding="async"
               draggable={false}
             />

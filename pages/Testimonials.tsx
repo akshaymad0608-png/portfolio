@@ -9,8 +9,6 @@ import SEO from '../components/SEO';
 const TestimonialsPage: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Client Feedback | Akshay Mahajan"
-      description="What clients say about the websites, tools, agents and automations I built for them."
     />
     <PageHero
       eyebrow="Client feedback"

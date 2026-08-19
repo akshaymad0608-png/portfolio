@@ -10,8 +10,6 @@ import SEO from '../components/SEO';
 const PricingPage: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Pricing | Akshay Mahajan"
-      description="Project-based pricing for full-stack builds, custom AI tools, agents and automation. Quoted up front, no hourly surprises."
     />
     <PageHero
       eyebrow="Pricing"

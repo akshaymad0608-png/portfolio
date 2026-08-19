@@ -12,8 +12,6 @@ import SEO from '../components/SEO';
 const ServicesPage: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Services & Pricing | Akshay Mahajan"
-      description="Full-stack web development, custom AI tools, chatbots, agents and automation — what each one involves, what it costs, and how long it takes."
     />
     <PageHero
       eyebrow="Services"

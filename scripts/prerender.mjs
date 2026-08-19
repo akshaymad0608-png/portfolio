@@ -196,25 +196,38 @@ const buildHead = (route) => {
     });
   }
 
+  /**
+   * These are the crawler-facing copies, and react-helmet-async emits its own
+   * of every one at runtime. It does not recognise or replace what is already
+   * in the document, so both sets end up in the head — two titles, two
+   * descriptions, two canonicals, which is what a renderer like Google reads.
+   *
+   * The marker lets SEO.tsx drop this set once React has mounted and Helmet's
+   * set is live. Only tags Helmet re-emits carry it; the JSON-LD below is
+   * deliberately unmarked, because SEO.tsx emits schema only on routes that
+   * pass it and removing this would strip the site graph from every other page.
+   */
+  const rh = 'data-prerendered="true"';
+
   return [
-    `<title>${esc(route.title)}</title>`,
-    `<meta name="description" content="${esc(route.description)}" />`,
-    `<link rel="canonical" href="${url}" />`,
-    `<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
-    `<meta property="og:type" content="website" />`,
-    `<meta property="og:site_name" content="${esc(siteName)}" />`,
-    `<meta property="og:locale" content="${locale}" />`,
-    `<meta property="og:url" content="${url}" />`,
-    `<meta property="og:title" content="${esc(route.title)}" />`,
-    `<meta property="og:description" content="${esc(route.description)}" />`,
-    `<meta property="og:image" content="${baseUrl}${ogImage}" />`,
-    `<meta property="og:image:width" content="1672" />`,
-    `<meta property="og:image:height" content="941" />`,
-    `<meta property="og:image:alt" content="Akshay Mahajan — AI agents, chatbots and automation" />`,
-    `<meta name="twitter:card" content="summary_large_image" />`,
-    `<meta name="twitter:title" content="${esc(route.title)}" />`,
-    `<meta name="twitter:description" content="${esc(route.description)}" />`,
-    `<meta name="twitter:image" content="${baseUrl}${ogImage}" />`,
+    `<title ${rh}>${esc(route.title)}</title>`,
+    `<meta ${rh} name="description" content="${esc(route.description)}" />`,
+    `<link ${rh} rel="canonical" href="${url}" />`,
+    `<meta ${rh} name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
+    `<meta ${rh} property="og:type" content="website" />`,
+    `<meta ${rh} property="og:site_name" content="${esc(siteName)}" />`,
+    `<meta ${rh} property="og:locale" content="${locale}" />`,
+    `<meta ${rh} property="og:url" content="${url}" />`,
+    `<meta ${rh} property="og:title" content="${esc(route.title)}" />`,
+    `<meta ${rh} property="og:description" content="${esc(route.description)}" />`,
+    `<meta ${rh} property="og:image" content="${baseUrl}${ogImage}" />`,
+    `<meta ${rh} property="og:image:width" content="1672" />`,
+    `<meta ${rh} property="og:image:height" content="941" />`,
+    `<meta ${rh} property="og:image:alt" content="Akshay Mahajan — AI agents, chatbots and automation" />`,
+    `<meta ${rh} name="twitter:card" content="summary_large_image" />`,
+    `<meta ${rh} name="twitter:title" content="${esc(route.title)}" />`,
+    `<meta ${rh} name="twitter:description" content="${esc(route.description)}" />`,
+    `<meta ${rh} name="twitter:image" content="${baseUrl}${ogImage}" />`,
     `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org',
       '@graph': graph,
@@ -239,9 +252,12 @@ const buildHead = (route) => {
  * page content rather than a keyword list precisely so the two agree.
  */
 const buildBody = (route) => {
+  // navLabel, not the page title: a title is written to fill 50-60 characters
+  // in a result listing, which makes a six-word anchor when reused as link
+  // text. Anchors read best at two to five words.
   const nav = routes
     .filter((r) => r.path !== route.path)
-    .map((r) => `<li><a href="${r.path}">${esc(r.title.split('|')[0].trim())}</a></li>`)
+    .map((r) => `<li><a href="${r.path}">${esc(r.navLabel || r.title.split('|')[0].trim())}</a></li>`)
     .join('');
 
   // Optional extra h2-tagged sections beyond the single points list — used on
@@ -291,13 +307,30 @@ for (const route of routes) {
   console.log(`prerender: ${route.path.padEnd(14)} -> ${route.path === '/' ? 'index.html' : `${route.path.slice(1)}/index.html`}`);
 }
 
-/* Unknown URLs get a page that tells crawlers not to index it. */
-const notFound = template.replace(
-  '</head>',
-  `  <title>Page not found | ${esc(siteName)}</title>
+/* Unknown URLs get a page that tells crawlers not to index it. Noindex means
+   the title and description carry no ranking weight, but the shell still needs
+   a heading and a way back — a crawler that follows a stale link should find a
+   real page saying so, not an empty div. */
+const notFound = template
+  .replace(
+    '</head>',
+    `  <title>Page not found | ${esc(siteName)}</title>
+    <meta name="description" content="That page doesn't exist. Head back to the homepage, or see the work, services and contact details for Akshay Mahajan." />
     <meta name="robots" content="noindex, follow" />
   </head>`,
-);
+  )
+  .replace(
+    '<div id="root"></div>',
+    `<div id="root">
+      <main>
+        <h1>Page not found</h1>
+        <p>That page doesn't exist. It may have moved, or the link may be out of date.</p>
+      </main>
+      <nav aria-label="Site"><ul>${routes
+        .map((r) => `<li><a href="${r.path}">${esc(r.navLabel || r.title.split('|')[0].trim())}</a></li>`)
+        .join('')}</ul></nav>
+    </div>`,
+  );
 writeFileSync(join(dist, '404.html'), notFound);
 console.log('prerender: 404.html');
 

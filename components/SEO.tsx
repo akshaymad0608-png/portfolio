@@ -23,7 +23,27 @@ interface SEOProps {
  *
  * Both read site.routes.json, so there is one place to change a title.
  */
+/**
+ * Drops the prerendered head tags once React is running.
+ *
+ * scripts/prerender.mjs bakes a title, description, canonical and the OG and
+ * Twitter set into the static HTML, because the crawlers that build link
+ * previews never execute JavaScript. Helmet then emits the same tags at
+ * runtime and does not recognise the baked ones, so without this every page
+ * ends up with two of each — and a renderer that does run JS, Google included,
+ * reads a document with two titles and two canonicals.
+ *
+ * Removing them on mount keeps both halves honest: no-JS crawlers read the
+ * static tags, and everything else reads Helmet's.
+ */
+const useDropPrerenderedHead = () => {
+  React.useEffect(() => {
+    document.head.querySelectorAll('[data-prerendered="true"]').forEach((el) => el.remove());
+  }, []);
+};
+
 const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, noindex }) => {
+  useDropPrerenderedHead();
   const { pathname } = useLocation();
   const { baseUrl, siteName, locale, ogImage, routes } = manifest;
 

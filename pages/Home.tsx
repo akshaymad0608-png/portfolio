@@ -52,8 +52,6 @@ const Home: React.FC = () => (
         to a head that already carries the static one. */}
     <SEO
       schema={[projectsSchema]}
-      title="Akshay Mahajan | Full-Stack & AI Web Developer"
-      description="I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter."
     />
     <Hero />
     <IntroBanner />

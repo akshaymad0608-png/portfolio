@@ -9,7 +9,8 @@
     "start": "NODE_ENV=production node dist/server.cjs",
     "lint": "tsc --noEmit",
     "preview": "vite preview",
-    "prerender": "node scripts/prerender.mjs"
+    "prerender": "node scripts/prerender.mjs",
+    "seo:check": "node scripts/seo-limits.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.38.0",

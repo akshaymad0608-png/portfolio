@@ -61,8 +61,6 @@ const Contact: React.FC = () => {
       <div className="relative min-h-screen overflow-hidden pt-32 pb-24">
         <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
         <SEO
-          title="Contact | Akshay Mahajan"
-          description="Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day."
         />
 
         <div className="container relative z-10 mx-auto max-w-shell px-6">

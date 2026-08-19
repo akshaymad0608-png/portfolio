@@ -11,8 +11,6 @@ import SEO from '../components/SEO';
 const Work: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Case Studies | Akshay Mahajan"
-      description="Five live AI products built end to end, plus the private automation stack and internal tooling behind them. What was broken, what I built, what changed."
     />
     <PageHero
       eyebrow="Case studies"

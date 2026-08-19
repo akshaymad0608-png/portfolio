@@ -23,7 +23,7 @@ const NotFound: React.FC = () => (
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
       <div
         className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[760px] -translate-x-1/2 rounded-full"
-        style={{ background: 'radial-gradient(closest-side, rgba(169,166,255,0.10), transparent)' }}
+        style={{ background: 'radial-gradient(closest-side, rgba(16,120,8,0.10), transparent)' }}
         aria-hidden="true"
       />
 

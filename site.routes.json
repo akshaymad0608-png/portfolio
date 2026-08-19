@@ -6,7 +6,7 @@
   "routes": [
     {
       "path": "/",
-      "title": "Full-Stack & AI Web Developer | Akshay Mahajan",
+      "title": "Full-Stack & AI Web Developer in Surat | Akshay Mahajan",
       "description": "I'm Akshay Mahajan, a full-stack web developer who ships fast with AI — websites, web apps, custom tools, and the agents that make them smarter. Surat, India.",
       "priority": "1.0",
       "changefreq": "weekly",
@@ -51,11 +51,12 @@
           ]
         }
       ],
-      "faq": true
+      "faq": true,
+      "navLabel": "Home"
     },
     {
       "path": "/services",
-      "title": "Web Development & AI Services | Akshay Mahajan",
+      "title": "Web Development & AI Automation Services | Akshay Mahajan",
       "description": "Twelve services: full-stack web development, custom AI tools, chatbots, agents, automation, technical SEO and AI search, site audits and local SEO.",
       "priority": "0.9",
       "changefreq": "monthly",
@@ -75,7 +76,8 @@
         "Site Audit & Rescue",
         "Local SEO & Google Business",
         "Installable & Offline Web Apps"
-      ]
+      ],
+      "navLabel": "Services"
     },
     {
       "path": "/work",
@@ -95,7 +97,8 @@
         "Akshay LinkedIn OS — 10 n8n workflows, 200-prompt library, one-command Docker deploy",
         "Sweet Crumbs — bakery storefront with a working cart and checkout",
         "SEO Audit Toolkit — zero-dependency Node CLI run weekly on six sites"
-      ]
+      ],
+      "navLabel": "Work"
     },
     {
       "path": "/pricing",
@@ -118,12 +121,13 @@
         "Local SEO setup",
         "Advice only",
         "Monthly retainer"
-      ]
+      ],
+      "navLabel": "Pricing"
     },
     {
       "path": "/ai-guide",
-      "title": "AI Guide | What is AI, LLMs, Generative & Agentic AI — Akshay Mahajan",
-      "description": "A plain-English guide to AI: what it is, its history, types of AI, machine learning vs deep learning vs generative AI, what an LLM and a model are, and how AI agents and agentic AI work.",
+      "title": "AI Guide: LLMs, Generative & Agentic AI | Akshay Mahajan",
+      "description": "A plain-English guide to AI: its history, machine learning vs deep learning vs generative AI, what an LLM is, and how AI agents actually work.",
       "priority": "0.8",
       "changefreq": "monthly",
       "heading": "AI, explained simply — history to agentic AI.",
@@ -136,7 +140,8 @@
         "AI, ML, deep learning and GenAI — boxes inside boxes",
         "AI that creates",
         "AI agents and agentic AI"
-      ]
+      ],
+      "navLabel": "AI Guide"
     },
     {
       "path": "/about",
@@ -153,11 +158,12 @@
         "Based in Surat, Gujarat — working IST, flexible for calls",
         "Works in English, Hindi and Gujarati",
         "Five products live in production"
-      ]
+      ],
+      "navLabel": "About"
     },
     {
       "path": "/testimonials",
-      "title": "Client Feedback | Akshay Mahajan",
+      "title": "Client Feedback & Results | Akshay Mahajan, Surat India",
       "description": "What clients say after handover — the websites, tools, agents and automations I built for them, and what actually changed on their side afterwards.",
       "priority": "0.6",
       "changefreq": "monthly",
@@ -167,7 +173,8 @@
       "points": [
         "What changed on their side",
         "Six things worth pointing at"
-      ]
+      ],
+      "navLabel": "Testimonials"
     },
     {
       "path": "/blog",
@@ -182,7 +189,8 @@
         "How to build an AI agent that survives contact with real users",
         "The parts of web development generative AI is genuinely good at",
         "Automating CRM updates and email triage with n8n"
-      ]
+      ],
+      "navLabel": "Blog"
     },
     {
       "path": "/contact",
@@ -199,7 +207,8 @@
         "Based in Surat, Gujarat, India",
         "Book a 20-minute call",
         "Reply within one working day"
-      ]
+      ],
+      "navLabel": "Contact"
     }
   ]
 }
