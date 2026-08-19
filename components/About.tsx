@@ -94,16 +94,20 @@ const About: React.FC = () => (
               <span className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-muted">operator</span>
               <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />
             </div>
-            <picture>
-              <img
-                src="/akshay-portrait.jpg"
-                alt="Akshay Mahajan — full-stack & AI web developer based in Surat, India"
-                width={1672}
-                height={941}
-                className="aspect-[4/5] w-full object-cover"
-                style={{ objectPosition: 'center 20%' }}
-              />
-            </picture>
+            {/* Cropped from the brand poster, so the card carries the same
+                green as the rest of the site. Framed to 4:5 at source rather
+                than nudged into place with object-position — the box below is
+                the same ratio, so nothing is cropped a second time. */}
+            <img
+              src="/akshay-about-600.webp"
+              srcSet="/akshay-about-400.webp 400w, /akshay-about-600.webp 600w"
+              sizes="(min-width: 1024px) 420px, 90vw"
+              alt="Akshay Mahajan — full-stack & AI web developer based in Surat, India"
+              width={600}
+              height={750}
+              className="aspect-[4/5] w-full object-cover"
+              decoding="async"
+            />
             <div className="border-t border-border bg-frame px-4 py-3">
               <p className="font-display text-[15px] font-bold text-text">Akshay Mahajan</p>
               <p className="mt-0.5 font-mono text-[11px] text-muted">Full-stack &amp; AI web developer</p>
