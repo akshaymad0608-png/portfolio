@@ -3,9 +3,7 @@ import { motion } from 'framer-motion';
 import RevealText from './ui/RevealText';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import FlowCanvas from './ui/FlowCanvas';
 import Marquee from './ui/Marquee';
-import TiltCard from './ui/TiltCard';
 import { availabilityMonth } from '../lib/availability';
 
 const STACK = [
@@ -106,19 +104,37 @@ const Hero: React.FC = () => {
             </motion.div>
           </div>
 
-          {/* ---- the canvas ---- */}
+          {/* ---- the portrait ----
+              He points left, across the headline and the two buttons. The
+              diagram that used to sit here explained a workflow nobody had
+              asked about yet; a face does the introducing this section is
+              actually for. */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 26 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.9, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:pl-4"
+            transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+            /* Bounded by height, not width. At its natural size the portrait is
+               952px tall against 634px of copy, and the row centres the shorter
+               column against the taller one — which pushed the call to action
+               below the fold. Capped, the two columns are near enough the same
+               height that centring costs nothing. */
+            className="relative mx-auto flex w-full justify-center lg:mx-0 lg:pl-4"
           >
-            <TiltCard max={6}>
-              <FlowCanvas />
-            </TiltCard>
-            <p className="mt-4 text-center font-mono text-[11px] leading-relaxed text-muted">
-              One of the systems I ship &mdash; three ways a lead arrives, one agent, two things done about it.
-            </p>
+            <span
+              aria-hidden="true"
+              className="absolute bottom-0 left-1/2 h-[72%] w-[62%] -translate-x-1/2 rounded-[4px] bg-frame"
+            />
+            <img
+              src="/akshay-hero-777.webp"
+              srcSet="/akshay-hero-480.webp 480w, /akshay-hero-777.webp 777w"
+              sizes="(min-width: 1024px) 360px, 260px"
+              width={777}
+              height={1364}
+              alt="Akshay Mahajan"
+              className="relative block h-auto w-auto max-h-[440px] select-none sm:max-h-[520px] lg:max-h-[620px]"
+              decoding="async"
+              draggable={false}
+            />
           </motion.div>
         </div>
       </div>
