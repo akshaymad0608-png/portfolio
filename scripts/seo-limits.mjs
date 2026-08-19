@@ -21,12 +21,28 @@ const LIMITS = {
   sitemapUrlMax: 50000,
 };
 
+/**
+ * The site's own hostname, read from the first canonical tag found, so a link
+ * written absolutely still counts as internal. Keeps the script usable against
+ * any of the sites rather than only the one it was written for.
+ */
+let siteHost = '';
+
+/**
+ * Search-console and other ownership files are single-line tokens served as
+ * .html. They are not pages, must not be edited, and only ever show up as
+ * noise here — a missing title on a file whose entire job is to exist.
+ */
+const isVerificationFile = (name) =>
+  /^google[0-9a-f]{16}\.html$/i.test(name) ||
+  /^(BingSiteAuth|yandex_[0-9a-f]+|pinterest-[0-9a-z]+)\.html$/i.test(name);
+
 const htmlFiles = [];
 (function walk(d) {
   for (const e of readdirSync(d)) {
     const p = join(d, e);
     if (statSync(p).isDirectory()) walk(p);
-    else if (e.endsWith('.html')) htmlFiles.push(p);
+    else if (e.endsWith('.html') && !isVerificationFile(e)) htmlFiles.push(p);
   }
 })(DIST);
 
@@ -38,6 +54,12 @@ const decode = (s) =>
 
 const findings = [];
 const add = (page, rule, detail) => findings.push({ page, rule, detail });
+
+for (const f of htmlFiles) {
+  const c = fs.readFileSync(f, 'utf8').match(/<link[^>]*rel="canonical"[^>]*href="https?:\/\/([^/"]+)/);
+  if (c) { siteHost = c[1]; break; }
+}
+console.log(`site: ${siteHost || '(no canonical found)'}   dist: ${DIST}`);
 
 for (const f of htmlFiles) {
   const page = '/' + relative(DIST, f).split(sep).join('/').replace(/index\.html$/, '');
@@ -86,10 +108,12 @@ for (const f of htmlFiles) {
   for (const m of h.matchAll(/<a\s[^>]*href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g)) {
     const href = m[1];
     const text = decode(m[2].replace(/<[^>]*>/g, ' ')).trim().replace(/\s+/g, ' ');
-    const isInternal = href.startsWith('/') || href.startsWith('#') || href.includes('akshay.website');
+    const isInternal = href.startsWith('/') || href.startsWith('#') || (siteHost && href.includes(siteHost));
     if (isInternal && !href.startsWith('#')) internal++;
     if (!text) continue;                       // icon-only links are checked via aria-label elsewhere
-    const words = text.split(' ').length;
+    // "&", "—" and "/" are punctuation a reader does not say, so counting them
+    // as words reported "Bank exam photo & signature size" — five words — as six.
+    const words = text.split(' ').filter((w) => /[\p{L}\p{N}]/u.test(w)).length;
     if (words > LIMITS.anchorWordsMax)
       add(page, 'Anchor text', `${words} words — "${text.slice(0, 60)}…"`);
   }
