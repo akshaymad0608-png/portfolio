@@ -1,13 +1,12 @@
 import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target, Languages } from "lucide-react";
 import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory, InternalBuild } from "./types";
-import { AVATAR_DATA_URI } from "./lib/avatarImage";
 
 export const HERO_CONTENT = {
   headline: "I build full-stack websites, wired with AI.",
   subheadline: "I'm Akshay Mahajan — a full-stack developer who ships fast with LLMs. Websites, web apps and custom tools, plus the AI agents and automation that make them smarter.",
   cta: "See My Work",
   cta2: "Hire Me Now",
-  image: AVATAR_DATA_URI,
+  image: "/akshay-avatar-256.webp",
   badges: ["Full-Stack Web Dev", "AI Web Apps", "Custom AI Tools", "Automation"]
 };
 

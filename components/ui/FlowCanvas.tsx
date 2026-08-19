@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { AVATAR_DATA_URI } from '../../lib/avatarImage';
 
 /**
  * The signature element: a live automation canvas.
@@ -103,7 +102,7 @@ const AgentNode: React.FC<{ cx: number; top: number; clipId: string }> = ({ cx, 
       </clipPath>
       <g clipPath={`url(#${clipId})`}>
         <svg x={cx - 52} y={top + 26} width={104} height={104} viewBox="55 25 320 320" preserveAspectRatio="xMidYMid slice">
-          <image href={AVATAR_DATA_URI} x="0" y="0" width="400" height="400" preserveAspectRatio="xMidYMid slice" />
+          <image href="/akshay-avatar-256.webp" x="0" y="0" width="400" height="400" preserveAspectRatio="xMidYMid slice" />
         </svg>
       </g>
       <circle cx={cx} cy={top + 78} r={53} fill="none" stroke="rgba(10,10,10,0.14)" strokeWidth={1.2} />

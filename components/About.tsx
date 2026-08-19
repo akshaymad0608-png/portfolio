@@ -4,7 +4,6 @@ import { MapPin } from 'lucide-react';
 import Reveal from './ui/Reveal';
 import TiltCard from './ui/TiltCard';
 import { availabilityMonth } from '../lib/availability';
-import { AVATAR_DATA_URI } from '../lib/avatarImage';
 
 const TIMELINE = [
   {
@@ -97,10 +96,10 @@ const About: React.FC = () => (
             </div>
             <picture>
               <img
-                src={AVATAR_DATA_URI}
+                src="/akshay-portrait.jpg"
                 alt="Akshay Mahajan — full-stack & AI web developer based in Surat, India"
-                width={900}
-                height={506}
+                width={1672}
+                height={941}
                 className="aspect-[4/5] w-full object-cover"
                 style={{ objectPosition: 'center 20%' }}
               />

@@ -131,7 +131,7 @@ const AIChatBot: React.FC = () => {
               <div className="flex items-center gap-3">
                 <div className="relative">
                   <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center relative overflow-hidden border border-wire/30">
-                    <img loading="lazy" src={HERO_CONTENT.image} alt="" className="w-full h-full object-cover" style={{ objectPosition: 'center 20%' }} />
+                    <img loading="lazy" src="/akshay-avatar-256.webp" alt="" className="w-full h-full object-cover" />
                   </div>
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-wire border-2 border-ink rounded-full" />
                 </div>
