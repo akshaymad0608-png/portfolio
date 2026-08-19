@@ -48,6 +48,16 @@
     line-height: 1.05;
   }
 
+  /* A heading set in the mono face is a label, not display type. It was
+     inheriting 700 from the rule above, at a weight the font file does not
+     carry — so the browser smeared a fake bold over an 11px uppercase label.
+     500 is both loaded and the right weight at that size. */
+  h1.font-mono, h2.font-mono, h3.font-mono,
+  h4.font-mono, h5.font-mono, h6.font-mono {
+    font-weight: 500;
+    letter-spacing: inherit;
+  }
+
   ::selection { background: #DC2B26; color: #FFFFFF; }
 
   :focus-visible {

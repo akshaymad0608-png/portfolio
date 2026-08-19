@@ -32,6 +32,38 @@ const { baseUrl, siteName, locale, ogImage, routes } = manifest;
 
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 
+/**
+ * The FAQ, read from the component that renders it.
+ *
+ * These six answers are the most quotable thing on the site — they are what an
+ * answer engine lifts when someone asks what a build costs or how long it
+ * takes — and they existed only in JavaScript. Reading them from the component
+ * rather than restating them in the manifest means the page and the markup
+ * cannot drift apart, which is exactly how the sitemap and this script ended up
+ * disagreeing elsewhere.
+ */
+const readFaq = () => {
+  try {
+    const src = readFileSync(join(root, 'components', 'FAQ.tsx'), 'utf8');
+    const start = src.indexOf('[', src.indexOf('FAQ_DATA'));
+    let depth = 0;
+    let end = start;
+    for (let i = start; i < src.length; i++) {
+      if (src[i] === '[') depth++;
+      else if (src[i] === ']' && --depth === 0) { end = i + 1; break; }
+    }
+    // The array holds only string literals, so there is nothing to resolve.
+    const items = eval(src.slice(start, end));
+    return Array.isArray(items) ? items.filter((x) => x && x.q && x.a) : [];
+  } catch (err) {
+    console.error('prerender: could not read FAQ_DATA —', err.message);
+    process.exitCode = 1;
+    return [];
+  }
+};
+
+const FAQ = readFaq();
+
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -150,6 +182,20 @@ const buildHead = (route) => {
   const url = route.path === '/' ? `${baseUrl}/` : `${baseUrl}${route.path}`;
   const graph = [person, website, service, breadcrumbFor(route)];
 
+  // Only where the questions are actually on the page — the homepage. Marking
+  // up an FAQ a visitor cannot see is what gets structured data ignored.
+  if (route.faq && FAQ.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${baseUrl}${route.path === '/' ? '/' : route.path}#faq`,
+      mainEntity: FAQ.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    });
+  }
+
   return [
     `<title>${esc(route.title)}</title>`,
     `<meta name="description" content="${esc(route.description)}" />`,
@@ -205,12 +251,22 @@ const buildBody = (route) => {
     .map((s) => `<h2>${esc(s.h2)}</h2><ul>${s.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>`)
     .join('');
 
+  // The questions read as content, not as a keyword list, so they carry weight
+  // for the engines that quote them.
+  const faqHtml =
+    route.faq && FAQ.length
+      ? `<h2>Common questions</h2><dl>${FAQ.map(
+          (item) => `<dt>${esc(item.q)}</dt><dd>${esc(item.a)}</dd>`,
+        ).join('')}</dl>`
+      : '';
+
   return `
       <main>
         <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
         <p>${esc(route.lead || route.description)}</p>
         ${route.points?.length ? `<h2>${esc(route.pointsHeading || 'Highlights')}</h2><ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
         ${extraSections}
+        ${faqHtml}
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·
           <a href="tel:+917600885080">+91 76008 85080</a></p>

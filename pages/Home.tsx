@@ -46,8 +46,12 @@ const faqSchema = {
 
 const Home: React.FC = () => (
   <PageTransition>
+    {/* The FAQ is marked up in the prerendered head instead, built from the
+        same FAQ_DATA this page renders. Emitting it here as well would leave a
+        second FAQPage in the document once Helmet runs, since Helmet appends
+        to a head that already carries the static one. */}
     <SEO
-      schema={[faqSchema, projectsSchema]}
+      schema={[projectsSchema]}
       title="Akshay Mahajan | Full-Stack & AI Web Developer"
       description="I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter."
     />

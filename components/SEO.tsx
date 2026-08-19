@@ -56,8 +56,10 @@ const SEO: React.FC<SEOProps> = ({ title, description, canonical, schema, noinde
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDescription} />
       <meta property="og:image" content={image} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
+      {/* The real dimensions of the shared image. Declaring 1200x630 when the
+          file is 1672x941 makes a scraper reserve the wrong box for it. */}
+      <meta property="og:image:width" content="1672" />
+      <meta property="og:image:height" content="941" />
       <meta property="og:image:alt" content="Akshay Mahajan — full-stack & AI web developer" />
 
       <meta name="twitter:card" content="summary_large_image" />

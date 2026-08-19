@@ -23,6 +23,15 @@
       ],
       "sections": [
         {
+          "h2": "Built with AI, designed for you",
+          "points": [
+            "AI Powered — smart solutions, with LLMs doing the heavy lifting",
+            "Trusted & Secure — your data stays yours, keys kept out of the code",
+            "Fast & Reliable — measured on Core Web Vitals, not claimed",
+            "Built With Passion — the person you brief is the person who builds it"
+          ]
+        },
+        {
           "h2": "Recent work — five products, all live",
           "points": [
             "AI Master Tools — a searchable directory of 640+ AI tools across 49 categories",
@@ -41,7 +50,8 @@
             "Works in English, Hindi and Gujarati"
           ]
         }
-      ]
+      ],
+      "faq": true
     },
     {
       "path": "/services",
