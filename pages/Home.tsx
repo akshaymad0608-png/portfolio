@@ -1,5 +1,6 @@
 import React from 'react';
 import Hero from '../components/Hero';
+import IntroBanner from '../components/IntroBanner';
 import Services from '../components/Services';
 import Process from '../components/Process';
 import AISystems from '../components/AISystems';
@@ -51,6 +52,7 @@ const Home: React.FC = () => (
       description="I'm Akshay Mahajan, a full-stack web developer who ships fast with AI. Websites, web apps and custom tools, plus the AI chatbots, agents and automation that make them smarter."
     />
     <Hero />
+    <IntroBanner />
     <Services limit={6} />
     <WireDivider />
     <Process />
