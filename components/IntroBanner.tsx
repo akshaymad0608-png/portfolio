@@ -126,11 +126,10 @@ const IntroBanner: React.FC = () => {
               height={1507}
               alt="Akshay Mahajan"
               className="relative block w-full select-none"
-              /* Not lazy: this band sits directly under the hero, so on most
-                 screens it is in view before the loader would ever release it,
-                 and deferring only buys a visible pop-in. 134 KB. */
+              /* Neither lazy nor deprioritised: this band sits directly under
+                 the hero, so on most screens it is in view before either would
+                 release it, and both only buy a visible pop-in. 134 KB. */
               decoding="async"
-              fetchPriority="low"
               draggable={false}
             />
           </motion.div>
