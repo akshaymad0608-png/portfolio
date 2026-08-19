@@ -13,11 +13,10 @@ import RevealText from './ui/RevealText';
  * the photograph works here — the gesture aims into the copy, so the reader's
  * eye lands where the argument is.
  *
- * Rebuilt as markup rather than dropped in as the flat artwork. The poster was
- * green with its type baked into pixels; on this page that would have added a
- * second accent to a design whose whole idea is one, blurred the wording on
- * every large screen, and hidden the headline from search entirely. As markup
- * it stays sharp, readable and the site's own colour.
+ * Rebuilt as markup rather than dropped in as the flat artwork. Baked-in type
+ * blurs on every large screen and is invisible to search; set as markup it
+ * stays sharp and crawlable. The poster's green is now the site's accent and
+ * its marker hand sets this one headline, so the rebuild matches the print.
  */
 
 const POINTS = [
@@ -49,7 +48,15 @@ const IntroBanner: React.FC = () => {
               <span className="eyebrow">Built with AI</span>
             </div>
 
-            <h2 className="font-display text-[38px] font-bold leading-[1.02] tracking-tightest text-text sm:text-[48px] lg:text-[62px]">
+            {/* The one line the poster sets by hand, set by hand here too.
+                Caveat runs small and open for its point size, so it is stepped
+                up about a quarter and the display face's -0.04em tracking is
+                dropped — negative tracking on a script collides the letters.
+                1.12 leading, not the 1.02 the other headings use: Caveat's
+                descenders reach 4px past a 1.0 line box, and RevealText clips
+                each word to that box. The padding there covers it, but only by
+                a few pixels — this keeps the tails inside the line itself. */}
+            <h2 className="font-hand text-[50px] font-bold leading-[1.12] tracking-normal text-text sm:text-[62px] lg:text-[82px]">
               <RevealText>Built with AI.</RevealText>
               <span className="block text-wire">
                 <RevealText delay={0.12}>Designed for you.</RevealText>
@@ -109,7 +116,7 @@ const IntroBanner: React.FC = () => {
             viewport={{ once: true, margin: '-80px' }}
             transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           >
-            {/* A flat red panel behind him — the band's one block of colour,
+            {/* A flat green panel behind him — the band's one block of colour,
                 squared off rather than glowing, so it reads as print. */}
             <span
               aria-hidden="true"

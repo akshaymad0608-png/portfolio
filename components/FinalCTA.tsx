@@ -10,7 +10,7 @@ const FinalCTA: React.FC = () => (
           <div className="absolute inset-0 blueprint opacity-40" aria-hidden="true" />
           <div
             className="pointer-events-none absolute -bottom-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full"
-            style={{ background: 'radial-gradient(closest-side, rgba(220,43,38,0.08), transparent)' }}
+            style={{ background: 'radial-gradient(closest-side, rgba(16,120,8,0.08), transparent)' }}
             aria-hidden="true"
           />
 

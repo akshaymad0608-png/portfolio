@@ -256,7 +256,7 @@ const JsonFormatter: React.FC = () => {
         </div>
         <pre
           className={`flex-1 overflow-auto p-4 font-mono text-[12.5px] leading-relaxed ${
-            result.ok ? 'text-textSecondary' : 'text-[#F87171]'
+            result.ok ? 'text-textSecondary' : 'text-[#B91C1C]'
           }`}
         >
           {result.text}

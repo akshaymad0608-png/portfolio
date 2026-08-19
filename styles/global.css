@@ -5,7 +5,8 @@
 /**
  * Swiss technical.
  *
- * White paper, near-black ink, one red. Structure comes from a strict grid and
+ * White paper, near-black ink, one green — sampled from the brand poster.
+ * Structure comes from a strict grid and
  * hairline rules rather than shadows, tints or rounded corners — surfaces sit
  * flat on the page and are separated by a 1px line, the way a printed spec
  * sheet does it. Radii are 4px at most so nothing reads as a soft "card".
@@ -16,8 +17,8 @@
   --panel: #FFFFFF;      /* sections & cards — same white, told apart by rules */
   --cards: #FFFFFF;
   --frame: #FAFAFA;      /* the only off-white, for banded sections */
-  --wire: #DC2B26;       /* the single accent */
-  --signal: #DC2B26;
+  --wire: #107808;       /* the single accent */
+  --signal: #107808;
   --line: rgba(10, 10, 10, 0.12);
   --line-strong: rgba(10, 10, 10, 0.24);
 }
@@ -58,7 +59,7 @@
     letter-spacing: inherit;
   }
 
-  ::selection { background: #DC2B26; color: #FFFFFF; }
+  ::selection { background: #107808; color: #FFFFFF; }
 
   :focus-visible {
     outline: 2px solid var(--wire);
@@ -69,7 +70,7 @@
   ::-webkit-scrollbar { width: 10px; height: 10px; }
   ::-webkit-scrollbar-track { background: #FFFFFF; }
   ::-webkit-scrollbar-thumb { background: #D4D4D4; border: 3px solid #FFFFFF; }
-  ::-webkit-scrollbar-thumb:hover { background: #767676; }
+  ::-webkit-scrollbar-thumb:hover { background: #6E6E6E; }
 }
 
 @layer components {
@@ -115,10 +116,10 @@
     text-transform: uppercase;
     color: var(--wire);
   }
-  /* One flat red — a gradient here would undo the whole point. */
+  /* One flat green — a gradient here would undo the whole point. */
   .text-gradient {
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(100deg, #DC2B26 0%, #DC2B26 100%);
+    background-image: linear-gradient(100deg, #107808 0%, #107808 100%);
   }
 
   .btn-signal {
@@ -129,7 +130,7 @@
     border: 1px solid var(--signal);
     transition: background .15s ease, border-color .15s ease, color .15s ease;
   }
-  .btn-signal:hover { background: #BA1C18; border-color: #BA1C18; }
+  .btn-signal:hover { background: #0B5A06; border-color: #0B5A06; }
 
   .btn-ghost {
     border: 1px solid var(--line-strong);

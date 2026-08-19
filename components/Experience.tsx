@@ -142,13 +142,13 @@ const Experience: React.FC = () => {
                     <p className="text-textSecondary text-sm leading-relaxed">{selectedProject.problem}</p>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-text mb-2 flex items-center gap-2"><Globe size={18} className="text-[#22C55E]"/> The Solution</h4>
+                    <h4 className="text-lg font-bold text-text mb-2 flex items-center gap-2"><Globe size={18} className="text-wire"/> The Solution</h4>
                     <p className="text-textSecondary text-sm leading-relaxed">{selectedProject.solution}</p>
                   </div>
                   {selectedProject.results && (
-                    <div className="bg-[#22C55E]/10 border border-[#22C55E]/20 p-4 rounded-xl">
-                       <h4 className="text-sm font-bold text-[#22C55E] mb-1">Impact</h4>
-                       <p className="text-[#22C55E] text-sm font-medium">{selectedProject.results}</p>
+                    <div className="bg-wire/10 border border-wire/20 p-4 rounded-xl">
+                       <h4 className="text-sm font-bold text-wire mb-1">Impact</h4>
+                       <p className="text-wire text-sm font-medium">{selectedProject.results}</p>
                     </div>
                   )}
                   <div>
