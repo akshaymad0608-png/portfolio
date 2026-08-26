@@ -5,6 +5,7 @@ import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
 import BuildLog from '../components/BuildLog';
 import InternalBuilds from '../components/InternalBuilds';
+import AINewsFeed from '../components/AINewsFeed';
 import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
 
@@ -20,6 +21,7 @@ const Work: React.FC = () => (
     <Stats />
     <AISystems detailed heading={false} />
     <InternalBuilds />
+    <AINewsFeed />
     <BuildLog />
     <FinalCTA />
   </PageTransition>

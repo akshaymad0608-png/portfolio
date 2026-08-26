@@ -34,6 +34,17 @@ async function startServer() {
     legacyHeaders: false,
   });
 
+  // Local twin of api/news.ts. Kept here so the feed section renders under
+  // `npm run dev` instead of only after a deploy.
+  app.get("/api/news", async (_req, res) => {
+    try {
+      const { fetchNews } = await import("./lib/news.js");
+      res.json({ items: await fetchNews() });
+    } catch {
+      res.json({ items: [] });
+    }
+  });
+
   // Wait for the API KEY on the first request if not set, or fail fast
   app.post("/api/chat", chatLimiter, async (req, res) => {
     try {

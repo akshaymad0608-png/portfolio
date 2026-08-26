@@ -506,10 +506,10 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     kind: "Automation stack",
     status: "Running privately",
     icon: Network,
-    summary: "A self-hosted LinkedIn content and lead system: ten n8n workflows on a Google Sheets brain, driven from Telegram.",
-    detail: "Content drafting, AI-news collection, lead generation, engagement, connection handling, DM classification and profile optimisation each run as their own workflow, sharing a set of subworkflows. The whole stack comes up with one command, with backups, health checks and a restore path.",
+    summary: "A LinkedIn content and lead system: ten n8n workflows on a Google Sheets brain, driven from Telegram.",
+    detail: "Content drafting, AI-news collection, lead generation, engagement, connection handling, DM classification and profile optimisation each run as their own workflow, sharing a set of subworkflows. The news collector is the piece that runs live: six AI blogs polled every morning, cut to the day's eight after deduplication, written to a sheet and pushed to Telegram as one digest. The rest are built against a self-hosted stack that comes up with one command, with backups, health checks and a restore path.",
     tech: ["n8n", "Docker Compose", "Postgres", "Google Sheets", "Telegram Bot API"],
-    facts: ["10 workflows", "200-prompt library", "69 passing tests", "One-command deploy"],
+    facts: ["10 workflows", "News digest live, 9am daily", "200-prompt library", "69 passing tests"],
   },
   {
     id: 2,
