@@ -20,7 +20,77 @@ import type { NewsItem } from '../lib/news';
  * "automation running daily" above an empty box argues against itself.
  */
 
-const STEPS = ['5 AI blogs', 'last 24h', 'deduplicated', 'top 8', 'sheet + Telegram'];
+const FEEDS = ['OpenAI', 'Meta AI', 'Microsoft AI', 'NVIDIA', 'Hugging Face'];
+
+/** Feed box geometry, so the boxes and the wires that meet them cannot drift apart. */
+const FEED_X = 196;
+const FEED_W = 150;
+const FEED_H = 34;
+const FEED_TOP = 20;
+const FEED_GAP = 72;
+const feedCenter = (i: number) => FEED_TOP + i * FEED_GAP + FEED_H / 2;
+
+/** Horizontal S-curve between two node edges, the way n8n draws its own wires. */
+const wire = (x1: number, y1: number, x2: number, y2: number) =>
+  `M ${x1} ${y1} C ${x1 + 44} ${y1}, ${x2 - 44} ${y2}, ${x2} ${y2}`;
+
+/**
+ * The workflow as it exists in n8n, redrawn in the site's own hairlines rather
+ * than pasted in as a screenshot of somebody's dashboard: it stays sharp at any
+ * width, costs nothing to load, and follows the theme instead of fighting it.
+ */
+const WorkflowDiagram: React.FC = () => (
+  <div className="overflow-x-auto">
+    <svg
+      viewBox="0 0 900 380"
+      className="h-auto w-full min-w-[620px] text-muted"
+      role="img"
+      aria-label="Workflow diagram: a 9am daily trigger fans out to five AI blog feeds, which merge into a filter and deduplicate step, which writes to Google Sheets and sends a Telegram digest."
+    >
+      <g fill="none" stroke="var(--wire)" strokeWidth="1.25">
+        {FEEDS.map((f, i) => (
+          <path key={f} d={wire(126, 188, FEED_X, feedCenter(i))} />
+        ))}
+        {FEEDS.map((f, i) => (
+          <path key={`${f}-out`} d={wire(FEED_X + FEED_W, feedCenter(i), 430, 188)} />
+        ))}
+        <path d="M 540 188 H 596" />
+        <path d={wire(726, 188, 782, 129)} />
+        <path d={wire(726, 188, 782, 247)} />
+      </g>
+
+      <g fill="none" stroke="var(--line-strong)" strokeWidth="1">
+        <rect x="8" y="168" width="118" height="40" />
+        {FEEDS.map((f, i) => (
+          <rect key={f} x={FEED_X} y={FEED_TOP + i * FEED_GAP} width={FEED_W} height={FEED_H} />
+        ))}
+        <rect x="430" y="168" width="110" height="40" />
+        <rect x="596" y="168" width="130" height="40" />
+        <rect x="782" y="112" width="112" height="34" />
+        <rect x="782" y="230" width="112" height="34" />
+      </g>
+
+      <g
+        className="font-mono"
+        fill="currentColor"
+        fontSize="11"
+        letterSpacing="1.4"
+        textAnchor="middle"
+      >
+        <text x="67" y="193">09:00 DAILY</text>
+        {FEEDS.map((f, i) => (
+          <text key={f} x={FEED_X + FEED_W / 2} y={feedCenter(i) + 4}>
+            {f.toUpperCase()}
+          </text>
+        ))}
+        <text x="485" y="193">MERGE</text>
+        <text x="661" y="193">24H · DEDUPE</text>
+        <text x="838" y="133">SHEET</text>
+        <text x="838" y="251">TELEGRAM</text>
+      </g>
+    </svg>
+  </div>
+);
 
 /** "2026-08-26" -> "today" / "yesterday" / "on 26 Aug". */
 function describeCollected(date: string): string | null {
@@ -86,14 +156,9 @@ const AINewsFeed: React.FC = () => {
 
         {/* What ran, in order. Without it the list reads as a reading list. */}
         <Reveal delay={0.05}>
-          <ol className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted">
-            {STEPS.map((step, i) => (
-              <li key={step} className="flex items-center gap-2">
-                {i > 0 && <span aria-hidden="true" className="text-wire">&rarr;</span>}
-                <span className="border border-border px-2.5 py-1 text-textSecondary">{step}</span>
-              </li>
-            ))}
-          </ol>
+          <div className="mt-10">
+            <WorkflowDiagram />
+          </div>
         </Reveal>
 
         <ul className="mt-10 border-t border-border">
