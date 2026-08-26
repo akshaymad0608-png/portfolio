@@ -5,13 +5,40 @@ import type { NewsItem } from '../lib/news';
 
 /**
  * The output of the news workflow described one section above, read live from
- * the sheet it writes to. The point of putting it here is that the internal
- * builds cannot be clicked — this is the one part of that stack a visitor can
- * actually watch working, so it is deliberately plain: a dated list, no chrome.
+ * the sheet it writes to. The internal builds cannot be clicked, so this is the
+ * one part of that stack a visitor can actually check — which only works if the
+ * checking is obvious:
  *
- * Renders nothing at all when the feed is empty or unreachable. A section that
- * says "automation running daily" above an empty box argues against itself.
+ *  - the pipeline strip says what ran, so the list reads as output and not as a
+ *    hand-picked reading list;
+ *  - the freshness line is stated up top, in words, because "2026-08-26" in
+ *    small type at the bottom proves nothing to someone skimming;
+ *  - every row is visibly a link, arrow always shown. The arrow used to appear
+ *    on hover, which meant it never appeared on a phone at all.
+ *
+ * Renders nothing when the feed is empty or unreachable. A section that says
+ * "automation running daily" above an empty box argues against itself.
  */
+
+const STEPS = ['5 AI blogs', 'last 24h', 'deduplicated', 'top 8', 'sheet + Telegram'];
+
+/** "2026-08-26" -> "today" / "yesterday" / "on 26 Aug". */
+function describeCollected(date: string): string | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+
+  const then = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(then.getTime())) return null;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const days = Math.round((today.getTime() - then.getTime()) / 86_400_000);
+  if (days <= 0) return 'this morning';
+  if (days === 1) return 'yesterday morning';
+
+  return `on ${then.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}`;
+}
+
 const AINewsFeed: React.FC = () => {
   const [items, setItems] = useState<NewsItem[] | null>(null);
 
@@ -35,7 +62,7 @@ const AINewsFeed: React.FC = () => {
   // null = still loading, [] = nothing to show. Neither deserves a heading.
   if (!items || items.length === 0) return null;
 
-  const latest = items[0].date;
+  const collected = describeCollected(items[0].date);
 
   return (
     <section className="relative border-t border-border bg-panel py-20">
@@ -46,17 +73,30 @@ const AINewsFeed: React.FC = () => {
             <span className="eyebrow">Live output</span>
           </div>
           <h2 className="font-display text-[30px] font-bold tracking-tightest text-text md:text-[38px]">
-            What that workflow
-            <br className="hidden md:block" /> pulled in this morning.
+            Not a screenshot.
+            <br className="hidden md:block" /> This ran {collected ?? 'today'}.
           </h2>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-textSecondary">
-            Five AI blogs, polled at 9am, deduplicated and cut to the day&rsquo;s best. This list is read
-            straight from the sheet the workflow writes to &mdash; nobody typed it, and if the run fails
-            this section simply isn&rsquo;t here.
+            One of the workflows above wakes at 9am, reads five AI blogs, throws out anything older
+            than a day or already seen, and files what is left. The headlines below are pulled from
+            the sheet it wrote to &mdash; open any of them and check. Nobody typed this list, and if
+            the run fails, this section is simply not here.
           </p>
         </Reveal>
 
-        <ul className="mt-12 border-t border-border">
+        {/* What ran, in order. Without it the list reads as a reading list. */}
+        <Reveal delay={0.05}>
+          <ol className="mt-8 flex flex-wrap items-center gap-x-2 gap-y-2 font-mono text-[10.5px] uppercase tracking-[0.16em] text-muted">
+            {STEPS.map((step, i) => (
+              <li key={step} className="flex items-center gap-2">
+                {i > 0 && <span aria-hidden="true" className="text-wire">&rarr;</span>}
+                <span className="border border-border px-2.5 py-1 text-textSecondary">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </Reveal>
+
+        <ul className="mt-10 border-t border-border">
           {items.map((item, i) => (
             <Reveal key={item.link} delay={0.03 * i}>
               <li>
@@ -64,13 +104,13 @@ const AINewsFeed: React.FC = () => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="spotlight group grid gap-2 border-b border-border py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8"
+                  className="spotlight group grid gap-1.5 border-b border-border py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8"
                 >
-                  <span className="min-w-0 text-[16px] leading-relaxed text-text transition-colors group-hover:text-wire">
+                  <span className="min-w-0 text-[16px] leading-relaxed text-text underline decoration-border underline-offset-[6px] transition-colors group-hover:text-wire group-hover:decoration-wire">
                     {item.title}
                     <ArrowUpRight
                       size={14}
-                      className="ml-1.5 inline-block shrink-0 -translate-y-px opacity-0 transition-opacity group-hover:opacity-100"
+                      className="ml-1.5 inline-block shrink-0 -translate-y-px text-wire"
                       aria-hidden="true"
                     />
                   </span>
@@ -82,14 +122,6 @@ const AINewsFeed: React.FC = () => {
             </Reveal>
           ))}
         </ul>
-
-        {latest && (
-          <Reveal>
-            <p className="mt-6 font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
-              Last collected {latest}
-            </p>
-          </Reveal>
-        )}
       </div>
     </section>
   );
