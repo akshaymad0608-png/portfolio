@@ -21,6 +21,51 @@ export interface NewsItem {
   title: string;
   link: string;
   source: string;
+  /** og:image off the article, when it has one and serves it to us. */
+  image?: string;
+}
+
+/** Give up on a slow article rather than hold the whole feed hostage to it. */
+const IMAGE_TIMEOUT_MS = 4000;
+/** og:image lives in <head>; reading the whole article body would be wasteful. */
+const HEAD_BYTES = 60_000;
+
+function matchMeta(html: string, key: string): string | null {
+  // Attribute order varies by CMS, so try content-last and content-first.
+  const patterns = [
+    new RegExp(`<meta[^>]+(?:property|name)=["']${key}["'][^>]+content=["']([^"']+)["']`, 'i'),
+    new RegExp(`<meta[^>]+content=["']([^"']+)["'][^>]+(?:property|name)=["']${key}["']`, 'i'),
+  ];
+
+  for (const re of patterns) {
+    const m = html.match(re);
+    if (m?.[1]) return m[1];
+  }
+  return null;
+}
+
+async function fetchImage(pageUrl: string): Promise<string | undefined> {
+  try {
+    const res = await fetch(pageUrl, {
+      signal: AbortSignal.timeout(IMAGE_TIMEOUT_MS),
+      headers: {
+        // Some CMSes serve a stripped page to unknown agents, and a few 403 outright.
+        'user-agent': 'Mozilla/5.0 (compatible; akshay.website link preview)',
+        accept: 'text/html',
+      },
+    });
+    if (!res.ok) return undefined;
+
+    const html = (await res.text()).slice(0, HEAD_BYTES);
+    const raw = matchMeta(html, 'og:image') ?? matchMeta(html, 'twitter:image');
+    if (!raw) return undefined;
+
+    // Plenty of sites give a path rather than an absolute URL.
+    const abs = new URL(raw, pageUrl).href;
+    return abs.startsWith('https://') ? abs : undefined;
+  } catch {
+    return undefined;
+  }
 }
 
 /**
@@ -126,6 +171,13 @@ export async function fetchNews(): Promise<NewsItem[]> {
 
     if (items.length >= MAX_ITEMS) break;
   }
+
+  // All at once — sequential would add each article's latency to the response.
+  // An article without an image still belongs in the list, so failures pass through.
+  const images = await Promise.all(items.map((item) => fetchImage(item.link)));
+  images.forEach((image, i) => {
+    if (image) items[i].image = image;
+  });
 
   return items;
 }

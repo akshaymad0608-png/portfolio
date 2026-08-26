@@ -169,18 +169,35 @@ const AINewsFeed: React.FC = () => {
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="spotlight group grid gap-1.5 border-b border-border py-5 sm:grid-cols-[minmax(0,1fr)_auto] sm:items-baseline sm:gap-8"
+                  className="spotlight group grid grid-cols-[104px_minmax(0,1fr)] items-start gap-4 border-b border-border py-5 sm:grid-cols-[168px_minmax(0,1fr)] sm:gap-6"
                 >
-                  <span className="min-w-0 text-[16px] leading-relaxed text-text underline decoration-border underline-offset-[6px] transition-colors group-hover:text-wire group-hover:decoration-wire">
-                    {item.title}
-                    <ArrowUpRight
-                      size={14}
-                      className="ml-1.5 inline-block shrink-0 -translate-y-px text-wire"
-                      aria-hidden="true"
+                  {item.image ? (
+                    <img
+                      src={item.image}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      /* Fixed ratio so a missing or slow image never shifts the row. */
+                      className="aspect-[3/2] w-full border border-border object-cover"
                     />
-                  </span>
-                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted sm:text-right">
-                    {item.source}
+                  ) : (
+                    <span className="flex aspect-[3/2] w-full items-center justify-center border border-border bg-frame px-2 text-center font-mono text-[9px] uppercase leading-tight tracking-[0.16em] text-muted">
+                      {item.source}
+                    </span>
+                  )}
+
+                  <span className="min-w-0">
+                    <span className="block text-[15px] leading-relaxed text-text underline decoration-border underline-offset-[6px] transition-colors group-hover:text-wire group-hover:decoration-wire sm:text-[16px]">
+                      {item.title}
+                      <ArrowUpRight
+                        size={14}
+                        className="ml-1.5 inline-block shrink-0 -translate-y-px text-wire"
+                        aria-hidden="true"
+                      />
+                    </span>
+                    <span className="mt-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+                      {item.source}
+                    </span>
                   </span>
                 </a>
               </li>
