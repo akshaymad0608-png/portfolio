@@ -50,7 +50,7 @@ const AINewsFeed: React.FC = () => {
             <br className="hidden md:block" /> pulled in this morning.
           </h2>
           <p className="mt-4 max-w-2xl text-[15px] leading-relaxed text-textSecondary">
-            Six AI blogs, polled at 9am, deduplicated and cut to the day&rsquo;s best. This list is read
+            Five AI blogs, polled at 9am, deduplicated and cut to the day&rsquo;s best. This list is read
             straight from the sheet the workflow writes to &mdash; nobody typed it, and if the run fails
             this section simply isn&rsquo;t here.
           </p>
