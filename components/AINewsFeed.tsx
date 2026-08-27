@@ -109,6 +109,23 @@ function describeCollected(date: string): string | null {
   return `on ${then.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })}`;
 }
 
+/** Per-row stamp: "today", "yesterday", then a plain date. */
+function dayLabel(date: string): string | null {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) return null;
+
+  const then = new Date(`${date}T00:00:00`);
+  if (Number.isNaN(then.getTime())) return null;
+
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  const days = Math.round((today.getTime() - then.getTime()) / 86_400_000);
+  if (days <= 0) return 'today';
+  if (days === 1) return 'yesterday';
+
+  return then.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+}
+
 const AINewsFeed: React.FC = () => {
   const [items, setItems] = useState<NewsItem[] | null>(null);
 
@@ -181,8 +198,12 @@ const AINewsFeed: React.FC = () => {
                       className="aspect-[3/2] w-full border border-border object-cover"
                     />
                   ) : (
-                    <span className="flex aspect-[3/2] w-full items-center justify-center border border-border bg-frame px-2 text-center font-mono text-[9px] uppercase leading-tight tracking-[0.16em] text-muted">
-                      {item.source}
+                    /* Some publishers — openai.com among them — refuse the request
+                       outright, so there is no image to show. Set the domain as a
+                       plate rather than leaving a grey hole: it reads as a choice,
+                       and it keeps the row the same height as the others. */
+                    <span className="flex aspect-[3/2] w-full items-center justify-center border border-border bg-frame px-2 text-center font-mono text-[10px] uppercase leading-tight tracking-[0.2em] text-textSecondary sm:text-[11px]">
+                      {item.source.replace(/^blogs?\./, '')}
                     </span>
                   )}
 
@@ -195,8 +216,19 @@ const AINewsFeed: React.FC = () => {
                         aria-hidden="true"
                       />
                     </span>
+                    {/* The list spans whatever the last few runs collected, so each
+                        row states its own day — otherwise the heading's "this
+                        morning" quietly claims yesterday's rows too. */}
                     <span className="mt-2 block font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
                       {item.source}
+                      {dayLabel(item.date) && (
+                        <>
+                          <span aria-hidden="true" className="px-2 text-border">
+                            /
+                          </span>
+                          {dayLabel(item.date)}
+                        </>
+                      )}
                     </span>
                   </span>
                 </a>
