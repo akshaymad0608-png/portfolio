@@ -255,8 +255,10 @@ const buildBody = (route) => {
   // navLabel, not the page title: a title is written to fill 50-60 characters
   // in a result listing, which makes a six-word anchor when reused as link
   // text. Anchors read best at two to five words.
+  // Articles carry hideFromNav: they belong in the blog index, not in the
+  // site-wide fallback nav that every other page renders.
   const nav = routes
-    .filter((r) => r.path !== route.path)
+    .filter((r) => r.path !== route.path && !r.hideFromNav)
     .map((r) => `<li><a href="${r.path}">${esc(r.navLabel || r.title.split('|')[0].trim())}</a></li>`)
     .join('');
 

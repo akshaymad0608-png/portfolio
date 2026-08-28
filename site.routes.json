@@ -193,6 +193,26 @@
       "navLabel": "Blog"
     },
     {
+      "path": "/blog/ai-workflow-automation-cost-small-business",
+      "title": "AI Workflow Automation Cost for Small Business (2026, India) | Akshay Mahajan",
+      "description": "One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill from a system I run, and when not to bother.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "What AI workflow automation actually costs a small business",
+      "lead": "One workflow costs ₹15,000–₹60,000 to build once in India in 2026, then ₹500–₹3,000 a month to keep running. Doing it yourself costs only the monthly tool fee.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "The three tiers: build it yourself, one workflow built for you, a whole function automated",
+        "What the monthly bill is made of — platform, AI model, everything else",
+        "A real running automation, itemised: n8n Cloud ~₹2,100/month, Gemini free tier ₹0",
+        "Why the $1,500–$5,000 figures you find online are US agency rates",
+        "When automation is not worth the money",
+        "Five questions to ask before you pay anyone"
+      ],
+      "navLabel": "Automation cost"
+    },
+    {
       "path": "/contact",
       "title": "Contact Akshay Mahajan | Full-Stack & AI Web Developer",
       "description": "Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day, by email, WhatsApp, or on a 20-minute scoping call.",

@@ -5,15 +5,13 @@ import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 
 /**
- * These are planned topics, not published posts.
+ * A mix of one published article and the topics still queued.
  *
- * The previous version rendered them as finished articles with dates and read
- * times, but no link and no article behind them — a dead end for readers and a
- * page of unclickable teasers for crawlers. Labelling them as queued is honest,
- * still useful, and gives visitors something to react to.
- *
- * When a post is actually written, give it a `href` and it will render as a
- * real link automatically.
+ * A post with an `href` renders as a real link; one without renders as a card
+ * marked "In progress". That distinction is the whole point — an earlier version
+ * showed every topic as a finished article with a date and a read time and
+ * nothing behind it, which is a dead end for a reader and a page of unclickable
+ * teasers for a crawler.
  */
 type Post = {
   id: number;
@@ -25,6 +23,15 @@ type Post = {
 };
 
 const POSTS: Post[] = [
+  {
+    id: 0,
+    title: 'What AI workflow automation actually costs a small business',
+    excerpt:
+      '₹15,000–₹60,000 to build one workflow in India, then ₹500–₹3,000 a month. Including the itemised bill for a system I run myself.',
+    category: 'Automation',
+    readTime: '~6 min',
+    href: '/blog/ai-workflow-automation-cost-small-business',
+  },
   {
     id: 1,
     title: 'How to build an AI agent that survives contact with real users',
@@ -80,7 +87,7 @@ const BlogList: React.FC = () => (
       <SectionHeading
         eyebrow="Writing"
         title="What's on the list"
-        lead="Three write-ups queued up, drawn from work I've actually shipped. None are published yet — this is what's coming, not a back catalogue."
+        lead="One published, three queued — all drawn from work I've actually shipped. The queued ones are marked as such rather than dressed up as a back catalogue."
         className="mb-14"
       />
 

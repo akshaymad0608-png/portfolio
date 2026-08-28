@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600" width="1200" height="600" role="img" aria-label="Breakdown of the monthly running cost of one automation: n8n Cloud about 2100 rupees, Google Gemini free tier zero, Google Sheets Telegram and LinkedIn zero, totalling about 2100 rupees a month">
+  <style>
+    .bg   { fill: #FFFFFF; }
+    .rule { stroke: rgba(10,10,10,0.12); stroke-width: 1; }
+    .rule2{ stroke: rgba(10,10,10,0.24); stroke-width: 1; }
+    .accent { fill: #107808; }
+    .h    { font: 700 38px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .row  { font: 500 24px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .amt  { font: 600 24px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .zero { font: 600 24px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #107808; }
+    .tot  { font: 700 30px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .sub  { font: 400 16px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #525252; }
+    .mono { font: 500 13px ui-monospace,'SF Mono',Menlo,Consolas,monospace; fill: #6E6E6E; letter-spacing: 2px; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1200" height="600"/>
+
+  <rect class="accent" x="80" y="64" width="120" height="8"/>
+  <text class="mono" x="80" y="114">ONE RUNNING AUTOMATION · WHAT I ACTUALLY PAY</text>
+  <text class="h" x="80" y="170">The monthly bill, itemised</text>
+  <text class="sub" x="80" y="204">Daily news pipeline: five feeds, a sheet, a Telegram digest, three drafted LinkedIn posts.</text>
+
+  <line class="rule2" x1="80" y1="248" x2="1120" y2="248"/>
+
+  <text class="row" x="80"   y="300">n8n Cloud — Starter, 2,500 runs</text>
+  <text class="amt" x="1120" y="300" text-anchor="end">~₹2,100</text>
+  <line class="rule" x1="80" y1="326" x2="1120" y2="326"/>
+
+  <text class="row" x="80"   y="378">Google Gemini — free tier</text>
+  <text class="zero" x="1120" y="378" text-anchor="end">₹0</text>
+  <line class="rule" x1="80" y1="404" x2="1120" y2="404"/>
+
+  <text class="row" x="80"   y="456">Google Sheets, Telegram, LinkedIn</text>
+  <text class="zero" x="1120" y="456" text-anchor="end">₹0</text>
+  <line class="rule2" x1="80" y1="482" x2="1120" y2="482"/>
+
+  <text class="tot" x="80"   y="534">Total</text>
+  <text class="tot" x="1120" y="534" text-anchor="end">~₹2,100 / month</text>
+
+  <text class="mono" x="80" y="576">AKSHAY.WEBSITE · AUG 2026</text>
+</svg>

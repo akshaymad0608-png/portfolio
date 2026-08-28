@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Three cost tiers for AI workflow automation in India: build it yourself, one workflow built for you, and a whole function automated, with rupee ranges for each">
+  <style>
+    .bg   { fill: #FFFFFF; }
+    .rule { stroke: rgba(10,10,10,0.12); stroke-width: 1; }
+    .accent { fill: #107808; }
+    .h    { font: 700 40px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .lbl  { font: 600 21px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .num  { font: 700 34px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #0A0A0A; }
+    .sub  { font: 400 16px 'Inter','Helvetica Neue',Helvetica,Arial,sans-serif; fill: #525252; }
+    .mono { font: 500 13px ui-monospace,'SF Mono',Menlo,Consolas,monospace; fill: #6E6E6E; letter-spacing: 2px; }
+  </style>
+
+  <rect class="bg" x="0" y="0" width="1200" height="630"/>
+
+  <rect class="accent" x="80" y="72" width="120" height="8"/>
+  <text class="mono" x="80" y="122">AI WORKFLOW AUTOMATION · INDIA · 2026</text>
+  <text class="h" x="80" y="180">What it costs, by how far you go</text>
+
+  <line class="rule" x1="80" y1="228" x2="1120" y2="228"/>
+
+  <!-- tier 1 -->
+  <text class="lbl" x="80"  y="278">Build it yourself</text>
+  <text class="sub" x="80"  y="308">one workflow</text>
+  <text class="num" x="80"  y="368">₹0</text>
+  <text class="sub" x="80"  y="398">to build</text>
+  <text class="num" x="80"  y="452">₹500–2,000</text>
+  <text class="sub" x="80"  y="482">every month</text>
+
+  <line class="rule" x1="420" y1="252" x2="420" y2="500"/>
+
+  <!-- tier 2 -->
+  <text class="lbl" x="466" y="278">Built for you</text>
+  <text class="sub" x="466" y="308">one workflow</text>
+  <text class="num" x="466" y="368">₹15,000–60,000</text>
+  <text class="sub" x="466" y="398">once</text>
+  <text class="num" x="466" y="452">₹500–3,000</text>
+  <text class="sub" x="466" y="482">every month</text>
+
+  <line class="rule" x1="806" y1="252" x2="806" y2="500"/>
+
+  <!-- tier 3 -->
+  <text class="lbl" x="852" y="278">A whole function</text>
+  <text class="sub" x="852" y="308">captured, routed, chased, reported</text>
+  <text class="num" x="852" y="368">₹1.5–5 lakh</text>
+  <text class="sub" x="852" y="398">once</text>
+  <text class="num" x="852" y="452">₹3,000–15,000</text>
+  <text class="sub" x="852" y="482">every month</text>
+
+  <line class="rule" x1="80" y1="536" x2="1120" y2="536"/>
+  <text class="mono" x="80" y="574">AKSHAY.WEBSITE</text>
+</svg>
