@@ -19,6 +19,7 @@ const About = lazy(() => import('./pages/About'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Blog = lazy(() => import('./pages/Blog'));
 const AiAutomationCost = lazy(() => import('./pages/posts/AiAutomationCost'));
+const LlmOptimizationCost = lazy(() => import('./pages/posts/LlmOptimizationCost'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const Testimonials = lazy(() => import('./pages/Testimonials'));
 const AIGuide = lazy(() => import('./pages/AIGuide'));
@@ -90,6 +91,10 @@ const App: React.FC = () => {
               <Route
                 path="/blog/ai-workflow-automation-cost-small-business"
                 element={<AiAutomationCost />}
+              />
+              <Route
+                path="/blog/llm-optimization-cost-small-businesses-india"
+                element={<LlmOptimizationCost />}
               />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/testimonials" element={<Testimonials />} />

@@ -213,6 +213,26 @@
       "navLabel": "Automation cost"
     },
     {
+      "path": "/blog/llm-optimization-cost-small-businesses-india",
+      "title": "LLM Optimization Cost for Small Businesses in India | Akshay Mahajan",
+      "description": "What actually drives the cost of LLM optimization for an Indian small business — prompt engineering, fine-tuning and RAG compared, the hidden ongoing costs, and how to budget for it.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "LLM optimization cost for small businesses in India",
+      "lead": "Prompt engineering is budget-friendly, fine-tuning or RAG demand more investment in data and compute. What actually moves the cost, and how to budget for it.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "Prompt engineering, fine-tuning and RAG compared",
+        "The costs that don't show up in the pitch — compute, tokens, data prep, compliance",
+        "Seven budget-friendly strategies for Indian MSMEs",
+        "Open-source vs. commercial LLMs, the real trade-off",
+        "In-house vs. consultant vs. agency for the expertise you don't have",
+        "How to justify the investment before you spend it"
+      ],
+      "navLabel": "LLM optimization cost"
+    },
+    {
       "path": "/contact",
       "title": "Contact Akshay Mahajan | Full-Stack & AI Web Developer",
       "description": "Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day, by email, WhatsApp, or on a 20-minute scoping call.",

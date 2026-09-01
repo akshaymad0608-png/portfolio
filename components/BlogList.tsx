@@ -5,7 +5,7 @@ import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 
 /**
- * A mix of one published article and the topics still queued.
+ * A mix of published articles and the topics still queued.
  *
  * A post with an `href` renders as a real link; one without renders as a card
  * marked "In progress". That distinction is the whole point — an earlier version
@@ -31,6 +31,15 @@ const POSTS: Post[] = [
     category: 'Automation',
     readTime: '~6 min',
     href: '/blog/ai-workflow-automation-cost-small-business',
+  },
+  {
+    id: 4,
+    title: 'LLM optimization cost for small businesses in India',
+    excerpt:
+      'Prompt engineering, fine-tuning and RAG compared — written by my own Blog Agent pipeline, scored 93/100 by its own reviewer before it went up.',
+    category: 'AI for Business',
+    readTime: '~10 min',
+    href: '/blog/llm-optimization-cost-small-businesses-india',
   },
   {
     id: 1,
@@ -87,7 +96,7 @@ const BlogList: React.FC = () => (
       <SectionHeading
         eyebrow="Writing"
         title="What's on the list"
-        lead="One published, three queued — all drawn from work I've actually shipped. The queued ones are marked as such rather than dressed up as a back catalogue."
+        lead="Two published, three queued — all drawn from work I've actually shipped. The queued ones are marked as such rather than dressed up as a back catalogue."
         className="mb-14"
       />
 
