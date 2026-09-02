@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { MotionConfig } from 'framer-motion';
+import { CurrencyProvider } from './lib/currency';
 import App from './App';
 
 const rootElement = document.getElementById('root');
@@ -29,7 +30,11 @@ root.render(
           check, and a tenth component would have been just as easy to miss.
         */}
         <MotionConfig reducedMotion="user">
-          <App />
+          {/* One currency choice for the whole site: the pricing table and the ROI
+              calculator sit on the same page and must never disagree. */}
+          <CurrencyProvider>
+            <App />
+          </CurrencyProvider>
         </MotionConfig>
       </BrowserRouter>
     </HelmetProvider>

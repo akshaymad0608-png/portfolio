@@ -3,13 +3,35 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
+import { useCurrency, formatMoney } from '../lib/currency';
 
-const currency = (n: number) => `$${n.toLocaleString()}`;
+/**
+ * Slider bounds per currency, because a dollar range is meaningless in rupees.
+ *
+ * The rupee defaults come from what an hour of a small-business employee
+ * actually costs once salary is loaded: roughly ₹170/hour on a
+ * ₹30,000 month, ₹460 on ₹80,000. ₹400 sits in the
+ * middle of that, and the slider covers everything from a junior to a founder's
+ * own time. Move it — the whole point is that these are your numbers.
+ */
+const RATE_BOUNDS = {
+  USD: { min: 15, max: 200, step: 5, initial: 50 },
+  INR: { min: 100, max: 3000, step: 50, initial: 400 },
+} as const;
 
 const ROICalculator: React.FC = () => {
-  const [hours, setHours] = useState(20);
-  const [rate, setRate] = useState(50);
+  const { currency } = useCurrency();
+  const bounds = RATE_BOUNDS[currency];
 
+  const [hours, setHours] = useState(20);
+  const [rates, setRates] = useState({ USD: RATE_BOUNDS.USD.initial, INR: RATE_BOUNDS.INR.initial });
+
+  // Each currency keeps its own rate, so switching back does not land on a
+  // dollar figure reinterpreted as rupees.
+  const rate = rates[currency];
+  const setRate = (v: number) => setRates((r) => ({ ...r, [currency]: v }));
+
+  const money = (n: number) => formatMoney(n, currency);
   const monthly = hours * rate * 4;
   const yearly = monthly * 12;
 
@@ -54,20 +76,20 @@ const ROICalculator: React.FC = () => {
                   <label htmlFor="roi-rate" className="text-[15px] font-semibold text-text">
                     Cost of an hour
                   </label>
-                  <span className="font-mono text-2xl font-bold text-wire">${rate}</span>
+                  <span className="font-mono text-2xl font-bold text-wire">{money(rate)}</span>
                 </div>
                 <p className="mb-5 text-[13.5px] text-muted">
                   Loaded hourly cost of whoever is doing it now.
                 </p>
                 <input
                   id="roi-rate"
-                  type="range" min={15} max={200} step={5}
+                  type="range" min={bounds.min} max={bounds.max} step={bounds.step}
                   value={rate}
                   onChange={(e) => setRate(parseInt(e.target.value))}
                   className="range-wire"
                 />
                 <div className="mt-2 flex justify-between font-mono text-[11px] text-muted">
-                  <span>$15</span><span>$200</span>
+                  <span>{money(bounds.min)}</span><span>{money(bounds.max)}</span>
                 </div>
               </div>
             </div>
@@ -77,13 +99,13 @@ const ROICalculator: React.FC = () => {
             <div className="panel ticked flex h-full flex-col p-8">
               <span className="eyebrow">Recovered per year</span>
               <div className="mt-3 font-display text-[46px] font-bold leading-none tracking-tightest text-signal md:text-[56px]">
-                {currency(yearly)}
+                {money(yearly)}
               </div>
 
               <dl className="mt-8 space-y-3 border-t border-border pt-6">
                 <div className="flex items-center justify-between">
                   <dt className="text-[14.5px] text-textSecondary">Monthly cost of doing it by hand</dt>
-                  <dd className="font-mono text-[15px] font-semibold text-text">{currency(monthly)}</dd>
+                  <dd className="font-mono text-[15px] font-semibold text-text">{money(monthly)}</dd>
                 </div>
                 <div className="flex items-center justify-between">
                   <dt className="text-[14.5px] text-textSecondary">Hours back per month</dt>

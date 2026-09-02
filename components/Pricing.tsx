@@ -1,25 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, Image as ImageIcon, Video, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 import SpotlightCard from './ui/SpotlightCard';
-
-type Currency = 'USD' | 'INR';
-
-/** Indian clients think in rupees; everyone else in dollars. Default to whichever
- *  the visitor's own device suggests, and let them switch either way. */
-const detectCurrency = (): Currency => {
-  if (typeof window === 'undefined') return 'USD';
-  try {
-    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-    const locale = navigator.language || '';
-    if (tz === 'Asia/Kolkata' || tz === 'Asia/Calcutta' || /-IN$/i.test(locale)) return 'INR';
-  } catch {
-    /* fall through to USD */
-  }
-  return 'USD';
-};
+import { useCurrency, type Currency } from '../lib/currency';
 
 /**
  * `service` matches an option in the SERVICES list on pages/Contact.tsx, so a
@@ -177,7 +162,7 @@ const N8N_RUNNING = [
 ];
 
 const Pricing: React.FC = () => {
-  const [currency, setCurrency] = useState<Currency>(detectCurrency);
+  const { currency, setCurrency } = useCurrency();
   const amount = (item: { price: string; priceINR: string }) =>
     currency === 'INR' ? item.priceINR : item.price;
 
