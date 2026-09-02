@@ -157,7 +157,14 @@ const Footer: React.FC = () => {
               Google Business Profile carries, so the two agree. */}
           <p className="font-mono text-[12px] text-muted">
             &copy; {new Date().getFullYear()} Akshay Mahajan &middot; Surat, Gujarat, India &middot;{' '}
-            <a href="tel:+917600885080" className="hover:text-wire">+91 76008 85080</a>
+            {/* Negative margin absorbs the padding, so the tap area grows to a
+                thumb-sized target on a phone without moving the line. */}
+            <a
+              href="tel:+917600885080"
+              className="-my-2 inline-block py-2 hover:text-wire"
+            >
+              +91 76008 85080
+            </a>
           </p>
           <p className="flex items-center gap-2 font-mono text-[12px] text-muted">
             <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />
