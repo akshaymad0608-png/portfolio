@@ -164,3 +164,8 @@ if (!findings.length) {
   }
 }
 console.log(`\nTOTAL: ${findings.length}`);
+
+// Exit non-zero so this is a gate, not a wall poster. It reported the same four
+// over-length blog titles and descriptions for as long as they existed, and
+// nothing acted on them, because a passing exit code reads as "fine".
+if (findings.length) process.exit(1);

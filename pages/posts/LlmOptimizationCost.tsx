@@ -22,7 +22,7 @@ const schema = {
   '@type': 'BlogPosting',
   headline: 'LLM Optimization Cost for Small Businesses in India: A Practical Guide',
   description:
-    'What actually drives the cost of LLM optimization for an Indian small business — prompt engineering, fine-tuning and RAG compared, the hidden ongoing costs, and how to budget for it.',
+    'What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs.',
   datePublished: PUBLISHED,
   dateModified: PUBLISHED,
   inLanguage: 'en-IN',
@@ -80,8 +80,8 @@ const LI: React.FC<{ title: string; children: React.ReactNode }> = ({ title, chi
 const LlmOptimizationCost: React.FC = () => (
   <PageTransition>
     <SEO
-      title="LLM Optimization Cost for Small Businesses in India | Akshay Mahajan"
-      description="What actually drives the cost of LLM optimization for an Indian small business — prompt engineering, fine-tuning and RAG compared, the hidden ongoing costs, and how to budget for it."
+      title="LLM Optimization Cost for Small Businesses in India"
+      description="What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs."
       canonical="https://akshay.website/blog/llm-optimization-cost-small-businesses-india"
       schema={[schema, faqSchema]}
     />

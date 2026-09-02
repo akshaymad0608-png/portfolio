@@ -18,7 +18,7 @@ const SUGGESTED_QUESTIONS = [
 
 const RESPONSES: Record<string, string> = {
   "What services do you offer?": "I specialize in building intelligent AI agents, custom automation workflows, and high-conversion web applications.",
-  "How much does a project cost?": "Project costs depend on the complexity. Simple automations start around $500, while custom full-stack SaaS apps or advanced AI agents can range from $2,000 to $10,000+. Let's chat on WhatsApp to get a precise quote!",
+  "How much does a project cost?": "Pricing is per project. A single workflow or script starts at $450 (about ₹40,000); an automation system is from $1,500 and a full build from $3,000. The pricing page lists every tier in both currencies. Happy to give you a precise number on WhatsApp once I know the scope.",
   "Do you build AI Agents?": "Yes! I build autonomous AI agents using tools like LangChain, OpenAI, and custom Python/Node backends. They can handle customer support, lead generation, and complex data tasks.",
   "What's your tech stack?": "I build robust systems using React, Next.js, Node.js, Python, and PostgreSQL. For AI, I use OpenAI/Anthropic APIs, LangChain, and Pinecone. For workflow automation, I prefer n8n and Make.com.",
   "Do you do consulting?": "Yes! I offer strategic consulting to help businesses figure out how AI and automation can save them time and money. Schedule a call with me to explore possibilities."

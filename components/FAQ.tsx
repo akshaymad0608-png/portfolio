@@ -11,7 +11,11 @@ export const FAQ_DATA = [
   },
   {
     q: 'What does it cost?',
-    a: "Pricing is per project, not per hour. A single workflow or script starts around $1,500. Agents, chatbots and full builds get quoted once I know the scope. You'll always see the number before we start.",
+    // Kept in step with components/Pricing.tsx deliberately. This answer used to
+    // say $1,500 — more than three times the real starting price, and it is the
+    // one Google reads out of the FAQ schema, so the site quoted a number that
+    // would lose the enquiry before anyone reached the pricing page.
+    a: "Pricing is per project, not per hour. A single workflow or script starts at $450 (about ₹40,000). Agents, chatbots and full builds get quoted once I know the scope — the pricing page lists every tier, and you'll always see the number before we start.",
   },
   {
     q: 'Do I have to switch tools?',

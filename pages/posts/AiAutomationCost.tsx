@@ -25,7 +25,7 @@ const schema = {
   '@type': 'BlogPosting',
   headline: 'What AI Workflow Automation Actually Costs a Small Business (2026, in Rupees)',
   description:
-    'One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill from a system I run, and when not to bother.',
+    'One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother.',
   datePublished: PUBLISHED,
   dateModified: PUBLISHED,
   inLanguage: 'en-IN',
@@ -111,8 +111,8 @@ const P: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 const AiAutomationCost: React.FC = () => (
   <PageTransition>
     <SEO
-      title="AI Workflow Automation Cost for Small Business (2026, India)"
-      description="One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill from a system I run, and when not to bother."
+      title="AI Workflow Automation Cost for Small Business in India"
+      description="One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother."
       canonical="https://akshay.website/blog/ai-workflow-automation-cost-small-business"
       schema={[schema, faqSchema]}
     />

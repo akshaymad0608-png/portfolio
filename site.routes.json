@@ -179,8 +179,8 @@
     },
     {
       "path": "/blog/ai-workflow-automation-cost-small-business",
-      "title": "AI Workflow Automation Cost for Small Business (2026, India) | Akshay Mahajan",
-      "description": "One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill from a system I run, and when not to bother.",
+      "title": "AI Workflow Automation Cost for Small Business in India",
+      "description": "One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother.",
       "priority": "0.8",
       "changefreq": "yearly",
       "hideFromNav": true,
@@ -199,8 +199,8 @@
     },
     {
       "path": "/blog/llm-optimization-cost-small-businesses-india",
-      "title": "LLM Optimization Cost for Small Businesses in India | Akshay Mahajan",
-      "description": "What actually drives the cost of LLM optimization for an Indian small business — prompt engineering, fine-tuning and RAG compared, the hidden ongoing costs, and how to budget for it.",
+      "title": "LLM Optimization Cost for Small Businesses in India",
+      "description": "What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs.",
       "priority": "0.8",
       "changefreq": "yearly",
       "hideFromNav": true,
