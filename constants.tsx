@@ -533,4 +533,15 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     tech: ["Node.js", "Zero dependencies", "Search Console API"],
     facts: ["Run weekly on 6 sites", "No install step", "Schema + canonical checks", "Feeds the page generators"],
   },
+  {
+    id: 4,
+    title: "Jewellery Business Intelligence",
+    kind: "Automation stack",
+    status: "Running privately",
+    icon: LayoutDashboard,
+    summary: "Thirteen n8n workflows that read a jewellery shop's sales sheet every night and send the owner a written analysis by 8pm.",
+    detail: "A Google Sheet is the whole database — sales, customers, inventory. Every evening the system validates each row and logs what it rejects and why, then computes the day's revenue, order value and growth, re-segments customers from VIP to dormant, scores inventory for stockouts and dead stock, and raises restock alerts. Only then does an LLM see the numbers, as a brief carrying no names or phone numbers, and write the analysis. The report reaches Telegram and email in about twenty seconds. Marketing campaigns it proposes go nowhere until the owner approves them from a Telegram button, and only customers who have given marketing consent are ever contacted. The workflows are generated from source rather than clicked together, so a fix is a code change and a rebuild.",
+    tech: ["n8n", "Google Sheets API", "Gemini", "Telegram Bot API", "Gmail API"],
+    facts: ["13 workflows, 171 nodes", "Full report in ~22s", "193 automated checks", "Consent-gated, PII masked"],
+  },
 ];
