@@ -23,6 +23,37 @@ const TIMELINE = [
   },
 ];
 
+/**
+ * Automation systems, described by what they actually do rather than by the
+ * word "AI". Every number here is checkable against the builds on /work — the
+ * point of the section is that it stays that way.
+ */
+const AUTOMATIONS = [
+  {
+    name: 'Jewellery business intelligence',
+    what: 'Reads a shop’s sales sheet every night, segments the customers, scores the stock and sends the owner a written analysis by 8pm.',
+    facts: ['13 workflows', 'Report in ~22s', 'Telegram + email'],
+  },
+  {
+    name: 'Content and lead operations',
+    what: 'Polls six industry blogs each morning, dedupes the day down to a single digest, and drives drafting, outreach and DM triage off one sheet.',
+    facts: ['10 workflows', 'Digest 9am daily', 'Self-hosted stack'],
+  },
+  {
+    name: 'SEO monitoring',
+    what: 'A zero-dependency crawler I run weekly across my own sites, checking titles, canonicals, structured data and crawlability before search engines do.',
+    facts: ['6 sites weekly', 'No install step', 'Feeds page generators'],
+  },
+];
+
+/** The rules I hold automation to. Learned the hard way, on live systems. */
+const AUTOMATION_RULES = [
+  'Nothing reaches a customer without a human approving it first, and never without their marketing consent.',
+  'Personal data is masked before it goes anywhere near a model — no names, no phone numbers.',
+  'A failure raises an alert. A system that fails quietly is worse than one that stops.',
+  'Your data stays in your spreadsheet, in your account. You can read it, edit it, and turn the whole thing off.',
+];
+
 const LANGUAGES = [
   ['English', 'Professional'],
   ['Hindi', 'Native'],
@@ -121,7 +152,7 @@ const About: React.FC = () => (
         <Reveal>
           <div className="mb-10 flex items-center gap-3">
             <span className="h-px w-8 bg-wire/50" />
-            <span className="eyebrow">How I got here</span>
+            <h2 className="eyebrow">How I got here</h2>
           </div>
         </Reveal>
 
@@ -140,12 +171,78 @@ const About: React.FC = () => (
         </ol>
       </div>
 
+      {/* automation — the half of the work that runs when nobody is watching */}
+      <div className="mt-24">
+        <Reveal>
+          <div className="mb-6 flex items-center gap-3">
+            <span className="h-px w-8 bg-wire/50" />
+            <span className="eyebrow">Where automation earns its keep</span>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.05}>
+          <h2 className="max-w-3xl font-display text-[28px] font-bold leading-[1.15] tracking-tightest text-text md:text-[36px]">
+            Most of what I build with AI isn&rsquo;t a chatbot. It&rsquo;s the work nobody
+            wants to do at 8pm.
+          </h2>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="mt-7 max-w-2xl space-y-5 text-[17px] leading-relaxed text-textSecondary">
+            <p>
+              A useful automation is boring to describe. It wakes up on a schedule, reads the data
+              your business already keeps, does the arithmetic a person would do by hand, and tells
+              you what changed &mdash; on WhatsApp, Telegram or email, before you&rsquo;ve opened a
+              laptop.
+            </p>
+            <p>
+              The model comes in near the end, and only once. Everything up to that point is
+              deterministic code, so the numbers are always right even on the days the AI is having
+              a bad time. When a model fails, the report still arrives &mdash; with the figures
+              intact and the commentary missing, which is the correct way round.
+            </p>
+          </div>
+        </Reveal>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {AUTOMATIONS.map((a, i) => (
+            <Reveal key={a.name} delay={0.06 * i}>
+              <div className="panel flex h-full flex-col p-6">
+                <h3 className="font-display text-[17px] font-bold text-text">{a.name}</h3>
+                <p className="mt-3 flex-1 text-[14.5px] leading-relaxed text-textSecondary">{a.what}</p>
+                <ul className="mt-5 flex flex-wrap gap-x-4 gap-y-1.5 border-t border-border pt-4">
+                  {a.facts.map((f) => (
+                    <li key={f} className="font-mono text-[11px] text-muted">{f}</li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+
+        <Reveal delay={0.15}>
+          <div className="panel mt-4 p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-wire">
+              Rules I hold these to
+            </p>
+            <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+              {AUTOMATION_RULES.map((rule) => (
+                <li key={rule} className="flex gap-3 text-[15px] leading-relaxed text-textSecondary">
+                  <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-wire" aria-hidden="true" />
+                  {rule}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </Reveal>
+      </div>
+
       {/* languages */}
       <Reveal>
         <div className="panel mt-16 p-8">
           <div className="mb-6 flex items-center gap-3">
             <span className="h-px w-8 bg-wire/50" />
-            <span className="eyebrow">Languages I work in</span>
+            <h2 className="eyebrow">Languages I work in</h2>
           </div>
           <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
             {LANGUAGES.map(([lang, level]) => (
