@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Clock, Check, ArrowRight, MessageCircle, Phone } from 'lucide-react';
 import PageTransition from '../components/PageTransition';
@@ -23,8 +24,22 @@ const Contact: React.FC = () => {
   const [submitting, setSubmitting] = useState(false);
   const [sent, setSent] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  /**
+   * `?service=` lets the pricing cards land someone here with the right option
+   * already chosen, so a person who has decided what they want does not have to
+   * say it a second time. Anything not on the SERVICES list is ignored rather
+   * than trusted — the value ends up in an email, and the query string is not
+   * ours to believe.
+   */
+  const [searchParams] = useSearchParams();
+  const requested = searchParams.get('service');
   const [form, setForm] = useState({
-    name: '', email: '', whatsapp: '', service: '', budget: '', details: '',
+    name: '',
+    email: '',
+    whatsapp: '',
+    service: requested && SERVICES.includes(requested) ? requested : '',
+    budget: '',
+    details: '',
   });
 
   const update = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>

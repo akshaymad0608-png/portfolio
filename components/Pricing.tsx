@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Check, Bot, Layers, Workflow, Headphones, Code2, Globe, Search, Image as ImageIcon, Video, ArrowRight, ShieldCheck, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
 import SpotlightCard from './ui/SpotlightCard';
@@ -20,6 +21,14 @@ const detectCurrency = (): Currency => {
   return 'USD';
 };
 
+/**
+ * `service` matches an option in the SERVICES list on pages/Contact.tsx, so a
+ * card can hand someone to the form with their choice already made.
+ *
+ * `excludes` keeps the page hero's promise of "an honest note on what each one
+ * does and doesn't include". The promise was in the copy and never kept, which
+ * left the exclusions to surface halfway through a project instead.
+ */
 const PACKAGES = [
   {
     title: 'Website development',
@@ -35,6 +44,8 @@ const PACKAGES = [
       'Contact form and analytics wired in',
       'Live on your own domain',
     ],
+    excludes: 'Copywriting, photography, and the domain and hosting bill are yours.',
+    service: 'Website / web app build',
     popular: false,
   },
   {
@@ -51,6 +62,8 @@ const PACKAGES = [
       'Chat widget or API endpoint',
       'Prompt tuning against real cases',
     ],
+    excludes: 'Model usage is billed to your own API account, so you see every token.',
+    service: 'AI agent or chatbot',
     popular: true,
   },
   {
@@ -67,6 +80,8 @@ const PACKAGES = [
       'Auth and security',
       'Deploy and CI/CD pipeline',
     ],
+    excludes: 'Hosting, database and third-party services run on your accounts, not mine.',
+    service: 'Custom AI tool or micro-SaaS',
     popular: false,
   },
 ];
@@ -209,6 +224,25 @@ const Pricing: React.FC = () => {
                   <span className="text-muted">Typical delivery</span>
                   <span className="text-text">{pkg.delivery}</span>
                 </div>
+
+                <p className="mt-4 text-[13px] leading-relaxed text-muted">
+                  <span className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+                    Not included &middot;{' '}
+                  </span>
+                  {pkg.excludes}
+                </p>
+
+                {/* Every card used to end without anything to click. Someone who
+                    had decided on a tier had to scroll past the whole page to
+                    find the single link at the bottom. */}
+                <Link
+                  to={`/contact?service=${encodeURIComponent(pkg.service)}`}
+                  className={`mt-6 inline-flex w-full items-center justify-center gap-2 px-6 py-3 text-[14.5px] font-medium ${
+                    pkg.popular ? 'btn-signal' : 'btn-ghost'
+                  }`}
+                >
+                  Start this <ArrowRight size={15} />
+                </Link>
               </SpotlightCard>
             </Reveal>
           );

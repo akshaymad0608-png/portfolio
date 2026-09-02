@@ -11,11 +11,12 @@ export const FAQ_DATA = [
   },
   {
     q: 'What does it cost?',
-    // Kept in step with components/Pricing.tsx deliberately. This answer used to
-    // say $1,500 — more than three times the real starting price, and it is the
-    // one Google reads out of the FAQ schema, so the site quoted a number that
-    // would lose the enquiry before anyone reached the pricing page.
-    a: "Pricing is per project, not per hour. A single workflow or script starts at $450 (about ₹40,000). Agents, chatbots and full builds get quoted once I know the scope — the pricing page lists every tier, and you'll always see the number before we start.",
+    // Every number here is read straight off components/Pricing.tsx. This answer
+    // is also what Google reads out of the FAQPage schema, so a stale figure
+    // here is a stale figure in the search result. It has been wrong twice: it
+    // said $1,500 for a workflow (that is the agent tier), and then $450 (that
+    // is the website tier). Check the tier names, not just the numbers.
+    a: "Pricing is per project, not per hour. A website starts at $450 (about ₹40,000), an automation build at $500, and an AI agent or chatbot at $1,500. The pricing page lists every tier in rupees or dollars, and you'll always see the number before we start.",
   },
   {
     q: 'Do I have to switch tools?',
