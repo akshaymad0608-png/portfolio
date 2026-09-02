@@ -18,7 +18,7 @@ const SUGGESTED_QUESTIONS = [
 
 const RESPONSES: Record<string, string> = {
   "What services do you offer?": "I specialize in building intelligent AI agents, custom automation workflows, and high-conversion web applications.",
-  "How much does a project cost?": "Pricing is per project. A website starts at $450 (about ₹40,000), an automation build at $500, an AI agent or chatbot at $1,500, and a full product build at $3,000. The pricing page lists every tier in rupees or dollars. Happy to give you a precise number on WhatsApp once I know the scope.",
+  "How much does a project cost?": "Pricing is per project. A website starts at $275 (about ₹25,000), an n8n automation build at $300, an AI agent or chatbot at $900, and a full product build at $1,800. The pricing page lists every tier in rupees or dollars. Happy to give you a precise number on WhatsApp once I know the scope.",
   "Do you build AI Agents?": "Yes! I build autonomous AI agents using tools like LangChain, OpenAI, and custom Python/Node backends. They can handle customer support, lead generation, and complex data tasks.",
   "What's your tech stack?": "I build robust systems using React, Next.js, Node.js, Python, and PostgreSQL. For AI, I use OpenAI/Anthropic APIs, LangChain, and Pinecone. For workflow automation, I prefer n8n and Make.com.",
   "Do you do consulting?": "Yes! I offer strategic consulting to help businesses figure out how AI and automation can save them time and money. Schedule a call with me to explore possibilities."

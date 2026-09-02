@@ -16,7 +16,7 @@ export const FAQ_DATA = [
     // here is a stale figure in the search result. It has been wrong twice: it
     // said $1,500 for a workflow (that is the agent tier), and then $450 (that
     // is the website tier). Check the tier names, not just the numbers.
-    a: "Pricing is per project, not per hour. A website starts at $450 (about ₹40,000), an automation build at $500, and an AI agent or chatbot at $1,500. The pricing page lists every tier in rupees or dollars, and you'll always see the number before we start.",
+    a: "Pricing is per project, not per hour. A website starts at $275 (about ₹25,000), an n8n automation build at $300, and an AI agent or chatbot at $900. The pricing page lists every tier in rupees or dollars, and you'll always see the number before we start.",
   },
   {
     q: 'Do I have to switch tools?',

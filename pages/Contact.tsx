@@ -15,7 +15,9 @@ const SERVICES = [
   'Not sure yet',
 ];
 
-const BUDGETS = ['Under $1,000', '$1,000 – $3,000', '$3,000 – $10,000', 'Over $10,000', 'Need guidance'];
+// Brackets track the tiers on components/Pricing.tsx. Ranges that start above
+// the cheapest package make a person pick one that overstates their budget.
+const BUDGETS = ['Under $500', '$500 – $1,500', '$1,500 – $5,000', 'Over $5,000', 'Need guidance'];
 
 const fieldClass =
   'w-full rounded-xl border border-border bg-ink px-4 py-3 text-[15px] text-text placeholder-muted transition-colors focus:border-wire/50 focus:outline-none';
