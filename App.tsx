@@ -1,13 +1,17 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
-import Lenis from 'lenis';
 
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
-import AIChatBot from './components/AIChatBot';
-import FloatingWidgets from './components/FloatingWidgets';
-import CustomCursor from './components/CustomCursor';
+
+// None of these three can be seen or used until after first paint — the chatbot
+// waits on a click, the widgets sit at the edge of the viewport, the cursor is
+// pointer-only decoration. In the entry chunk they were costing every visitor
+// download time before the page appeared.
+const AIChatBot = lazy(() => import('./components/AIChatBot'));
+const FloatingWidgets = lazy(() => import('./components/FloatingWidgets'));
+const CustomCursor = lazy(() => import('./components/CustomCursor'));
 
 // Home ships in the main bundle — it's the landing route and shouldn't wait
 // on a second request. Everything else is fetched when it's actually visited.
@@ -38,26 +42,37 @@ const App: React.FC = () => {
     // Lenis fights native scrolling for anyone who has asked for less motion.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: 'vertical',
-      gestureOrientation: 'vertical',
-      smoothWheel: true,
-      wheelMultiplier: 1,
-      touchMultiplier: 2,
+    // Fetched after mount rather than bundled with the entry chunk. Smooth
+    // scrolling is a refinement of a page that already works; nobody should
+    // wait on it to see the page. `cancelled` covers a very fast unmount.
+    let cancelled = false;
+    let frame = 0;
+    let instance: import('lenis').default | null = null;
+
+    import('lenis').then(({ default: Lenis }) => {
+      if (cancelled) return;
+
+      instance = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        touchMultiplier: 2,
+      });
+
+      const raf = (time: number) => {
+        instance?.raf(time);
+        frame = requestAnimationFrame(raf);
+      };
+      frame = requestAnimationFrame(raf);
     });
 
-    let frame = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      frame = requestAnimationFrame(raf);
-    };
-    frame = requestAnimationFrame(raf);
-
     return () => {
+      cancelled = true;
       cancelAnimationFrame(frame);
-      lenis.destroy();
+      instance?.destroy();
     };
   }, []);
 
@@ -107,9 +122,11 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
-      <AIChatBot />
-      <FloatingWidgets />
-      <CustomCursor />
+      <Suspense fallback={null}>
+        <AIChatBot />
+        <FloatingWidgets />
+        <CustomCursor />
+      </Suspense>
     </div>
   );
 };

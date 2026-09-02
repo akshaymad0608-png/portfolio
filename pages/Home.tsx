@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Hero from '../components/Hero';
 import IntroBanner from '../components/IntroBanner';
 import Services from '../components/Services';
@@ -6,7 +6,11 @@ import Process from '../components/Process';
 import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
 import Playground from '../components/Playground';
-import BuildLog from '../components/BuildLog';
+// react-github-calendar drags react-activity-calendar and date-fns in with it,
+// and BuildLog sits well below the fold. Loading it with the rest of the home
+// page put all three in the entry chunk, where they delayed first paint for a
+// section most visitors never scroll to.
+const BuildLog = lazy(() => import('../components/BuildLog'));
 import Proof from '../components/Proof';
 import FAQ, { FAQ_DATA } from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
@@ -61,7 +65,10 @@ const Home: React.FC = () => (
     <AISystems limit={3} />
     <Playground />
     <Stats />
-    <BuildLog />
+    {/* Reserves the section's height so nothing below it jumps when the chunk lands. */}
+    <Suspense fallback={<div className="min-h-[420px]" aria-hidden="true" />}>
+      <BuildLog />
+    </Suspense>
     <Proof showMore />
     <FAQ />
     <FinalCTA />

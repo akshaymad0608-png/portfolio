@@ -132,6 +132,11 @@ const Hero: React.FC = () => {
               height={1364}
               alt="Akshay Mahajan"
               className="relative block h-auto w-auto max-h-[440px] select-none sm:max-h-[520px] lg:max-h-[620px]"
+              /* This portrait is the largest thing above the fold, so it is
+                 almost certainly the LCP element. Without a priority hint the
+                 browser queues it behind the stylesheet and the entry chunk. */
+              fetchPriority="high"
+              loading="eager"
               decoding="async"
               draggable={false}
             />
