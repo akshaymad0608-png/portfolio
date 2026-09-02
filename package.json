@@ -5,13 +5,14 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "node scripts/csp-check.mjs && vite build && node scripts/prerender.mjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
+    "build": "node scripts/csp-check.mjs && node scripts/price-consistency.mjs && vite build && node scripts/prerender.mjs && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
     "start": "NODE_ENV=production node dist/server.cjs",
     "lint": "tsc --noEmit",
     "preview": "vite preview",
     "prerender": "node scripts/prerender.mjs",
     "seo:check": "node scripts/seo-limits.mjs",
-    "csp:check": "node scripts/csp-check.mjs"
+    "csp:check": "node scripts/csp-check.mjs",
+    "price:check": "node scripts/price-consistency.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.38.0",

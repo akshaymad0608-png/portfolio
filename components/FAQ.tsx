@@ -10,12 +10,13 @@ export const FAQ_DATA = [
     a: "Most automations and MVP builds land in two to four weeks, depending on how many systems have to talk to each other. You get a firm timeline after the scoping call, before any money moves.",
   },
   {
+    // scripts/price-consistency.mjs fails the build if these figures drift from
+    // lib/pricing.ts. They cannot be computed here: scripts/prerender.mjs reads
+    // this array out of the source with eval and needs plain literals, and this
+    // is the answer Google lifts into the FAQ rich result — it has been wrong
+    // twice already, once quoting the agent price for a workflow and once the
+    // website price.
     q: 'What does it cost?',
-    // Every number here is read straight off components/Pricing.tsx. This answer
-    // is also what Google reads out of the FAQPage schema, so a stale figure
-    // here is a stale figure in the search result. It has been wrong twice: it
-    // said $1,500 for a workflow (that is the agent tier), and then $450 (that
-    // is the website tier). Check the tier names, not just the numbers.
     a: "Pricing is per project, not per hour. A website starts at $275 (about ₹25,000), an n8n automation build at $300, and an AI agent or chatbot at $900. The pricing page lists every tier in rupees or dollars, and you'll always see the number before we start.",
   },
   {

@@ -9,8 +9,7 @@ import SEO from '../components/SEO';
 
 const PricingPage: React.FC = () => (
   <PageTransition>
-    <SEO
-    />
+    <SEO />
     <PageHero
       eyebrow="Pricing"
       title="Quoted up front. No hourly surprises."

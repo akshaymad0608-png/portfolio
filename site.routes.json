@@ -122,7 +122,8 @@
         "Advice only",
         "Monthly retainer"
       ],
-      "navLabel": "Pricing"
+      "navLabel": "Pricing",
+      "offers": true
     },
     {
       "path": "/ai-guide",

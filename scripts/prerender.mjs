@@ -64,6 +64,35 @@ const readFaq = () => {
 
 const FAQ = readFaq();
 
+/**
+ * The pricing tiers, for the offer catalogue on /pricing.
+ *
+ * Parsed out of lib/pricing.ts rather than duplicated here, for the same reason
+ * the FAQ is: a second copy of a price is a price that will eventually disagree
+ * with the first. Only tiers with a numeric rupee figure become offers — the
+ * "quoted per scope" row has no price to publish.
+ */
+const readPricing = () => {
+  try {
+    const src = readFileSync(join(root, 'lib', 'pricing.ts'), 'utf8');
+    const re = /title:\s*'([^']+)',\s*price:\s*'[^']+',\s*priceINR:\s*'([^']+)'/g;
+    const tiers = [];
+    let m;
+    while ((m = re.exec(src))) {
+      const digits = m[2].replace(/[^0-9]/g, '');
+      if (digits) tiers.push({ title: m[1], inr: Number(digits) });
+    }
+    if (!tiers.length) throw new Error('no tiers matched — has lib/pricing.ts changed shape?');
+    return tiers;
+  } catch (err) {
+    console.error('prerender: could not read pricing tiers —', err.message);
+    process.exitCode = 1;
+    return [];
+  }
+};
+
+const TIERS = readPricing();
+
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -192,6 +221,29 @@ const buildHead = (route) => {
         '@type': 'Question',
         name: item.q,
         acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    });
+  }
+
+  // Prices a searcher can see on the page, published so Google and the answer
+  // engines can read them too. Build-time only, like the FAQ above: emitting the
+  // same catalogue again from SEO.tsx would leave two in the document.
+  if (route.offers && TIERS.length) {
+    graph.push({
+      '@type': 'OfferCatalog',
+      '@id': `${baseUrl}${route.path}#offers`,
+      name: 'Web development, AI and automation services',
+      provider: { '@id': `${baseUrl}/#akshay` },
+      itemListElement: TIERS.map((t) => ({
+        '@type': 'Offer',
+        name: t.title,
+        priceSpecification: {
+          '@type': 'PriceSpecification',
+          price: t.inr,
+          priceCurrency: 'INR',
+        },
+        availability: 'https://schema.org/InStock',
+        seller: { '@id': `${baseUrl}/#akshay` },
       })),
     });
   }
