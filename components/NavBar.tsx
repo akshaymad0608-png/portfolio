@@ -17,7 +17,6 @@ const NAV_LINKS = [
 // to surface them properly rather than leaving them orphaned.
 const SECONDARY_LINKS = [
   { name: 'Case studies', href: '/work' },
-  { name: 'Client feedback', href: '/testimonials' },
   { name: 'Blog', href: '/blog' },
 ];
 

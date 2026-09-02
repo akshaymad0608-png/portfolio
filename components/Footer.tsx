@@ -12,7 +12,6 @@ const NAV = [
   ]},
   { heading: 'More', links: [
     { label: 'About', to: '/about' },
-    { label: 'Testimonials', to: '/testimonials' },
     { label: 'Blog', to: '/blog' },
   ]},
 ];

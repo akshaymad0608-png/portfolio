@@ -1,5 +1,5 @@
 import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target, Languages } from "lucide-react";
-import { Project, Experiment, Skill, PromptShowcaseItem, Service, Testimonial, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory, InternalBuild } from "./types";
+import { Project, Experiment, Skill, PromptShowcaseItem, Service, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory, InternalBuild } from "./types";
 
 export const HERO_CONTENT = {
   headline: "I build full-stack websites, wired with AI.",
@@ -418,33 +418,6 @@ export const SERVICES: Service[] = [
     icon: Zap,
     description: "Web apps that install to the home screen and keep working with no signal — service workers, offline fallbacks and an install prompt. The same setup running on AI Master Tools and Photo Resizer.",
     features: ["Service Workers", "Offline Fallback", "Install Prompt", "App Manifest", "Cache Strategy"]
-  }
-];
-
-export const TESTIMONIALS: Testimonial[] = [
-  {
-    id: 1,
-    name: "E-commerce Founder",
-    role: "CEO",
-    company: "D2C Brand",
-    content: "Akshay's implementation of automated data pipelines and an AI chatbot for our support reduced resolution time by 80%. His understanding of automation workflows is unmatched.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200"
-  },
-  {
-    id: 2,
-    name: "Marketing Director",
-    role: "Head of Growth",
-    company: "Tech Agency",
-    content: "We were struggling with our content generation workflows. Akshay redesigned our system using AI agents and SEO automation, making our operations incredibly seamless and fast.",
-    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=200"
-  },
-   {
-    id: 3,
-    name: "Tech Startup CEO",
-    role: "Founder",
-    company: "SaaS Platform",
-    content: "The workflow automation and AI features that Akshay delivered for our MVP saved us countless hours. His ability to build zero-to-one is exceptional and highly professional.",
-    avatar: "https://images.unsplash.com/photo-1556157382-97eda2d62296?auto=format&fit=crop&q=80&w=200"
   }
 ];
 

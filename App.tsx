@@ -1,5 +1,5 @@
 import React, { useEffect, lazy, Suspense } from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Lenis from 'lenis';
 
@@ -21,7 +21,6 @@ const Blog = lazy(() => import('./pages/Blog'));
 const AiAutomationCost = lazy(() => import('./pages/posts/AiAutomationCost'));
 const LlmOptimizationCost = lazy(() => import('./pages/posts/LlmOptimizationCost'));
 const Pricing = lazy(() => import('./pages/Pricing'));
-const Testimonials = lazy(() => import('./pages/Testimonials'));
 const AIGuide = lazy(() => import('./pages/AIGuide'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -97,7 +96,9 @@ const App: React.FC = () => {
                 element={<LlmOptimizationCost />}
               />
               <Route path="/pricing" element={<Pricing />} />
-              <Route path="/testimonials" element={<Testimonials />} />
+              {/* The feedback page was built on quotes I wrote myself. It is
+                  gone; anyone who has the old link lands on the real work. */}
+              <Route path="/testimonials" element={<Navigate to="/work" replace />} />
               <Route path="/ai-guide" element={<AIGuide />} />
               <Route path="*" element={<NotFound />} />
             </Routes>

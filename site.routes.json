@@ -162,21 +162,6 @@
       "navLabel": "About"
     },
     {
-      "path": "/testimonials",
-      "title": "Client Feedback & Results | Akshay Mahajan, Surat India",
-      "description": "What clients say after handover — the websites, tools, agents and automations I built for them, and what actually changed on their side afterwards.",
-      "priority": "0.6",
-      "changefreq": "monthly",
-      "heading": "What people say after the handover",
-      "lead": "Names are withheld where clients asked. I'm happy to set up a reference call before you commit to anything.",
-      "pointsHeading": "In short",
-      "points": [
-        "What changed on their side",
-        "Six things worth pointing at"
-      ],
-      "navLabel": "Testimonials"
-    },
-    {
       "path": "/blog",
       "title": "Writing on Full-Stack & AI Development | Akshay Mahajan",
       "description": "Write-ups on full-stack web development, building with LLMs and shipping products fast with AI. First posts in progress — here's what's queued.",

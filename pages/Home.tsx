@@ -7,7 +7,7 @@ import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
 import Playground from '../components/Playground';
 import BuildLog from '../components/BuildLog';
-import Testimonials from '../components/Testimonials';
+import Proof from '../components/Proof';
 import FAQ, { FAQ_DATA } from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
 import SEO from '../components/SEO';
@@ -62,7 +62,7 @@ const Home: React.FC = () => (
     <Playground />
     <Stats />
     <BuildLog />
-    <Testimonials />
+    <Proof showMore />
     <FAQ />
     <FinalCTA />
   </PageTransition>

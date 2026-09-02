@@ -74,15 +74,6 @@ export interface Service {
   features: string[];
 }
 
-export interface Testimonial {
-  id: number;
-  name: string;
-  role: string;
-  company: string;
-  content: string;
-  avatar: string;
-}
-
 export interface Certificate {
   id: number;
   title: string;
