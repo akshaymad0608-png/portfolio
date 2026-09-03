@@ -390,14 +390,37 @@ console.log('prerender: 404.html');
 
 /* ---------------------------------------------------------------- sitemap -- */
 
-const today = new Date().toISOString().slice(0, 10);
+/**
+ * lastmod comes from the route, not from the clock.
+ *
+ * This used to stamp every URL with today's date on every build, so a page
+ * untouched for months advertised itself as changed the moment anything else
+ * shipped. Google discounts a lastmod that always says today, which costs the
+ * pages that genuinely did change. An earlier commit hand-edited the generated
+ * sitemap to fix this and the next build silently undid it, because the value
+ * was computed here rather than declared anywhere.
+ *
+ * So each route in site.routes.json carries its own lastmod, and changing a
+ * page means bumping that date in the same commit. A missing one is a mistake
+ * worth failing the build for rather than papering over with today's date.
+ */
+const missingDates = routes.filter((r) => !/^\d{4}-\d{2}-\d{2}$/.test(r.lastmod || ''));
+if (missingDates.length) {
+  console.error(
+    `prerender: these routes need a "lastmod" (YYYY-MM-DD) in site.routes.json:\n  ${missingDates
+      .map((r) => r.path)
+      .join('\n  ')}`,
+  );
+  process.exit(1);
+}
+
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${routes
   .map(
     (r) => `  <url>
     <loc>${r.path === '/' ? `${baseUrl}/` : `${baseUrl}${r.path}`}</loc>
-    <lastmod>${today}</lastmod>
+    <lastmod>${r.lastmod}</lastmod>
     <changefreq>${r.changefreq}</changefreq>
     <priority>${r.priority}</priority>
   </url>`,
