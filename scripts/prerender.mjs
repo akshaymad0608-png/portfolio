@@ -33,6 +33,26 @@ const { baseUrl, siteName, locale, ogImage, routes } = manifest;
 const template = readFileSync(join(dist, 'index.html'), 'utf8');
 
 /**
+ * This script reads dist/index.html as its template and also writes the home
+ * page back over it, so it is not idempotent: run it twice without a fresh
+ * `vite build` and the second run finds no empty root div to replace. Every
+ * page then gets written with whatever the first run left behind — the wrong
+ * content, silently, with a zero exit code. That cost an hour of debugging a
+ * change that was correct the whole time.
+ *
+ * So refuse rather than produce nonsense. `npm run build` always runs
+ * `vite build` first, which restores the empty container.
+ */
+if (!template.includes('<div id="root"></div>')) {
+  console.error(
+    'prerender: dist/index.html has already been prerendered — its root container is not empty.\n' +
+      'Running this script on its own output would write the wrong content to every page.\n' +
+      'Run `npm run build` instead, which rebuilds dist/ first.',
+  );
+  process.exit(1);
+}
+
+/**
  * The FAQ, read from the component that renders it.
  *
  * These six answers are the most quotable thing on the site — they are what an
@@ -324,6 +344,27 @@ const measure = (file) => {
     // 8-byte signature, 4-byte length, 4-byte "IHDR", then the two dimensions.
     if (b.length < 24 || b.toString('ascii', 12, 16) !== 'IHDR') return null;
     return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+  }
+  if (file.endsWith('.webp')) {
+    const b = readFileSync(file);
+    if (b.length < 30 || b.toString('ascii', 0, 4) !== 'RIFF' || b.toString('ascii', 8, 12) !== 'WEBP') {
+      return null;
+    }
+    const chunk = b.toString('ascii', 12, 16);
+    // Lossless: a 0x2F signature byte, then width-1 and height-1 as 14 bits each.
+    if (chunk === 'VP8L') {
+      const bits = b.readUInt32LE(21);
+      return { w: (bits & 0x3fff) + 1, h: ((bits >> 14) & 0x3fff) + 1 };
+    }
+    // Lossy: dimensions sit after the 3-byte start code and 2-byte sync code.
+    if (chunk === 'VP8 ') {
+      return { w: b.readUInt16LE(26) & 0x3fff, h: b.readUInt16LE(28) & 0x3fff };
+    }
+    // Extended: 24-bit little-endian width-1 and height-1 in the VP8X chunk.
+    if (chunk === 'VP8X') {
+      return { w: b.readUIntLE(24, 3) + 1, h: b.readUIntLE(27, 3) + 1 };
+    }
+    return null;
   }
   const box = readFileSync(file, 'utf8').match(/viewBox="0 0 (\d+) (\d+)"/);
   return box ? { w: Number(box[1]), h: Number(box[2]) } : null;
