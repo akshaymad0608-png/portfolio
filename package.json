@@ -14,8 +14,7 @@
     "csp:check": "node scripts/csp-check.mjs",
     "price:check": "node scripts/price-consistency.mjs",
     "builds:check": "node scripts/builds-consistency.mjs",
-    "prompt:check": "node scripts/prompt-consistency.mjs",
-    "diagrams": "node scripts/write-workflow-graphs.mjs && node scripts/gen-workflow-diagrams.mjs"
+    "prompt:check": "node scripts/prompt-consistency.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.38.0",

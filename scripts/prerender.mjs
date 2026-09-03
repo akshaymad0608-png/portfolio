@@ -313,6 +313,22 @@ const buildHead = (route) => {
  * Dimensions come from each SVG's own viewBox so the markup reserves the right
  * box and a crawler rendering the page does not reflow it.
  */
+/**
+ * Intrinsic size of a diagram, so the markup can reserve the right box and a
+ * crawler rendering the page does not reflow it. PNG keeps width and height in
+ * the IHDR chunk, which is always the first one; SVG carries a viewBox.
+ */
+const measure = (file) => {
+  if (file.endsWith('.png')) {
+    const b = readFileSync(file);
+    // 8-byte signature, 4-byte length, 4-byte "IHDR", then the two dimensions.
+    if (b.length < 24 || b.toString('ascii', 12, 16) !== 'IHDR') return null;
+    return { w: b.readUInt32BE(16), h: b.readUInt32BE(20) };
+  }
+  const box = readFileSync(file, 'utf8').match(/viewBox="0 0 (\d+) (\d+)"/);
+  return box ? { w: Number(box[1]), h: Number(box[2]) } : null;
+};
+
 const readDiagrams = () => {
   try {
     const src = readFileSync(join(root, 'constants.tsx'), 'utf8');
@@ -334,13 +350,13 @@ const readDiagrams = () => {
         const diagram = entry.match(/diagram:\s*\{\s*src:\s*"([^"]+)",\s*caption:\s*"([^"]+)"/);
         if (!title || !diagram) return null;
         const file = join(root, 'public', diagram[1].replace(/^\//, ''));
-        const box = existsSync(file) ? readFileSync(file, 'utf8').match(/viewBox="0 0 (\d+) (\d+)"/) : null;
+        const size = existsSync(file) ? measure(file) : null;
         return {
           title: title[1],
           src: diagram[1],
           caption: diagram[2],
-          w: box ? box[1] : null,
-          h: box ? box[2] : null,
+          w: size ? size.w : null,
+          h: size ? size.h : null,
         };
       })
       .filter(Boolean);
