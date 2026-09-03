@@ -169,6 +169,14 @@
 
   @keyframes float-y { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
   .float-y { animation: float-y 6s ease-in-out infinite; }
+
+  /* The chat launcher: a ring that expands out of the avatar and fades, twice
+     over, so the button reads as live without moving the target you are aiming
+     at. The rings sit behind the photo and are pointer-events:none, so they
+     never eat the click. The reduced-motion block below stops them. */
+  @keyframes chat-ring { 0% { transform: scale(1); opacity: .5; } 70%, 100% { transform: scale(1.75); opacity: 0; } }
+  .chat-ring { animation: chat-ring 3s cubic-bezier(0, 0, .2, 1) infinite; }
+  .chat-ring-late { animation-delay: 1.5s; }
 }
 
 @media (prefers-reduced-motion: reduce) {

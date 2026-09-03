@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send, Bot, MessageSquareText } from 'lucide-react';
+import { X, Send } from 'lucide-react';
 import { HERO_CONTENT } from '../constants';
 
 interface Message {
@@ -238,18 +238,46 @@ const AIChatBot: React.FC = () => {
         )}
       </AnimatePresence>
 
+      {/*
+        Closed, the launcher is Akshay's face rather than a speech bubble: it is
+        the same avatar the chat header already shows, so opening it lands
+        somewhere that looks like where you clicked. The greeting still says
+        "Akshay's AI Assistant" — the photo is whose work it answers about, not
+        a claim that he is typing.
+
+        Open, it collapses to a plain close button. Two things a launcher must
+        not do: move under the cursor, or animate forever next to text someone
+        is reading. The rings expand behind a button that stays put, and the
+        stylesheet's reduced-motion block switches them off.
+      */}
       <motion.button
         onClick={() => setIsOpen(!isOpen)}
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
         aria-label={isOpen ? 'Close the chat' : 'Open the chat'}
         aria-expanded={isOpen}
-        className="fixed bottom-6 right-4 sm:right-6 w-14 h-14 btn-signal flex items-center justify-center z-[90]"
+        className={`fixed bottom-6 right-4 sm:right-6 w-14 h-14 flex items-center justify-center z-[90] rounded-full ${
+          isOpen ? 'btn-signal !rounded-full' : 'bg-ink border border-wire/40 shadow-lg'
+        }`}
       >
         {isOpen ? (
           <X className="text-ink" size={22} />
         ) : (
-          <MessageSquareText className="text-ink w-6 h-6" />
+          <>
+            <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-wire chat-ring" />
+            <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-wire chat-ring chat-ring-late" />
+            <img
+              src="/akshay-avatar-256.webp"
+              alt=""
+              width={56}
+              height={56}
+              className="h-full w-full rounded-full object-cover"
+            />
+            <span
+              aria-hidden
+              className="absolute bottom-0.5 right-0.5 h-3 w-3 rounded-full border-2 border-ink bg-wire"
+            />
+          </>
         )}
       </motion.button>
     </>
