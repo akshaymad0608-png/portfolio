@@ -303,6 +303,56 @@ const buildHead = (route) => {
  * this the moment it boots and the visitor never navigates it. It is the real
  * page content rather than a keyword list precisely so the two agree.
  */
+/**
+ * The workflow diagrams, read out of INTERNAL_BUILDS in constants.tsx.
+ *
+ * Read from the source rather than restated in the manifest for the same
+ * reason as the FAQ above: the /work points list is hand-written and drifted
+ * for days without anyone noticing. There is one list of builds, and this is it.
+ *
+ * Dimensions come from each SVG's own viewBox so the markup reserves the right
+ * box and a crawler rendering the page does not reflow it.
+ */
+const readDiagrams = () => {
+  try {
+    const src = readFileSync(join(root, 'constants.tsx'), 'utf8');
+    const anchor = src.indexOf('export const INTERNAL_BUILDS');
+    if (anchor === -1) return [];
+    const start = src.indexOf('[', src.indexOf('=', anchor));
+    let depth = 0;
+    let end = start;
+    for (let i = start; i < src.length; i++) {
+      if (src[i] === '[') depth++;
+      else if (src[i] === ']' && --depth === 0) { end = i + 1; break; }
+    }
+    // Per entry, so a build without a diagram cannot borrow the next one's.
+    return src
+      .slice(start, end)
+      .split(/\n  \{/)
+      .map((entry) => {
+        const title = entry.match(/title:\s*"([^"]+)"/);
+        const diagram = entry.match(/diagram:\s*\{\s*src:\s*"([^"]+)",\s*caption:\s*"([^"]+)"/);
+        if (!title || !diagram) return null;
+        const file = join(root, 'public', diagram[1].replace(/^\//, ''));
+        const box = existsSync(file) ? readFileSync(file, 'utf8').match(/viewBox="0 0 (\d+) (\d+)"/) : null;
+        return {
+          title: title[1],
+          src: diagram[1],
+          caption: diagram[2],
+          w: box ? box[1] : null,
+          h: box ? box[2] : null,
+        };
+      })
+      .filter(Boolean);
+  } catch (err) {
+    console.error('prerender: could not read the diagrams —', err.message);
+    process.exitCode = 1;
+    return [];
+  }
+};
+
+const DIAGRAMS = readDiagrams();
+
 const buildBody = (route) => {
   // navLabel, not the page title: a title is written to fill 50-60 characters
   // in a result listing, which makes a six-word anchor when reused as link
@@ -323,6 +373,19 @@ const buildBody = (route) => {
 
   // The questions read as content, not as a keyword list, so they carry weight
   // for the engines that quote them.
+  // Opt-in per route, the same way faq is, so only /work carries them.
+  const diagramsHtml =
+    route.diagrams && DIAGRAMS.length
+      ? `<h2>The workflows themselves</h2>${DIAGRAMS.map(
+          (d) =>
+            `<figure><img src="${d.src}"${d.w ? ` width="${d.w}" height="${d.h}"` : ''} alt="The ${esc(
+              d.title,
+            )} workflow: every node and how they connect" loading="lazy" decoding="async" /><figcaption>${esc(
+              d.title,
+            )} — ${esc(d.caption)}</figcaption></figure>`,
+        ).join('')}`
+      : '';
+
   const faqHtml =
     route.faq && FAQ.length
       ? `<h2>Common questions</h2><dl>${FAQ.map(
@@ -336,6 +399,7 @@ const buildBody = (route) => {
         <p>${esc(route.lead || route.description)}</p>
         ${route.points?.length ? `<h2>${esc(route.pointsHeading || 'Highlights')}</h2><ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
         ${extraSections}
+        ${diagramsHtml}
         ${faqHtml}
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·

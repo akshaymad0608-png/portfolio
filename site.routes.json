@@ -104,7 +104,8 @@
         "Inbound Lead Engine — inbox triaged every 15 minutes, genuine enquiries answered in seconds"
       ],
       "navLabel": "Work",
-      "lastmod": "2026-09-03"
+      "lastmod": "2026-09-03",
+      "diagrams": true
     },
     {
       "path": "/pricing",
