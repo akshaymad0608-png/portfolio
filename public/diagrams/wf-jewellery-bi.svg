@@ -1,0 +1,127 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3696 780" width="3696" height="780" role="img" aria-label="Akshay Jewellery — Master Orchestrator — 19 n8n nodes and how they connect">
+  <title>Akshay Jewellery — Master Orchestrator</title>
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgba(10,10,10,0.07)"/>
+    </pattern>
+  </defs>
+  <rect width="3696" height="780" fill="#FAFAFA"/>
+  <rect width="3696" height="780" fill="url(#dots)"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<path d="M 240 286 C 276 286, 248 390, 284 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 390 C 520 390, 492 390, 528 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 494 C 276 494, 248 390, 284 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 728 390 C 764 390, 736 390, 772 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 390 C 1116 390, 1116 78, 1260 78" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 390 C 1116 390, 1116 286, 1260 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 390 C 1008 390, 980 494, 1016 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 390 C 1008 390, 980 702, 1016 702" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 1460 78 C 1496 78, 1468 182, 1504 182" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1460 286 C 1496 286, 1468 182, 1504 182" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1216 494 C 1252 494, 1224 494, 1260 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1460 494 C 1496 494, 1468 182, 1504 182" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1704 182 C 1740 182, 1712 286, 1748 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1948 286 C 1984 286, 1956 286, 1992 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2192 286 C 2336 286, 2336 286, 2480 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2680 286 C 2716 286, 2688 286, 2724 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2924 286 C 2960 286, 2932 286, 2968 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 3168 286 C 3204 286, 3176 286, 3212 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 3412 286 C 3448 286, 3420 286, 3456 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2336 560 C 2458 560, 1970 324, 2092 324" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round"/>
+<g>
+    <rect x="40" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="40" y="264" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="62" y="282" font-size="16" fill="#0A0A0A" font-weight="500">Schedule · 20:00</text><text x="62" y="302" font-size="16" fill="#6E6E6E" font-weight="400">IST Daily</text>
+  </g>
+<g>
+    <rect x="284" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Run Context</text>
+  </g>
+<g>
+    <rect x="40" y="456" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="40" y="472" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="62" y="500" font-size="16" fill="#0A0A0A" font-weight="500">Manual Trigger</text>
+  </g>
+<g>
+    <rect x="528" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="528" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="550" y="386" font-size="16" fill="#0A0A0A" font-weight="500">Run 01 · Data</text><text x="550" y="406" font-size="16" fill="#6E6E6E" font-weight="400">Validation</text>
+  </g>
+<g>
+    <rect x="772" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="772" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="794" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Data usable?</text>
+  </g>
+<g>
+    <rect x="1260" y="40" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1260" y="56" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1282" y="74" font-size="16" fill="#0A0A0A" font-weight="500">Run 02 · Daily</text><text x="1282" y="94" font-size="16" fill="#6E6E6E" font-weight="400">Sales</text>
+  </g>
+<g>
+    <rect x="1260" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1260" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1282" y="282" font-size="16" fill="#0A0A0A" font-weight="500">Run 03 · Customer</text><text x="1282" y="302" font-size="16" fill="#6E6E6E" font-weight="400">Intelligence</text>
+  </g>
+<g>
+    <rect x="1016" y="456" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1016" y="472" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1038" y="490" font-size="16" fill="#0A0A0A" font-weight="500">Run 04 · Inventory</text><text x="1038" y="510" font-size="16" fill="#6E6E6E" font-weight="400">Intelligence</text>
+  </g>
+<g>
+    <rect x="1016" y="664" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1016" y="680" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1038" y="698" font-size="16" fill="#0A0A0A" font-weight="500">Alert · Validation</text><text x="1038" y="718" font-size="16" fill="#6E6E6E" font-weight="400">Blocked</text>
+  </g>
+<g>
+    <rect x="1260" y="456" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1260" y="472" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1282" y="490" font-size="16" fill="#0A0A0A" font-weight="500">Run 05 · Low Stock</text><text x="1282" y="510" font-size="16" fill="#6E6E6E" font-weight="400">Alerts</text>
+  </g>
+<g>
+    <rect x="1504" y="144" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1504" y="160" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1526" y="178" font-size="16" fill="#0A0A0A" font-weight="500">Merge Analysis</text><text x="1526" y="198" font-size="16" fill="#6E6E6E" font-weight="400">Results</text>
+  </g>
+<g>
+    <rect x="1748" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1748" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1770" y="282" font-size="16" fill="#0A0A0A" font-weight="500">Assemble Analysis</text><text x="1770" y="302" font-size="16" fill="#6E6E6E" font-weight="400">Bundle</text>
+  </g>
+<g>
+    <rect x="1992" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1992" y="264" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="2014" y="292" font-size="16" fill="#0A0A0A" font-weight="500">AI Business Analyst</text>
+  </g>
+<g>
+    <rect x="2236" y="560" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2236" y="576" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="2258" y="604" font-size="16" fill="#0A0A0A" font-weight="500">Gemini Chat Model</text>
+  </g>
+<g>
+    <rect x="2480" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2480" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2502" y="292" font-size="16" fill="#0A0A0A" font-weight="500">Parse AI Analysis</text>
+  </g>
+<g>
+    <rect x="2724" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2724" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2746" y="292" font-size="16" fill="#0A0A0A" font-weight="500">Format Daily Report</text>
+  </g>
+<g>
+    <rect x="2968" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2968" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2990" y="292" font-size="16" fill="#0A0A0A" font-weight="500">Append REPORT_LOG</text>
+  </g>
+<g>
+    <rect x="3212" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="3212" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="3234" y="282" font-size="16" fill="#0A0A0A" font-weight="500">Send Telegram</text><text x="3234" y="302" font-size="16" fill="#6E6E6E" font-weight="400">Report</text>
+  </g>
+<g>
+    <rect x="3456" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="3456" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="3478" y="292" font-size="16" fill="#0A0A0A" font-weight="500">Send Email Report</text>
+  </g>
+  </g>
+</svg>

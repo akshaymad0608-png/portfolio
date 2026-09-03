@@ -16,7 +16,7 @@
  *
  * Run: node scripts/builds-consistency.mjs
  */
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
 import { join } from 'node:path';
 
 const ROOT = process.cwd();
@@ -59,6 +59,25 @@ if (!work) {
 const listed = (work.points || []).join('\n');
 const expected = [...titlesIn(constants, 'PROJECTS'), ...titlesIn(constants, 'INTERNAL_BUILDS')];
 const missing = expected.filter((t) => !listed.includes(t));
+
+/**
+ * A diagram referenced but not generated is a broken image on the page, and
+ * nothing else would catch it: the src is a string, so it type-checks fine.
+ */
+const brokenDiagrams = [];
+const diagramRe = /diagram:\s*\{\s*src:\s*"([^"]+)"/g;
+let d;
+while ((d = diagramRe.exec(constants))) {
+  if (!existsSync(join(ROOT, 'public', d[1].replace(/^\//, '')))) brokenDiagrams.push(d[1]);
+}
+if (brokenDiagrams.length) {
+  console.error(
+    'builds-consistency: these diagrams are referenced but not in public/.\n' +
+      'Run `npm run diagrams` to draw them:\n  ' +
+      brokenDiagrams.join('\n  '),
+  );
+  process.exit(1);
+}
 
 if (missing.length) {
   console.error(

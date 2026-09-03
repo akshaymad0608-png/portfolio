@@ -1,0 +1,251 @@
+{
+  "id": "jewellery-bi",
+  "name": "Akshay Jewellery — Master Orchestrator",
+  "nodes": [
+    {
+      "n": "Schedule · 20:00 IST Daily",
+      "t": "n8n-nodes-base.scheduleTrigger",
+      "p": [
+        0,
+        192
+      ]
+    },
+    {
+      "n": "Run Context",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        224,
+        288
+      ]
+    },
+    {
+      "n": "Manual Trigger",
+      "t": "n8n-nodes-base.manualTrigger",
+      "p": [
+        0,
+        384
+      ]
+    },
+    {
+      "n": "Run 01 · Data Validation",
+      "t": "n8n-nodes-base.executeWorkflow",
+      "p": [
+        448,
+        288
+      ]
+    },
+    {
+      "n": "Data usable?",
+      "t": "n8n-nodes-base.if",
+      "p": [
+        672,
+        288
+      ]
+    },
+    {
+      "n": "Run 02 · Daily Sales",
+      "t": "n8n-nodes-base.executeWorkflow",
+      "p": [
+        1120,
+        0
+      ]
+    },
+    {
+      "n": "Run 03 · Customer Intelligence",
+      "t": "n8n-nodes-base.executeWorkflow",
+      "p": [
+        1120,
+        192
+      ]
+    },
+    {
+      "n": "Run 04 · Inventory Intelligence",
+      "t": "n8n-nodes-base.executeWorkflow",
+      "p": [
+        896,
+        384
+      ]
+    },
+    {
+      "n": "Alert · Validation Blocked",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        896,
+        576
+      ]
+    },
+    {
+      "n": "Run 05 · Low Stock Alerts",
+      "t": "n8n-nodes-base.executeWorkflow",
+      "p": [
+        1120,
+        384
+      ]
+    },
+    {
+      "n": "Merge Analysis Results",
+      "t": "n8n-nodes-base.merge",
+      "p": [
+        1344,
+        176
+      ]
+    },
+    {
+      "n": "Assemble Analysis Bundle",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        1568,
+        192
+      ]
+    },
+    {
+      "n": "AI Business Analyst",
+      "t": "@n8n/n8n-nodes-langchain.chainLlm",
+      "p": [
+        1792,
+        192
+      ]
+    },
+    {
+      "n": "Gemini Chat Model",
+      "t": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "p": [
+        1872,
+        416
+      ]
+    },
+    {
+      "n": "Parse AI Analysis",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        2144,
+        192
+      ]
+    },
+    {
+      "n": "Format Daily Report",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        2368,
+        192
+      ]
+    },
+    {
+      "n": "Append REPORT_LOG",
+      "t": "n8n-nodes-base.googleSheets",
+      "p": [
+        2592,
+        192
+      ]
+    },
+    {
+      "n": "Send Telegram Report",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        2816,
+        192
+      ]
+    },
+    {
+      "n": "Send Email Report",
+      "t": "n8n-nodes-base.gmail",
+      "p": [
+        3040,
+        192
+      ]
+    }
+  ],
+  "connections": {
+    "Schedule · 20:00 IST Daily": [
+      [
+        "Run Context"
+      ]
+    ],
+    "Run Context": [
+      [
+        "Run 01 · Data Validation"
+      ]
+    ],
+    "Manual Trigger": [
+      [
+        "Run Context"
+      ]
+    ],
+    "Run 01 · Data Validation": [
+      [
+        "Data usable?"
+      ]
+    ],
+    "Data usable?": [
+      [
+        "Run 02 · Daily Sales",
+        "Run 03 · Customer Intelligence",
+        "Run 04 · Inventory Intelligence"
+      ],
+      [
+        "Alert · Validation Blocked"
+      ]
+    ],
+    "Run 02 · Daily Sales": [
+      [
+        "Merge Analysis Results"
+      ]
+    ],
+    "Run 03 · Customer Intelligence": [
+      [
+        "Merge Analysis Results"
+      ]
+    ],
+    "Run 04 · Inventory Intelligence": [
+      [
+        "Run 05 · Low Stock Alerts"
+      ]
+    ],
+    "Run 05 · Low Stock Alerts": [
+      [
+        "Merge Analysis Results"
+      ]
+    ],
+    "Merge Analysis Results": [
+      [
+        "Assemble Analysis Bundle"
+      ]
+    ],
+    "Assemble Analysis Bundle": [
+      [
+        "AI Business Analyst"
+      ]
+    ],
+    "AI Business Analyst": [
+      [
+        "Parse AI Analysis"
+      ]
+    ],
+    "Gemini Chat Model": [],
+    "Parse AI Analysis": [
+      [
+        "Format Daily Report"
+      ]
+    ],
+    "Format Daily Report": [
+      [
+        "Append REPORT_LOG"
+      ]
+    ],
+    "Append REPORT_LOG": [
+      [
+        "Send Telegram Report"
+      ]
+    ],
+    "Send Telegram Report": [
+      [
+        "Send Email Report"
+      ]
+    ]
+  },
+  "ai": {
+    "Gemini Chat Model": [
+      "AI Business Analyst"
+    ]
+  }
+}

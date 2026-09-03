@@ -483,6 +483,7 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     detail: "Content drafting, AI-news collection, lead generation, engagement, connection handling, DM classification and profile optimisation each run as their own workflow, sharing a set of subworkflows. The news collector is the piece that runs live: six AI blogs polled every morning, cut to the day's eight after deduplication, written to a sheet and pushed to Telegram as one digest. The rest are built against a self-hosted stack that comes up with one command, with backups, health checks and a restore path.",
     tech: ["n8n", "Docker Compose", "Postgres", "Google Sheets", "Telegram Bot API"],
     facts: ["10 workflows", "News digest live, 9am daily", "200-prompt library", "69 passing tests"],
+    diagram: { src: "/diagrams/wf-ai-news.svg", caption: "The AI news collector, the workflow in this stack that runs live" },
   },
   {
     id: 2,
@@ -516,6 +517,7 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     detail: "A Google Sheet is the whole database — sales, customers, inventory. Every evening the system validates each row and logs what it rejects and why, then computes the day's revenue, order value and growth, re-segments customers from VIP to dormant, scores inventory for stockouts and dead stock, and raises restock alerts. Only then does an LLM see the numbers, as a brief carrying no names or phone numbers, and write the analysis. The report reaches Telegram and email in about twenty seconds. Marketing campaigns it proposes go nowhere until the owner approves them from a Telegram button, and only customers who have given marketing consent are ever contacted. The workflows are generated from source rather than clicked together, so a fix is a code change and a rebuild.",
     tech: ["n8n", "Google Sheets API", "Gemini", "Telegram Bot API", "Gmail API"],
     facts: ["13 workflows, 171 nodes", "Full report in ~22s", "193 automated checks", "Consent-gated, PII masked"],
+    diagram: { src: "/diagrams/wf-jewellery-bi.svg", caption: "The master orchestrator; the other twelve run as sub-workflows" },
   },
   {
     id: 5,
@@ -527,6 +529,7 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     detail: "Remotive, RemoteOK, Arbeitnow, Himalayas and Jobicy are pulled at 07:30 and merged. A scoring pass runs before any model is called, so the LLM only ever sees plausible roles: title and stack matching, and a location rule read from the posting's location field rather than its prose — judging geography from the description let roles locked to Brazil, Mexico and a Berlin office through the filter on the first run, and every one was correctly rejected downstream at the cost of a model call. Surviving roles are deduplicated against everything already seen, then Gemini scores fit out of 100 and drafts the email, allowed to cite only the products on this site and told to skip rather than invent a reason to apply. A role is emailed automatically only if it scores 70 or above and the posting exposes a real address, capped at six a day. Most boards publish an apply link instead, so most runs end with a finished letter and a one-tap link waiting in Telegram rather than a sent email — which is the honest shape of the problem, not a workaround.",
     tech: ["n8n", "Gemini", "Gmail API", "Telegram Bot API", "n8n Data Tables"],
     facts: ["5 job APIs, no keys", "Scored 16 roles in two runs", "Best match 92/100", "Max 6 auto-applications a day"],
+    diagram: { src: "/diagrams/wf-job-engine.svg", caption: "The whole engine, from the five feeds to the sent application" },
   },
   {
     id: 6,
@@ -538,5 +541,6 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     detail: "Every enquiry from this site lands in one mailbox, so the system reads that rather than asking the site to change. Automated senders are dropped before the model is billed for them. Gemini then puts each mail in exactly one bucket — client lead, recruiter, job alert, vendor pitch, other — scores how much it is worth, and drafts a reply that repeats the specific ask back, cites at most two builds that prove the relevant thing, and asks the two questions that actually unblock a quote. It is forbidden to name a price or promise a date. Only leads and recruiters scoring 60 or more are answered automatically, never more than fifteen a day and never the same address twice inside a fortnight; everything else is logged and reported without a reply. It answered its first real enquiry twelve seconds after the mail arrived, citing the bakery storefront for order logic and the fitness platform for conversational AI.",
     tech: ["n8n", "Gmail API", "Gemini", "Telegram Bot API", "n8n Data Tables"],
     facts: ["Polls every 15 minutes", "First live reply in ~12s", "Max 15 replies a day", "14-day per-sender cooldown"],
+    diagram: { src: "/diagrams/wf-lead-engine.svg", caption: "The whole engine, from unread mail to the answered enquiry" },
   },
 ];

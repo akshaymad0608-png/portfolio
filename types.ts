@@ -99,4 +99,10 @@ export interface InternalBuild {
   facts: string[];
   status: 'Running privately' | 'Demo build' | 'Internal tool';
   icon?: any;
+  /**
+   * The workflow graph, drawn from its real shape by
+   * scripts/gen-workflow-diagrams.mjs. `caption` says which workflow is drawn,
+   * because a stack of thirteen is not honestly represented by one picture.
+   */
+  diagram?: { src: string; caption: string };
 }

@@ -74,6 +74,30 @@ const InternalBuilds: React.FC = () => (
                       </li>
                     ))}
                   </ul>
+
+                  {build.diagram && (
+                    <figure className="mt-7">
+                      {/*
+                        Shown at its own size and scrolled, not shrunk to fit. A
+                        twenty-node pipeline squeezed into a card is a grey smear
+                        with unreadable labels, which proves nothing — the point
+                        of putting it here is that you can read what each step
+                        does.
+                      */}
+                      <div className="max-h-[420px] overflow-auto border border-border bg-section">
+                        <img
+                          src={build.diagram.src}
+                          alt={`The ${build.title} workflow: every node and how they connect`}
+                          loading="lazy"
+                          decoding="async"
+                          className="block max-w-none"
+                        />
+                      </div>
+                      <figcaption className="mt-2 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+                        {build.diagram.caption} · scroll to follow it
+                      </figcaption>
+                    </figure>
+                  )}
                 </div>
               </article>
             </Reveal>

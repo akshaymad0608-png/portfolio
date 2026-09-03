@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3452 1404" width="3452" height="1404" role="img" aria-label="AI News Collector — 26 n8n nodes and how they connect">
+  <title>AI News Collector</title>
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgba(10,10,10,0.07)"/>
+    </pattern>
+  </defs>
+  <rect width="3452" height="1404" fill="#FAFAFA"/>
+  <rect width="3452" height="1404" fill="url(#dots)"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<path d="M 240 390 C 276 390, 248 78, 284 78" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 390 C 276 390, 248 182, 284 182" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 390 C 276 390, 248 390, 284 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 390 C 276 390, 248 598, 284 598" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 390 C 276 390, 248 910, 284 910" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 78 C 520 78, 492 494, 528 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 182 C 520 182, 492 494, 528 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 390 C 520 390, 492 494, 528 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 598 C 520 598, 492 494, 528 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 910 C 520 910, 492 494, 528 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 728 494 C 764 494, 736 494, 772 494" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 494 C 1008 494, 980 286, 1016 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 494 C 1008 494, 980 702, 1016 702" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 494 C 1008 494, 980 1014, 1016 1014" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1216 1014 C 1252 1014, 1224 1014, 1260 1014" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1460 1014 C 1496 1014, 1468 1014, 1504 1014" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1460 1014 C 1496 1014, 1468 1326, 1504 1326" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1704 1014 C 1740 1014, 1712 1014, 1748 1014" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1948 1014 C 1984 1014, 1956 806, 1992 806" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2192 806 C 2228 806, 2200 806, 2236 806" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2436 806 C 2472 806, 2444 806, 2480 806" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2680 806 C 2716 806, 2688 598, 2724 598" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2680 806 C 2716 806, 2688 1014, 2724 1014" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 2924 598 C 2960 598, 2932 598, 2968 598" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2924 598 C 2960 598, 2932 1014, 2968 1014" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 2924 1014 C 2960 1014, 2932 598, 2968 598" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2924 1014 C 2960 1014, 2932 1014, 2968 1014" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 3168 598 C 3204 598, 3176 806, 3212 806" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 3168 598 C 3204 598, 3176 1118, 3212 1118" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 3168 1014 C 3204 1014, 3176 806, 3212 806" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 3168 1014 C 3204 1014, 3176 1118, 3212 1118" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 1704 1326 C 1740 1326, 1712 1326, 1748 1326" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1360 1184 C 1396 1184, 1324 1052, 1360 1052" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round"/>
+<g>
+    <rect x="40" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="40" y="368" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="62" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Every Morning 9AM</text>
+  </g>
+<g>
+    <rect x="284" y="40" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="56" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="84" font-size="16" fill="#0A0A0A" font-weight="500">OpenAI Blog</text>
+  </g>
+<g>
+    <rect x="284" y="144" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="160" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="188" font-size="16" fill="#0A0A0A" font-weight="500">Meta AI Blog</text>
+  </g>
+<g>
+    <rect x="284" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Microsoft AI Blog</text>
+  </g>
+<g>
+    <rect x="284" y="560" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="576" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="604" font-size="16" fill="#0A0A0A" font-weight="500">NVIDIA Blog</text>
+  </g>
+<g>
+    <rect x="284" y="872" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="888" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="916" font-size="16" fill="#0A0A0A" font-weight="500">Hugging Face Blog</text>
+  </g>
+<g>
+    <rect x="528" y="456" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="528" y="472" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="550" y="500" font-size="16" fill="#0A0A0A" font-weight="500">Combine All Feeds</text>
+  </g>
+<g>
+    <rect x="772" y="456" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="772" y="472" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="794" y="500" font-size="16" fill="#0A0A0A" font-weight="500">Prepare News</text>
+  </g>
+<g>
+    <rect x="1016" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1016" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1038" y="292" font-size="16" fill="#0A0A0A" font-weight="500">Save To Sheet</text>
+  </g>
+<g>
+    <rect x="1016" y="664" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1016" y="680" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1038" y="698" font-size="16" fill="#0A0A0A" font-weight="500">Send Telegram</text><text x="1038" y="718" font-size="16" fill="#6E6E6E" font-weight="400">Digest</text>
+  </g>
+<g>
+    <rect x="1016" y="976" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1016" y="992" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1038" y="1020" font-size="16" fill="#0A0A0A" font-weight="500">Top 3 Stories</text>
+  </g>
+<g>
+    <rect x="1260" y="976" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1260" y="992" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="1282" y="1020" font-size="16" fill="#0A0A0A" font-weight="500">Draft LinkedIn Post</text>
+  </g>
+<g>
+    <rect x="1260" y="1184" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1260" y="1200" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="1282" y="1228" font-size="16" fill="#0A0A0A" font-weight="500">Gemini</text>
+  </g>
+<g>
+    <rect x="1504" y="976" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1504" y="992" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1526" y="1020" font-size="16" fill="#0A0A0A" font-weight="500">Ask To Post</text>
+  </g>
+<g>
+    <rect x="1748" y="976" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1748" y="992" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1770" y="1020" font-size="16" fill="#0A0A0A" font-weight="500">Approved?</text>
+  </g>
+<g>
+    <rect x="1992" y="768" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1992" y="784" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2014" y="812" font-size="16" fill="#0A0A0A" font-weight="500">Get Article Page</text>
+  </g>
+<g>
+    <rect x="2236" y="768" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2236" y="784" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2258" y="812" font-size="16" fill="#0A0A0A" font-weight="500">Find Image</text>
+  </g>
+<g>
+    <rect x="2480" y="768" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2480" y="784" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2502" y="812" font-size="16" fill="#0A0A0A" font-weight="500">Has Image?</text>
+  </g>
+<g>
+    <rect x="2724" y="560" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2724" y="576" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2746" y="604" font-size="16" fill="#0A0A0A" font-weight="500">Download Image</text>
+  </g>
+<g>
+    <rect x="2724" y="976" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2724" y="992" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2746" y="1020" font-size="16" fill="#0A0A0A" font-weight="500">Draw Headline Card</text>
+  </g>
+<g>
+    <rect x="2968" y="560" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2968" y="576" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2990" y="604" font-size="16" fill="#0A0A0A" font-weight="500">Post To LinkedIn</text>
+  </g>
+<g>
+    <rect x="2968" y="976" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2968" y="992" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2990" y="1020" font-size="16" fill="#0A0A0A" font-weight="500">Post Without Image</text>
+  </g>
+<g>
+    <rect x="3212" y="768" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="3212" y="784" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="3234" y="812" font-size="16" fill="#0A0A0A" font-weight="500">Confirm Posted</text>
+  </g>
+<g>
+    <rect x="3212" y="1080" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="3212" y="1096" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="3234" y="1114" font-size="16" fill="#0A0A0A" font-weight="500">Report LinkedIn</text><text x="3234" y="1134" font-size="16" fill="#6E6E6E" font-weight="400">Failure</text>
+  </g>
+<g>
+    <rect x="1504" y="1288" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1504" y="1304" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1526" y="1332" font-size="16" fill="#0A0A0A" font-weight="500">Other Drafts</text>
+  </g>
+<g>
+    <rect x="1748" y="1288" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1748" y="1304" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1770" y="1332" font-size="16" fill="#0A0A0A" font-weight="500">Send Other Drafts</text>
+  </g>
+  </g>
+</svg>

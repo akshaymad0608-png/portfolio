@@ -1,0 +1,135 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3208 988" width="3208" height="988" role="img" aria-label="Job Application Engine — 20 n8n nodes and how they connect">
+  <title>Job Application Engine</title>
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="1" cy="1" r="1" fill="rgba(10,10,10,0.07)"/>
+    </pattern>
+  </defs>
+  <rect width="3208" height="988" fill="#FAFAFA"/>
+  <rect width="3208" height="988" fill="url(#dots)"/>
+  <g font-family="ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<path d="M 240 494 C 276 494, 248 78, 284 78" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 494 C 276 494, 248 182, 284 182" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 494 C 276 494, 248 390, 284 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 494 C 276 494, 248 598, 284 598" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 240 494 C 276 494, 248 806, 284 806" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 78 C 520 78, 492 390, 528 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 182 C 520 182, 492 390, 528 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 390 C 520 390, 492 390, 528 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 598 C 520 598, 492 390, 528 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 484 806 C 520 806, 492 390, 528 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 728 390 C 764 390, 736 390, 772 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 972 390 C 1008 390, 980 390, 1016 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1216 390 C 1252 390, 1224 390, 1260 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1460 390 C 1604 390, 1604 390, 1748 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1948 390 C 2092 390, 2092 390, 2236 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2436 390 C 2472 390, 2444 390, 2480 390" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2436 390 C 2472 390, 2444 910, 2480 910" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2680 390 C 2716 390, 2688 286, 2724 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2680 390 C 2716 390, 2688 598, 2724 598" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-linecap="round"/>
+<path d="M 2924 286 C 2960 286, 2932 286, 2968 286" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 2680 910 C 2716 910, 2688 910, 2724 910" fill="none" stroke="#107808" stroke-width="2" stroke-linecap="round"/>
+<path d="M 1604 664 C 1726 664, 1726 428, 1848 428" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round"/>
+<path d="M 2092 664 C 2214 664, 1726 428, 1848 428" fill="none" stroke="#BFE3B8" stroke-width="1.5" stroke-dasharray="4 4" stroke-linecap="round"/>
+<g>
+    <rect x="40" y="456" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="40" y="472" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="62" y="500" font-size="16" fill="#0A0A0A" font-weight="500">Every Morning 7:30</text>
+  </g>
+<g>
+    <rect x="284" y="40" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="56" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="84" font-size="16" fill="#0A0A0A" font-weight="500">Fetch Remotive</text>
+  </g>
+<g>
+    <rect x="284" y="144" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="160" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="188" font-size="16" fill="#0A0A0A" font-weight="500">Fetch RemoteOK</text>
+  </g>
+<g>
+    <rect x="284" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Fetch Arbeitnow</text>
+  </g>
+<g>
+    <rect x="284" y="560" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="576" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="604" font-size="16" fill="#0A0A0A" font-weight="500">Fetch Himalayas</text>
+  </g>
+<g>
+    <rect x="284" y="768" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="284" y="784" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="306" y="812" font-size="16" fill="#0A0A0A" font-weight="500">Fetch Jobicy</text>
+  </g>
+<g>
+    <rect x="528" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="528" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="550" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Combine Job Feeds</text>
+  </g>
+<g>
+    <rect x="772" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="772" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="794" y="386" font-size="16" fill="#0A0A0A" font-weight="500">Normalize And Score</text><text x="794" y="406" font-size="16" fill="#6E6E6E" font-weight="400">Jobs</text>
+  </g>
+<g>
+    <rect x="1016" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1016" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1038" y="386" font-size="16" fill="#0A0A0A" font-weight="500">Read Application</text><text x="1038" y="406" font-size="16" fill="#6E6E6E" font-weight="400">History</text>
+  </g>
+<g>
+    <rect x="1260" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1260" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="1282" y="386" font-size="16" fill="#0A0A0A" font-weight="500">Drop Duplicates And</text><text x="1282" y="406" font-size="16" fill="#6E6E6E" font-weight="400">Cap</text>
+  </g>
+<g>
+    <rect x="1748" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1748" y="368" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="1770" y="386" font-size="16" fill="#0A0A0A" font-weight="500">Score And Write</text><text x="1770" y="406" font-size="16" fill="#6E6E6E" font-weight="400">Application</text>
+  </g>
+<g>
+    <rect x="1504" y="664" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1504" y="680" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="1526" y="708" font-size="16" fill="#0A0A0A" font-weight="500">Gemini</text>
+  </g>
+<g>
+    <rect x="1992" y="664" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="1992" y="680" width="4" height="44" rx="2" fill="#107808"/>
+    <text x="2014" y="708" font-size="16" fill="#0A0A0A" font-weight="500">Application JSON</text>
+  </g>
+<g>
+    <rect x="2236" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2236" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2258" y="386" font-size="16" fill="#0A0A0A" font-weight="500">Decide Send Or</text><text x="2258" y="406" font-size="16" fill="#6E6E6E" font-weight="400">Queue</text>
+  </g>
+<g>
+    <rect x="2480" y="352" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2480" y="368" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2502" y="396" font-size="16" fill="#0A0A0A" font-weight="500">Send This One?</text>
+  </g>
+<g>
+    <rect x="2724" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2724" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2746" y="282" font-size="16" fill="#0A0A0A" font-weight="500">Send Application</text><text x="2746" y="302" font-size="16" fill="#6E6E6E" font-weight="400">Email</text>
+  </g>
+<g>
+    <rect x="2968" y="248" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2968" y="264" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2990" y="292" font-size="16" fill="#0A0A0A" font-weight="500">Log Applied</text>
+  </g>
+<g>
+    <rect x="2724" y="560" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2724" y="576" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2746" y="604" font-size="16" fill="#0A0A0A" font-weight="500">Log Not Sent</text>
+  </g>
+<g>
+    <rect x="2480" y="872" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2480" y="888" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2502" y="916" font-size="16" fill="#0A0A0A" font-weight="500">Build Job Digest</text>
+  </g>
+<g>
+    <rect x="2724" y="872" width="200" height="76" rx="12" fill="#FFFFFF" stroke="rgba(10, 10, 10, 0.12)"/>
+    <rect x="2724" y="888" width="4" height="44" rx="2" fill="rgba(10,10,10,0.22)"/>
+    <text x="2746" y="916" font-size="16" fill="#0A0A0A" font-weight="500">Telegram Job Digest</text>
+  </g>
+  </g>
+</svg>

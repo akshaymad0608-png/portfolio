@@ -1,0 +1,343 @@
+{
+  "id": "ai-news",
+  "name": "AI News Collector",
+  "nodes": [
+    {
+      "n": "Every Morning 9AM",
+      "t": "n8n-nodes-base.scheduleTrigger",
+      "p": [
+        0,
+        0
+      ]
+    },
+    {
+      "n": "OpenAI Blog",
+      "t": "n8n-nodes-base.rssFeedRead",
+      "p": [
+        240,
+        -368
+      ]
+    },
+    {
+      "n": "Meta AI Blog",
+      "t": "n8n-nodes-base.rssFeedRead",
+      "p": [
+        240,
+        -184
+      ]
+    },
+    {
+      "n": "Microsoft AI Blog",
+      "t": "n8n-nodes-base.rssFeedRead",
+      "p": [
+        240,
+        0
+      ]
+    },
+    {
+      "n": "NVIDIA Blog",
+      "t": "n8n-nodes-base.rssFeedRead",
+      "p": [
+        240,
+        184
+      ]
+    },
+    {
+      "n": "Hugging Face Blog",
+      "t": "n8n-nodes-base.rssFeedRead",
+      "p": [
+        240,
+        368
+      ]
+    },
+    {
+      "n": "Combine All Feeds",
+      "t": "n8n-nodes-base.merge",
+      "p": [
+        528,
+        96
+      ]
+    },
+    {
+      "n": "Prepare News",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        768,
+        96
+      ]
+    },
+    {
+      "n": "Save To Sheet",
+      "t": "n8n-nodes-base.googleSheets",
+      "p": [
+        1024,
+        -32
+      ]
+    },
+    {
+      "n": "Send Telegram Digest",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        1024,
+        224
+      ]
+    },
+    {
+      "n": "Top 3 Stories",
+      "t": "n8n-nodes-base.limit",
+      "p": [
+        1024,
+        440
+      ]
+    },
+    {
+      "n": "Draft LinkedIn Post",
+      "t": "@n8n/n8n-nodes-langchain.chainLlm",
+      "p": [
+        1240,
+        440
+      ]
+    },
+    {
+      "n": "Gemini",
+      "t": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "p": [
+        1240,
+        620
+      ]
+    },
+    {
+      "n": "Ask To Post",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        1480,
+        440
+      ]
+    },
+    {
+      "n": "Approved?",
+      "t": "n8n-nodes-base.if",
+      "p": [
+        1700,
+        440
+      ]
+    },
+    {
+      "n": "Get Article Page",
+      "t": "n8n-nodes-base.httpRequest",
+      "p": [
+        1920,
+        300
+      ]
+    },
+    {
+      "n": "Find Image",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        2120,
+        300
+      ]
+    },
+    {
+      "n": "Has Image?",
+      "t": "n8n-nodes-base.if",
+      "p": [
+        2320,
+        300
+      ]
+    },
+    {
+      "n": "Download Image",
+      "t": "n8n-nodes-base.httpRequest",
+      "p": [
+        2520,
+        200
+      ]
+    },
+    {
+      "n": "Draw Headline Card",
+      "t": "n8n-nodes-base.editImage",
+      "p": [
+        2520,
+        420
+      ]
+    },
+    {
+      "n": "Post To LinkedIn",
+      "t": "n8n-nodes-base.linkedIn",
+      "p": [
+        2760,
+        200
+      ]
+    },
+    {
+      "n": "Post Without Image",
+      "t": "n8n-nodes-base.linkedIn",
+      "p": [
+        2760,
+        440
+      ]
+    },
+    {
+      "n": "Confirm Posted",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        3000,
+        300
+      ]
+    },
+    {
+      "n": "Report LinkedIn Failure",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        3000,
+        560
+      ]
+    },
+    {
+      "n": "Other Drafts",
+      "t": "n8n-nodes-base.limit",
+      "p": [
+        1480,
+        700
+      ]
+    },
+    {
+      "n": "Send Other Drafts",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        1700,
+        700
+      ]
+    }
+  ],
+  "connections": {
+    "Every Morning 9AM": [
+      [
+        "OpenAI Blog",
+        "Meta AI Blog",
+        "Microsoft AI Blog",
+        "NVIDIA Blog",
+        "Hugging Face Blog"
+      ]
+    ],
+    "OpenAI Blog": [
+      [
+        "Combine All Feeds"
+      ]
+    ],
+    "Meta AI Blog": [
+      [
+        "Combine All Feeds"
+      ]
+    ],
+    "Microsoft AI Blog": [
+      [
+        "Combine All Feeds"
+      ]
+    ],
+    "NVIDIA Blog": [
+      [
+        "Combine All Feeds"
+      ]
+    ],
+    "Hugging Face Blog": [
+      [
+        "Combine All Feeds"
+      ]
+    ],
+    "Combine All Feeds": [
+      [
+        "Prepare News"
+      ]
+    ],
+    "Prepare News": [
+      [
+        "Save To Sheet",
+        "Send Telegram Digest",
+        "Top 3 Stories"
+      ]
+    ],
+    "Top 3 Stories": [
+      [
+        "Draft LinkedIn Post"
+      ]
+    ],
+    "Draft LinkedIn Post": [
+      [
+        "Ask To Post",
+        "Other Drafts"
+      ]
+    ],
+    "Ask To Post": [
+      [
+        "Approved?"
+      ]
+    ],
+    "Approved?": [
+      [
+        "Get Article Page"
+      ]
+    ],
+    "Get Article Page": [
+      [
+        "Find Image"
+      ]
+    ],
+    "Find Image": [
+      [
+        "Has Image?"
+      ]
+    ],
+    "Has Image?": [
+      [
+        "Download Image"
+      ],
+      [
+        "Draw Headline Card"
+      ]
+    ],
+    "Download Image": [
+      [
+        "Post To LinkedIn"
+      ],
+      [
+        "Post Without Image"
+      ]
+    ],
+    "Draw Headline Card": [
+      [
+        "Post To LinkedIn"
+      ],
+      [
+        "Post Without Image"
+      ]
+    ],
+    "Post To LinkedIn": [
+      [
+        "Confirm Posted"
+      ],
+      [
+        "Report LinkedIn Failure"
+      ]
+    ],
+    "Post Without Image": [
+      [
+        "Confirm Posted"
+      ],
+      [
+        "Report LinkedIn Failure"
+      ]
+    ],
+    "Other Drafts": [
+      [
+        "Send Other Drafts"
+      ]
+    ]
+  },
+  "ai": {
+    "Gemini": [
+      "Draft LinkedIn Post"
+    ]
+  }
+}

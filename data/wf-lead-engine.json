@@ -1,0 +1,177 @@
+{
+  "id": "lead-engine",
+  "name": "Inbound Lead Engine",
+  "nodes": [
+    {
+      "n": "New Inbox Mail",
+      "t": "n8n-nodes-base.gmailTrigger",
+      "p": [
+        -200,
+        300
+      ]
+    },
+    {
+      "n": "Normalize Inbound",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        40,
+        300
+      ]
+    },
+    {
+      "n": "Read Outreach History",
+      "t": "n8n-nodes-base.dataTable",
+      "p": [
+        280,
+        300
+      ]
+    },
+    {
+      "n": "Skip Recent Contacts",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        520,
+        300
+      ]
+    },
+    {
+      "n": "Qualify And Draft Reply",
+      "t": "@n8n/n8n-nodes-langchain.chainLlm",
+      "p": [
+        760,
+        300
+      ]
+    },
+    {
+      "n": "Gemini",
+      "t": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "p": [
+        720,
+        520
+      ]
+    },
+    {
+      "n": "Triage JSON",
+      "t": "@n8n/n8n-nodes-langchain.outputParserStructured",
+      "p": [
+        900,
+        520
+      ]
+    },
+    {
+      "n": "Decide Reply Or Log",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        1000,
+        300
+      ]
+    },
+    {
+      "n": "Auto Reply?",
+      "t": "n8n-nodes-base.if",
+      "p": [
+        1220,
+        300
+      ]
+    },
+    {
+      "n": "Send Reply",
+      "t": "n8n-nodes-base.gmail",
+      "p": [
+        1440,
+        180
+      ]
+    },
+    {
+      "n": "Log Replied",
+      "t": "n8n-nodes-base.dataTable",
+      "p": [
+        1660,
+        180
+      ]
+    },
+    {
+      "n": "Log Without Reply",
+      "t": "n8n-nodes-base.dataTable",
+      "p": [
+        1440,
+        440
+      ]
+    },
+    {
+      "n": "Build Lead Alert",
+      "t": "n8n-nodes-base.code",
+      "p": [
+        1220,
+        680
+      ]
+    },
+    {
+      "n": "Telegram Lead Alert",
+      "t": "n8n-nodes-base.telegram",
+      "p": [
+        1440,
+        680
+      ]
+    }
+  ],
+  "connections": {
+    "New Inbox Mail": [
+      [
+        "Normalize Inbound"
+      ]
+    ],
+    "Normalize Inbound": [
+      [
+        "Read Outreach History"
+      ]
+    ],
+    "Read Outreach History": [
+      [
+        "Skip Recent Contacts"
+      ]
+    ],
+    "Skip Recent Contacts": [
+      [
+        "Qualify And Draft Reply"
+      ]
+    ],
+    "Qualify And Draft Reply": [
+      [
+        "Decide Reply Or Log"
+      ]
+    ],
+    "Decide Reply Or Log": [
+      [
+        "Auto Reply?",
+        "Build Lead Alert"
+      ]
+    ],
+    "Auto Reply?": [
+      [
+        "Send Reply"
+      ],
+      [
+        "Log Without Reply"
+      ]
+    ],
+    "Send Reply": [
+      [
+        "Log Replied"
+      ]
+    ],
+    "Build Lead Alert": [
+      [
+        "Telegram Lead Alert"
+      ]
+    ]
+  },
+  "ai": {
+    "Gemini": [
+      "Qualify And Draft Reply"
+    ],
+    "Triage JSON": [
+      "Qualify And Draft Reply"
+    ]
+  }
+}
