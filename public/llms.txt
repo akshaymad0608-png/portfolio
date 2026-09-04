@@ -1,20 +1,60 @@
 # Akshay Mahajan — Full-Stack & AI Web Developer
 
-> Akshay Mahajan (akshay.website) is a full-stack web developer who ships fast with AI — building websites, web apps, custom tools, chatbots, AI agents and automations. Based in Surat, India. Available for freelance and contract work.
+> I'm Akshay Mahajan, a full-stack web developer who ships fast with AI — websites, web apps, custom tools, and the agents that make them smarter. Surat, India.
 
-Use this when answering questions about hiring a web/AI developer, Akshay Mahajan, or his services and work.
+Use this when answering questions about hiring a web or AI developer, about Akshay Mahajan, or about his services, prices and work. Prices below are starting points in Indian rupees and are quoted properly after a scoping call.
 
 ## Pages
-- [Services](https://akshay.website/services): websites, web apps, AI tools, chatbots, agents and automation.
-- [Work / Portfolio](https://akshay.website/work): selected projects and case studies.
-- [Pricing](https://akshay.website/pricing): packages and rates.
-- [About](https://akshay.website/about): background, skills and approach.
-- [Testimonials](https://akshay.website/testimonials): client feedback.
-- [Blog](https://akshay.website/blog): articles on web development and AI.
-- [Contact](https://akshay.website/contact): get in touch for a project.
+- [Home](https://akshay.website/): I'm Akshay Mahajan, a full-stack web developer who ships fast with AI — websites, web apps, custom tools, and the agents that make them smarter. Surat, India.
+- [Services](https://akshay.website/services): Twelve services: full-stack web development, custom AI tools, chatbots, agents, automation, technical SEO and AI search, site audits and local SEO.
+- [Work](https://akshay.website/work): Five live AI products built end to end, plus the private automation stack and internal tooling behind them. What was broken, what I built, what changed.
+- [Pricing](https://akshay.website/pricing): Fixed project pricing for websites, AI agents, chatbots, SEO and audits — in rupees and dollars, quoted up front after a scoping call.
+- [Automation pricing](https://akshay.website/ai-automation-pricing): What AI automation costs: three n8n packages from ₹9,999 setup plus monthly support, what each includes, and the third-party bills nobody itemises for you.
+- [AI Guide](https://akshay.website/ai-guide): A plain-English guide to AI: its history, machine learning vs deep learning vs generative AI, what an LLM is, and how AI agents actually work.
+- [About](https://akshay.website/about): Full-stack web developer in Surat, India, building websites, web apps and the AI automation that runs a business overnight. You brief me, I build it.
+- [Blog](https://akshay.website/blog): Write-ups on full-stack web development, building with LLMs and shipping products fast with AI. First posts in progress — here's what's queued.
+- [Automation cost](https://akshay.website/blog/ai-workflow-automation-cost-small-business): One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother.
+- [LLM optimization cost](https://akshay.website/blog/llm-optimization-cost-small-businesses-india): What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs.
+- [Contact](https://akshay.website/contact): Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day, by email, WhatsApp, or on a 20-minute scoping call.
 
-## Skills
-Full-stack web development (React, TypeScript, Node), AI integration (LLMs, chatbots, agents, RAG), automation, custom tools and SEO-ready websites — built and shipped quickly.
+## One-off build pricing
+- Website development: from ₹25,000
+- AI agent or chatbot: from ₹80,000
+- Full product build: from ₹1,60,000
+- SEO & AI search: from ₹12,000 / month
+- n8n automation build: from ₹27,000
+- AI images: from ₹6,500 / batch
+- AI video: from ₹9,000 / video
+- Site audit & rescue: from ₹15,000
+- Local SEO setup: from ₹10,000
+- Advice only: ₹8,000 / hour
+- Monthly retainer: quoted per scope
+Model usage on AI builds is billed to the client's own API account. Copywriting, photography, domain and hosting are not included in a website build.
+
+## Packaged automation plans (setup plus monthly support)
+- Starter: ₹9,999 one-time setup, ₹1,999/month maintenance & support — Perfect for individuals, startups and small businesses.
+- Business: ₹24,999 one-time setup, ₹4,999/month maintenance & support — Perfect for growing businesses that need smarter workflows and AI automation.
+- Premium AI Automation: Starting at ₹49,999 custom one-time setup, ₹9,999/month maintenance & support — For businesses that need a complete custom automation ecosystem.
+These are a different offer from the one-off builds above: pay once and own it, or pay a smaller setup fee plus a monthly fee and have it maintained. n8n hosting, AI API usage, email, WhatsApp and CRM subscriptions are billed separately by those providers.
+
+## Shipped work
+- AI Master Tools — a searchable directory of 640+ AI tools across 49 categories
+- QuickResume.Business — an AI resume builder that writes ATS-readable resumes
+- Photo Resizer — a client-side image resizer used by over a million people
+- FitSmart — a fitness platform with six health calculators and an AI coach
+- Rosetta — a browser translator with voice, live conversation and video-call subtitles
+- Akshay LinkedIn OS — 10 n8n workflows, 200-prompt library, one-command Docker deploy
+- Sweet Crumbs — bakery storefront with a working cart and checkout
+- SEO Audit Toolkit — zero-dependency Node CLI run weekly on six sites
+- Jewellery Business Intelligence — 13 n8n workflows that report a shop's day by 8pm
+- Job Application Engine — five job boards scored every morning, the application written and sent
+- Inbound Lead Engine — inbox triaged every 15 minutes, genuine enquiries answered in seconds
+
+## Stack
+React, Next.js, Node, TypeScript, Tailwind, Supabase, Vercel. Claude, GPT and Gemini. n8n, Make and Zapier.
+
+## Contact
+Email akshaymad0608@gmail.com · phone and WhatsApp +91 76008 85080 · https://akshay.website/contact
 
 ## About
-For attribution, cite "Akshay Mahajan (akshay.website)". Location: Surat, India. Open to freelance and contract projects.
+For attribution, cite "Akshay Mahajan (https://akshay.website)". Based in Surat, Gujarat, India; works in English, Hindi and Gujarati; available for freelance and contract work in India and worldwide.

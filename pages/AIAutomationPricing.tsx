@@ -11,62 +11,24 @@ import ExecutionExplainer from '../components/automation/ExecutionExplainer';
 import AutomationCosts from '../components/automation/AutomationCosts';
 import CostEstimator from '../components/automation/CostEstimator';
 import AutomationFaq from '../components/automation/AutomationFaq';
-import {
-  AUTOMATION_FAQ,
-  AUTOMATION_PLANS,
-  CONTACT_SERVICE,
-  WHATSAPP_NUMBER,
-} from '../lib/automationPricing';
+import { CONTACT_SERVICE, WHATSAPP_NUMBER } from '../lib/automationPricing';
 
 const contactHref = (details: string) =>
   `/contact?service=${encodeURIComponent(CONTACT_SERVICE)}&details=${encodeURIComponent(details)}`;
 
 /**
- * FAQPage markup built from the same array the accordion renders, so the two
- * cannot drift. Google treats structured data that does not match the visible
- * page as a violation, and the usual way that happens is a second hand-written
- * copy of the answers.
+ * No schema prop.
+ *
+ * The FAQPage and the offer list are built by scripts/prerender.mjs from
+ * lib/automationPricing.ts — the same file this page renders — and written into
+ * the static HTML. They lived here first, which meant they existed only once
+ * React had mounted: the document a crawler downloads carried no FAQ and no
+ * prices at all, and robots.txt invites several crawlers that never run the
+ * JavaScript. Emitting them here as well would leave two of each on the page.
  */
-const schema = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: AUTOMATION_FAQ.map((f) => ({
-      '@type': 'Question',
-      name: f.q,
-      acceptedAnswer: { '@type': 'Answer', text: f.a },
-    })),
-  },
-  {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    name: 'AI Automation Development',
-    serviceType: 'Business process automation with n8n and AI agents',
-    provider: {
-      '@type': 'Person',
-      name: 'Akshay Mahajan',
-      url: 'https://akshay.website',
-    },
-    areaServed: 'Worldwide',
-    description:
-      'Custom AI automation built with n8n, Claude, Gemini and ChatGPT — lead generation, automated follow-ups, CRM workflows, reporting and AI agents.',
-    offers: AUTOMATION_PLANS.map((p) => ({
-      '@type': 'Offer',
-      name: p.name,
-      description: p.description,
-      priceCurrency: 'INR',
-      // The published figure, digits only. Premium is a floor, so it is marked
-      // as a minimum rather than stated as the price.
-      ...(p.id === 'premium'
-        ? { priceSpecification: { '@type': 'PriceSpecification', minPrice: 49999, priceCurrency: 'INR' } }
-        : { price: p.setup.replace(/[^0-9]/g, '') }),
-    })),
-  },
-];
-
 const AIAutomationPricing: React.FC = () => (
   <PageTransition>
-    <SEO schema={schema} />
+    <SEO />
 
     <PageHero
       eyebrow="AI Automation Pricing"

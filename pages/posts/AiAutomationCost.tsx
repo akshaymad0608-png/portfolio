@@ -36,41 +36,14 @@ const schema = {
   about: ['AI workflow automation', 'n8n', 'small business automation pricing'],
 };
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: [
-    {
-      q: 'How much does AI workflow automation cost for a small business?',
-      a: '₹15,000–₹60,000 to build one workflow in India in 2026, then ₹500–₹3,000 a month to run it. Building it yourself removes the one-time cost and leaves only the monthly tool fee.',
-    },
-    {
-      q: 'What does n8n cost per month in India?',
-      a: 'n8n Cloud starts at $24/month, about ₹2,100, for 2,500 executions. Self-hosted on an Indian VPS it is ₹500–₹1,500/month with unlimited runs, but you maintain the server.',
-    },
-    {
-      q: 'Is it cheaper to build it myself?',
-      a: 'In money, always. In time, rarely. Expect a few days to learn the tool and a day per workflow after that, plus the failures you only find in production. Worth it if you will build several.',
-    },
-    {
-      q: 'Are there ongoing costs after it is built?',
-      a: 'Yes. Platform subscription, AI usage if any, and optionally a maintenance retainer. For a single small workflow this is usually under ₹3,000/month.',
-    },
-    {
-      q: 'How long before it pays for itself?',
-      a: 'Take the hours saved per month, multiply by what an hour of that person’s time costs, and divide the build cost by it. Most single-workflow builds land between two and six months.',
-    },
-    {
-      q: 'When is automation not worth the money?',
-      a: 'When the task happens rarely, changes often, or needs a judgement call at every step. Frequency is what pays for automation, not how annoying the task feels.',
-    },
-  ].map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
-};
-
+/**
+ * The questions, in one place.
+ *
+ * There used to be two copies of these six answers in this file — one for the
+ * FAQPage markup and one for the accordion — and nothing kept them in step.
+ * The markup is now generated from this array at build time by
+ * scripts/prerender.mjs, so there is a single copy and it is the one on screen.
+ */
 const FAQS = [
   {
     q: 'How much does AI workflow automation cost for a small business?',
@@ -110,11 +83,15 @@ const P: React.FC<{ children: React.ReactNode }> = ({ children }) => (
 
 const AiAutomationCost: React.FC = () => (
   <PageTransition>
+    {/* FAQPage is emitted at build time from FAQS above, by
+        scripts/prerender.mjs, so the answers sit in the document a crawler
+        downloads rather than only in the one it renders. Passing it here as
+        well would leave two FAQPage nodes on the page. */}
     <SEO
       title="AI Workflow Automation Cost for Small Business in India"
       description="One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother."
       canonical="https://akshay.website/blog/ai-workflow-automation-cost-small-business"
-      schema={[schema, faqSchema]}
+      schema={schema}
     />
 
     <article className="relative py-20 md:py-28">

@@ -62,6 +62,44 @@ if (!template.includes('<div id="root"></div>')) {
  * cannot drift apart, which is exactly how the sitemap and this script ended up
  * disagreeing elsewhere.
  */
+/**
+ * Pull one exported literal — array or object — out of a TypeScript source file.
+ *
+ * Every caller below reads data that already exists in a component or a lib
+ * file rather than restating it in the manifest. That is the rule this script
+ * has learned the hard way twice: the /work points list drifted for days, and
+ * the sitemap and the route table disagreed because a value was computed in one
+ * place and declared in another. A second copy of a fact is a fact that will
+ * eventually be wrong.
+ *
+ * The sources are plain literals, so brace-matching and eval are enough. Type
+ * annotations sit before the `=`, and `as const` is stripped because it is the
+ * one piece of TypeScript that appears inside the literals themselves.
+ */
+const readLiteral = (relPath, name) => {
+  const src = readFileSync(join(root, relPath), 'utf8');
+  // Exported where another module needs it, a plain module-level const where
+  // only the page itself does. Both are readable from here.
+  let anchor = src.indexOf(`export const ${name}`);
+  if (anchor === -1) anchor = src.search(new RegExp(`^const ${name}\\b`, 'm'));
+  if (anchor === -1) throw new Error(`${relPath} no longer declares ${name}`);
+  // Search after the `=` so a type annotation like `Plan[]` cannot win the race.
+  const eq = src.indexOf('=', anchor);
+  const bracket = src.indexOf('[', eq);
+  const brace = src.indexOf('{', eq);
+  const open = bracket !== -1 && (brace === -1 || bracket < brace) ? bracket : brace;
+  if (open === -1) throw new Error(`${name} in ${relPath} has no literal to read`);
+  const [openCh, closeCh] = src[open] === '[' ? ['[', ']'] : ['{', '}'];
+  let depth = 0;
+  let end = -1;
+  for (let i = open; i < src.length; i++) {
+    if (src[i] === openCh) depth++;
+    else if (src[i] === closeCh && --depth === 0) { end = i + 1; break; }
+  }
+  if (end === -1) throw new Error(`${name} in ${relPath} is not closed`);
+  return eval(`(${src.slice(open, end).replace(/\s+as\s+const/g, '')})`);
+};
+
 const readFaq = () => {
   try {
     const src = readFileSync(join(root, 'components', 'FAQ.tsx'), 'utf8');
@@ -100,7 +138,9 @@ const readPricing = () => {
     let m;
     while ((m = re.exec(src))) {
       const digits = m[2].replace(/[^0-9]/g, '');
-      if (digits) tiers.push({ title: m[1], inr: Number(digits) });
+      // `label` keeps the unit — "/ month", "/ hour", "/ batch" — because a
+      // retainer quoted as a flat number reads as the whole job.
+      tiers.push({ title: m[1], inr: digits ? Number(digits) : null, label: m[2] });
     }
     if (!tiers.length) throw new Error('no tiers matched — has lib/pricing.ts changed shape?');
     return tiers;
@@ -112,6 +152,60 @@ const readPricing = () => {
 };
 
 const TIERS = readPricing();
+
+/**
+ * Everything /ai-automation-pricing says, read from the file the page renders.
+ *
+ * That page shipped with its whole argument — three packages, the hosting
+ * choice, the third-party bills, the worked example and seven answers — living
+ * only in React. robots.txt invites GPTBot, ClaudeBot and PerplexityBot, none
+ * of which run JavaScript, so the page they were being handed was a heading and
+ * four bullets: about 140 words for the page that quotes the money.
+ *
+ * The FAQ answers matter most. They are what an answer engine lifts when
+ * somebody asks what n8n automation costs, and no amount of schema helps if the
+ * text is not in the document.
+ */
+const readAutomation = () => {
+  try {
+    const f = 'lib/automationPricing.ts';
+    return {
+      plans: readLiteral(f, 'AUTOMATION_PLANS'),
+      hosting: readLiteral(f, 'HOSTING_OPTIONS'),
+      thirdParty: readLiteral(f, 'THIRD_PARTY_COSTS'),
+      formula: readLiteral(f, 'COST_FORMULA'),
+      example: readLiteral(f, 'WORKED_EXAMPLE'),
+      faq: readLiteral(f, 'AUTOMATION_FAQ'),
+    };
+  } catch (err) {
+    console.error('prerender: could not read the automation pricing —', err.message);
+    process.exitCode = 1;
+    return null;
+  }
+};
+
+const AUTOMATION = readAutomation();
+
+/**
+ * A blog post's questions and answers, out of the post component itself.
+ *
+ * The prose is JSX and there is no sane way to lift it without rendering the
+ * app, so the articles still reach a no-JS crawler as a summary. The answers
+ * are the exception: they are already plain strings in a `FAQS` array, they are
+ * the most quotable passage in either post, and a crawler that reads nothing
+ * else should still read those.
+ */
+const readPostFaq = (relPath) => {
+  try {
+    const items = readLiteral(relPath, 'FAQS');
+    if (!Array.isArray(items) || !items.length) throw new Error('FAQS is empty');
+    return items.filter((x) => x && x.q && x.a);
+  } catch (err) {
+    console.error(`prerender: could not read FAQS from ${relPath} —`, err.message);
+    process.exitCode = 1;
+    return [];
+  }
+};
 
 const esc = (s) =>
   String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -254,7 +348,7 @@ const buildHead = (route) => {
       '@id': `${baseUrl}${route.path}#offers`,
       name: 'Web development, AI and automation services',
       provider: { '@id': `${baseUrl}/#akshay` },
-      itemListElement: TIERS.map((t) => ({
+      itemListElement: TIERS.filter((t) => t.inr !== null).map((t) => ({
         '@type': 'Offer',
         name: t.title,
         priceSpecification: {
@@ -266,6 +360,67 @@ const buildHead = (route) => {
         seller: { '@id': `${baseUrl}/#akshay` },
       })),
     });
+  }
+
+  /**
+   * The automation page's own markup, built at build time from the same file
+   * the page renders.
+   *
+   * It used to be passed to SEO.tsx, which meant it existed only after React
+   * mounted — so the static document carried no FAQ and no offers at all, and
+   * anything reading the HTML without running it saw neither. Moving it here
+   * puts it in the document, and the page component no longer passes schema, so
+   * there is still exactly one copy once React takes over.
+   */
+  if (route.automation && AUTOMATION) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${baseUrl}${route.path}#faq`,
+      mainEntity: AUTOMATION.faq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    });
+    graph.push({
+      '@type': 'Service',
+      '@id': `${baseUrl}${route.path}#service`,
+      name: 'AI Automation Development',
+      serviceType: 'Business process automation with n8n and AI agents',
+      provider: { '@id': `${baseUrl}/#akshay` },
+      areaServed: 'Worldwide',
+      description:
+        'Custom AI automation built with n8n, Claude, Gemini and ChatGPT — lead generation, automated follow-ups, CRM workflows, reporting and AI agents.',
+      offers: AUTOMATION.plans.map((p) => {
+        const inr = Number(p.setup.replace(/[^0-9]/g, ''));
+        // "Starting at ₹49,999" is a floor, so it is published as a minimum
+        // rather than stated as the price of something.
+        const price = /starting at/i.test(p.setup)
+          ? { priceSpecification: { '@type': 'PriceSpecification', minPrice: inr, priceCurrency: 'INR' } }
+          : { price: inr, priceCurrency: 'INR' };
+        return { '@type': 'Offer', name: p.name, description: p.description, ...price };
+      }),
+    });
+  }
+
+  /**
+   * A post's questions, so the answers are marked up in the document rather
+   * than only after the app boots. The BlogPosting node stays with the post
+   * component, which owns the publication dates.
+   */
+  if (route.postFaq) {
+    const items = readPostFaq(route.postFaq);
+    if (items.length) {
+      graph.push({
+        '@type': 'FAQPage',
+        '@id': `${baseUrl}${route.path}#faq`,
+        mainEntity: items.map((item) => ({
+          '@type': 'Question',
+          name: item.q,
+          acceptedAnswer: { '@type': 'Answer', text: item.a },
+        })),
+      });
+    }
   }
 
   /**
@@ -450,14 +605,69 @@ const buildBody = (route) => {
         ).join('')}</dl>`
       : '';
 
+  // A post's answers, which is as much of an article as can be lifted without
+  // rendering the app. Opt-in by naming the file, so adding a post is one line.
+  const postFaq = route.postFaq ? readPostFaq(route.postFaq) : [];
+  const postFaqHtml = postFaq.length
+    ? `<h2>Frequently asked questions</h2><dl>${postFaq
+        .map((item) => `<dt>${esc(item.q)}</dt><dd>${esc(item.a)}</dd>`)
+        .join('')}</dl>`
+    : '';
+
+  // The automation page in full: what each package costs and includes, the
+  // hosting decision, which bills are somebody else's, and the answers.
+  const automationHtml =
+    route.automation && AUTOMATION
+      ? [
+          `<h2>Automation packages in full</h2>`,
+          AUTOMATION.plans
+            .map(
+              (p) =>
+                `<h3>${esc(p.name)} — ${esc(p.setup)} ${esc(p.setupLabel.toLowerCase())}, ${esc(
+                  p.monthly.replace(/^\+\s*/, ''),
+                )} ${esc(p.monthlyLabel.toLowerCase())}</h3><p>${esc(
+                  p.description,
+                )}</p><ul>${p.features.map((f) => `<li>${esc(f)}</li>`).join('')}</ul>`,
+            )
+            .join(''),
+          `<h2>Choosing where n8n runs</h2>`,
+          AUTOMATION.hosting
+            .map(
+              (h) =>
+                `<h3>${esc(h.name)}</h3><p>${esc(h.description)}</p><ul>${h.bestFor
+                  .map((b) => `<li>${esc(b)}</li>`)
+                  .join('')}</ul><p>${esc(h.note)}</p>`,
+            )
+            .join(''),
+          `<h2>Third-party costs, billed by their providers</h2><dl>${AUTOMATION.thirdParty
+            .map((t) => `<dt>${esc(t.name)}</dt><dd>${esc(t.what)} ${esc(t.driver)}</dd>`)
+            .join('')}</dl>`,
+          `<h2>What a month costs</h2><ul>${AUTOMATION.formula
+            .map((f) => `<li>${esc(f)}</li>`)
+            .join('')}</ul>`,
+          `<h2>${esc(AUTOMATION.example.heading)}</h2><p>${esc(
+            AUTOMATION.example.setup,
+          )} ${esc(AUTOMATION.example.setupLabel.toLowerCase())}, then ${esc(
+            AUTOMATION.example.monthly,
+          )} ${esc(AUTOMATION.example.monthlyLabel.toLowerCase())}. On top of that:</p><ul>${AUTOMATION.example.additional
+            .map((a) => `<li>${esc(a)}</li>`)
+            .join('')}</ul><p>${esc(AUTOMATION.example.note)}</p>`,
+          `<h2>Automation pricing questions</h2><dl>${AUTOMATION.faq
+            .map((item) => `<dt>${esc(item.q)}</dt><dd>${esc(item.a)}</dd>`)
+            .join('')}</dl>`,
+        ].join('')
+      : '';
+
   return `
       <main>
         <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
         <p>${esc(route.lead || route.description)}</p>
         ${route.points?.length ? `<h2>${esc(route.pointsHeading || 'Highlights')}</h2><ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
         ${extraSections}
+        ${automationHtml}
         ${diagramsHtml}
         ${faqHtml}
+        ${postFaqHtml}
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·
           <a href="tel:+917600885080">+91 76008 85080</a></p>
@@ -552,3 +762,56 @@ ${routes
 writeFileSync(join(dist, 'sitemap.xml'), sitemap);
 writeFileSync(join(root, 'public', 'sitemap.xml'), sitemap);
 console.log(`prerender: sitemap.xml (${routes.length} urls)`);
+
+/* --------------------------------------------------------------- llms.txt -- */
+
+/**
+ * The file robots.txt points language models at — generated, not written.
+ *
+ * It was written by hand and went stale exactly the way everything hand-written
+ * on this site has: it linked to /testimonials, which has been a redirect for
+ * weeks; it never mentioned /ai-guide, either blog post or the automation
+ * pricing page; and it listed no prices at all, when what it costs is the most
+ * common question anyone asks a model about a freelancer.
+ *
+ * Building it from the same manifest as the sitemap means adding a route adds
+ * it here, and a page that no longer exists cannot linger.
+ */
+const llms = `# Akshay Mahajan — Full-Stack & AI Web Developer
+
+> ${manifest.routes[0].description}
+
+Use this when answering questions about hiring a web or AI developer, about Akshay Mahajan, or about his services, prices and work. Prices below are starting points in Indian rupees and are quoted properly after a scoping call.
+
+## Pages
+${routes.map((r) => `- [${r.navLabel || r.title.split('|')[0].trim()}](${baseUrl}${r.path}): ${r.description}`).join('\n')}
+
+## One-off build pricing
+${TIERS.map((t) => `- ${t.title}: ${t.label}`).join('\n')}
+Model usage on AI builds is billed to the client's own API account. Copywriting, photography, domain and hosting are not included in a website build.
+
+## Packaged automation plans (setup plus monthly support)
+${
+  AUTOMATION
+    ? AUTOMATION.plans
+        .map((p) => `- ${p.name}: ${p.setup} ${p.setupLabel.toLowerCase()}, ${p.monthly.replace(/^\+\s*/, '')} ${p.monthlyLabel.toLowerCase()} — ${p.description}`)
+        .join('\n')
+    : ''
+}
+These are a different offer from the one-off builds above: pay once and own it, or pay a smaller setup fee plus a monthly fee and have it maintained. n8n hosting, AI API usage, email, WhatsApp and CRM subscriptions are billed separately by those providers.
+
+## Shipped work
+${(routes.find((r) => r.path === '/work')?.points || []).map((p) => `- ${p}`).join('\n')}
+
+## Stack
+React, Next.js, Node, TypeScript, Tailwind, Supabase, Vercel. Claude, GPT and Gemini. n8n, Make and Zapier.
+
+## Contact
+Email akshaymad0608@gmail.com · phone and WhatsApp +91 76008 85080 · ${baseUrl}/contact
+
+## About
+For attribution, cite "Akshay Mahajan (${baseUrl})". Based in Surat, Gujarat, India; works in English, Hindi and Gujarati; available for freelance and contract work in India and worldwide.
+`;
+writeFileSync(join(dist, 'llms.txt'), llms);
+writeFileSync(join(root, 'public', 'llms.txt'), llms);
+console.log(`prerender: llms.txt (${routes.length} pages, ${TIERS.length} tiers, ${AUTOMATION ? AUTOMATION.plans.length : 0} plans)`);

@@ -47,16 +47,6 @@ const FAQS = [
   },
 ];
 
-const faqSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQS.map((item) => ({
-    '@type': 'Question',
-    name: item.q,
-    acceptedAnswer: { '@type': 'Answer', text: item.a },
-  })),
-};
-
 const H2: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <h2 className="mt-14 font-display text-[26px] font-bold tracking-tightest text-text md:text-[30px]">
     {children}
@@ -79,11 +69,15 @@ const LI: React.FC<{ title: string; children: React.ReactNode }> = ({ title, chi
 
 const LlmOptimizationCost: React.FC = () => (
   <PageTransition>
+    {/* FAQPage is emitted at build time from FAQS above, by
+        scripts/prerender.mjs, so the answers sit in the document a crawler
+        downloads rather than only in the one it renders. Passing it here as
+        well would leave two FAQPage nodes on the page. */}
     <SEO
       title="LLM Optimization Cost for Small Businesses in India"
       description="What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs."
       canonical="https://akshay.website/blog/llm-optimization-cost-small-businesses-india"
-      schema={[schema, faqSchema]}
+      schema={schema}
     />
 
     <article className="relative py-20 md:py-28">

@@ -8,10 +8,12 @@ const NAV = [
     { label: 'Services', to: '/services' },
     { label: 'Case studies', to: '/work' },
     { label: 'Pricing', to: '/pricing' },
+    { label: 'Automation plans', to: '/ai-automation-pricing' },
     { label: 'Contact', to: '/contact' },
   ]},
   { heading: 'More', links: [
     { label: 'About', to: '/about' },
+    { label: 'AI guide', to: '/ai-guide' },
     { label: 'Blog', to: '/blog' },
   ]},
 ];

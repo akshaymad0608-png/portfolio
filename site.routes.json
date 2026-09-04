@@ -109,8 +109,8 @@
     },
     {
       "path": "/pricing",
-      "title": "Pricing for AI Automation Projects | Akshay Mahajan",
-      "description": "Project-based pricing for automation setups, AI agents and full builds. Quoted up front after a scoping call, with no hourly surprises.",
+      "title": "Project Pricing: Websites & AI Agents | Akshay Mahajan",
+      "description": "Fixed project pricing for websites, AI agents, chatbots, SEO and audits — in rupees and dollars, quoted up front after a scoping call.",
       "priority": "0.8",
       "changefreq": "monthly",
       "heading": "Quoted up front. No hourly surprises.",
@@ -131,12 +131,12 @@
       ],
       "navLabel": "Pricing",
       "offers": true,
-      "lastmod": "2026-09-02"
+      "lastmod": "2026-09-04"
     },
     {
       "path": "/ai-automation-pricing",
-      "title": "AI Automation Pricing | n8n, AI Agents & Business Automation | Akshay Mahajan",
-      "description": "Explore AI automation pricing for custom n8n workflows, AI agents, lead generation, CRM automation, email workflows and business automation solutions by Akshay Mahajan.",
+      "title": "AI Automation Pricing: n8n Plans & Costs | Akshay Mahajan",
+      "description": "What AI automation costs: three n8n packages from ₹9,999 setup plus monthly support, what each includes, and the third-party bills nobody itemises for you.",
       "priority": "0.8",
       "changefreq": "monthly",
       "heading": "AI Automation That Saves Time & Scales Your Business",
@@ -149,8 +149,8 @@
         "n8n hosting, AI API usage and other third-party services are billed separately by their providers"
       ],
       "navLabel": "Automation pricing",
-      "hideFromNav": true,
-      "lastmod": "2026-09-03"
+      "automation": true,
+      "lastmod": "2026-09-04"
     },
     {
       "path": "/ai-guide",
@@ -227,7 +227,8 @@
         "Five questions to ask before you pay anyone"
       ],
       "navLabel": "Automation cost",
-      "lastmod": "2026-09-02"
+      "postFaq": "pages/posts/AiAutomationCost.tsx",
+      "lastmod": "2026-09-04"
     },
     {
       "path": "/blog/llm-optimization-cost-small-businesses-india",
@@ -248,7 +249,8 @@
         "How to justify the investment before you spend it"
       ],
       "navLabel": "LLM optimization cost",
-      "lastmod": "2026-09-02"
+      "postFaq": "pages/posts/LlmOptimizationCost.tsx",
+      "lastmod": "2026-09-04"
     },
     {
       "path": "/contact",
