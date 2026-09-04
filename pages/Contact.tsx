@@ -35,13 +35,21 @@ const Contact: React.FC = () => {
    */
   const [searchParams] = useSearchParams();
   const requested = searchParams.get('service');
+  /**
+   * `?details=` carries the automation estimator's selections over, so the
+   * enquiry arrives saying which package, hosting and integrations were picked
+   * instead of "hi, how much". Capped and treated as plain text: it is rendered
+   * into a textarea the sender can read and edit before it goes anywhere, and
+   * the query string is not ours to trust any more than the service value is.
+   */
+  const prefilled = (searchParams.get('details') ?? '').slice(0, 1200);
   const [form, setForm] = useState({
     name: '',
     email: '',
     whatsapp: '',
     service: requested && SERVICES.includes(requested) ? requested : '',
     budget: '',
-    details: '',
+    details: prefilled,
   });
 
   const update = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) =>

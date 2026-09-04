@@ -54,6 +54,26 @@ const tiers = () => {
   return out;
 };
 
+/**
+ * The packaged automation plans, as {name, setup, monthly}. Same drift risk as
+ * the tiers above and a worse failure: these carry a monthly fee, so a stale
+ * number misquotes a recurring bill rather than a one-off one.
+ */
+const automationPlans = () => {
+  const src = read('lib/automationPricing.ts');
+  const out = [];
+  const re =
+    /name:\s*'([^']+)',\s*\n\s*setup:\s*'([^']+)',[\s\S]{0,120}?monthly:\s*'\+ ([^']+)'/g;
+  let m;
+  while ((m = re.exec(src))) out.push({ name: m[1], setup: m[2], monthly: m[3] });
+  if (out.length !== 3) {
+    throw new Error(
+      `expected 3 automation plans from lib/automationPricing.ts, parsed ${out.length} — has its shape changed?`,
+    );
+  }
+  return out;
+};
+
 const problems = [];
 
 for (const title of serviceTitles()) {
@@ -70,6 +90,22 @@ for (const { title, price, priceINR } of tiers()) {
   if (!prompt.includes(priceINR)) problems.push(`tier "${title}" should quote ${priceINR} and does not`);
 }
 
+for (const { name, setup, monthly } of automationPlans()) {
+  if (!prompt.includes(name)) {
+    problems.push(`automation plan "${name}" is missing from prompt.ts`);
+    continue;
+  }
+  // Match on the rupee amount rather than the whole string: "Starting at
+  // ₹49,999" reads as a label on the card and as prose in the instruction, and
+  // only the figure has to agree.
+  const amounts = [setup, monthly].map((s) => s.match(/₹[\d,]+/)?.[0]).filter(Boolean);
+  for (const amount of amounts) {
+    if (!prompt.includes(amount)) {
+      problems.push(`automation plan "${name}" should quote ${amount} and does not`);
+    }
+  }
+}
+
 if (problems.length) {
   console.error(
     'prompt-consistency: the chat assistant would answer with stale facts.\n  ' + problems.join('\n  '),
@@ -78,5 +114,6 @@ if (problems.length) {
 }
 
 console.log(
-  `prompt-consistency: ${serviceTitles().length} services and ${tiers().length} price tiers all present in prompt.ts.`,
+  `prompt-consistency: ${serviceTitles().length} services, ${tiers().length} price tiers and ` +
+    `${automationPlans().length} automation plans all present in prompt.ts.`,
 );

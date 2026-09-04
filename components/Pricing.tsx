@@ -225,11 +225,13 @@ const Pricing: React.FC = () => {
                   what one workflow actually costs in India
                 </Link>
               </p>
+              {/* The packaged retainer plans live on their own page — this is a
+                  one-off build price, that one is setup plus a monthly fee. */}
               <Link
-                to="/contact?service=Automation%20setup%20(n8n%20%2F%20Make%20%2F%20Zapier)"
+                to="/ai-automation-pricing"
                 className="btn-ghost inline-flex items-center justify-center gap-2 px-6 py-3 text-[14.5px] font-medium"
               >
-                Scope an automation <ArrowRight size={15} />
+                See automation plans <ArrowRight size={15} />
               </Link>
             </div>
           </div>

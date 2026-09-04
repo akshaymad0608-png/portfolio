@@ -16,6 +16,7 @@ const NAV_LINKS = [
 // Reachable from the footer and in-page links, but the mobile sheet has the room
 // to surface them properly rather than leaving them orphaned.
 const SECONDARY_LINKS = [
+  { name: 'Automation pricing', href: '/ai-automation-pricing' },
   { name: 'Case studies', href: '/work' },
   { name: 'Blog', href: '/blog' },
 ];

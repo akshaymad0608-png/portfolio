@@ -134,6 +134,25 @@
       "lastmod": "2026-09-02"
     },
     {
+      "path": "/ai-automation-pricing",
+      "title": "AI Automation Pricing | n8n, AI Agents & Business Automation | Akshay Mahajan",
+      "description": "Explore AI automation pricing for custom n8n workflows, AI agents, lead generation, CRM automation, email workflows and business automation solutions by Akshay Mahajan.",
+      "priority": "0.8",
+      "changefreq": "monthly",
+      "heading": "AI Automation That Saves Time & Scales Your Business",
+      "lead": "Custom AI-powered automation built with n8n, Claude, Gemini, ChatGPT and AI agents — lead generation, automated follow-ups, sales reports, CRM workflows and intelligent agents, designed around your business.",
+      "pointsHeading": "Automation packages",
+      "points": [
+        "Starter — ₹9,999 one-time setup plus ₹1,999/month maintenance, up to 2 workflows",
+        "Business — ₹24,999 one-time setup plus ₹4,999/month maintenance, up to 5 workflows with AI lead qualification and CRM integration",
+        "Premium AI Automation — from ₹49,999 one-time setup plus ₹9,999/month maintenance, AI agents and custom multi-step workflows",
+        "n8n hosting, AI API usage and other third-party services are billed separately by their providers"
+      ],
+      "navLabel": "Automation pricing",
+      "hideFromNav": true,
+      "lastmod": "2026-09-03"
+    },
+    {
       "path": "/ai-guide",
       "title": "AI Guide: LLMs, Generative & Agentic AI | Akshay Mahajan",
       "description": "A plain-English guide to AI: its history, machine learning vs deep learning vs generative AI, what an LLM is, and how AI agents actually work.",

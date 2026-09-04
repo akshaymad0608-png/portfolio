@@ -25,6 +25,7 @@ const Blog = lazy(() => import('./pages/Blog'));
 const AiAutomationCost = lazy(() => import('./pages/posts/AiAutomationCost'));
 const LlmOptimizationCost = lazy(() => import('./pages/posts/LlmOptimizationCost'));
 const Pricing = lazy(() => import('./pages/Pricing'));
+const AIAutomationPricing = lazy(() => import('./pages/AIAutomationPricing'));
 const AIGuide = lazy(() => import('./pages/AIGuide'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
@@ -111,6 +112,7 @@ const App: React.FC = () => {
                 element={<LlmOptimizationCost />}
               />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/ai-automation-pricing" element={<AIAutomationPricing />} />
               {/* The feedback page was built on quotes I wrote myself. It is
                   gone; anyone who has the old link lands on the real work. */}
               <Route path="/testimonials" element={<Navigate to="/work" replace />} />
