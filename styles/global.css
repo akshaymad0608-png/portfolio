@@ -187,4 +187,21 @@
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
   }
+
+  /* The rule above collapses every animation to a 1ms run. For a one-shot
+     reveal that's invisible and fine. For an *infinite* looping graphic
+     (marquee, pulsing dot, dashed wire, floating icon, chat-launcher ring)
+     it does something worse: -1ms delay + 1ms duration lands playback at an
+     arbitrary mid-cycle frame, then iteration-count:1 freezes it there —
+     the graphic renders stuck half-transformed instead of at rest. Turning
+     the animation off outright leaves each one at its natural CSS resting
+     frame (translateX(0), opacity 1, scale 1) instead of a random glitch. */
+  .marquee-track,
+  .wire-flow,
+  .pulse-soft,
+  .float-y,
+  .chat-ring,
+  .chat-ring-late {
+    animation: none !important;
+  }
 }
