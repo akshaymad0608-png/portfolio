@@ -4,6 +4,7 @@ import { AnimatePresence } from 'framer-motion';
 
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import { lenisRef } from './lib/lenis';
 
 // None of these three can be seen or used until after first paint — the chatbot
 // waits on a click, the widgets sit at the edge of the viewport, the cursor is
@@ -62,6 +63,7 @@ const App: React.FC = () => {
         wheelMultiplier: 1,
         touchMultiplier: 2,
       });
+      lenisRef.current = instance;
 
       const raf = (time: number) => {
         instance?.raf(time);
@@ -74,6 +76,7 @@ const App: React.FC = () => {
       cancelled = true;
       cancelAnimationFrame(frame);
       instance?.destroy();
+      lenisRef.current = null;
     };
   }, []);
 
