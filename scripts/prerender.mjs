@@ -658,10 +658,21 @@ const buildBody = (route) => {
         ].join('')
       : '';
 
+  // A plain-text points list can't link anywhere. /blog's real posts were
+  // published but only ever reachable by clicking a client-rendered card —
+  // the prerendered page itself had no <a> to either one, so both sat as
+  // Ahrefs "orphan pages" despite being live, indexed content.
+  const linksHtml = route.links?.length
+    ? `<h2>${esc(route.linksHeading || 'Read next')}</h2><ul>${route.links
+        .map((l) => `<li><a href="${esc(l.href)}">${esc(l.label)}</a></li>`)
+        .join('')}</ul>`
+    : '';
+
   return `
       <main>
         <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
         <p>${esc(route.lead || route.description)}</p>
+        ${linksHtml}
         ${route.points?.length ? `<h2>${esc(route.pointsHeading || 'Highlights')}</h2><ul>${route.points.map((p) => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
         ${extraSections}
         ${automationHtml}

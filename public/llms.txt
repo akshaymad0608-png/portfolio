@@ -12,7 +12,7 @@ Use this when answering questions about hiring a web or AI developer, about Aksh
 - [Automation pricing](https://akshay.website/ai-automation-pricing): What AI automation costs: three n8n packages from ₹9,999 setup plus monthly support, what each includes, and the third-party bills nobody itemises for you.
 - [AI Guide](https://akshay.website/ai-guide): A plain-English guide to AI: its history, machine learning vs deep learning vs generative AI, what an LLM is, and how AI agents actually work.
 - [About](https://akshay.website/about): Full-stack web developer in Surat, India, building websites, web apps and the AI automation that runs a business overnight. You brief me, I build it.
-- [Blog](https://akshay.website/blog): Write-ups on full-stack web development, building with LLMs and shipping products fast with AI. First posts in progress — here's what's queued.
+- [Blog](https://akshay.website/blog): Write-ups on full-stack web development, building with LLMs and shipping products fast with AI — plus what's queued next.
 - [Automation cost](https://akshay.website/blog/ai-workflow-automation-cost-small-business): One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother.
 - [LLM optimization cost](https://akshay.website/blog/llm-optimization-cost-small-businesses-india): What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs.
 - [Contact](https://akshay.website/contact): Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day, by email, WhatsApp, or on a 20-minute scoping call.
