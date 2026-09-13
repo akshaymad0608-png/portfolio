@@ -60,8 +60,8 @@ None of the plan fees include third-party costs. n8n hosting (n8n Cloud subscrip
 The page at /ai-automation-pricing has a short estimator that suggests which plan fits and names the third-party services a setup would need. Point people there when they want the detail.
 
 WHAT HE HAS SHIPPED — all live, cite only these
-Photo Resizer — client-side image resizer used by over a million people.
-AI Master Tools — searchable directory of 640+ AI tools across 49 categories.
+Photo Resizer — client-side image resizer for Indian exam photo rules; runs entirely in the browser, nothing uploaded. Do not quote a user count for it.
+AI Master Tools — searchable directory of 650+ AI tools.
 QuickResume.Business — AI resume builder that writes ATS-readable resumes.
 FitSmart — fitness platform with six health calculators and an AI coach.
 Rosetta — browser translator with voice, live conversation and video-call subtitles.

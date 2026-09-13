@@ -14,7 +14,7 @@ const TIMELINE = [
   {
     phase: '2025',
     title: 'Shipping instead of experimenting',
-    body: 'Moved from notebooks to production. Designed and built five full-stack web products that real people use daily, one of which crossed a million users.',
+    body: 'Moved from notebooks to production. Designed and built five full-stack web products that are live today, each taken from idea to deploy solo.',
   },
   {
     phase: '2026',

@@ -4,9 +4,9 @@ import Reveal from './ui/Reveal';
 
 const STATS = [
   { value: 5, suffix: '', label: 'Products live in production', note: 'built end to end, solo' },
-  { value: 1, suffix: 'M+', label: 'People served by Photo Resizer', note: 'zero server cost, all client-side' },
-  { value: 640, suffix: '+', label: 'AI tools indexed on AI Master Tools', note: 'across 49 categories' },
-  { value: 60, suffix: '%', label: 'Less time on content pipelines', note: 'after handing them to agents' },
+  { value: 25, suffix: '+', label: 'Automation workflows built', note: 'reporting, triage and publishing' },
+  { value: 650, suffix: '+', label: 'AI tools on AI Master Tools', note: 'each with its own indexable page' },
+  { value: 190, suffix: '+', label: 'Checks before every deploy', note: 'on a 13-workflow BI system' },
 ];
 
 const Stats: React.FC = () => (

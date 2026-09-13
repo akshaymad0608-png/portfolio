@@ -12,8 +12,13 @@ import SpotlightCard from './ui/SpotlightCard';
  * The three quotes that used to sit here were written by me, attributed to
  * "E-commerce Founder" and "Marketing Director", and illustrated with stock
  * portraits. Anyone deciding whether to hire a developer recognises that in a
- * second, and once they do they stop believing the true things on the page too
- * — the million Photo Resizer users, the 640-tool directory, all of it.
+ * second, and once they do they stop believing the true things on the page too.
+ *
+ * The same rule later took out "1M+ users" for Photo Resizer. It appeared ten
+ * times across the site and nothing could back it: Search Console showed ~470
+ * search clicks a month, the product itself states no figure, and neither does
+ * the résumé. A number nobody can check is the first thing an interviewer asks
+ * about, and a bad answer takes the true numbers down with it.
  *
  * So this section says nothing about me. It lists what is running, with the
  * numbers each product actually reports, and a link on every card. The claim

@@ -19,11 +19,14 @@ import RevealText from './ui/RevealText';
  * its marker hand sets this one headline, so the rebuild matches the print.
  */
 
+// Each point is a claim a visitor can check, not a slogan. The four these
+// replaced — "AI Powered · Smart Solutions", "Trusted & Secure · Your Data, Our
+// Priority" — could have sat on any site, which is exactly what they read as.
 const POINTS = [
-  { icon: Cpu, title: 'AI Powered', note: 'Smart Solutions' },
-  { icon: ShieldCheck, title: 'Trusted & Secure', note: 'Your Data, Our Priority' },
-  { icon: Zap, title: 'Fast & Reliable', note: 'Performance You Can Count On' },
-  { icon: Star, title: 'Built With Passion', note: 'Made for You' },
+  { icon: Cpu, title: 'Shipped solo', note: 'Five live products, built end to end' },
+  { icon: ShieldCheck, title: 'Nothing uploaded', note: 'Client-side tools keep data on the device' },
+  { icon: Zap, title: 'Tested before deploy', note: 'My largest system runs 190+ checks first' },
+  { icon: Star, title: 'Fails loudly', note: 'A broken run raises an alert, not a green tick' },
 ];
 
 const IntroBanner: React.FC = () => {

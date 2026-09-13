@@ -177,7 +177,7 @@ export const SKILLS: Skill[] = [
     name: "PWAs & Offline-First Web",
     level: 90,
     icon: Zap,
-    description: "Service workers, offline fallbacks and install prompts — shipping on tools used by a million people.",
+    description: "Service workers, offline fallbacks and install prompts — shipping on tools that keep working with no connection.",
     demoLink: "#work"
   },
   {
@@ -204,14 +204,14 @@ export const PROJECTS: Project[] = [
     problem: "Finding the right AI tool meant opening ten tabs and trusting whichever listicle ranked first. Tool makers had nowhere to get found.",
     solution: "A directory where search understands the job you're trying to do, not just the words you typed. Every tool, category and guide page is pre-rendered at build time with its own title, description and structured data — so the catalogue grows to thousands of indexable pages without hand-writing any of them.",
     features: ["Job-based Search", "Pre-rendered SEO Pages", "Side-by-side Compare", "Installable PWA (offline)"],
-    results: "640+ hand-checked tools across 49 categories, plus an Earn Online directory of 145 sites. 1,700+ pages pre-rendered for search, and organic impressions grew ~7x over three months.",
+    results: "650+ hand-checked tools, plus an Earn Online directory of 145 sites. 1,700+ pages pre-rendered for search, and organic impressions grew ~7x over three months.",
     description: "A searchable AI tools directory with automatically generated, SEO-ready pages for every listing.",
     tech: ["React", "TypeScript", "TailwindCSS", "Vite", "Vercel"],
     year: "2024",
     link: "https://aimastertools.space",
     image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://aimastertools.space",
     icon: Wrench,
-    stat: "640+ AI TOOLS",
+    stat: "650+ AI TOOLS",
     elementId: "ai-master-tool"
   },
   {
@@ -238,14 +238,14 @@ export const PROJECTS: Project[] = [
     problem: "Indian government exam portals reject photos over exact dimension and file-size limits, and rarely say which one you broke.",
     solution: "A resizer that runs entirely in the browser. Pick the exam, get a file that fits the spec — no upload, no queue, no account.",
     features: ["Client-Side Cropping", "Compression Algorithm", "Offline capability", "Format Conversion"],
-    results: "Used by over a million people. Works offline once loaded, and no photo ever leaves the device.",
+    results: "Works offline once loaded, and no photo ever leaves the device — so there is no server to pay for and nothing to leak.",
     description: "A fully client-side image resizer built for Indian government exam upload rules.",
     tech: ["React", "Image Processing", "Web App"],
     year: "2024",
     link: "https://photoresizer.click",
     icon: Crop,
     image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://photoresizer.click",
-    stat: "1M+ USERS",
+    stat: "100% IN-BROWSER",
     elementId: "photo-resizer"
   },
   {
@@ -346,7 +346,7 @@ export const SERVICES: Service[] = [
     id: 2,
     title: "Custom AI Tools & Micro-SaaS",
     icon: Wrench,
-    description: "Web tools and micro-SaaS MVPs that solve one clear problem and are easy to demo — like Photo Resizer (1M+ users) and QuickResume. From idea to live product.",
+    description: "Web tools and micro-SaaS MVPs that solve one clear problem and are easy to demo — like Photo Resizer and QuickResume. From idea to live product.",
     features: ["MVP Development", "Client-Side Processing", "API Integration", "Monetizable Utilities"]
   },
   {

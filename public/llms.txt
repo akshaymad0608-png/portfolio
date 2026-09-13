@@ -38,9 +38,9 @@ Model usage on AI builds is billed to the client's own API account. Copywriting,
 These are a different offer from the one-off builds above: pay once and own it, or pay a smaller setup fee plus a monthly fee and have it maintained. n8n hosting, AI API usage, email, WhatsApp and CRM subscriptions are billed separately by those providers.
 
 ## Shipped work
-- AI Master Tools — a searchable directory of 640+ AI tools across 49 categories
+- AI Master Tools — a searchable directory of 650+ AI tools
 - QuickResume.Business — an AI resume builder that writes ATS-readable resumes
-- Photo Resizer — a client-side image resizer used by over a million people
+- Photo Resizer — a client-side image resizer for exam photo rules; nothing is uploaded
 - FitSmart — a fitness platform with six health calculators and an AI coach
 - Rosetta — a browser translator with voice, live conversation and video-call subtitles
 - Akshay LinkedIn OS — 10 n8n workflows, 200-prompt library, one-command Docker deploy

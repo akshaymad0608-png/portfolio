@@ -93,7 +93,7 @@ const Hero: React.FC = () => {
                         className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-border pt-7">
               {[
                 ['5', 'web products live in production'],
-                ['1M+', 'people using Photo Resizer'],
+                ['25+', 'automation workflows built'],
                 ['2–4 wk', 'idea to launched build'],
               ].map(([n, label]) => (
                 <div key={label}>

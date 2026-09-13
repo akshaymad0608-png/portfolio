@@ -7,7 +7,7 @@ import Reveal from './ui/Reveal';
  * A working playground, not a screenshot.
  *
  * Three tools that run entirely in the browser — the same client-side approach
- * behind Photo Resizer (1M+ users, no server, nothing uploaded). Visitors can
+ * behind Photo Resizer (no server, nothing uploaded). Visitors can
  * try the actual thing instead of reading that I can build it.
  */
 
