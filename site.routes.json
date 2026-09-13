@@ -201,8 +201,8 @@
       "lead": "What worked, what cost me a weekend, and the code and workflows you can copy straight into your own stack.",
       "linksHeading": "Published",
       "links": [
-        { "href": "/blog/ai-workflow-automation-cost-small-business", "label": "AI Workflow Automation Cost for Small Business in India" },
-        { "href": "/blog/llm-optimization-cost-small-businesses-india", "label": "LLM Optimization Cost for Small Businesses in India" }
+        { "href": "/blog/ai-workflow-automation-cost-small-business", "label": "AI automation cost in India" },
+        { "href": "/blog/llm-optimization-cost-small-businesses-india", "label": "LLM optimization cost guide" }
       ],
       "pointsHeading": "Coming up",
       "points": [
@@ -211,7 +211,7 @@
         "Automating CRM updates and email triage with n8n"
       ],
       "navLabel": "Blog",
-      "lastmod": "2026-08-31"
+      "lastmod": "2026-09-13"
     },
     {
       "path": "/blog/ai-workflow-automation-cost-small-business",
