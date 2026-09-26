@@ -227,7 +227,7 @@ const person = {
     addressRegion: 'Gujarat',
     addressCountry: 'IN',
   },
-  email: 'mailto:akshaymad0608@gmail.com',
+  email: 'akshaymad0608@gmail.com',
   sameAs: [
     'https://linkedin.com/in/akshay-mahajan-95bb86187',
     'https://instagram.com/akshay.website',
@@ -274,7 +274,7 @@ const service = {
     { '@type': 'City', name: 'Surat' },
     { '@type': 'State', name: 'Gujarat' },
     { '@type': 'Country', name: 'India' },
-    { '@type': 'Country', name: 'Worldwide' },
+    'Worldwide',
   ],
   geo: { '@type': 'GeoCoordinates', latitude: 21.1702, longitude: 72.8311 },
   currenciesAccepted: 'INR, USD',
