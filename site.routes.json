@@ -351,6 +351,30 @@
       "keywords": "hire web developer India, contact freelance developer, web developer Surat contact, AI developer for hire, hire AI developer India, freelance developer contact",
       "navLabel": "Contact",
       "lastmod": "2026-09-27"
+    },
+    {
+      "path": "/privacy",
+      "title": "Privacy Policy for akshay.website | Akshay Mahajan",
+      "description": "Learn how akshay.website handles your data. Covers Google Analytics, AdSense advertising cookies, and contact form submissions. Plain language, no legalese.",
+      "priority": "0.3",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "Privacy Policy",
+      "lead": "How akshay.website handles your data — analytics, advertising and contact form.",
+      "keywords": "Akshay Mahajan privacy policy, akshay website privacy",
+      "lastmod": "2026-09-27"
+    },
+    {
+      "path": "/terms",
+      "title": "Terms of Service for akshay.website | Akshay Mahajan",
+      "description": "Terms of use for akshay.website, the portfolio and freelance services site of Akshay Mahajan. Browse and use this site only as described here.",
+      "priority": "0.3",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "Terms of Service",
+      "lead": "Terms of use for this site and for freelance engagement enquiries.",
+      "keywords": "Akshay Mahajan terms of service, akshay website terms",
+      "lastmod": "2026-09-27"
     }
   ]
 }
