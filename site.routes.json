@@ -52,8 +52,9 @@
         }
       ],
       "faq": true,
+      "keywords": "web developer Surat, AI developer India, freelance web developer India, AI automation developer, full stack developer India, hire web developer India, AI agent developer, chatbot developer India",
       "navLabel": "Home",
-      "lastmod": "2026-09-13"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/services",
@@ -104,6 +105,7 @@
         { "q": "Do you work with clients outside India?", "a": "Yes. I work with clients in India and worldwide. Quotes for international clients are given in USD. I work IST (India Standard Time) but am flexible for calls in other time zones." },
         { "q": "What is your tech stack?", "a": "Full-stack: React, Next.js, Node.js, TypeScript, Tailwind CSS, Supabase, Vercel. AI: Claude, GPT-4 and Gemini for agents and tools. Automation: n8n, Make.com and Zapier. I pick the right tool for the project rather than forcing everything into one stack." }
       ],
+      "keywords": "web development services India, AI tool development, chatbot development service India, n8n automation developer, AI agent development India, freelance developer services, custom AI tools India",
       "navLabel": "Services",
       "lastmod": "2026-09-27"
     },
@@ -134,6 +136,7 @@
         { "q": "Can I see the source code?", "a": "The public products (AI Master Tools, Photo Resizer, FitSmart, QuickResume) have their source on GitHub. The private automation workflows are described technically on this page but are not open-sourced — they contain client data structures and API integrations." },
         { "q": "Do you take on similar work for clients?", "a": "Yes. If you need a directory, a browser-based tool, an AI chatbot, a resume or job-application automation, or a BI reporting pipeline — any of the builds on this page — I can scope and build something equivalent for your use case. Contact me with a brief description." }
       ],
+      "keywords": "web developer portfolio India, AI projects portfolio, full stack developer portfolio, web app case studies, live AI products, AI automation portfolio",
       "navLabel": "Work",
       "lastmod": "2026-09-27",
       "diagrams": true
@@ -166,6 +169,7 @@
         { "q": "Do you work for equity or revenue share?", "a": "Not at this time. All projects are quoted at a fixed price or a monthly retainer. If you are an early-stage startup with a compelling product, mention it in your brief and we can discuss." },
         { "q": "What currency are your prices in?", "a": "Prices are quoted in Indian rupees (INR) for Indian clients and in US dollars (USD) for international clients. The pricing page shows both. Payment is accepted via bank transfer, UPI or international wire." }
       ],
+      "keywords": "web developer pricing India, website cost India, AI development cost, freelance developer rates India, web app development price, chatbot development cost India",
       "navLabel": "Pricing",
       "offers": true,
       "lastmod": "2026-09-27"
@@ -185,9 +189,10 @@
         "Premium AI Automation — from ₹49,999 one-time setup plus ₹9,999/month maintenance, AI agents and custom multi-step workflows",
         "n8n hosting, AI API usage and other third-party services are billed separately by their providers"
       ],
+      "keywords": "n8n automation cost India, AI automation pricing India, workflow automation cost, n8n developer India, business automation price, AI workflow setup cost",
       "navLabel": "Automation pricing",
       "automation": true,
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/ai-guide",
@@ -223,6 +228,7 @@
         { "q": "What is an AI agent?", "a": "An AI agent is a system that uses an LLM to plan and take actions, not just respond. Given a goal, it breaks the goal into steps, calls tools (a search engine, a database, an API, a browser), acts on the results, and repeats until the task is done. A chatbot replies; an agent acts. Most practical AI agents today use Claude, GPT-4 or Gemini as their reasoning core." },
         { "q": "Can I build AI tools without a computer science degree?", "a": "Yes. Modern AI APIs (Claude, OpenAI, Gemini) are designed to be called from any programming language with a few lines of code. No-code tools like n8n and Make.com let non-developers wire AI into workflows. The hard part today is designing the right prompt and knowing when AI is and is not the right tool — not the mathematics behind it." }
       ],
+      "keywords": "what is LLM, AI guide beginners, AI agents explained, generative AI guide, large language model explained, what is AI agent, agentic AI India",
       "navLabel": "AI Guide",
       "lastmod": "2026-09-27"
     },
@@ -248,6 +254,7 @@
         { "q": "What is your response time?", "a": "I reply to new enquiries within one working day. For active projects, I respond to messages the same day during working hours. If something breaks in production and I built it, I treat it as urgent regardless of the time." },
         { "q": "How do you handle projects that change scope mid-build?", "a": "Scope changes get a separate written quote before the work starts. I do not absorb unlimited changes into the original price, but I do not charge for small clarifications or fixes that are clearly part of the original spec. If something grows significantly, I flag it before building it." }
       ],
+      "keywords": "Akshay Mahajan developer, web developer Surat Gujarat, freelance developer India, AI automation engineer India, full stack developer Surat, hire developer India",
       "navLabel": "About",
       "lastmod": "2026-09-27"
     },
@@ -270,8 +277,9 @@
         "The parts of web development generative AI is genuinely good at",
         "Automating CRM updates and email triage with n8n"
       ],
+      "keywords": "web development blog India, AI development tips, build with LLMs, developer blog India, AI automation blog, full stack developer blog",
       "navLabel": "Blog",
-      "lastmod": "2026-09-13"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/blog/ai-workflow-automation-cost-small-business",
@@ -291,9 +299,10 @@
         "When automation is not worth the money",
         "Five questions to ask before you pay anyone"
       ],
+      "keywords": "AI automation cost India, workflow automation price India, n8n cost India, automation for small business India, AI workflow cost 2026, business automation India",
       "navLabel": "Automation cost",
       "postFaq": "pages/posts/AiAutomationCost.tsx",
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/blog/llm-optimization-cost-small-businesses-india",
@@ -313,9 +322,10 @@
         "In-house vs. consultant vs. agency for the expertise you don't have",
         "How to justify the investment before you spend it"
       ],
+      "keywords": "LLM cost India, AI optimization cost, prompt engineering cost India, fine tuning cost India, LLM for small business India, RAG implementation cost India",
       "navLabel": "LLM optimization cost",
       "postFaq": "pages/posts/LlmOptimizationCost.tsx",
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/contact",
@@ -338,6 +348,7 @@
         { "q": "Is there a consultation fee?", "a": "No. The initial 20-minute scoping call and first written quote are free. You only pay once you confirm the quoted scope in writing and work begins." },
         { "q": "How fast do you reply?", "a": "Within one working day for new enquiries, same day for active projects. I check messages in the morning and afternoon IST. For urgent requests, WhatsApp is faster than email." }
       ],
+      "keywords": "hire web developer India, contact freelance developer, web developer Surat contact, AI developer for hire, hire AI developer India, freelance developer contact",
       "navLabel": "Contact",
       "lastmod": "2026-09-27"
     }
