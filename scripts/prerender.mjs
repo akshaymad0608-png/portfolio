@@ -453,6 +453,7 @@ const buildHead = (route) => {
   return [
     `<title ${rh}>${esc(route.title)}</title>`,
     `<meta ${rh} name="description" content="${esc(route.description)}" />`,
+    ...(route.keywords ? [`<meta ${rh} name="keywords" content="${esc(route.keywords)}" />`] : []),
     `<link ${rh} rel="canonical" href="${url}" />`,
     `<meta ${rh} name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />`,
     `<meta ${rh} property="og:type" content="website" />`,
