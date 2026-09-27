@@ -15,6 +15,8 @@ const NAV = [
     { label: 'About', to: '/about' },
     { label: 'AI guide', to: '/ai-guide' },
     { label: 'Blog', to: '/blog' },
+    { label: 'Privacy', to: '/privacy' },
+    { label: 'Terms', to: '/terms' },
   ]},
 ];
 

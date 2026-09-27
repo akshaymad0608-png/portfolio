@@ -28,6 +28,8 @@ const LlmOptimizationCost = lazy(() => import('./pages/posts/LlmOptimizationCost
 const Pricing = lazy(() => import('./pages/Pricing'));
 const AIAutomationPricing = lazy(() => import('./pages/AIAutomationPricing'));
 const AIGuide = lazy(() => import('./pages/AIGuide'));
+const PrivacyPolicy = lazy(() => import('./pages/PrivacyPolicy'));
+const TermsOfService = lazy(() => import('./pages/TermsOfService'));
 const NotFound = lazy(() => import('./pages/NotFound'));
 
 /** Holds the viewport steady while a route chunk loads, so the footer doesn't jump up. */
@@ -120,6 +122,8 @@ const App: React.FC = () => {
                   gone; anyone who has the old link lands on the real work. */}
               <Route path="/testimonials" element={<Navigate to="/work" replace />} />
               <Route path="/ai-guide" element={<AIGuide />} />
+              <Route path="/privacy" element={<PrivacyPolicy />} />
+              <Route path="/terms" element={<TermsOfService />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
           </AnimatePresence>
