@@ -403,6 +403,20 @@ const buildHead = (route) => {
     });
   }
 
+  // Inline FAQs declared directly in site.routes.json for non-homepage routes.
+  // Separate from `faq: true` (FAQ.tsx data) and `postFaq` (blog post files).
+  if (route.pageFaq?.length) {
+    graph.push({
+      '@type': 'FAQPage',
+      '@id': `${baseUrl}${route.path}#faq`,
+      mainEntity: route.pageFaq.map((item) => ({
+        '@type': 'Question',
+        name: item.q,
+        acceptedAnswer: { '@type': 'Answer', text: item.a },
+      })),
+    });
+  }
+
   /**
    * A post's questions, so the answers are marked up in the document rather
    * than only after the app boots. The BlogPosting node stays with the post
@@ -605,6 +619,13 @@ const buildBody = (route) => {
         ).join('')}</dl>`
       : '';
 
+  // Inline FAQs from site.routes.json — rendered as a visible dl for crawlers.
+  const pageFaqHtml = route.pageFaq?.length
+    ? `<h2>Frequently asked questions</h2><dl>${route.pageFaq
+        .map((item) => `<dt>${esc(item.q)}</dt><dd>${esc(item.a)}</dd>`)
+        .join('')}</dl>`
+    : '';
+
   // A post's answers, which is as much of an article as can be lifted without
   // rendering the app. Opt-in by naming the file, so adding a post is one line.
   const postFaq = route.postFaq ? readPostFaq(route.postFaq) : [];
@@ -678,6 +699,7 @@ const buildBody = (route) => {
         ${automationHtml}
         ${diagramsHtml}
         ${faqHtml}
+        ${pageFaqHtml}
         ${postFaqHtml}
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·

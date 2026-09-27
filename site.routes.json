@@ -78,8 +78,34 @@
         "Local SEO & Google Business",
         "Installable & Offline Web Apps"
       ],
+      "sections": [
+        {
+          "h2": "What makes my work different",
+          "points": [
+            "Shipped solo — no agency layer, no handoffs, no account manager between us",
+            "Fixed quotes in writing before anything starts — no hourly surprises",
+            "Every build is tested before deploy — the largest system runs 190+ automated checks",
+            "I reply within one working day, and the same person answers the call and writes the code"
+          ]
+        },
+        {
+          "h2": "How to get started",
+          "points": [
+            "Send a one-paragraph brief — what you want built and the outcome you need",
+            "I reply with questions or a rough scope within one working day",
+            "Short scoping call (20 minutes) to agree the spec and timeline",
+            "Fixed quote in writing, then work starts once you confirm"
+          ]
+        }
+      ],
+      "pageFaq": [
+        { "q": "How much does a website or AI tool cost?", "a": "Projects are quoted at a fixed price after a scoping call, not charged by the hour. A basic website starts from around ₹25,000; a custom AI tool or chatbot typically starts from ₹30,000–₹50,000; a full AI automation setup starts from ₹9,999 for the Starter plan. Every quote is in writing before work begins." },
+        { "q": "How long does a project take?", "a": "A straightforward website takes 5–10 working days from confirmed spec. A custom AI tool or chatbot is typically 2–4 weeks. Complex automation systems with multiple workflows take 3–6 weeks. I give a timeline estimate with the fixed quote, and I build fast because I use AI tools myself." },
+        { "q": "Do you work with clients outside India?", "a": "Yes. I work with clients in India and worldwide. Quotes for international clients are given in USD. I work IST (India Standard Time) but am flexible for calls in other time zones." },
+        { "q": "What is your tech stack?", "a": "Full-stack: React, Next.js, Node.js, TypeScript, Tailwind CSS, Supabase, Vercel. AI: Claude, GPT-4 and Gemini for agents and tools. Automation: n8n, Make.com and Zapier. I pick the right tool for the project rather than forcing everything into one stack." }
+      ],
       "navLabel": "Services",
-      "lastmod": "2026-09-13"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/work",
@@ -103,8 +129,13 @@
         "Job Application Engine — five job boards scored every morning, the application written and sent",
         "Inbound Lead Engine — inbox triaged every 15 minutes, genuine enquiries answered in seconds"
       ],
+      "pageFaq": [
+        { "q": "Are all these projects actually live?", "a": "Yes. Every project listed on this page is live and publicly accessible. AI Master Tools, QuickResume, Photo Resizer, FitSmart and Rosetta are all running in production. The private automation systems (Jewellery BI, Job Application Engine, Inbound Lead Engine) are not public-facing but are described from source." },
+        { "q": "Can I see the source code?", "a": "The public products (AI Master Tools, Photo Resizer, FitSmart, QuickResume) have their source on GitHub. The private automation workflows are described technically on this page but are not open-sourced — they contain client data structures and API integrations." },
+        { "q": "Do you take on similar work for clients?", "a": "Yes. If you need a directory, a browser-based tool, an AI chatbot, a resume or job-application automation, or a BI reporting pipeline — any of the builds on this page — I can scope and build something equivalent for your use case. Contact me with a brief description." }
+      ],
       "navLabel": "Work",
-      "lastmod": "2026-09-13",
+      "lastmod": "2026-09-27",
       "diagrams": true
     },
     {
@@ -129,9 +160,15 @@
         "Advice only",
         "Monthly retainer"
       ],
+      "pageFaq": [
+        { "q": "Can I get a fixed price before work starts?", "a": "Yes. Every project starts with a fixed written quote after a 20-minute scoping call. No hourly billing, no surprise invoices. If the scope changes, I quote the change separately." },
+        { "q": "What is not included in the quoted price?", "a": "Domain registration, hosting fees, third-party API usage (OpenAI, Claude, Google), stock images, copywriting and photography are not included unless specifically agreed. I itemise these clearly in the quote so there are no surprises." },
+        { "q": "Do you work for equity or revenue share?", "a": "Not at this time. All projects are quoted at a fixed price or a monthly retainer. If you are an early-stage startup with a compelling product, mention it in your brief and we can discuss." },
+        { "q": "What currency are your prices in?", "a": "Prices are quoted in Indian rupees (INR) for Indian clients and in US dollars (USD) for international clients. The pricing page shows both. Payment is accepted via bank transfer, UPI or international wire." }
+      ],
       "navLabel": "Pricing",
       "offers": true,
-      "lastmod": "2026-09-04"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/ai-automation-pricing",
@@ -169,8 +206,25 @@
         "AI that creates",
         "AI agents and agentic AI"
       ],
+      "sections": [
+        {
+          "h2": "What you will understand after reading this",
+          "points": [
+            "The difference between AI, machine learning, deep learning and generative AI",
+            "What a large language model (LLM) actually is and how it produces text",
+            "What an AI agent is and how it differs from a chatbot",
+            "Why narrow AI is everywhere but artificial general intelligence does not exist yet",
+            "How to evaluate an AI tool claim without being misled by marketing"
+          ]
+        }
+      ],
+      "pageFaq": [
+        { "q": "What is a large language model (LLM)?", "a": "A large language model is a type of AI trained on vast amounts of text. It learns statistical patterns in language — which words follow which — and uses those patterns to generate, summarise, translate and answer questions. GPT-4, Claude and Gemini are all LLMs. They do not understand language the way people do; they predict the most likely next token given what came before." },
+        { "q": "What is an AI agent?", "a": "An AI agent is a system that uses an LLM to plan and take actions, not just respond. Given a goal, it breaks the goal into steps, calls tools (a search engine, a database, an API, a browser), acts on the results, and repeats until the task is done. A chatbot replies; an agent acts. Most practical AI agents today use Claude, GPT-4 or Gemini as their reasoning core." },
+        { "q": "Can I build AI tools without a computer science degree?", "a": "Yes. Modern AI APIs (Claude, OpenAI, Gemini) are designed to be called from any programming language with a few lines of code. No-code tools like n8n and Make.com let non-developers wire AI into workflows. The hard part today is designing the right prompt and knowing when AI is and is not the right tool — not the mathematics behind it." }
+      ],
       "navLabel": "AI Guide",
-      "lastmod": "2026-08-31"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/about",
@@ -188,8 +242,14 @@
         "Works in English, Hindi and Gujarati",
         "Five products live in production"
       ],
+      "pageFaq": [
+        { "q": "Are you available for freelance or contract work?", "a": "Yes. I take on both project-based work (fixed scope, fixed price) and monthly retainers for ongoing development, maintenance or automation. Current availability is shown when you contact me — I usually have space for one or two new projects per month." },
+        { "q": "Do you work remotely?", "a": "Yes, fully remote. I work with clients across India and internationally over email, WhatsApp and video call. I am based in Surat, Gujarat, India, working IST, and am flexible for calls in other time zones." },
+        { "q": "What is your response time?", "a": "I reply to new enquiries within one working day. For active projects, I respond to messages the same day during working hours. If something breaks in production and I built it, I treat it as urgent regardless of the time." },
+        { "q": "How do you handle projects that change scope mid-build?", "a": "Scope changes get a separate written quote before the work starts. I do not absorb unlimited changes into the original price, but I do not charge for small clarifications or fixes that are clearly part of the original spec. If something grows significantly, I flag it before building it." }
+      ],
       "navLabel": "About",
-      "lastmod": "2026-09-13"
+      "lastmod": "2026-09-27"
     },
     {
       "path": "/blog",
@@ -273,8 +333,13 @@
         "Book a 20-minute call",
         "Reply within one working day"
       ],
+      "pageFaq": [
+        { "q": "What information should I include in my first message?", "a": "The more specific you are, the faster I can give you a useful reply. Include: what you want built (one paragraph), who will use it, any deadline, and your budget range if you have one. You do not need a full spec — a clear problem statement is enough to start." },
+        { "q": "Is there a consultation fee?", "a": "No. The initial 20-minute scoping call and first written quote are free. You only pay once you confirm the quoted scope in writing and work begins." },
+        { "q": "How fast do you reply?", "a": "Within one working day for new enquiries, same day for active projects. I check messages in the morning and afternoon IST. For urgent requests, WhatsApp is faster than email." }
+      ],
       "navLabel": "Contact",
-      "lastmod": "2026-09-02"
+      "lastmod": "2026-09-27"
     }
   ]
 }
