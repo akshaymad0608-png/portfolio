@@ -5,8 +5,8 @@ import SEO from '../components/SEO';
 const PrivacyPolicy: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Privacy Policy | Akshay Mahajan"
-      description="How Akshay Mahajan's portfolio website handles your data. Analytics, contact form, and cookie usage explained."
+      title="Privacy Policy for akshay.website | Akshay Mahajan"
+      description="Learn how akshay.website handles your data. Covers Google Analytics, AdSense advertising cookies, and contact form submissions. Plain language, no legalese."
       canonical="https://akshay.website/privacy"
     />
 

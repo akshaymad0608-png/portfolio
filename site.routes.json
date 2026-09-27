@@ -354,8 +354,8 @@
     },
     {
       "path": "/privacy",
-      "title": "Privacy Policy | Akshay Mahajan",
-      "description": "How akshay.website handles your data: analytics, advertising and contact form. Plain language, no legalese.",
+      "title": "Privacy Policy for akshay.website | Akshay Mahajan",
+      "description": "Learn how akshay.website handles your data. Covers Google Analytics, AdSense advertising cookies, and contact form submissions. Plain language, no legalese.",
       "priority": "0.3",
       "changefreq": "yearly",
       "hideFromNav": true,
@@ -366,8 +366,8 @@
     },
     {
       "path": "/terms",
-      "title": "Terms of Service | Akshay Mahajan",
-      "description": "Terms of use for akshay.website — the personal portfolio and freelance services website of Akshay Mahajan.",
+      "title": "Terms of Service for akshay.website | Akshay Mahajan",
+      "description": "Terms of use for akshay.website, the portfolio and freelance services site of Akshay Mahajan. Browse and use this site only as described here.",
       "priority": "0.3",
       "changefreq": "yearly",
       "hideFromNav": true,

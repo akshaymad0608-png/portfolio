@@ -5,8 +5,8 @@ import SEO from '../components/SEO';
 const TermsOfService: React.FC = () => (
   <PageTransition>
     <SEO
-      title="Terms of Service | Akshay Mahajan"
-      description="Terms of use for akshay.website — the personal portfolio and freelance services website of Akshay Mahajan."
+      title="Terms of Service for akshay.website | Akshay Mahajan"
+      description="Terms of use for akshay.website, the portfolio and freelance services site of Akshay Mahajan. Browse and use this site only as described here."
       canonical="https://akshay.website/terms"
     />
 
