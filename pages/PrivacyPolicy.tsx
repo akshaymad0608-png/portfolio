@@ -6,7 +6,7 @@ const PrivacyPolicy: React.FC = () => (
   <PageTransition>
     <SEO
       title="Privacy Policy for akshay.website | Akshay Mahajan"
-      description="Learn how akshay.website handles your data. Covers Google Analytics, AdSense advertising cookies, and contact form submissions. Plain language, no legalese."
+      description="Learn how akshay.website handles your data. Covers Google Analytics and contact form submissions. Plain language, no legalese."
       canonical="https://akshay.website/privacy"
     />
 
@@ -41,28 +41,14 @@ const PrivacyPolicy: React.FC = () => (
                 akshaymad0608@gmail.com via your email client. This website does not store your
                 message on a server.
               </li>
-              <li>
-                <strong className="text-text">Advertising.</strong> This site carries Google
-                AdSense ads. Google may use cookies to serve personalised ads based on your
-                previous browsing activity. You can opt out via{' '}
-                <a
-                  href="https://adssettings.google.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-wire hover:underline"
-                >
-                  Google's ad settings
-                </a>
-                .
-              </li>
             </ul>
           </section>
 
           <section>
             <h2 className="text-xl font-semibold text-text mb-3">Cookies</h2>
             <p>
-              Google Analytics and Google AdSense set cookies. These are standard third-party
-              cookies used for analytics and ad personalisation. No first-party cookies are set
+              Google Analytics sets cookies. These are standard third-party
+              cookies used for usage statistics. This site shows no advertising. No first-party cookies are set
               by this website itself.
             </p>
           </section>
@@ -71,7 +57,6 @@ const PrivacyPolicy: React.FC = () => (
             <h2 className="text-xl font-semibold text-text mb-3">Third-party services</h2>
             <ul className="list-disc pl-5 space-y-2">
               <li>Google Analytics — usage statistics</li>
-              <li>Google AdSense — advertising</li>
               <li>Calendly — booking calls (linked from the site; Calendly's own privacy policy applies)</li>
             </ul>
           </section>
