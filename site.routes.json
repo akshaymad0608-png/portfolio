@@ -355,7 +355,7 @@
     {
       "path": "/privacy",
       "title": "Privacy Policy for akshay.website | Akshay Mahajan",
-      "description": "Learn how akshay.website handles your data. Covers Google Analytics, AdSense advertising cookies, and contact form submissions. Plain language, no legalese.",
+      "description": "Learn how akshay.website handles your data. Covers Google Analytics and contact form submissions. Plain language, no legalese.",
       "priority": "0.3",
       "changefreq": "yearly",
       "hideFromNav": true,
