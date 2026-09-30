@@ -7,6 +7,7 @@ const NAV = [
   { heading: 'Work with me', links: [
     { label: 'Services', to: '/services' },
     { label: 'Case studies', to: '/work' },
+    { label: 'Free website audit', to: '/free-website-audit' },
     { label: 'Pricing', to: '/pricing' },
     { label: 'Automation plans', to: '/ai-automation-pricing' },
     { label: 'Contact', to: '/contact' },

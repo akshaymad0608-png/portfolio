@@ -233,6 +233,48 @@
       "lastmod": "2026-09-27"
     },
     {
+      "path": "/free-website-audit",
+      "title": "Free Website Audit: Speed, SEO & Leads | Akshay Mahajan",
+      "description": "Paste your website address for a score out of 100 and the three fixes that matter most: speed, SEO, mobile, security and how well it wins enquiries.",
+      "priority": "0.8",
+      "changefreq": "monthly",
+      "heading": "Is your website winning you clients?",
+      "lead": "A free website audit that scores your homepage out of 100 and names the three fixes that matter most, with the evidence for each. It checks enquiry paths, search visibility, speed, mobile and security. No sign-up.",
+      "pointsHeading": "What it checks",
+      "points": [
+        "Turning visitors into enquiries: forms, phone and WhatsApp links, calls to action, chat, analytics",
+        "Search visibility: title, description, headings, canonical, sitemap",
+        "Speed: server response time and page weight",
+        "Mobile layout and image descriptions",
+        "Security: HTTPS and basic headers"
+      ],
+      "pageFaq": [
+        {
+          "q": "Is the website audit really free?",
+          "a": "Yes. There is no sign-up and no email is asked for. If you want the issues fixed, you can send the report to me and I reply with a fixed quote within one working day."
+        },
+        {
+          "q": "What does the audit actually check?",
+          "a": "It requests your public homepage once, plus robots.txt and sitemap.xml, and runs a fixed set of checks on what comes back: enquiry paths, search tags, speed, mobile setup and security headers. Every finding shows the evidence behind it."
+        },
+        {
+          "q": "Does an AI decide my score?",
+          "a": "No. The score is the sum of visible pass, improve or fix results from those checks. Nothing is guessed, and anything that cannot be measured, such as content built in the browser, is left out of the score rather than counted against you."
+        },
+        {
+          "q": "Is it a full Lighthouse or SEO crawl?",
+          "a": "No. It looks at one page, and speed means how fast your server sent that page to mine, not what a visitor on a phone sees. Treat it as a fast first look at what is costing you enquiries, not a complete technical audit."
+        },
+        {
+          "q": "Does it store my website or my details?",
+          "a": "No. Nothing is saved. The address is used for the audit and discarded. You only share details with me if you choose to send the report."
+        }
+      ],
+      "keywords": "free website audit, website audit tool India, website checker, SEO audit free, website speed check, website lead generation audit",
+      "navLabel": "Free audit",
+      "lastmod": "2026-09-30"
+    },
+    {
       "path": "/about",
       "title": "About Akshay Mahajan | Full-Stack & AI Web Developer, Surat",
       "description": "Full-stack web developer in Surat, India, building websites, web apps and the AI automation that runs a business overnight. You brief me, I build it.",

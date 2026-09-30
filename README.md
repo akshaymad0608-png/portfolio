@@ -113,6 +113,28 @@ curl -s https://akshay.website/work | grep -o '<title>[^<]*</title>'
 If that comes back empty, the host is serving the SPA shell and link previews
 are broken again.
 
+## Free website audit (`/free-website-audit`)
+
+A lead-generation tool: a visitor enters their site address and gets a score out
+of 100, the three fixes that matter most, and a button that sends the report to
+`/contact` (which prefills the enquiry from `?service=` and `?details=`).
+
+- `lib/audit.ts` is the engine. One request to the homepage plus `robots.txt` and
+  `sitemap.xml`, a fixed set of checks, and a score that is the sum of visible
+  parts. No LLM, so it costs nothing and cannot invent a finding. Checks that
+  cannot be measured (content built in the browser, scripts loaded by Tag
+  Manager) are marked "not measurable" and left out of the score.
+- `api/audit.ts` (Vercel, edge) and the `/api/audit` route in `server.ts` (dev and
+  `npm start`) are thin wrappers over it. The Vercel rate limit is per instance;
+  move it to a shared store if it is ever abused.
+- The address comes from a stranger, so fetching it is guarded: http(s) on ports
+  80/443 only, domain names only, every hostname resolved (DNS-over-HTTPS) and
+  refused if any address is private, redirects followed by hand with the same
+  checks on each hop, and hard caps on time and bytes. Parsing is linear-time on
+  hostile markup. `npm test` covers all of it (`lib/audit.test.ts`).
+- The weights live in `buildChecks` and add up to 100. Change a weight and keep
+  that sum, or the test that checks it will fail.
+
 ## Run locally
 
 ```bash
