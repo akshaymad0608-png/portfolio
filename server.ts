@@ -34,6 +34,34 @@ async function startServer() {
     legacyHeaders: false,
   });
 
+  // Local twin of api/audit.ts. Each audit makes several outbound requests on
+  // a stranger's behalf, so it gets a much tighter limit than the chat.
+  const auditLimiter = rateLimit({
+    windowMs: 10 * 60 * 1000,
+    max: 10,
+    message: { error: "That is a lot of audits. Please try again in a few minutes." },
+    standardHeaders: true,
+    legacyHeaders: false,
+  });
+
+  app.post("/api/audit", auditLimiter, async (req, res) => {
+    res.setHeader("Cache-Control", "no-store");
+    const url = req.body?.url;
+    if (typeof url !== "string") return res.status(400).json({ error: "Enter your website address." });
+    try {
+      const { runAudit, AuditError } = await import("./lib/audit.js");
+      try {
+        return res.json(await runAudit(url));
+      } catch (e) {
+        if (e instanceof AuditError) return res.status(e.status).json({ error: e.message });
+        throw e;
+      }
+    } catch (e) {
+      console.error("audit failed", e);
+      return res.status(500).json({ error: "The audit failed on my side. Please try again shortly." });
+    }
+  });
+
   // Local twin of api/news.ts. Kept here so the feed section renders under
   // `npm run dev` instead of only after a deploy.
   app.get("/api/news", async (_req, res) => {
