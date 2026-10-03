@@ -690,6 +690,10 @@ const buildBody = (route) => {
         .join('')}</ul>`
     : '';
 
+  // /privacy and /terms are hideFromNav, so the nav above never links them. The
+  // client-rendered Footer does, but a crawler that reads this static HTML saw
+  // no <a> to either page and reported both as Ahrefs "orphan pages". The legal
+  // links below are rendered on every page for that reason.
   return `
       <main>
         <h1>${esc(route.heading || route.title.split('|')[0].trim())}</h1>
@@ -705,6 +709,7 @@ const buildBody = (route) => {
         <p>Akshay Mahajan — full-stack &amp; AI web developer, Surat, Gujarat, India.
           <a href="mailto:akshaymad0608@gmail.com">akshaymad0608@gmail.com</a> ·
           <a href="tel:+917600885080">+91 76008 85080</a></p>
+        <p><a href="/privacy">Privacy policy</a> · <a href="/terms">Terms of service</a></p>
       </main>
       <nav aria-label="Site"><ul>${nav}</ul></nav>`;
 };
