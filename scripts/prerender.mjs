@@ -323,7 +323,9 @@ const breadcrumbFor = (route) => {
 
 const buildHead = (route) => {
   const url = route.path === '/' ? `${baseUrl}/` : `${baseUrl}${route.path}`;
-  const graph = [person, website, service, breadcrumbFor(route)];
+  // A breadcrumb trail needs at least two items; the home page's would be just
+  // "Home", which Google reports as an invalid BreadcrumbList.
+  const graph = [person, website, service, ...(route.path === '/' ? [] : [breadcrumbFor(route)])];
 
   // Only where the questions are actually on the page — the homepage. Marking
   // up an FAQ a visitor cannot see is what gets structured data ignored.
