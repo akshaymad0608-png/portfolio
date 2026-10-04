@@ -1,0 +1,7 @@
+{
+  "origin": "https://akshay.website",
+  "distDir": "dist",
+  "important": ["/"],
+  "minSitemapUrls": 5,
+  "gsc": { "brandTerms": ["akshay mahajan", "akshay.website"], "minImpressions": 5 }
+}
