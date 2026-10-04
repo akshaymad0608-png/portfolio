@@ -12,6 +12,14 @@
       "changefreq": "weekly",
       "heading": "I build full-stack websites, wired with AI.",
       "lead": "I'm Akshay Mahajan — a full-stack developer who ships fast with LLMs. Websites, web apps and custom tools, plus the AI agents and automation that make them smarter. Based in Surat, Gujarat, working with clients in India and worldwide.",
+      "linksHeading": "Live projects",
+      "links": [
+        { "href": "https://aimastertools.space", "label": "AI Master Tools directory" },
+        { "href": "https://quickresume.business", "label": "QuickResume resume builder" },
+        { "href": "https://photoresizer.click", "label": "Photo Resizer for exams" },
+        { "href": "https://fitsmart.space", "label": "FitSmart fitness calculators" },
+        { "href": "https://languagetransalator.com", "label": "Rosetta online translator" }
+      ],
       "pointsHeading": "What I build",
       "points": [
         "Full-stack web development — sites, web apps and custom tools",
