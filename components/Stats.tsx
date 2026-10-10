@@ -5,7 +5,7 @@ import Reveal from './ui/Reveal';
 const STATS = [
   { value: 5, suffix: '', label: 'Products live in production', note: 'built end to end, solo' },
   { value: 25, suffix: '+', label: 'Automation workflows built', note: 'reporting, triage and publishing' },
-  { value: 650, suffix: '+', label: 'AI tools on AI Master Tools', note: 'each with its own indexable page' },
+  { value: 650, suffix: '+', label: 'AI tools on AI Master Tools', note: 'each with its own page' },
   { value: 190, suffix: '+', label: 'Checks before every deploy', note: 'on a 13-workflow BI system' },
 ];
 
