@@ -265,7 +265,10 @@ const service = {
   image: `${baseUrl}/akshay-portrait.jpg`,
   description:
     'Freelance full-stack web developer in Surat, Gujarat. Websites, web apps, AI chatbots, agents, automation and SEO — built directly, with no agency layer.',
-  provider: { '@id': `${baseUrl}/#akshay` },
+  // `provider` belongs to Service, not to a LocalBusiness — the validator
+  // flagged it on every page. `founder` is the Organization property that links
+  // the business back to the same Person.
+  founder: { '@id': `${baseUrl}/#akshay` },
   telephone: '+91-76008-85080',
   email: 'akshaymad0608@gmail.com',
   // Local results are built from where you are and which areas you cover, so
@@ -349,7 +352,6 @@ const buildHead = (route) => {
       '@type': 'OfferCatalog',
       '@id': `${baseUrl}${route.path}#offers`,
       name: 'Web development, AI and automation services',
-      provider: { '@id': `${baseUrl}/#akshay` },
       itemListElement: TIERS.filter((t) => t.inr !== null).map((t) => ({
         '@type': 'Offer',
         name: t.title,
