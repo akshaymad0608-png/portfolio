@@ -1,6 +1,6 @@
 import Logo from './ui/Logo';
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Send, Check, MessageCircle, Mail } from 'lucide-react';
 
 const NAV = [
@@ -21,16 +21,36 @@ const NAV = [
   ]},
 ];
 
-const Footer: React.FC = () => {
-  const [email, setEmail] = useState('');
-  const [state, setState] = useState<'idle' | 'done'>('idle');
+// Pages that already end with the big FinalCTA block, plus /contact itself.
+// On these the footer's CTA band sat directly under another call to action
+// saying the same thing, so it is left out.
+const PAGES_WITH_OWN_CTA = new Set(['/', '/ai-guide', '/about', '/blog', '/free-website-audit', '/pricing', '/services', '/work', '/contact']);
 
-  const subscribe = (e: React.FormEvent) => {
+const Footer: React.FC = () => {
+  const { pathname } = useLocation();
+  const showCtaBand = !PAGES_WITH_OWN_CTA.has(pathname.replace(/\/+$/, '') || '/');
+  const [email, setEmail] = useState('');
+  const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
+
+  // This used to show "Subscribed" without sending the address anywhere, so
+  // every sign-up was lost. It now goes through the same Formspree form as
+  // the contact page, and only says "subscribed" when Formspree accepts it.
+  const subscribe = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email) return;
-    setState('done');
-    setEmail('');
-    setTimeout(() => setState('idle'), 3500);
+    if (!email || state === 'sending') return;
+    setState('sending');
+    try {
+      const res = await fetch('https://formspree.io/f/mbdndbdr', {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, _subject: 'Newsletter sign-up: One build a week', message: 'Please add me to "One build a week".' }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      setState('done');
+      setEmail('');
+    } catch {
+      setState('error');
+    }
   };
 
   return (
@@ -38,7 +58,8 @@ const Footer: React.FC = () => {
       <div className="absolute inset-0 blueprint opacity-50" aria-hidden="true" />
 
       <div className="container relative z-10 mx-auto max-w-shell px-6">
-        {/* build CTA band — present on every page */}
+        {/* build CTA band — on pages that do not already end with FinalCTA */}
+        {showCtaBand && (
         <div className="mb-16 flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-cards/60 px-7 py-8 sm:flex-row sm:items-center">
           <div>
             <p className="font-display text-2xl font-bold tracking-tightest text-text">
@@ -57,6 +78,7 @@ const Footer: React.FC = () => {
             Start a project <ArrowRight size={16} />
           </a>
         </div>
+        )}
 
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-5">
@@ -148,11 +170,18 @@ const Footer: React.FC = () => {
                 aria-label="Subscribe"
                 className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-lg text-wire transition-colors hover:bg-wire/10"
               >
-                {state === 'done' ? <Check size={17} /> : <Send size={16} />}
+                {state === 'done' ? <Check size={17} /> : <Send size={16} className={state === 'sending' ? 'animate-pulse' : ''} />}
               </button>
             </form>
             {state === 'done' && (
-              <p className="mt-2 font-mono text-[11.5px] text-wire">Subscribed. First one lands Monday.</p>
+              <p className="mt-2 font-mono text-[11.5px] text-wire" role="status">You're on the list. Thanks!</p>
+            )}
+            {state === 'error' && (
+              <p className="mt-2 font-mono text-[11.5px] text-textSecondary" role="alert">
+                That didn't go through. Email{' '}
+                <a href="mailto:akshaymad0608@gmail.com?subject=One%20build%20a%20week" className="underline">akshaymad0608@gmail.com</a>{' '}
+                and I'll add you.
+              </p>
             )}
           </div>
         </div>

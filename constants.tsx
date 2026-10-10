@@ -204,7 +204,7 @@ export const PROJECTS: Project[] = [
     problem: "Finding the right AI tool meant opening ten tabs and trusting whichever listicle ranked first. Tool makers had nowhere to get found.",
     solution: "A directory where search understands the job you're trying to do, not just the words you typed. Every tool, category and guide page is pre-rendered at build time with its own title, description and structured data — so the catalogue grows to thousands of indexable pages without hand-writing any of them.",
     features: ["Job-based Search", "Pre-rendered SEO Pages", "Side-by-side Compare", "Installable PWA (offline)"],
-    results: "650+ hand-checked tools, plus an Earn Online directory of 145 sites. 1,700+ pages pre-rendered for search, and organic impressions grew ~7x over three months.",
+    results: "650+ hand-checked tools, plus an Earn Online directory of 145 sites. 1,700+ pages pre-rendered, and organic impressions grew ~7x over three months.",
     description: "A searchable AI tools directory with automatically generated, SEO-ready pages for every listing.",
     tech: ["React", "TypeScript", "TailwindCSS", "Vite", "Vercel"],
     year: "2024",
