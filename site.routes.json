@@ -132,15 +132,25 @@
         "Photo Resizer — a client-side image resizer for exam photo rules; nothing is uploaded",
         "FitSmart — a fitness platform with six health calculators and an AI coach",
         "Rosetta — a browser translator with voice, live conversation and video-call subtitles",
-        "Akshay LinkedIn OS — 10 n8n workflows, 200-prompt library, one-command Docker deploy",
+        "Akshay LinkedIn OS — 16 n8n workflows, 200-prompt library, one-command Docker deploy",
         "Sweet Crumbs — bakery storefront with a working cart and checkout",
         "SEO Audit Toolkit — zero-dependency Node CLI run weekly on six sites",
         "Jewellery Business Intelligence — 13 n8n workflows that report a shop's day by 8pm",
         "Job Application Engine — five job boards scored every morning, the application written and sent",
-        "Inbound Lead Engine — inbox triaged every 15 minutes, genuine enquiries answered in seconds"
+        "Inbound Lead Engine — inbox triaged every 15 minutes, genuine enquiries answered in seconds",
+        "Site SEO Audit & Keyword Radar — n8n workflow that audits up to 200 pages and sends keyword ideas to Telegram",
+        "Job Hunt CLI — zero-dependency Node script that scores live job postings against my profile",
+        "YogGuru AI — demo yoga trainer with live camera pose tracking and Gemini voice guidance",
+        "WhatsApp Bot SaaS — demo dashboard with AI training, lead table and a chat simulator",
+        "SpeakSmart India — demo English speaking partner with voice in and voice out",
+        "CreatorAI Hindi — demo AI tools guide and voice coach for Hindi YouTube creators",
+        "ConvertBharat — demo file-conversion interface with AI file insights",
+        "SolveIt AI — demo problem solver with six modes and structured Hinglish answers",
+        "Khali Khichha — expense tracker that works offline with optional Google sync",
+        "Desi Health Sutra — demo Hinglish health content site with a written SEO plan"
       ],
       "pageFaq": [
-        { "q": "Are all these projects actually live?", "a": "Yes. Every project listed on this page is live and publicly accessible. AI Master Tools, QuickResume, Photo Resizer, FitSmart and Rosetta are all running in production. The private automation systems (Jewellery BI, Job Application Engine, Inbound Lead Engine) are not public-facing but are described from source." },
+        { "q": "Are all these projects actually live?", "a": "Yes. Every project listed on this page is live and publicly accessible. AI Master Tools, QuickResume, Photo Resizer, FitSmart and Rosetta are all running in production. The private automation systems (Jewellery BI, Job Application Engine, Inbound Lead Engine) are not public-facing but are described from source. The smaller demo builds (YogGuru AI, WhatsApp Bot SaaS and similar) have no hosted version and are labelled as demos." },
         { "q": "Can I see the source code?", "a": "The public products (AI Master Tools, Photo Resizer, FitSmart, QuickResume) have their source on GitHub. The private automation workflows are described technically on this page but are not open-sourced — they contain client data structures and API integrations." },
         { "q": "Do you take on similar work for clients?", "a": "Yes. If you need a directory, a browser-based tool, an AI chatbot, a resume or job-application automation, or a BI reporting pipeline — any of the builds on this page — I can scope and build something equivalent for your use case. Contact me with a brief description." }
       ],
