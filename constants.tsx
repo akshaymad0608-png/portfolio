@@ -1,4 +1,4 @@
-import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target, Languages, Send, Inbox } from "lucide-react";
+import { Brain, Code2, Sparkles, Terminal, Cpu, MessageSquare, Layers, Rocket, Users, ShieldCheck, Database, Network, Activity, FileText, Wrench, Crop, Youtube, HeartPulse, Globe, Search, Play, Settings, Navigation, Image as ImageIcon, Video, CheckCircle2, Award, Zap, FastForward, Clock, LayoutDashboard, Target, Languages, Send, Inbox, Briefcase, Mic, Smartphone, FileCog, Lightbulb, Wallet, Leaf, ScanSearch, Dumbbell, TrendingUp } from "lucide-react";
 import { Project, Experiment, Skill, PromptShowcaseItem, Service, Certificate, AIPortfolioAgent, ProcessStep, TrustFactor, SkillCategory, InternalBuild } from "./types";
 
 export const HERO_CONTENT = {
@@ -17,7 +17,7 @@ export const DASHBOARD_SKILLS: SkillCategory[] = [
   },
   {
     title: "Automation & Operations",
-    skills: ["Workflow Automation", "AI System Design", "AI in Business Communication", "Team Leadership"]
+    skills: ["Workflow Automation", "AI System Design", "AI in Business Communication", "Team Leadership", "n8n", "Docker Compose", "Telegram Bots", "Google Sheets as a Database"]
   },
   {
     title: "Creative & Media AI",
@@ -29,7 +29,11 @@ export const DASHBOARD_SKILLS: SkillCategory[] = [
   },
   {
     title: "Web & Development",
-    skills: ["React", "Next.js", "Node.js", "GitHub", "Vercel", "Google AI Studio"]
+    skills: ["React", "Next.js", "Node.js", "TypeScript", "TailwindCSS", "GitHub", "Vercel", "Google AI Studio", "Gemini API", "Firebase", "Web Speech API", "MediaPipe"]
+  },
+  {
+    title: "Data, SEO & Quality",
+    skills: ["Technical SEO", "Site Audits", "Keyword Research", "Excel & Pivot Tables", "Data Cleaning", "Automated Testing"]
   },
   {
     title: "Business Growth",
@@ -89,7 +93,8 @@ export const TRUST_FACTORS: TrustFactor[] = [
 export const TECH_STACK = [
   "React", "Next.js", "Node.js", "TypeScript", "Tailwind", "Supabase",
   "GitHub", "Vercel", "Google AI Studio", "Claude", "ChatGPT", "Gemini",
-  "n8n", "Make", "MidJourney", "HeyGen", "ElevenLabs"
+  "n8n", "Make", "MidJourney", "HeyGen", "ElevenLabs",
+  "Docker", "Postgres", "Firebase", "Google Sheets", "Telegram Bot API", "MediaPipe", "Excel"
 ];
 
 import { AI_SYSTEM_INSTRUCTION } from './prompt';
@@ -185,6 +190,34 @@ export const SKILLS: Skill[] = [
     level: 89,
     icon: ShieldCheck,
     description: "Core Web Vitals, contrast ratios, tap targets and keyboard paths — checked, not assumed.",
+    demoLink: "#work"
+  },
+  {
+    name: "Gemini API & Voice / Vision AI Apps",
+    level: 86,
+    icon: Mic,
+    description: "Gemini-backed apps that listen, speak and watch — speech practice, pose tracking, document insights and chat coaches.",
+    demoLink: "#work"
+  },
+  {
+    name: "Automated Testing for Workflows",
+    level: 87,
+    icon: ScanSearch,
+    description: "Fixtures shaped like what the real system emits, and every new test mutation-checked: break the code, confirm the test fails.",
+    demoLink: "#work"
+  },
+  {
+    name: "Firebase, Auth & Local-First Data",
+    level: 82,
+    icon: Database,
+    description: "Works with no account via localStorage, with optional Google sign-in syncing to Firestore.",
+    demoLink: "#work"
+  },
+  {
+    name: "Excel Data Analysis",
+    level: 80,
+    icon: TrendingUp,
+    description: "Pivot tables, charts and cleaning on sales data — product, city and payment-mode breakdowns.",
     demoLink: "#work"
   },
   {
@@ -479,10 +512,10 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     kind: "Automation stack",
     status: "Running privately",
     icon: Network,
-    summary: "A LinkedIn content and lead system: ten n8n workflows on a Google Sheets brain, driven from Telegram.",
-    detail: "Content drafting, AI-news collection, lead generation, engagement, connection handling, DM classification and profile optimisation each run as their own workflow, sharing a set of subworkflows. The news collector is the piece that runs live: six AI blogs polled every morning, cut to the day's eight after deduplication, written to a sheet and pushed to Telegram as one digest. The rest are built against a self-hosted stack that comes up with one command, with backups, health checks and a restore path.",
+    summary: "A LinkedIn content and lead system: sixteen n8n workflows on a Google Sheets brain, driven from Telegram.",
+    detail: "Content drafting, AI-news collection, lead generation, engagement, connection handling, DM classification, profile optimisation, website analysis and proposal drafting each run as their own workflow, sharing a set of subworkflows. The news collector is the piece that runs live: six AI blogs polled every morning, cut to the day's eight after deduplication, written to a sheet and pushed to Telegram as one digest. The rest are built against a self-hosted stack that comes up with one command, with backups, health checks and a restore path.",
     tech: ["n8n", "Docker Compose", "Postgres", "Google Sheets", "Telegram Bot API"],
-    facts: ["10 workflows", "News digest live, 9am daily", "200-prompt library", "69 passing tests"],
+    facts: ["16 workflows", "News digest live, 9am daily", "200-prompt library", "140 passing checks"],
     diagram: { src: "/diagrams/shots/ai-news.webp", caption: "The n8n canvas for the news collector — the workflow in this stack that runs live" },
   },
   {
@@ -542,5 +575,115 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     tech: ["n8n", "Gmail API", "Gemini", "Telegram Bot API", "n8n Data Tables"],
     facts: ["Polls every 15 minutes", "First live reply in ~12s", "Max 15 replies a day", "14-day per-sender cooldown"],
     diagram: { src: "/diagrams/shots/lead-engine.webp", caption: "The n8n canvas, from unread mail to the answered enquiry" },
+  },
+  {
+    id: 7,
+    title: "Site SEO Audit & Keyword Radar",
+    kind: "Automation stack",
+    status: "Internal tool",
+    icon: TrendingUp,
+    summary: "An n8n workflow that crawls a site's sitemap, audits every page, and sends two Telegram messages: what is broken, and what people are searching for.",
+    detail: "It reads the sitemap, fetches up to 200 pages and checks titles, descriptions, canonicals, headings and structured data, then reports the issues grouped by type and logs each run to a sheet. A second stage pulls Google Autocomplete suggestions for the site's niche terms and today's Google Trends feed for India, and marks which ideas are new since the last run. Both sources are unofficial and carry no search volume, so the message says so rather than ranking by an invented number. A first version reported one page and five issues for a 211-page site because n8n puts HTML bodies under a different key than JSON; the fix is covered by a test that uses the shape n8n really emits.",
+    tech: ["n8n", "Google Sheets", "Telegram Bot API", "Google Trends RSS", "Google Autocomplete"],
+    facts: ["Audits up to 200 pages", "Keyword ideas, no fake volumes", "Run on demand", "99 workflow tests"],
+  },
+  {
+    id: 8,
+    title: "Job Hunt CLI",
+    kind: "Internal tooling",
+    status: "Internal tool",
+    icon: Briefcase,
+    summary: "A zero-dependency Node script that scores live job postings against my profile and writes a ranked shortlist.",
+    detail: "It started as a local replacement for the n8n Job Application Engine after that hosted instance stopped running. Measuring the sources showed the scoring was never the problem: five free remote feeds returned 3 India-eligible AI roles out of 473 unique postings, while LinkedIn's public search returned 41 out of about 150. So it reads LinkedIn's public job search plus the five feeds, dedupes across runs, and can pull the full description for the top roles to write a brief on which project to lead with and which gap the posting will judge. Applying stays a human action; it never logs in or clicks Apply.",
+    tech: ["Node.js", "Zero dependencies", "LinkedIn public search", "JSON profile"],
+    facts: ["6 job sources", "3 vs 41 India-eligible roles, measured", "No install, no API key", "Never auto-applies"],
+  },
+  {
+    id: 9,
+    title: "YogGuru AI",
+    kind: "AI web app",
+    status: "Demo build",
+    icon: Dumbbell,
+    summary: "A yoga trainer that watches you through the camera, tracks your pose and talks you through corrections.",
+    detail: "The browser camera feed runs through MediaPipe Pose for skeletal tracking, a 3D model shows the target posture, and Gemini generates the spoken guidance. A library, a guided meditation page and a progress dashboard sit around the trainer. Built in Google AI Studio and finished by hand; it has no hosted deployment.",
+    tech: ["React", "TypeScript", "MediaPipe Pose", "Gemini API", "Recharts"],
+    facts: ["Live pose tracking", "3D reference model", "Voice guidance", "No hosted version"],
+  },
+  {
+    id: 10,
+    title: "WhatsApp Bot SaaS",
+    kind: "SaaS dashboard",
+    status: "Demo build",
+    icon: Smartphone,
+    summary: "A dashboard for a small business to train an AI on its own answers, capture leads and watch conversations.",
+    detail: "Four pricing tiers (free, starter, pro, agency), an AI-training screen, a leads table with New, Contacted and Closed states, an analytics home and a WhatsApp conversation simulator driven by Gemini. The chat is a simulation inside the dashboard: it is not connected to the WhatsApp Business API, and the lead rows are sample data.",
+    tech: ["React", "TypeScript", "Gemini API", "Recharts"],
+    facts: ["4 pricing tiers", "Lead pipeline view", "Chat simulator", "Not connected to WhatsApp"],
+  },
+  {
+    id: 11,
+    title: "SpeakSmart India",
+    kind: "AI web app",
+    status: "Demo build",
+    icon: Mic,
+    summary: "A free English speaking partner for Indian learners that listens, replies out loud and explains in a local language.",
+    detail: "Speech recognition turns what the learner says into text, Gemini answers as a conversation partner and explains corrections in the learner's own language, and speech synthesis reads the reply aloud. A progress dashboard charts practice; its sign-in is a demo screen and the emailed report is a placeholder.",
+    tech: ["React", "TypeScript", "Web Speech API", "Gemini API", "Recharts"],
+    facts: ["Voice in, voice out", "Local-language explanations", "Progress dashboard", "Demo sign-in"],
+  },
+  {
+    id: 12,
+    title: "CreatorAI Hindi",
+    kind: "AI web app",
+    status: "Demo build",
+    icon: Lightbulb,
+    summary: "An AI tools guide for Hindi-speaking YouTube creators, with a voice coach for channel growth.",
+    detail: "A curated list of creator tools such as Pictory, ElevenLabs, Leonardo, Copy.ai and VidIQ, growth guides written in Hinglish on Shorts, click-through rate and targeting a Hindi audience, and a chat and voice coach on Gemini's native audio model.",
+    tech: ["React", "TypeScript", "React Router", "Gemini API"],
+    facts: ["Hinglish growth guides", "Voice coach", "Curated tool list", "No hosted version"],
+  },
+  {
+    id: 13,
+    title: "ConvertBharat",
+    kind: "Utility app",
+    status: "Demo build",
+    icon: FileCog,
+    summary: "A file-conversion front end for Indian and global users, with AI-written insights about an uploaded file.",
+    detail: "More than a dozen conversion types across documents, images and media, including PDF to Word, Image to PDF, CSV to Excel, MP4 to MP3 and WEBP to JPG, behind one drag-and-drop uploader. Gemini adds a short summary of what the file contains. This is the interface and AI layer only: the conversion progress is simulated and there is no conversion server behind it.",
+    tech: ["React", "TypeScript", "Gemini API"],
+    facts: ["12+ conversion types", "AI file insights", "Drag-and-drop uploader", "Conversion is simulated"],
+  },
+  {
+    id: 14,
+    title: "SolveIt AI",
+    kind: "AI web app",
+    status: "Demo build",
+    icon: Sparkles,
+    summary: "Type a problem, pick a mode, get a structured plan in Hinglish with next steps for the next 24 hours.",
+    detail: "Six modes — YouTuber, Money, Student, AI Tools, Instagram and Life — steer one Gemini prompt written for Indian users, so examples use UPI, INR and local platforms. The model is told to answer in a fixed JSON shape, which the app renders as analysis, steps, resources and next actions.",
+    tech: ["React", "TypeScript", "Gemini API", "Structured JSON output"],
+    facts: ["6 problem modes", "Structured JSON answers", "Hinglish tone", "No hosted version"],
+  },
+  {
+    id: 15,
+    title: "Khali Khichha",
+    kind: "Utility app",
+    status: "Demo build",
+    icon: Wallet,
+    summary: "An expense tracker for daily kharcha that works without an account and syncs across phones if you sign in.",
+    detail: "History is stored in the browser by default, with monthly totals and expense reports. Signing in with Google is optional and moves the data to Firestore under that account so the same history shows on other devices. The interface is translated through its own i18n layer, and a banner explains the guest-versus-signed-in difference.",
+    tech: ["React", "Vite", "Firebase Auth", "Firestore"],
+    facts: ["No login needed", "Optional Google sync", "Monthly reports", "Multi-language UI"],
+  },
+  {
+    id: 16,
+    title: "Desi Health Sutra",
+    kind: "Content site",
+    status: "Demo build",
+    icon: Leaf,
+    summary: "A Hinglish health site on desi nuskhe, Ayurveda basics and healthy lifestyle, with a written SEO plan.",
+    detail: "Category and article pages, a disclaimer component on health content, legal pages and an SEO-plan page that sets out the keyword and publishing approach. Ten starter articles, written as a template for a content site rather than medical advice.",
+    tech: ["React", "TypeScript", "React Router"],
+    facts: ["10 starter articles", "Category pages", "Health disclaimer", "No hosted version"],
   },
 ];
