@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CalendarDays, MessageCircle } from 'lucide-react';
 import { HERO_CONTENT } from '../constants';
+import RobotMascot from './ui/RobotMascot';
 
 interface Message {
   id: string;
@@ -64,8 +65,8 @@ const AIChatBot: React.FC = () => {
     } catch {
       /* fall through and show it */
     }
-    const show = setTimeout(() => setShowNudge(true), 9000);
-    const hide = setTimeout(dismissNudge, 9000 + 16000);
+    const show = setTimeout(() => setShowNudge(true), 2500);
+    const hide = setTimeout(dismissNudge, 2500 + 15000);
     return () => {
       clearTimeout(show);
       clearTimeout(hide);
@@ -191,8 +192,8 @@ const AIChatBot: React.FC = () => {
             <div className="bg-frame border-b border-border px-4 py-3 flex justify-between items-center">
               <div className="flex items-center gap-3">
                 <div className="relative">
-                  <div className="w-9 h-9 rounded-full bg-ink flex items-center justify-center relative overflow-hidden border border-wire/30">
-                    <img loading="lazy" src="/akshay-avatar-256.webp" alt="" className="w-full h-full object-cover" />
+                  <div className="w-9 h-9 rounded-full bg-cards flex items-center justify-center relative overflow-hidden border border-wire/30">
+                    <RobotMascot head animated={false} className="h-8 w-8" />
                   </div>
                   <span className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-wire border-2 border-ink rounded-full" />
                 </div>
@@ -337,64 +338,49 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
-            className="fixed bottom-24 right-4 sm:right-6 panel text-text text-[13.5px] px-4 py-3 shadow-xl z-[90] flex items-start gap-3 cursor-pointer max-w-[260px]"
+            className="fixed bottom-[112px] right-3 sm:right-5 z-[90] max-w-[250px] cursor-pointer"
             onClick={() => { dismissNudge(); setIsOpen(true); }}
           >
-            <span className="leading-snug">Questions about scope or price? Ask here — answers are instant.</span>
-            <button
-              onClick={(e) => { e.stopPropagation(); dismissNudge(); }}
-              aria-label="Dismiss"
-              /* The icon stays 15px; the button is padded out to a 28px box so it
-                 clears the minimum target size without changing how it looks. */
-              className="-m-1 flex h-7 w-7 shrink-0 items-center justify-center text-muted transition-colors hover:text-text"
-            >
-              <X size={15} />
-            </button>
+            {/* Comic speech bubble whose tail points down at the robot. */}
+            <div className="relative rounded-[22px] border-2 border-text bg-white px-4 py-3 shadow-xl">
+              <p className="pr-4 text-center text-[14px] font-bold leading-snug text-text">
+                I&rsquo;m here to help you with pricing, booking a call, and more
+              </p>
+              <button
+                onClick={(e) => { e.stopPropagation(); dismissNudge(); }}
+                aria-label="Dismiss"
+                className="absolute right-1 top-1 flex h-7 w-7 items-center justify-center text-muted transition-colors hover:text-text"
+              >
+                <X size={14} />
+              </button>
+              <span aria-hidden className="absolute -bottom-[9px] right-9 h-4 w-4 rotate-45 border-b-2 border-r-2 border-text bg-white" />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
 
       {/*
-        Closed, the launcher is Akshay's face rather than a speech bubble: it is
-        the same avatar the chat header already shows, so opening it lands
-        somewhere that looks like where you clicked. The greeting still says
-        "Akshay's AI Assistant" — the photo is whose work it answers about, not
-        a claim that he is typing.
+        Closed, the launcher is the robot mascot itself, floating in the corner:
+        a friendlier "ask me" than a plain round button, and nothing to load,
+        since it is SVG. Clicking it opens the chat.
 
-        Open, it collapses to a plain close button. Two things a launcher must
-        not do: move under the cursor, or animate forever next to text someone
-        is reading. The rings expand behind a button that stays put, and the
-        stylesheet's reduced-motion block switches them off.
+        Open, it collapses to a plain close button so the panel never sits on
+        top of a moving graphic. The float, blink and antenna wiggle are CSS and
+        the stylesheet's reduced-motion block switches them off.
       */}
       <motion.button
-        onClick={() => setIsOpen(!isOpen)}
-        whileHover={{ scale: 1.05 }}
+        onClick={() => { dismissNudge(); setIsOpen(!isOpen); }}
+        whileHover={{ scale: 1.06 }}
         whileTap={{ scale: 0.95 }}
         aria-label={isOpen ? 'Close the chat' : 'Open the chat'}
         aria-expanded={isOpen}
-        className={`fixed bottom-6 right-4 sm:right-6 w-14 h-14 flex items-center justify-center z-[90] rounded-full ${
-          isOpen ? 'btn-signal !rounded-full' : 'bg-ink border border-wire/40 shadow-lg'
+        className={`fixed z-[90] flex items-center justify-center ${
+          isOpen
+            ? 'bottom-6 right-4 sm:right-6 h-14 w-14 rounded-full btn-signal !rounded-full'
+            : 'bottom-2 right-2 sm:right-4 h-[104px] w-[86px]'
         }`}
       >
-        {isOpen ? (
-          <X className="text-ink" size={22} />
-        ) : (
-          <>
-            <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-wire chat-ring" />
-            <span aria-hidden className="pointer-events-none absolute inset-0 rounded-full border-2 border-wire chat-ring chat-ring-late" />
-            <img
-              src="/akshay-avatar-256.webp"
-              alt=""
-              width={56}
-              height={56}
-              className="h-full w-full rounded-full object-cover"
-            />
-            <span
-              aria-hidden
-              className="absolute bottom-0.5 right-0.5 h-3 w-3 rounded-full border-2 border-ink bg-wire"
-            />
-          </>
-        )}
+        {isOpen ? <X className="text-ink" size={22} /> : <RobotMascot className="h-full w-full drop-shadow-lg" />}
       </motion.button>
     </>
   );

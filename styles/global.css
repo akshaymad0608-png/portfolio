@@ -177,6 +177,14 @@
   @keyframes chat-ring { 0% { transform: scale(1); opacity: .5; } 70%, 100% { transform: scale(1.75); opacity: 0; } }
   .chat-ring { animation: chat-ring 3s cubic-bezier(0, 0, .2, 1) infinite; }
   .chat-ring-late { animation-delay: 1.5s; }
+
+  /* Chat robot: a slow float, an occasional blink and a small antenna wiggle. */
+  @keyframes robot-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes robot-blink { 0%, 92%, 100% { transform: scaleY(1); } 95% { transform: scaleY(.1); } }
+  @keyframes robot-antenna { 0%, 100% { transform: rotate(0deg); } 50% { transform: rotate(2.5deg); } }
+  .robot-float { animation: robot-float 3.2s ease-in-out infinite; }
+  .robot-blink { animation: robot-blink 4.5s ease-in-out infinite; }
+  .robot-antenna { animation: robot-antenna 2.4s ease-in-out infinite; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -201,7 +209,10 @@
   .pulse-soft,
   .float-y,
   .chat-ring,
-  .chat-ring-late {
+  .chat-ring-late,
+  .robot-float,
+  .robot-blink,
+  .robot-antenna {
     animation: none !important;
   }
 }
