@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Send } from 'lucide-react';
+import { X, Send, CalendarDays, MessageCircle } from 'lucide-react';
 import { HERO_CONTENT } from '../constants';
 
 interface Message {
@@ -13,8 +13,12 @@ const SUGGESTED_QUESTIONS = [
   "What services do you offer?",
   "How much does a project cost?",
   "Do you build AI Agents?",
-  "What's your tech stack?"
+  "What's your tech stack?",
+  "Website banane ka kharcha kitna hoga?"
 ];
+
+const CALENDLY = 'https://calendly.com/akshaymad0608';
+const WHATSAPP = `https://wa.me/917600885080?text=${encodeURIComponent("Hi Akshay, I was chatting on your website")}`;
 
 const RESPONSES: Record<string, string> = {
   "What services do you offer?": "I specialize in building intelligent AI agents, custom automation workflows, and high-conversion web applications.",
@@ -37,6 +41,10 @@ const AIChatBot: React.FC = () => {
   const [isTyping, setIsTyping] = useState(false);
   const [showNudge, setShowNudge] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const [lead, setLead] = useState<'hidden' | 'form' | 'sending' | 'sent' | 'dismissed'>('hidden');
+  const [leadName, setLeadName] = useState('');
+  const [leadPhone, setLeadPhone] = useState('');
+  const [leadError, setLeadError] = useState<string | null>(null);
 
   // The greeting waits until you've had a moment to read the page, stays for
   // a short while, and is shown once per visit. Left up indefinitely it sat
@@ -64,6 +72,39 @@ const AIChatBot: React.FC = () => {
     };
   }, []);
 
+  const userTurns = messages.filter((m) => m.sender === 'user').length;
+  useEffect(() => {
+    if (userTurns >= 2 && lead === 'hidden' && !isTyping) setLead('form');
+  }, [userTurns, lead, isTyping]);
+
+  const submitLead = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!leadName.trim() || leadPhone.replace(/\D/g, '').length < 8) {
+      setLeadError('Add your name and a phone or WhatsApp number.');
+      return;
+    }
+    setLeadError(null);
+    setLead('sending');
+    try {
+      const res = await fetch('https://formspree.io/f/mbdndbdr', {
+        method: 'POST',
+        headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: leadName.trim(),
+          phone: leadPhone.trim(),
+          message: 'Lead from the chat widget',
+          source: 'chat widget',
+          transcript: messages.slice(-8).map((m) => `${m.sender === 'user' ? 'Visitor' : 'Bot'}: ${m.text}`).join('\n'),
+        }),
+      });
+      if (!res.ok) throw new Error('bad status');
+      setLead('sent');
+    } catch {
+      setLead('form');
+      setLeadError("That didn't go through. Message me on WhatsApp instead.");
+    }
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -72,7 +113,7 @@ const AIChatBot: React.FC = () => {
     if (isOpen) {
       scrollToBottom();
     }
-  }, [messages, isOpen]);
+  }, [messages, isOpen, lead]);
 
   const handleSend = async (text: string) => {
     if (!text.trim()) return;
@@ -170,6 +211,26 @@ const AIChatBot: React.FC = () => {
               </button>
             </div>
 
+            {/* Quick actions */}
+            <div className="flex gap-2 border-b border-border bg-frame px-4 py-2">
+              <a
+                href={CALENDLY}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full bg-wire px-3 py-1.5 text-[12px] font-semibold text-ink"
+              >
+                <CalendarDays size={13} /> Book a call
+              </a>
+              <a
+                href={WHATSAPP}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border px-3 py-1.5 text-[12px] font-medium text-text hover:border-wire/40"
+              >
+                <MessageCircle size={13} /> WhatsApp
+              </a>
+            </div>
+
             {/* Messages Area */}
             <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[250px] bg-ink">
               {messages.map(msg => (
@@ -191,6 +252,41 @@ const AIChatBot: React.FC = () => {
                     <span className="w-1.5 h-1.5 bg-wire/70 rounded-full animate-bounce" style={{ animationDelay: '150ms' }} />
                     <span className="w-1.5 h-1.5 bg-wire/70 rounded-full animate-bounce" style={{ animationDelay: '300ms' }} />
                   </div>
+                </div>
+              )}
+              {(lead === 'form' || lead === 'sending') && (
+                <form onSubmit={submitLead} className="rounded-2xl border border-wire/30 bg-cards p-3 text-sm">
+                  <p className="font-semibold text-text">Want a quote? Leave your number.</p>
+                  <p className="mt-0.5 text-[12px] text-textSecondary">I reply on WhatsApp, usually the same day. Used only to answer you.</p>
+                  <input
+                    value={leadName}
+                    onChange={(e) => setLeadName(e.target.value)}
+                    placeholder="Your name"
+                    autoComplete="name"
+                    className="mt-2 w-full rounded-lg border border-border bg-ink px-3 py-2 text-sm text-text placeholder-muted focus:border-wire/50 focus:outline-none"
+                  />
+                  <input
+                    value={leadPhone}
+                    onChange={(e) => setLeadPhone(e.target.value)}
+                    placeholder="WhatsApp or phone number"
+                    type="tel"
+                    autoComplete="tel"
+                    className="mt-2 w-full rounded-lg border border-border bg-ink px-3 py-2 text-sm text-text placeholder-muted focus:border-wire/50 focus:outline-none"
+                  />
+                  {leadError && <p className="mt-2 text-[12px] text-red-500">{leadError}</p>}
+                  <div className="mt-2 flex items-center gap-3">
+                    <button type="submit" disabled={lead === 'sending'} className="btn-signal px-4 py-2 text-[13px] disabled:opacity-60">
+                      {lead === 'sending' ? 'Sending…' : 'Send'}
+                    </button>
+                    <button type="button" onClick={() => setLead('dismissed')} className="text-[12px] text-muted hover:text-text">
+                      No thanks
+                    </button>
+                  </div>
+                </form>
+              )}
+              {lead === 'sent' && (
+                <div className="rounded-2xl border border-wire/30 bg-cards p-3 text-sm text-text">
+                  Thanks, {leadName.trim().split(' ')[0]}. I will message you on WhatsApp soon.
                 </div>
               )}
               <div ref={messagesEndRef} />
@@ -219,7 +315,7 @@ const AIChatBot: React.FC = () => {
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleSend(inputValue)}
-                  placeholder="Ask about pricing, timelines, tools…"
+                  placeholder="Ask in English, Hindi or Gujarati"
                   className="w-full bg-ink border border-border rounded-full pl-4 pr-12 py-3 text-sm text-text placeholder-muted focus:outline-none focus:border-wire/50 transition-colors font-sans"
                 />
                 <button
