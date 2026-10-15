@@ -10,8 +10,8 @@ Goal: more qualified organic visits through better indexing, clearer intent matc
 - [ ] Merge this PR; confirm the `SEO checks` workflow is green on `main`.
 - [ ] Verify the Search Console property and submit the sitemap; record the baseline (clicks, impressions, indexed pages, average position).
 - [ ] Export the first CSVs and run `npm run seo:gsc`; save the report.
-- [ ] `/blog`, `/privacy`, `/terms` have little static text (48–101 words). Legal pages are fine; `/blog` should list post titles with excerpts.
-- [ ] Two blog posts have a single inbound link (from `/blog`). Link them from the home page or related posts.
+- [ ] `/blog`, `/privacy`, `/terms` have little static text (48–101 words). Legal pages are fine; `/blog` lists post titles with excerpts (done, six posts as of 15 Oct 2026).
+- [x] Blog posts had a single inbound link (from `/blog`). The home page now carries a latest-writing strip and every post ends with related reading (15 Oct 2026).
 - [ ] Fix every **error** the validator reports; keep warnings trending down.
 - [ ] Re-run Lighthouse against the deployed URL (real compression and CDN) and record LCP/TBT/CLS; read the Core Web Vitals report in Search Console for field data (including INP).
 

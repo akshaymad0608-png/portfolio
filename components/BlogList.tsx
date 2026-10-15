@@ -13,7 +13,7 @@ import Reveal from './ui/Reveal';
  * nothing behind it, which is a dead end for a reader and a page of unclickable
  * teasers for a crawler.
  */
-type Post = {
+export type Post = {
   id: number;
   title: string;
   excerpt: string;
@@ -22,7 +22,7 @@ type Post = {
   href?: string;
 };
 
-const POSTS: Post[] = [
+export const POSTS: Post[] = [
   {
     id: 0,
     title: 'What AI workflow automation actually costs a small business',
@@ -45,25 +45,37 @@ const POSTS: Post[] = [
     id: 1,
     title: 'How to build an AI agent that survives contact with real users',
     excerpt:
-      'Most agent demos work because nobody is trying to break them. What changes when a stranger is on the other end.',
+      'Most agent demos work because nobody is trying to break them. Seven decisions on scope, tools, prompt injection, handoff and limits.',
     category: 'AI engineering',
     readTime: '~8 min',
+    href: '/blog/ai-agent-that-survives-real-users',
   },
   {
     id: 2,
     title: 'The parts of web development generative AI is genuinely good at',
     excerpt:
-      'And the parts where it quietly costs you a week. A working split, from building products this way.',
+      'And the parts where it quietly costs you a week. A working split, useful whether you build sites or buy them.',
     category: 'Web development',
-    readTime: '~6 min',
+    readTime: '~7 min',
+    href: '/blog/generative-ai-in-web-development',
   },
   {
     id: 3,
     title: 'Automating CRM updates and email triage with n8n',
     excerpt:
-      'A step-by-step build of the workflow I set up most often for small teams, including the error branches nobody mentions.',
+      'A node-by-node build: classify inbound email, log it to a sheet, alert only when it matters, with the error branches included.',
     category: 'Automation',
-    readTime: '~11 min',
+    readTime: '~9 min',
+    href: '/blog/n8n-crm-email-triage-workflow',
+  },
+  {
+    id: 5,
+    title: 'A website for a Surat business: the local SEO checklist',
+    excerpt:
+      'Google Business Profile, consistent details, reviews, a WhatsApp button, mobile speed and Gujarati pages, in the order to do them.',
+    category: 'Local SEO',
+    readTime: '~7 min',
+    href: '/blog/website-for-surat-business-local-seo',
   },
 ];
 
@@ -95,21 +107,21 @@ const BlogList: React.FC = () => (
     <div className="container mx-auto max-w-shell px-6">
       <SectionHeading
         eyebrow="Writing"
-        title="What's on the list"
-        lead="Two published, three queued — all drawn from work I've actually shipped. The queued ones are marked as such rather than dressed up as a back catalogue."
+        title="Everything published so far"
+        lead="Six write-ups: what things cost, how the workflows are built and how to avoid the expensive mistakes. Each one ends with the checklist or the steps, so you can use it without hiring anyone."
         className="mb-14"
       />
 
-      <div className="grid gap-4 md:grid-cols-3">
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {POSTS.map((post, i) => (
           <Reveal key={post.id} delay={i * 0.08}>
             {post.href ? (
-              <a
-                href={post.href}
+              <Link
+                to={post.href}
                 className="panel spotlight group flex h-full flex-col p-7 transition-colors hover:border-wire/35"
               >
                 <Card post={post} />
-              </a>
+              </Link>
             ) : (
               <div className="panel flex h-full flex-col p-7 opacity-90">
                 <Card post={post} />

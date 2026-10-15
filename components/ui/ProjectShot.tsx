@@ -28,8 +28,10 @@ const domainOf = (url?: string) => {
  * text does, and the frame makes the cut-off at the bottom read as "the page
  * continues here" rather than as a broken image.
  *
- * Thumbnails come from a third-party service, so failures fall back to a
- * branded panel instead of a broken-image icon.
+ * The shots are screenshots of each live product, saved in /public/work. They
+ * used to be fetched from a third-party thumbnail service on every visit,
+ * which meant a slow or failed request left an empty frame. If a file is ever
+ * missing the frame falls back to a branded panel, not a broken-image icon.
  */
 const ProjectShot: React.FC<ProjectShotProps> = ({ src, link, title, icon: Icon }) => {
   const [failed, setFailed] = useState(false);
@@ -65,6 +67,8 @@ const ProjectShot: React.FC<ProjectShotProps> = ({ src, link, title, icon: Icon 
               alt={`${title} — live web product built by Akshay Mahajan`}
               loading="lazy"
               decoding="async"
+              width={1200}
+              height={750}
               onError={() => setFailed(true)}
               className="absolute left-0 top-0 w-full"
             />

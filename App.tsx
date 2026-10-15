@@ -25,6 +25,10 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Blog = lazy(() => import('./pages/Blog'));
 const AiAutomationCost = lazy(() => import('./pages/posts/AiAutomationCost'));
 const LlmOptimizationCost = lazy(() => import('./pages/posts/LlmOptimizationCost'));
+const N8nEmailTriage = lazy(() => import('./pages/posts/N8nEmailTriage'));
+const AiAgentRealUsers = lazy(() => import('./pages/posts/AiAgentRealUsers'));
+const GenAiWebDevelopment = lazy(() => import('./pages/posts/GenAiWebDevelopment'));
+const SuratWebsiteChecklist = lazy(() => import('./pages/posts/SuratWebsiteChecklist'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const AIAutomationPricing = lazy(() => import('./pages/AIAutomationPricing'));
 const AIGuide = lazy(() => import('./pages/AIGuide'));
@@ -117,6 +121,10 @@ const App: React.FC = () => {
                 path="/blog/llm-optimization-cost-small-businesses-india"
                 element={<LlmOptimizationCost />}
               />
+              <Route path="/blog/n8n-crm-email-triage-workflow" element={<N8nEmailTriage />} />
+              <Route path="/blog/ai-agent-that-survives-real-users" element={<AiAgentRealUsers />} />
+              <Route path="/blog/generative-ai-in-web-development" element={<GenAiWebDevelopment />} />
+              <Route path="/blog/website-for-surat-business-local-seo" element={<SuratWebsiteChecklist />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/ai-automation-pricing" element={<AIAutomationPricing />} />
               {/* The feedback page was built on quotes I wrote myself. It is

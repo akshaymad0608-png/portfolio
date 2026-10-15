@@ -38,10 +38,30 @@ const AIChatBot: React.FC = () => {
   const [showNudge, setShowNudge] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // the greeting waits until you've had a moment to read the page
+  // The greeting waits until you've had a moment to read the page, stays for
+  // a short while, and is shown once per visit. Left up indefinitely it sat
+  // over the corner of the content on every page and came back on every reload.
+  const dismissNudge = () => {
+    setShowNudge(false);
+    try {
+      sessionStorage.setItem('chat_nudge_seen', '1');
+    } catch {
+      /* private mode: the nudge may show again, which is harmless */
+    }
+  };
+
   useEffect(() => {
-    const t = setTimeout(() => setShowNudge(true), 9000);
-    return () => clearTimeout(t);
+    try {
+      if (sessionStorage.getItem('chat_nudge_seen') === '1') return;
+    } catch {
+      /* fall through and show it */
+    }
+    const show = setTimeout(() => setShowNudge(true), 9000);
+    const hide = setTimeout(dismissNudge, 9000 + 16000);
+    return () => {
+      clearTimeout(show);
+      clearTimeout(hide);
+    };
   }, []);
 
   const scrollToBottom = () => {
@@ -222,11 +242,11 @@ const AIChatBot: React.FC = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
             className="fixed bottom-24 right-4 sm:right-6 panel text-text text-[13.5px] px-4 py-3 shadow-xl z-[90] flex items-start gap-3 cursor-pointer max-w-[260px]"
-            onClick={() => setIsOpen(true)}
+            onClick={() => { dismissNudge(); setIsOpen(true); }}
           >
             <span className="leading-snug">Questions about scope or price? Ask here — answers are instant.</span>
             <button
-              onClick={(e) => { e.stopPropagation(); setShowNudge(false); }}
+              onClick={(e) => { e.stopPropagation(); dismissNudge(); }}
               aria-label="Dismiss"
               /* The icon stays 15px; the button is padded out to a 28px box so it
                  clears the minimum target size without changing how it looks. */

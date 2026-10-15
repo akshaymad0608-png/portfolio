@@ -14,6 +14,7 @@ const BuildLog = lazy(() => import('../components/BuildLog'));
 import Proof from '../components/Proof';
 import FAQ, { FAQ_DATA } from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
+import LatestPosts from '../components/LatestPosts';
 import SEO from '../components/SEO';
 import PageTransition from '../components/PageTransition';
 import WireDivider from '../components/ui/WireDivider';
@@ -71,6 +72,7 @@ const Home: React.FC = () => (
     </Suspense>
     <Proof showMore />
     <FAQ />
+    <LatestPosts />
     <FinalCTA />
   </PageTransition>
 );
