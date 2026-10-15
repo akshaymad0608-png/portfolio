@@ -5,7 +5,7 @@ import IntroductionVideo from './IntroductionVideo';
 export const INTRO_VIDEO = {
   src: '/intro/akshay-intro.mp4',
   poster: '/intro/akshay-intro.webp',
-  duration: 'PT53S',
+  duration: 'PT52S',
 };
 
 const TRANSCRIPT =
