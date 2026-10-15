@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import Hero from '../components/Hero';
 import IntroBanner from '../components/IntroBanner';
 import Services from '../components/Services';
+import IntroVideoSection, { introVideoSchema } from '../components/IntroVideoSection';
 import Process from '../components/Process';
 import AISystems from '../components/AISystems';
 import Stats from '../components/Stats';
@@ -56,10 +57,11 @@ const Home: React.FC = () => (
         second FAQPage in the document once Helmet runs, since Helmet appends
         to a head that already carries the static one. */}
     <SEO
-      schema={[projectsSchema]}
+      schema={[projectsSchema, introVideoSchema]}
     />
     <Hero />
     <IntroBanner />
+    <IntroVideoSection />
     <Services limit={6} />
     <WireDivider />
     <Process />
