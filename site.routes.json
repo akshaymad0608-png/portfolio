@@ -293,6 +293,50 @@
       "lastmod": "2026-09-30"
     },
     {
+      "path": "/website-developer-surat",
+      "title": "Website Developer in Surat: Fast, Search-Ready Sites",
+      "description": "I'm a Surat-based web developer building fast, mobile-first business websites with SEO, a WhatsApp button and Google Business guidance. Fixed written quote.",
+      "priority": "0.9",
+      "changefreq": "monthly",
+      "hideFromNav": true,
+      "heading": "A website developer in Surat who answers on WhatsApp",
+      "lead": "Fast, mobile-first business websites built to be found on Google and to turn a visit into a call. One person from first call to launch, on Indian time, in English, Hindi or Gujarati.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "Who I build for: shops, clinics, classes, manufacturers, traders and service businesses",
+        "What a website includes, with the price and delivery time taken from the pricing page",
+        "How a project runs, from a 20-minute call to handover",
+        "Why a developer in the same city helps, and an honest note on the examples",
+        "Gujarati and Hindi pages, Google Maps and who owns the site"
+      ],
+      "keywords": "website developer in Surat, web developer Surat, freelance web developer Surat, website design Surat, business website Surat, Gujarat web developer, website for small business Surat",
+      "navLabel": "Website developer Surat",
+      "postFaq": "pages/WebsiteDeveloperSurat.tsx",
+      "lastmod": "2026-10-15"
+    },
+    {
+      "path": "/whatsapp-automation-small-business",
+      "title": "WhatsApp and n8n Automation for Small Business in India",
+      "description": "Capture enquiries from WhatsApp, forms and email, log them to a sheet or CRM, answer common questions and get alerted only when it matters. Plans in rupees.",
+      "priority": "0.9",
+      "changefreq": "monthly",
+      "hideFromNav": true,
+      "heading": "Stop copying enquiries from WhatsApp into a spreadsheet",
+      "lead": "n8n workflows that capture every enquiry, answer the routine questions, keep your sheet or CRM up to date and tell you when a real person is needed. Built, tested and maintained for small Indian businesses.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "What a typical WhatsApp and n8n setup does, step by step",
+        "Where automation helps most: enquiries, trading, appointments",
+        "What the official WhatsApp Business Platform requires",
+        "Three packaged plans, a one-time setup plus a monthly fee",
+        "Why unofficial WhatsApp tools put your number at risk"
+      ],
+      "keywords": "WhatsApp automation India, n8n automation India, WhatsApp automation small business, WhatsApp business automation, n8n developer India, lead capture automation, enquiry automation",
+      "navLabel": "WhatsApp automation",
+      "postFaq": "pages/WhatsAppAutomation.tsx",
+      "lastmod": "2026-10-15"
+    },
+    {
       "path": "/about",
       "title": "About Akshay Mahajan | Full-Stack & AI Web Developer, Surat",
       "description": "Full-stack web developer in Surat, India, building websites, web apps and the AI automation that runs a business overnight. You brief me, I build it.",

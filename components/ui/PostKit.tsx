@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Reveal from './Reveal';
 import FinalCTA from '../FinalCTA';
+import PageHero from './PageHero';
 
 /**
  * Shared building blocks for blog posts.
@@ -145,6 +146,53 @@ export const PostShell: React.FC<PostShellProps> = ({ eyebrow, title, meta, lead
         </div>
       </div>
     </article>
+    <FinalCTA />
+  </>
+);
+
+
+interface LandingShellProps {
+  eyebrow: string;
+  title: string;
+  lead: string;
+  /** Primary action in the hero, always the same two: book a call and WhatsApp. */
+  whatsappText: string;
+  children: React.ReactNode;
+}
+
+/**
+ * Frame for a keyword landing page: the standard page hero with a booking and
+ * a WhatsApp button, the body in a reading column, and the closing call to
+ * action. Prices and package details are imported from lib/ by the page, never
+ * typed into the copy, so they cannot drift from the pricing page.
+ */
+export const LandingShell: React.FC<LandingShellProps> = ({ eyebrow, title, lead, whatsappText, children }) => (
+  <>
+    <PageHero eyebrow={eyebrow} title={title} lead={lead}>
+      <div className="flex flex-col gap-3 sm:flex-row">
+        <a
+          href="https://calendly.com/akshaymad0608"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-signal inline-flex items-center justify-center px-6 py-3 text-[15px]"
+        >
+          Book a 20-minute call
+        </a>
+        <a
+          href={`https://wa.me/917600885080?text=${encodeURIComponent(whatsappText)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn-ghost inline-flex items-center justify-center px-6 py-3 text-[15px] font-medium"
+        >
+          WhatsApp me
+        </a>
+      </div>
+    </PageHero>
+    <section className="relative pb-16 md:pb-24">
+      <div className="container mx-auto max-w-shell px-6">
+        <div className="mx-auto max-w-3xl">{children}</div>
+      </div>
+    </section>
     <FinalCTA />
   </>
 );

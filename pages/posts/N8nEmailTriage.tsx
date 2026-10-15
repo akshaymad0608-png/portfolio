@@ -216,7 +216,7 @@ Body: {{cleaned_body}}`}</Code>
 
         <P>
           If you would rather have this built, tested and handed over with a short document, see{' '}
-          <A to="/ai-automation-pricing">the automation plans</A> or{' '}
+          <A to="/whatsapp-automation-small-business">WhatsApp and n8n automation</A> or{' '}
           <A to="/contact">tell me the problem</A>.
         </P>
       </Reveal>
