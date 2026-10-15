@@ -160,7 +160,7 @@ const SuratWebsiteChecklist: React.FC = () => (
         <P>
           Want to know where your current site stands on this list? Run{' '}
           <A to="/free-website-audit">the free website audit</A>, look at{' '}
-          <A to="/services">the services I offer</A>, or <A to="/contact">tell me about your business</A>.
+          <A to="/website-developer-surat">my Surat website service</A>, or <A to="/contact">tell me about your business</A>.
         </P>
       </Reveal>
 

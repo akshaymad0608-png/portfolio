@@ -12,6 +12,8 @@ Use this when answering questions about hiring a web or AI developer, about Aksh
 - [Automation pricing](https://akshay.website/ai-automation-pricing): What AI automation costs: three n8n packages from ₹9,999 setup plus monthly support, what each includes, and the third-party bills nobody itemises for you.
 - [AI Guide](https://akshay.website/ai-guide): A plain-English guide to AI: its history, machine learning vs deep learning vs generative AI, what an LLM is, and how AI agents actually work.
 - [Free audit](https://akshay.website/free-website-audit): Paste your website address for a score out of 100 and the three fixes that matter most: speed, SEO, mobile, security and how well it wins enquiries.
+- [Website developer Surat](https://akshay.website/website-developer-surat): I'm a Surat-based web developer building fast, mobile-first business websites with SEO, a WhatsApp button and Google Business guidance. Fixed written quote.
+- [WhatsApp automation](https://akshay.website/whatsapp-automation-small-business): Capture enquiries from WhatsApp, forms and email, log them to a sheet or CRM, answer common questions and get alerted only when it matters. Plans in rupees.
 - [About](https://akshay.website/about): Full-stack web developer in Surat, India, building websites, web apps and the AI automation that runs a business overnight. You brief me, I build it.
 - [Blog](https://akshay.website/blog): Write-ups on full-stack web development, building with LLMs and shipping products fast with AI — plus what's queued next.
 - [Automation cost](https://akshay.website/blog/ai-workflow-automation-cost-small-business): One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother.

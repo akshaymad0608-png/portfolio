@@ -10,6 +10,8 @@ const NAV = [
     { label: 'Free website audit', to: '/free-website-audit' },
     { label: 'Pricing', to: '/pricing' },
     { label: 'Automation plans', to: '/ai-automation-pricing' },
+    { label: 'Website developer Surat', to: '/website-developer-surat' },
+    { label: 'WhatsApp automation', to: '/whatsapp-automation-small-business' },
     { label: 'Contact', to: '/contact' },
   ]},
   { heading: 'More', links: [

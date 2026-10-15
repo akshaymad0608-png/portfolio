@@ -29,6 +29,8 @@ const N8nEmailTriage = lazy(() => import('./pages/posts/N8nEmailTriage'));
 const AiAgentRealUsers = lazy(() => import('./pages/posts/AiAgentRealUsers'));
 const GenAiWebDevelopment = lazy(() => import('./pages/posts/GenAiWebDevelopment'));
 const SuratWebsiteChecklist = lazy(() => import('./pages/posts/SuratWebsiteChecklist'));
+const WebsiteDeveloperSurat = lazy(() => import('./pages/WebsiteDeveloperSurat'));
+const WhatsAppAutomation = lazy(() => import('./pages/WhatsAppAutomation'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const AIAutomationPricing = lazy(() => import('./pages/AIAutomationPricing'));
 const AIGuide = lazy(() => import('./pages/AIGuide'));
@@ -125,6 +127,8 @@ const App: React.FC = () => {
               <Route path="/blog/ai-agent-that-survives-real-users" element={<AiAgentRealUsers />} />
               <Route path="/blog/generative-ai-in-web-development" element={<GenAiWebDevelopment />} />
               <Route path="/blog/website-for-surat-business-local-seo" element={<SuratWebsiteChecklist />} />
+              <Route path="/website-developer-surat" element={<WebsiteDeveloperSurat />} />
+              <Route path="/whatsapp-automation-small-business" element={<WhatsAppAutomation />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/ai-automation-pricing" element={<AIAutomationPricing />} />
               {/* The feedback page was built on quotes I wrote myself. It is
