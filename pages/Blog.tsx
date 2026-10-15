@@ -12,7 +12,7 @@ const Blog: React.FC = () => (
     <PageHero
       eyebrow="Writing"
       title="Notes from the build"
-      lead="What worked, what cost me a weekend, and the code and workflows you can copy straight into your own stack."
+      lead="What worked, what cost me a weekend, and the workflows and checklists you can copy straight into your own stack."
     />
     <BlogList />
     <FinalCTA />

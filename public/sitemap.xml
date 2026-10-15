@@ -50,7 +50,7 @@
   </url>
   <url>
     <loc>https://akshay.website/blog</loc>
-    <lastmod>2026-09-27</lastmod>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
@@ -63,6 +63,30 @@
   <url>
     <loc>https://akshay.website/blog/llm-optimization-cost-small-businesses-india</loc>
     <lastmod>2026-09-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/n8n-crm-email-triage-workflow</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/ai-agent-that-survives-real-users</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/generative-ai-in-web-development</loc>
+    <lastmod>2026-10-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/website-for-surat-business-local-seo</loc>
+    <lastmod>2026-10-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

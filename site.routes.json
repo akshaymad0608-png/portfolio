@@ -325,21 +325,19 @@
       "priority": "0.4",
       "changefreq": "monthly",
       "heading": "Notes from the build",
-      "lead": "What worked, what cost me a weekend, and the code and workflows you can copy straight into your own stack.",
+      "lead": "What worked, what cost me a weekend, and the workflows and checklists you can copy straight into your own stack.",
       "linksHeading": "Published",
       "links": [
         { "href": "/blog/ai-workflow-automation-cost-small-business", "label": "AI automation cost in India" },
-        { "href": "/blog/llm-optimization-cost-small-businesses-india", "label": "LLM optimization cost guide" }
-      ],
-      "pointsHeading": "Coming up",
-      "points": [
-        "How to build an AI agent that survives contact with real users",
-        "The parts of web development generative AI is genuinely good at",
-        "Automating CRM updates and email triage with n8n"
+        { "href": "/blog/llm-optimization-cost-small-businesses-india", "label": "LLM optimization cost guide" },
+        { "href": "/blog/n8n-crm-email-triage-workflow", "label": "n8n CRM and email triage" },
+        { "href": "/blog/ai-agent-that-survives-real-users", "label": "AI agent launch checklist" },
+        { "href": "/blog/generative-ai-in-web-development", "label": "Generative AI in web development" },
+        { "href": "/blog/website-for-surat-business-local-seo", "label": "Surat local SEO checklist" }
       ],
       "keywords": "web development blog India, AI development tips, build with LLMs, developer blog India, AI automation blog, full stack developer blog",
       "navLabel": "Blog",
-      "lastmod": "2026-09-27"
+      "lastmod": "2026-10-15"
     },
     {
       "path": "/blog/ai-workflow-automation-cost-small-business",
@@ -386,6 +384,97 @@
       "navLabel": "LLM optimization cost",
       "postFaq": "pages/posts/LlmOptimizationCost.tsx",
       "lastmod": "2026-09-27"
+    },
+    {
+      "path": "/blog/n8n-crm-email-triage-workflow",
+      "title": "n8n CRM and Email Triage Workflow: A Step-by-Step Build",
+      "description": "Build an n8n workflow that reads inbound email, classifies it with an LLM, logs it to a CRM sheet and alerts you only when it matters. Nodes and pitfalls.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "Automating CRM updates and email triage with n8n",
+      "lead": "Every inbound email gets a category and an urgency, a row in a sheet that acts as your CRM, and an alert only when it matters. Built node by node, with the error branches included.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "The workflow at a glance, from Gmail trigger to alert",
+        "Cleaning the email body before the model sees it",
+        "A classification prompt that returns strict JSON",
+        "Validating the output, routing it and writing to the CRM",
+        "Error workflows, retries and a daily heartbeat",
+        "Testing on real mail, and the ways this goes wrong"
+      ],
+      "keywords": "n8n email triage, n8n CRM automation, email automation small business, n8n Gmail workflow, LLM email classification, n8n tutorial India",
+      "navLabel": "n8n email triage",
+      "postFaq": "pages/posts/N8nEmailTriage.tsx",
+      "lastmod": "2026-10-15"
+    },
+    {
+      "path": "/blog/ai-agent-that-survives-real-users",
+      "title": "How to Build an AI Agent That Survives Real Customers",
+      "description": "Most agent demos work because nobody is trying to break them. A practical checklist for scope, tools, prompt injection, handoff, cost limits and testing.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "How to build an AI agent that survives contact with real users",
+      "lead": "A demo agent works because the person demoing it knows what to type. Seven decisions that decide whether an agent holds up once real people use it.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "Making the job one sentence long, with a list of refusals",
+        "Giving the agent tools, not authority",
+        "Treating everything it reads as untrusted",
+        "Saying \"I don't know\" and handing off to a person",
+        "Rate, length, tool-call and spending limits",
+        "Logging and testing it like software"
+      ],
+      "keywords": "AI agent development, AI agent guardrails, prompt injection, chatbot for business, build AI agent, LLM agent best practices",
+      "navLabel": "AI agent checklist",
+      "postFaq": "pages/posts/AiAgentRealUsers.tsx",
+      "lastmod": "2026-10-15"
+    },
+    {
+      "path": "/blog/generative-ai-in-web-development",
+      "title": "What Generative AI Is Actually Good At in Web Development",
+      "description": "Where generative AI saves real time in web development and where it quietly costs you a week: a practical split for anyone building or buying a website.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "The parts of web development generative AI is genuinely good at",
+      "lead": "Generative AI is very good at some jobs, mediocre at others and confidently wrong at a few. Knowing which is which is most of the skill.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "Where it saves real time: boilerplate, conversions, tests, scripts",
+        "Where it costs a week: architecture, security, subtle bugs",
+        "The rule of working fast only where you can verify",
+        "How AI changes the way a project runs",
+        "Questions to ask a developer who uses AI"
+      ],
+      "keywords": "generative AI web development, AI coding assistant, AI developer India, build website with AI, AI in web development, AI-assisted development",
+      "navLabel": "Generative AI in web dev",
+      "postFaq": "pages/posts/GenAiWebDevelopment.tsx",
+      "lastmod": "2026-10-15"
+    },
+    {
+      "path": "/blog/website-for-surat-business-local-seo",
+      "title": "Website for a Surat Business: A Local SEO Checklist",
+      "description": "A local SEO checklist for a Surat business website: Google Business Profile, consistent details, reviews, a WhatsApp button, mobile speed and Gujarati pages.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "A website for a Surat business: the local SEO checklist",
+      "lead": "When someone in Surat searches for what you sell, they are usually on a phone, close by and ready to call. The basics that decide whether they find you, in order.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "Claiming and completing your Google Business Profile",
+        "Keeping name, address and phone identical everywhere",
+        "Reviews, and answering all of them",
+        "A fast mobile site and a WhatsApp button",
+        "One page per service, with local business markup",
+        "Gujarati and Hindi pages where customers need them"
+      ],
+      "keywords": "Surat website developer, local SEO Surat, website for Surat business, Google Business Profile Surat, small business website Surat, Gujarat web developer",
+      "navLabel": "Surat local SEO",
+      "postFaq": "pages/posts/SuratWebsiteChecklist.tsx",
+      "lastmod": "2026-10-15"
     },
     {
       "path": "/contact",

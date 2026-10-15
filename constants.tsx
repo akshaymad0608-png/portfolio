@@ -242,7 +242,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "TailwindCSS", "Vite", "Vercel"],
     year: "2024",
     link: "https://aimastertools.space",
-    image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://aimastertools.space",
+    image: "/work/ai-master-tools.webp",
     icon: Wrench,
     stat: "650+ AI TOOLS",
     elementId: "ai-master-tool"
@@ -259,7 +259,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "LLMs", "Client-Side Processing"],
     year: "2024",
     link: "https://quickresume.business",
-    image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://quickresume.business",
+    image: "/work/quickresume.webp",
     icon: FileText,
     stat: "ATS-OPTIMIZED",
     elementId: "quickresume"
@@ -277,7 +277,7 @@ export const PROJECTS: Project[] = [
     year: "2024",
     link: "https://photoresizer.click",
     icon: Crop,
-    image: "https://image.thum.io/get/width/1200/crop/750/noanimate/https://photoresizer.click",
+    image: "/work/photo-resizer.webp",
     stat: "100% IN-BROWSER",
     elementId: "photo-resizer"
   },
@@ -293,10 +293,7 @@ export const PROJECTS: Project[] = [
     tech: ["React", "TypeScript", "TailwindCSS", "jsPDF", "Vite"],
     year: "2025",
     link: "https://fitsmart.space",
-    // wait/8 lets the app hydrate before the shot, otherwise it captures skeletons.
-    // The ?v suffix is a cache key — thum.io keys on the exact URL, so bump it
-    // whenever the site changes visibly and the old screenshot needs retiring.
-    image: "https://image.thum.io/get/wait/8/width/1200/crop/750/noanimate/https://fitsmart.space/?v=3",
+    image: "/work/fitsmart.webp",
     icon: HeartPulse,
     stat: "6 FREE CALCULATORS",
     elementId: "smartfit"
@@ -313,7 +310,7 @@ export const PROJECTS: Project[] = [
     tech: ["Web Speech API", "WebRTC / PeerJS", "JavaScript", "Static HTML"],
     year: "2025",
     link: "https://languagetransalator.com/",
-    image: "https://image.thum.io/get/wait/8/width/1200/crop/750/noanimate/https://languagetransalator.com/?v=2",
+    image: "/work/rosetta.webp",
     icon: Languages,
     stat: "40+ LANGUAGES",
     elementId: "language-translator"
