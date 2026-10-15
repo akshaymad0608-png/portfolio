@@ -76,16 +76,28 @@ export const Faq: React.FC<{ items: { q: string; a: string }[] }> = ({ items }) 
   </>
 );
 
+/** Short anchor labels (two to five words) for the related-reading list. */
+const ALL_POSTS: { to: string; label: string; blurb: string }[] = [
+  { to: '/blog/ai-workflow-automation-cost-small-business', label: 'Automation cost in India', blurb: 'What one workflow costs to build and to run.' },
+  { to: '/blog/llm-optimization-cost-small-businesses-india', label: 'LLM optimization cost', blurb: 'Prompting, fine-tuning and RAG compared.' },
+  { to: '/blog/n8n-crm-email-triage-workflow', label: 'n8n email triage build', blurb: 'Classify, log and alert, node by node.' },
+  { to: '/blog/ai-agent-that-survives-real-users', label: 'AI agent launch checklist', blurb: 'Seven decisions before real users arrive.' },
+  { to: '/blog/generative-ai-in-web-development', label: 'Generative AI in web dev', blurb: 'What it speeds up and what it breaks.' },
+  { to: '/blog/website-for-surat-business-local-seo', label: 'Surat local SEO checklist', blurb: 'The basics that get a local business found.' },
+];
+
 interface PostShellProps {
   eyebrow: string;
   title: string;
   meta: string;
   lead: string;
+  /** Path of this post, so it is left out of the related-reading list. */
+  path?: string;
   children: React.ReactNode;
 }
 
 /** Article frame: eyebrow, h1, meta line, lead paragraph, body, back link, closing call to action. */
-export const PostShell: React.FC<PostShellProps> = ({ eyebrow, title, meta, lead, children }) => (
+export const PostShell: React.FC<PostShellProps> = ({ eyebrow, title, meta, lead, path, children }) => (
   <>
     <article className="relative py-20 md:py-28">
       <div className="container mx-auto max-w-shell px-6">
@@ -103,6 +115,22 @@ export const PostShell: React.FC<PostShellProps> = ({ eyebrow, title, meta, lead
           </Reveal>
 
           {children}
+
+          <Reveal>
+            <H2>Keep reading</H2>
+            <ul className="mt-6 grid gap-4 sm:grid-cols-3">
+              {ALL_POSTS.filter((p) => p.to !== path)
+                .slice(0, 3)
+                .map((p) => (
+                  <li key={p.to} className="border-l border-border pl-5">
+                    <Link className="font-semibold text-text hover:text-wire" to={p.to}>
+                      {p.label}
+                    </Link>
+                    <p className="mt-1 text-[14.5px] leading-relaxed text-textSecondary">{p.blurb}</p>
+                  </li>
+                ))}
+            </ul>
+          </Reveal>
 
           <Reveal>
             <p className="mt-10 border-t border-border pt-6">

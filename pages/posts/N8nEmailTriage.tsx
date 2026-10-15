@@ -47,6 +47,7 @@ const N8nEmailTriage: React.FC = () => (
     />
 
     <PostShell
+      path="/blog/n8n-crm-email-triage-workflow"
       eyebrow="Automation"
       title="Automating CRM updates and email triage with n8n"
       meta="15 Oct 2026 · ~9 min · a build you can copy"

@@ -47,6 +47,7 @@ const SuratWebsiteChecklist: React.FC = () => (
     />
 
     <PostShell
+      path="/blog/website-for-surat-business-local-seo"
       eyebrow="Local SEO"
       title="A website for a Surat business: the local SEO checklist"
       meta="15 Oct 2026 · ~7 min · a checklist to copy"

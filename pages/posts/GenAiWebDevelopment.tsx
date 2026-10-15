@@ -47,6 +47,7 @@ const GenAiWebDevelopment: React.FC = () => (
     />
 
     <PostShell
+      path="/blog/generative-ai-in-web-development"
       eyebrow="Web development"
       title="The parts of web development generative AI is genuinely good at"
       meta="15 Oct 2026 · ~7 min · a working split"

@@ -13,7 +13,7 @@ import Reveal from './ui/Reveal';
  * nothing behind it, which is a dead end for a reader and a page of unclickable
  * teasers for a crawler.
  */
-type Post = {
+export type Post = {
   id: number;
   title: string;
   excerpt: string;
@@ -22,7 +22,7 @@ type Post = {
   href?: string;
 };
 
-const POSTS: Post[] = [
+export const POSTS: Post[] = [
   {
     id: 0,
     title: 'What AI workflow automation actually costs a small business',

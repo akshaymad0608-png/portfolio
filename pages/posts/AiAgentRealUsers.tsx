@@ -47,6 +47,7 @@ const AiAgentRealUsers: React.FC = () => (
     />
 
     <PostShell
+      path="/blog/ai-agent-that-survives-real-users"
       eyebrow="AI engineering"
       title="How to build an AI agent that survives contact with real users"
       meta="15 Oct 2026 · ~8 min · a launch checklist"
