@@ -683,4 +683,15 @@ export const INTERNAL_BUILDS: InternalBuild[] = [
     tech: ["React", "TypeScript", "React Router"],
     facts: ["10 starter articles", "Category pages", "Health disclaimer", "No hosted version"],
   },
+  {
+    id: 17,
+    title: "Website Chatbot & Instagram Auto-Reply",
+    kind: "AI chatbot",
+    status: "Live on this site",
+    icon: MessageSquare,
+    summary: "The robot in the corner of this page, and the same assistant answering comments and DMs on my Instagram account.",
+    detail: "On the site, a Gemini assistant answers from a written brief about my services, prices and builds, replies in the language the visitor used, and hands over to a booking link or WhatsApp when someone is ready. A lead form sends the details to my inbox. On Instagram, a comment that asks for details (\"website\", \"price\", \"quote\") gets a private DM and a short public reply, and a direct message is answered by the same assistant, in the same script the person wrote in. It runs as one edge function behind Meta's webhooks: every request is checked against an HMAC signature before anything is read, duplicate deliveries are ignored, and failures are logged rather than swallowed. It is live for the Instagram accounts approved as testers while Meta's app review for wider access is pending.",
+    tech: ["Gemini 2.5 Flash", "Vercel Edge Functions", "Instagram Graph API", "Meta Webhooks", "React"],
+    facts: ["Live on every page of this site", "Replies in English, Hindi, Gujarati", "Signed webhooks (HMAC-SHA256)", "Instagram: approved testers for now"],
+  },
 ];
