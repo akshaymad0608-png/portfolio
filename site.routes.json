@@ -147,7 +147,8 @@
         "ConvertBharat — demo file-conversion interface with AI file insights",
         "SolveIt AI — demo problem solver with six modes and structured Hinglish answers",
         "Khali Khichha — expense tracker that works offline with optional Google sync",
-        "Desi Health Sutra — demo Hinglish health content site with a written SEO plan"
+        "Desi Health Sutra — demo Hinglish health content site with a written SEO plan",
+        "Website Chatbot & Instagram Auto-Reply — the assistant on this site, also answering Instagram comments and DMs (approved testers for now)"
       ],
       "pageFaq": [
         { "q": "Are all these projects actually live?", "a": "Yes. Every project listed on this page is live and publicly accessible. AI Master Tools, QuickResume, Photo Resizer, FitSmart and Rosetta are all running in production. The private automation systems (Jewellery BI, Job Application Engine, Inbound Lead Engine) are not public-facing but are described from source. The smaller demo builds (YogGuru AI, WhatsApp Bot SaaS and similar) have no hosted version and are labelled as demos." },

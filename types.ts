@@ -97,7 +97,7 @@ export interface InternalBuild {
   detail: string;
   tech: string[];
   facts: string[];
-  status: 'Running privately' | 'Demo build' | 'Internal tool';
+  status: 'Running privately' | 'Demo build' | 'Internal tool' | 'Live on this site';
   icon?: any;
   /**
    * The workflow graph, drawn from its real shape by
