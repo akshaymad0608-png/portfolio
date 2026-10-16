@@ -90,6 +90,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   const raw = await req.text();
   if (!(await verifySignature(raw, req.headers.get('x-hub-signature-256'), IG_APP_SECRET))) {
+    console.error('instagram webhook: bad signature (check IG_APP_SECRET is the Instagram app secret)', req.headers.get('x-hub-signature-256') ? 'signature present' : 'no signature header');
     return new Response('Bad signature', { status: 401 });
   }
 
@@ -101,6 +102,7 @@ export default async function handler(req: Request): Promise<Response> {
   }
 
   const actions = extractActions(payload, IG_USER_ID).filter((a) => remember(a.id));
+  console.info('instagram webhook: received', { object: (payload as { object?: string })?.object, actions: actions.map((a) => a.kind) });
   // Answer every item but always acknowledge with 200, or Meta keeps retrying the whole delivery.
   await Promise.allSettled(actions.map((a) => handle(a, IG_USER_ID, IG_ACCESS_TOKEN)));
   return new Response('ok', { status: 200 });
