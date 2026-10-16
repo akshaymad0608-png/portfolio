@@ -25,7 +25,7 @@ export const config = { runtime: 'edge' };
 const GRAPH = 'https://graph.instagram.com/v21.0';
 
 const DM_RULES = `
-You are answering an Instagram direct message. Reply in at most three short sentences, under 600 characters, in the language the person wrote in.
+You are answering an Instagram direct message. Reply in at most three short sentences, under 600 characters, in the language AND script the person wrote in. If they typed Hindi or Gujarati in English letters (Hinglish), answer in the same English letters; use Devanagari or Gujarati script only if they did.
 The only links you may give are akshay.website and https://calendly.com/akshaymad0608 . If they want a quote, ask what they are building, then offer the call link.
 `;
 
