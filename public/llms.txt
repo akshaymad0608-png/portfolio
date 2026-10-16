@@ -68,6 +68,7 @@ These are a different offer from the one-off builds above: pay once and own it, 
 - SolveIt AI — demo problem solver with six modes and structured Hinglish answers
 - Khali Khichha — expense tracker that works offline with optional Google sync
 - Desi Health Sutra — demo Hinglish health content site with a written SEO plan
+- Website Chatbot & Instagram Auto-Reply — the assistant on this site, also answering Instagram comments and DMs (approved testers for now)
 
 ## Stack
 React, Next.js, Node, TypeScript, Tailwind, Supabase, Vercel. Claude, GPT and Gemini. n8n, Make and Zapier.
