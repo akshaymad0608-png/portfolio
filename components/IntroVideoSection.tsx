@@ -20,7 +20,7 @@ export const introVideoSchema = {
     'A one-minute animated welcome from Akshay Mahajan covering websites, AI chatbots, automation and search visibility.',
   thumbnailUrl: `https://akshay.website${INTRO_VIDEO.poster}`,
   contentUrl: `https://akshay.website${INTRO_VIDEO.src}`,
-  uploadDate: '2026-10-15',
+  uploadDate: '2026-10-15T09:00:00+05:30',
   duration: INTRO_VIDEO.duration,
   inLanguage: 'en',
   transcript: TRANSCRIPT,
