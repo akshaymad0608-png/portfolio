@@ -119,8 +119,8 @@
     },
     {
       "path": "/work",
-      "title": "Case Studies: AI Products I've Shipped | Akshay Mahajan",
-      "description": "Five live AI products built end to end, plus the private automation stack and internal tooling behind them. What was broken, what I built, what changed.",
+      "title": "Website & AI Automation Case Studies | Akshay Mahajan, Surat",
+      "description": "Five live products built end to end by Akshay Mahajan in Surat: an AI tools directory, resume builder, photo resizer and more. What broke, what I built.",
       "priority": "0.9",
       "changefreq": "monthly",
       "heading": "Five builds, all live, all still running.",
@@ -157,7 +157,7 @@
       ],
       "keywords": "web developer portfolio India, AI projects portfolio, full stack developer portfolio, web app case studies, live AI products, AI automation portfolio",
       "navLabel": "Work",
-      "lastmod": "2026-09-27",
+      "lastmod": "2026-10-19",
       "diagrams": true
     },
     {
@@ -337,8 +337,8 @@
     },
     {
       "path": "/about",
-      "title": "About Akshay Mahajan | Full-Stack & AI Web Developer, Surat",
-      "description": "Full-stack web developer in Surat, India, building websites, web apps and the AI automation that runs a business overnight. You brief me, I build it.",
+      "title": "About Akshay Mahajan | Web & AI Automation Developer, Surat",
+      "description": "Akshay Mahajan is a full-stack web developer in Surat, Gujarat, building websites, web apps and AI automation for businesses. You brief me, I build it.",
       "priority": "0.7",
       "changefreq": "monthly",
       "heading": "I'm Akshay. I'm the one who actually builds the thing.",
@@ -352,6 +352,8 @@
         "Five products live in production"
       ],
       "pageFaq": [
+        { "q": "Which Akshay Mahajan is this?", "a": "This site belongs to Akshay Mahajan, a full-stack web developer and AI automation builder based in Surat, Gujarat, India. The name is common, so look for the akshay.website domain, the Surat location and the LinkedIn profile below to be sure you have the right person." },
+        { "q": "Where can I find Akshay Mahajan online?", "a": "My work and contact details are on akshay.website. I am also on LinkedIn (linkedin.com/in/akshay-mahajan-95bb86187), Instagram (@akshay.website) and GitHub (github.com/akshaymad0608-png)." },
         { "q": "Are you available for freelance or contract work?", "a": "Yes. I take on both project-based work (fixed scope, fixed price) and monthly retainers for ongoing development, maintenance or automation. Current availability is shown when you contact me — I usually have space for one or two new projects per month." },
         { "q": "Do you work remotely?", "a": "Yes, fully remote. I work with clients across India and internationally over email, WhatsApp and video call. I am based in Surat, Gujarat, India, working IST, and am flexible for calls in other time zones." },
         { "q": "What is your response time?", "a": "I reply to new enquiries within one working day. For active projects, I respond to messages the same day during working hours. If something breaks in production and I built it, I treat it as urgent regardless of the time." },
@@ -359,7 +361,7 @@
       ],
       "keywords": "Akshay Mahajan developer, web developer Surat Gujarat, freelance developer India, AI automation engineer India, full stack developer Surat, hire developer India",
       "navLabel": "About",
-      "lastmod": "2026-09-27"
+      "lastmod": "2026-10-19"
     },
     {
       "path": "/blog",
