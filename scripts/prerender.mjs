@@ -218,9 +218,9 @@ const person = {
   name: 'Akshay Mahajan',
   url: baseUrl,
   image: `${baseUrl}/akshay-portrait.jpg`,
-  jobTitle: 'AI & Automation Engineer',
+  jobTitle: 'Full-Stack & AI Web Developer',
   description:
-    'Builds AI agents, chatbots and workflow automation for small and mid-sized businesses.',
+    'Akshay Mahajan is a full-stack web developer in Surat, Gujarat, India, who builds websites, web apps, AI agents, chatbots and workflow automation for businesses.',
   address: {
     '@type': 'PostalAddress',
     addressLocality: 'Surat',
@@ -231,6 +231,7 @@ const person = {
   sameAs: [
     'https://linkedin.com/in/akshay-mahajan-95bb86187',
     'https://instagram.com/akshay.website',
+    'https://github.com/akshaymad0608-png',
   ],
   knowsAbout: [
     'AI agents',
