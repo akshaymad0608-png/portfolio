@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useRef } from 'react';
+import { motion, useReducedMotion, useScroll, useTransform } from 'framer-motion';
 import RevealText from './ui/RevealText';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -21,9 +21,24 @@ const rise = {
   }),
 };
 
+/** Chips that hang around the portrait and bob out of step with each other. */
+const CHIPS = [
+  { label: 'React', pos: 'left-0 top-[14%]', delay: '0s' },
+  { label: 'Claude', pos: 'right-0 top-[8%]', delay: '-1.5s' },
+  { label: 'n8n', pos: 'left-[2%] bottom-[22%]', delay: '-3s' },
+  { label: 'Supabase', pos: 'right-[2%] bottom-[30%]', delay: '-4.5s' },
+];
+
 const Hero: React.FC = () => {
+  const ref = useRef<HTMLElement>(null);
+  const reduced = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
+  // The portrait drifts up slower than the page, the backing slab a little faster.
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -70]);
+  const slabY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 40]);
+
   return (
-    <section className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
+    <section ref={ref} className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
       {/* A rule across the top of the grid, drawn on load — the page setting
           its own baseline before any type lands on it. */}
@@ -120,11 +135,23 @@ const Hero: React.FC = () => {
                height that centring costs nothing. */
             className="relative mx-auto flex w-full justify-center lg:mx-0 lg:pl-4"
           >
-            <span
+            <motion.span
               aria-hidden="true"
-              className="absolute bottom-0 left-1/2 h-[72%] w-[62%] -translate-x-1/2 rounded-[4px] bg-frame"
+              style={{ y: slabY }}
+              className="absolute bottom-0 left-[19%] h-[72%] w-[62%] rounded-[4px] bg-frame"
             />
-            <img
+            {CHIPS.map((c) => (
+              <span
+                key={c.label}
+                aria-hidden="true"
+                style={{ animationDelay: c.delay }}
+                className={`float-y absolute z-10 hidden rounded-full border border-border bg-cards px-3.5 py-1.5 font-mono text-[11.5px] text-textSecondary shadow-sm sm:block ${c.pos}`}
+              >
+                {c.label}
+              </span>
+            ))}
+            <motion.img
+              style={{ y: portraitY }}
               src="/akshay-hero-777.webp"
               srcSet="/akshay-hero-480.webp 480w, /akshay-hero-777.webp 777w"
               sizes="(min-width: 1024px) 360px, 260px"
