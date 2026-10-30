@@ -5,6 +5,8 @@ import { AnimatePresence } from 'framer-motion';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 import MagneticButtons from './components/MagneticButtons';
+import AuroraBackground from './components/ui/AuroraBackground';
+import CursorGlow from './components/ui/CursorGlow';
 import { lenisRef } from './lib/lenis';
 
 // None of these three can be seen or used until after first paint — the chatbot
@@ -107,6 +109,8 @@ const App: React.FC = () => {
       {/* film grain and a soft vignette over the whole frame — cinematic texture, pointer-transparent */}
       <div aria-hidden="true" className="film-grain" />
       <MagneticButtons />
+      <AuroraBackground />
+      <CursorGlow />
 
       <NavBar />
 

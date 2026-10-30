@@ -8,9 +8,9 @@ import { useReducedMotion } from 'framer-motion';
  * for reduced-motion visitors.
  */
 const ORBS = [
-  { cls: '-left-24 top-10 h-[360px] w-[360px]', color: 'rgba(16,120,8,0.13)', depth: 18, delay: '0s' },
-  { cls: 'right-0 top-1/3 h-[300px] w-[300px]', color: 'rgba(191,227,184,0.55)', depth: -26, delay: '-2.5s' },
-  { cls: 'left-1/3 -bottom-20 h-[320px] w-[320px]', color: 'rgba(16,120,8,0.09)', depth: 34, delay: '-4.5s' },
+  { cls: '-left-24 top-10 h-[360px] w-[360px]', color: 'rgba(57,255,136,0.16)', depth: 18, delay: '0s' },
+  { cls: 'right-0 top-1/3 h-[300px] w-[300px]', color: 'rgba(139,92,246,0.30)', depth: -26, delay: '-2.5s' },
+  { cls: 'left-1/3 -bottom-20 h-[320px] w-[320px]', color: 'rgba(34,211,238,0.14)', depth: 34, delay: '-4.5s' },
 ];
 
 const AmbientOrbs: React.FC = () => {

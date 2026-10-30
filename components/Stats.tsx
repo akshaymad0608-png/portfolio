@@ -16,7 +16,7 @@ const Stats: React.FC = () => (
         {STATS.map((stat, i) => (
           <Reveal key={stat.label} delay={i * 0.08}>
             <div className="lg:border-l lg:border-border lg:pl-6">
-              <dd className="font-display text-[42px] font-bold leading-none tracking-tightest text-text md:text-5xl">
+              <dd className="font-display text-[42px] font-bold leading-none tracking-tightest md:text-5xl text-shine">
                 <Counter value={stat.value} suffix={stat.suffix} />
               </dd>
               <dt className="mt-3 text-[15px] font-medium text-text">{stat.label}</dt>

@@ -5,6 +5,8 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Marquee from './ui/Marquee';
 import AmbientOrbs from './ui/AmbientOrbs';
+import ParticleField from './ui/ParticleField';
+import RotatingWords from './ui/RotatingWords';
 import { availabilityMonth } from '../lib/availability';
 
 const STACK = [
@@ -42,6 +44,7 @@ const Hero: React.FC = () => {
     <section ref={ref} className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
       <AmbientOrbs />
+      <ParticleField />
       {/* A rule across the top of the grid, drawn on load — the page setting
           its own baseline before any type lands on it. */}
       <motion.div
@@ -72,7 +75,12 @@ const Hero: React.FC = () => {
             </h1>
 
             <motion.p custom={2} variants={rise} initial="hidden" animate="show"
-                      className="mt-7 max-w-[560px] text-lg leading-relaxed text-textSecondary md:text-xl">
+                      className="mt-6 font-mono text-[13px] uppercase tracking-[0.18em] text-textSecondary">
+              Now shipping&nbsp;&nbsp;<RotatingWords words={['websites', 'AI agents', 'automations', 'chatbots', 'web apps']} className="text-[15px] font-semibold normal-case tracking-normal" />
+            </motion.p>
+
+            <motion.p custom={2} variants={rise} initial="hidden" animate="show"
+                      className="mt-5 max-w-[560px] text-lg leading-relaxed text-textSecondary md:text-xl">
               I'm Akshay Mahajan &mdash; a full-stack developer who ships fast with LLMs. Websites, web
               apps and custom tools, plus the AI agents and automation that make them smarter.
             </motion.p>
@@ -114,7 +122,7 @@ const Hero: React.FC = () => {
                 ['2–4 wk', 'idea to launched build'],
               ].map(([n, label]) => (
                 <div key={label}>
-                  <div className="font-display text-2xl font-bold text-text">{n}</div>
+                  <div className="text-shine font-display text-2xl font-bold">{n}</div>
                   <div className="mt-0.5 text-[13px] text-muted">{label}</div>
                 </div>
               ))}

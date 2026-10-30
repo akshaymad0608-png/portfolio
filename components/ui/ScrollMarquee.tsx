@@ -58,7 +58,7 @@ const ScrollMarquee: React.FC<ScrollMarqueeProps> = ({ words, speed = -4, classN
           <div key={copy} className="flex items-center gap-8 md:gap-12">
             {row.map((w, i) => (
               <React.Fragment key={`${copy}-${i}`}>
-                <span className="font-display text-[56px] font-black uppercase leading-none tracking-tightest text-text md:text-[104px]">
+                <span className="font-display text-[56px] font-black uppercase leading-none tracking-tightest text-shine md:text-[104px]">
                   {w}
                 </span>
                 <span className="text-[28px] leading-none text-wire md:text-[44px]">&#10022;</span>
