@@ -103,6 +103,9 @@ const App: React.FC = () => {
         Skip to content
       </a>
 
+      {/* film grain and a soft vignette over the whole frame — cinematic texture, pointer-transparent */}
+      <div aria-hidden="true" className="film-grain" />
+
       <NavBar />
 
       <main id="main" className="relative z-10">
