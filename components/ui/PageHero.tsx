@@ -2,6 +2,7 @@ import React from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import Reveal from './Reveal';
 import RevealText from './RevealText';
+import AmbientOrbs from './AmbientOrbs';
 
 interface PageHeroProps {
   eyebrow: string;
@@ -17,6 +18,7 @@ const PageHero: React.FC<PageHeroProps> = ({ eyebrow, title, lead, children }) =
   return (
     <header className="relative overflow-hidden pt-32 pb-14 md:pt-40 md:pb-20">
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
+      <AmbientOrbs />
 
       <div className="container relative z-10 mx-auto max-w-shell px-6">
         <div className="max-w-3xl">

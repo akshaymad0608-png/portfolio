@@ -1,4 +1,5 @@
 import Logo from './ui/Logo';
+import ScrollMarquee from './ui/ScrollMarquee';
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ArrowUpRight, ArrowRight, Send, Check, MessageCircle, Mail } from 'lucide-react';
@@ -56,6 +57,8 @@ const Footer: React.FC = () => {
   };
 
   return (
+    <>
+    <ScrollMarquee words={["Let's build", 'Something', 'Worth shipping']} speed={3} />
     <footer className="relative overflow-hidden border-t border-border bg-panel pt-16 pb-10">
       <div className="absolute inset-0 blueprint opacity-50" aria-hidden="true" />
 
@@ -209,6 +212,7 @@ const Footer: React.FC = () => {
         </div>
       </div>
     </footer>
+    </>
   );
 };
 
