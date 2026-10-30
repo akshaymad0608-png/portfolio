@@ -20,13 +20,13 @@ const Shutters: React.FC = () =>
   createPortal(
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[90]">
       <motion.div
-        className="absolute inset-x-0 top-0 h-1/2 bg-text"
+        className="absolute inset-x-0 top-0 h-1/2 bg-[#070A12]"
         initial={{ y: '0%' }}
         animate={{ y: '-101%', transition: { duration: 0.6, delay: 0.15, ease: EASE } }}
         exit={{ y: '0%', transition: { duration: 0.35, ease: EASE } }}
       />
       <motion.div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-text"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#070A12]"
         initial={{ y: '0%' }}
         animate={{ y: '101%', transition: { duration: 0.6, delay: 0.15, ease: EASE } }}
         exit={{ y: '0%', transition: { duration: 0.35, ease: EASE } }}

@@ -342,7 +342,7 @@ const AIChatBot: React.FC = () => {
             onClick={() => { dismissNudge(); setIsOpen(true); }}
           >
             {/* Comic speech bubble whose tail points down at the robot. */}
-            <div className="relative rounded-[22px] border-2 border-text bg-white px-4 py-3 shadow-xl">
+            <div className="relative rounded-[22px] border-2 border-wire bg-cards px-4 py-3 shadow-xl shadow-wire/10">
               <p className="pr-4 text-center text-[14px] font-bold leading-snug text-text">
                 I&rsquo;m here to help you with pricing, booking a call, and more
               </p>
@@ -353,7 +353,7 @@ const AIChatBot: React.FC = () => {
               >
                 <X size={14} />
               </button>
-              <span aria-hidden className="absolute -bottom-[9px] right-9 h-4 w-4 rotate-45 border-b-2 border-r-2 border-text bg-white" />
+              <span aria-hidden className="absolute -bottom-[9px] right-9 h-4 w-4 rotate-45 border-b-2 border-r-2 border-wire bg-cards" />
             </div>
           </motion.div>
         )}

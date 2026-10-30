@@ -41,7 +41,7 @@ const CustomCursor: React.FC = () => {
           width: active ? 40 : 20,
           height: active ? 40 : 20,
           opacity: active ? 1 : 0.6,
-          borderColor: active ? '#107808' : '#107808',
+          borderColor: '#39FF88',
         }}
         transition={{ type: 'spring', stiffness: 380, damping: 26 }}
         className="-translate-x-1/2 -translate-y-1/2 rounded-full border"

@@ -11,12 +11,12 @@ const FinalCTA: React.FC = () => (
           <div className="absolute inset-0 blueprint opacity-40" aria-hidden="true" />
           <div
             className="float-y pointer-events-none absolute -bottom-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full"
-            style={{ background: 'radial-gradient(closest-side, rgba(16,120,8,0.14), transparent)' }}
+            style={{ background: 'radial-gradient(closest-side, rgba(57,255,136,0.16), transparent)' }}
             aria-hidden="true"
           />
           <div
             className="float-y pointer-events-none absolute -top-20 -right-16 h-64 w-64 rounded-full"
-            style={{ background: 'radial-gradient(closest-side, rgba(191,227,184,0.55), transparent)', animationDelay: '-3s' }}
+            style={{ background: 'radial-gradient(closest-side, rgba(139,92,246,0.32), transparent)', animationDelay: '-3s' }}
             aria-hidden="true"
           />
 
