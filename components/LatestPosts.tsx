@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
+import CardCarousel from './ui/CardCarousel';
 import { POSTS } from './BlogList';
 
 /**
@@ -34,10 +35,11 @@ const LatestPosts: React.FC = () => {
           </Reveal>
         </div>
 
-        <div className="mt-12 grid gap-4 md:grid-cols-3">
-          {latest.map((post, i) => (
-            <Reveal key={post.id} delay={i * 0.08}>
+        <div className="mt-12">
+          <CardCarousel label="Posts" fallbackClassName="grid gap-4 md:grid-cols-3">
+            {latest.map((post) => (
               <Link
+                key={post.id}
                 to={post.href as string}
                 className="panel spotlight group flex h-full flex-col p-7 transition-colors hover:border-wire/35"
               >
@@ -51,8 +53,8 @@ const LatestPosts: React.FC = () => {
                   <ArrowRight size={15} className="text-wire" />
                 </div>
               </Link>
-            </Reveal>
-          ))}
+            ))}
+          </CardCarousel>
         </div>
       </div>
     </section>
