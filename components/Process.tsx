@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { motion, useReducedMotion, useScroll, useSpring } from 'framer-motion';
 import { PROCESS_STEPS } from '../constants';
 import SectionHeading from './ui/SectionHeading';
 import Reveal from './ui/Reveal';
@@ -7,6 +7,7 @@ import Reveal from './ui/Reveal';
 /** A real sequence, so it earns its numbering — and the wire that draws through it. */
 const Process: React.FC = () => {
   const ref = useRef<HTMLDivElement>(null);
+  const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start 75%', 'end 55%'],
@@ -39,9 +40,15 @@ const Process: React.FC = () => {
               return (
                 <li key={step.id} className="relative pl-[68px] md:pl-0">
                   <Reveal delay={i * 0.08}>
-                    <span className="absolute left-0 top-0 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-ink text-wire md:relative md:mb-6">
+                    <motion.span
+                      initial={reduced ? false : { scale: 0.4, opacity: 0, rotate: -25 }}
+                      whileInView={{ scale: 1, opacity: 1, rotate: 0 }}
+                      viewport={{ once: true, margin: '-60px' }}
+                      transition={{ type: 'spring', stiffness: 260, damping: 16, delay: i * 0.12 }}
+                      className="absolute left-0 top-0 flex h-14 w-14 items-center justify-center rounded-full border border-border bg-ink text-wire md:relative md:mb-6"
+                    >
                       <Icon size={21} />
-                    </span>
+                    </motion.span>
 
                     <div className="md:pr-4">
                       <span className="font-mono text-[11px] tracking-[0.2em] text-muted">

@@ -18,7 +18,8 @@ import FinalCTA from '../components/FinalCTA';
 import LatestPosts from '../components/LatestPosts';
 import SEO from '../components/SEO';
 import PageTransition from '../components/PageTransition';
-import WireDivider from '../components/ui/WireDivider';
+import ScrollProgress from '../components/ui/ScrollProgress';
+import ScrollMarquee from '../components/ui/ScrollMarquee';
 import { PROJECTS } from '../constants';
 
 
@@ -59,11 +60,12 @@ const Home: React.FC = () => (
     <SEO
       schema={[projectsSchema, introVideoSchema]}
     />
+    <ScrollProgress />
     <Hero />
     <IntroBanner />
     <IntroVideoSection />
     <Services limit={6} />
-    <WireDivider />
+    <ScrollMarquee words={['Websites', 'AI agents', 'Automation', 'Chatbots']} />
     <Process />
     <AISystems limit={3} />
     <Playground />
@@ -73,6 +75,7 @@ const Home: React.FC = () => (
       <BuildLog />
     </Suspense>
     <Proof showMore />
+    <ScrollMarquee words={['Ship fast', 'Built solo', 'Live today']} speed={4} />
     <FAQ />
     <LatestPosts />
     <FinalCTA />

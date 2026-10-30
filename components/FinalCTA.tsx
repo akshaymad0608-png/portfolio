@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Mail, MessageCircle } from 'lucide-react';
 import Reveal from './ui/Reveal';
+import RevealText from './ui/RevealText';
 
 const FinalCTA: React.FC = () => (
   <section className="relative py-24 md:py-32">
@@ -9,8 +10,13 @@ const FinalCTA: React.FC = () => (
         <div className="panel ticked relative overflow-hidden px-7 py-14 text-center md:px-16 md:py-20">
           <div className="absolute inset-0 blueprint opacity-40" aria-hidden="true" />
           <div
-            className="pointer-events-none absolute -bottom-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full"
-            style={{ background: 'radial-gradient(closest-side, rgba(16,120,8,0.08), transparent)' }}
+            className="float-y pointer-events-none absolute -bottom-24 left-1/2 h-72 w-[700px] -translate-x-1/2 rounded-full"
+            style={{ background: 'radial-gradient(closest-side, rgba(16,120,8,0.14), transparent)' }}
+            aria-hidden="true"
+          />
+          <div
+            className="float-y pointer-events-none absolute -top-20 -right-16 h-64 w-64 rounded-full"
+            style={{ background: 'radial-gradient(closest-side, rgba(191,227,184,0.55), transparent)', animationDelay: '-3s' }}
             aria-hidden="true"
           />
 
@@ -22,7 +28,7 @@ const FinalCTA: React.FC = () => (
             </div>
 
             <h2 className="mx-auto max-w-2xl font-display text-[32px] font-bold leading-[1.06] tracking-tightest text-text md:text-[46px]">
-              Got a website or product in mind? Let's build it.
+              <RevealText>Got a website or product in mind? Let's build it.</RevealText>
             </h2>
             <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-textSecondary md:text-lg">
               Twenty minutes, no pitch. You describe what you want to build, I tell you the fastest way
@@ -34,7 +40,7 @@ const FinalCTA: React.FC = () => (
                 href="https://calendly.com/akshaymad0608"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-signal inline-flex w-full items-center justify-center gap-2 px-7 py-3.5 text-[15px] sm:w-auto"
+                className="btn-signal cta-breathe inline-flex w-full items-center justify-center gap-2 px-7 py-3.5 text-[15px] sm:w-auto"
               >
                 Book the call <ArrowRight size={17} />
               </a>
