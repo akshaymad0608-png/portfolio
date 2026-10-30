@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Pause, Play } from 'lucide-react';
 
 interface CardCarouselProps {
   children: React.ReactNode;
@@ -33,6 +33,8 @@ const CardCarousel: React.FC<CardCarouselProps> = ({
   const [maxIndex, setMaxIndex] = useState(cards.length - 1);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  // A visible stop control: moving content that starts on its own must be stoppable (WCAG 2.2.2).
+  const [stopped, setStopped] = useState(false);
 
   useEffect(() => {
     const measure = () => {
@@ -53,10 +55,10 @@ const CardCarousel: React.FC<CardCarouselProps> = ({
   const prev = useCallback(() => setIndex((i) => (i <= 0 ? maxIndex : i - 1)), [maxIndex]);
 
   useEffect(() => {
-    if (reduced || paused || !inView || maxIndex === 0) return;
+    if (reduced || stopped || paused || !inView || maxIndex === 0) return;
     const t = window.setInterval(next, AUTOPLAY_MS);
     return () => window.clearInterval(t);
-  }, [reduced, paused, inView, maxIndex, next]);
+  }, [reduced, stopped, paused, inView, maxIndex, next]);
 
   if (reduced) {
     return (
@@ -126,6 +128,15 @@ const CardCarousel: React.FC<CardCarouselProps> = ({
               />
             ))}
           </div>
+          <button
+            type="button"
+            onClick={() => setStopped((v) => !v)}
+            aria-label={stopped ? `Play ${label.toLowerCase()} autoplay` : `Pause ${label.toLowerCase()} autoplay`}
+            aria-pressed={stopped}
+            className="flex h-10 w-10 items-center justify-center border border-border text-textSecondary transition-colors hover:border-wire hover:text-wire"
+          >
+            {stopped ? <Play size={15} /> : <Pause size={15} />}
+          </button>
           <button
             type="button"
             onClick={next}

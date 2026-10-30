@@ -35,8 +35,8 @@ const Hero: React.FC = () => {
   const reduced = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end start'] });
   // The portrait drifts up slower than the page, the backing slab a little faster.
-  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -70]);
-  const slabY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 40]);
+  const portraitY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : -40]);
+  const slabY = useTransform(scrollYProgress, [0, 1], [0, reduced ? 0 : 24]);
 
   return (
     <section ref={ref} className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
