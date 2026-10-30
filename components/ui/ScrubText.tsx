@@ -8,7 +8,7 @@ interface ScrubTextProps {
 
 const Word: React.FC<{ word: string; i: number; n: number; progress: MotionValue<number> }> = ({ word, i, n, progress }) => {
   const start = (i / n) * 0.8;
-  const opacity = useTransform(progress, [start, start + 0.2], [0.16, 1]);
+  const opacity = useTransform(progress, [start, start + 0.2], [0.35, 1]);
   return (
     <motion.span style={{ opacity }} className="inline-block">
       {word}&nbsp;
