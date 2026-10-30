@@ -4,6 +4,7 @@ import RevealText from './ui/RevealText';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Marquee from './ui/Marquee';
+import AmbientOrbs from './ui/AmbientOrbs';
 import { availabilityMonth } from '../lib/availability';
 
 const STACK = [
@@ -40,6 +41,7 @@ const Hero: React.FC = () => {
   return (
     <section ref={ref} className="relative overflow-hidden pt-32 pb-16 lg:pt-40 lg:pb-24">
       <div className="absolute inset-0 blueprint blueprint-fade pointer-events-none" aria-hidden="true" />
+      <AmbientOrbs />
       {/* A rule across the top of the grid, drawn on load — the page setting
           its own baseline before any type lands on it. */}
       <motion.div

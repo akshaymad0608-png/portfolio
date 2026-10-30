@@ -1,5 +1,6 @@
 import React from 'react';
 import Reveal from './Reveal';
+import ScrubText from './ScrubText';
 
 interface SectionHeadingProps {
   eyebrow: string;
@@ -31,9 +32,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
         </h2>
       </Reveal>
       {lead && (
-        <Reveal delay={0.12}>
-          <p className="mt-5 text-textSecondary text-base md:text-lg leading-relaxed">{lead}</p>
-        </Reveal>
+        <ScrubText text={lead} className="mt-5 text-textSecondary text-base md:text-lg leading-relaxed" />
       )}
     </div>
   );
