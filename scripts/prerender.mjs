@@ -76,7 +76,7 @@ if (!template.includes('<div id="root"></div>')) {
  * annotations sit before the `=`, and `as const` is stripped because it is the
  * one piece of TypeScript that appears inside the literals themselves.
  */
-const readLiteral = (relPath, name) => {
+const readLiteral = (relPath, name, vars = {}) => {
   const src = readFileSync(join(root, relPath), 'utf8');
   // Exported where another module needs it, a plain module-level const where
   // only the page itself does. Both are readable from here.
@@ -97,7 +97,8 @@ const readLiteral = (relPath, name) => {
     else if (src[i] === closeCh && --depth === 0) { end = i + 1; break; }
   }
   if (end === -1) throw new Error(`${name} in ${relPath} is not closed`);
-  return eval(`(${src.slice(open, end).replace(/\s+as\s+const/g, '')})`);
+  const body = `return (${src.slice(open, end).replace(/\s+as\s+const/g, '')})`;
+  return new Function(...Object.keys(vars), body)(...Object.values(vars));
 };
 
 const readFaq = () => {
@@ -323,6 +324,29 @@ const breadcrumbFor = (route) => {
   return { '@type': 'BreadcrumbList', itemListElement: items };
 };
 
+
+/**
+ * A blog post's own BlogPosting markup, read from the page that renders it.
+ *
+ * It used to be handed to SEO.tsx, so it existed only after React mounted and
+ * crawlers that do not run JavaScript (GPTBot, ClaudeBot, PerplexityBot) never
+ * saw it. Emitting it here puts it in the document; the post no longer passes
+ * `schema`, so there is still exactly one copy once React takes over.
+ */
+const readPostSchema = (route) => {
+  const file = route.postFaq;
+  const src = readFileSync(join(root, file), 'utf8');
+  const published = /const PUBLISHED = '(\d{4}-\d{2}-\d{2})'/.exec(src)?.[1] ?? route.lastmod;
+  const { ['@context']: _ctx, ...schema } = readLiteral(file, 'schema', { PUBLISHED: published });
+  return { ...schema, '@id': `${baseUrl}${route.path}#article`, dateModified: route.lastmod };
+};
+
+const pageTypeFor = (route) =>
+  route.path === '/about' ? 'AboutPage'
+  : route.path === '/contact' ? 'ContactPage'
+  : route.path === '/blog' ? 'CollectionPage'
+  : 'WebPage';
+
 /* ------------------------------------------------------------------ head -- */
 
 const buildHead = (route) => {
@@ -330,6 +354,25 @@ const buildHead = (route) => {
   // A breadcrumb trail needs at least two items; the home page's would be just
   // "Home", which Google reports as an invalid BreadcrumbList.
   const graph = [person, website, service, ...(route.path === '/' ? [] : [breadcrumbFor(route)])];
+
+  // One node per page, so a reader of the markup knows what the page is, what
+  // it is part of and when its content last changed (the same date the sitemap
+  // publishes).
+  graph.push({
+    '@type': pageTypeFor(route),
+    '@id': `${url}#webpage`,
+    url,
+    name: route.title,
+    description: route.description,
+    inLanguage: 'en-IN',
+    isPartOf: { '@id': `${baseUrl}/#website` },
+    about: { '@id': `${baseUrl}/#service` },
+    dateModified: route.lastmod,
+  });
+
+  if (route.path.startsWith('/blog/') && route.postFaq) {
+    graph.push({ ...readPostSchema(route), isPartOf: { '@id': `${url}#webpage` } });
+  }
 
   // Only where the questions are actually on the page — the homepage. Marking
   // up an FAQ a visitor cannot see is what gets structured data ignored.
@@ -353,17 +396,24 @@ const buildHead = (route) => {
       '@type': 'OfferCatalog',
       '@id': `${baseUrl}${route.path}#offers`,
       name: 'Web development, AI and automation services',
-      itemListElement: TIERS.filter((t) => t.inr !== null).map((t) => ({
-        '@type': 'Offer',
-        name: t.title,
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          price: t.inr,
-          priceCurrency: 'INR',
-        },
-        availability: 'https://schema.org/InStock',
-        seller: { '@id': `${baseUrl}/#akshay` },
-      })),
+      itemListElement: TIERS.filter((t) => t.inr !== null).map((t) => {
+        // "from ₹15,000" is a floor and "₹8,000 / hour" is a rate, so neither is
+        // published as a flat price for the whole job.
+        const spec = { '@type': 'PriceSpecification', priceCurrency: 'INR' };
+        if (/^from\b/i.test(t.label)) spec.minPrice = t.inr;
+        else spec.price = t.inr;
+        const unit = /\/\s*hour/i.test(t.label) ? 'HUR' : /\/\s*month/i.test(t.label) ? 'MON' : null;
+        if (unit) {
+          spec['@type'] = 'UnitPriceSpecification';
+          spec.unitCode = unit;
+        }
+        return {
+          '@type': 'Offer',
+          name: t.title,
+          priceSpecification: spec,
+          seller: { '@id': `${baseUrl}/#akshay` },
+        };
+      }),
     });
   }
 
@@ -728,8 +778,10 @@ if (!existsSync(dist)) {
 
 for (const route of routes) {
   const html = template
-    .replace('</head>', `  ${buildHead(route)}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root">${buildBody(route)}\n    </div>`);
+    // Function replacers: a string replacement treats "$$" as one "$", which
+    // quietly turned the schema's priceRange "$$" into "$".
+    .replace('</head>', () => `  ${buildHead(route)}\n  </head>`)
+    .replace('<div id="root"></div>', () => `<div id="root">${buildBody(route)}\n    </div>`);
   const outDir = route.path === '/' ? dist : join(dist, route.path);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), html);

@@ -85,6 +85,7 @@ const ALL_POSTS: { to: string; label: string; blurb: string }[] = [
   { to: '/blog/ai-agent-that-survives-real-users', label: 'AI agent launch checklist', blurb: 'Seven decisions before real users arrive.' },
   { to: '/blog/generative-ai-in-web-development', label: 'Generative AI in web dev', blurb: 'What it speeds up and what it breaks.' },
   { to: '/blog/website-for-surat-business-local-seo', label: 'Surat local SEO checklist', blurb: 'The basics that get a local business found.' },
+  { to: '/blog/seo-aeo-geo-sxo-aio-explained', label: 'SEO, AEO, GEO, SXO, AIO', blurb: 'Five acronyms, what each one is for.' },
 ];
 
 interface PostShellProps {

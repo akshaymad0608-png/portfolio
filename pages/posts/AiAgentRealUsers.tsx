@@ -6,6 +6,7 @@ import { A, Callout, Faq, H2, LI, P, PostShell, UL } from '../../components/ui/P
 
 const PUBLISHED = '2026-10-15';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -43,7 +44,6 @@ const AiAgentRealUsers: React.FC = () => (
       title="How to Build an AI Agent That Survives Real Customers"
       description="Most agent demos work because nobody is trying to break them. A practical checklist for scope, tools, prompt injection, handoff, cost limits and testing."
       canonical="https://akshay.website/blog/ai-agent-that-survives-real-users"
-      schema={schema}
     />
 
     <PostShell

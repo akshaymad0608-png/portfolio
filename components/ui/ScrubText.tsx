@@ -30,8 +30,8 @@ const ScrubText: React.FC<ScrubTextProps> = ({ text, className = '' }) => {
 
   const words = text.split(' ');
   return (
-    <p ref={ref} className={className} aria-label={text}>
-      <span aria-hidden="true">
+    <p ref={ref} className={className}>
+      <span>
         {words.map((w, i) => (
           <Word key={i} word={w} i={i} n={words.length} progress={scrollYProgress} />
         ))}

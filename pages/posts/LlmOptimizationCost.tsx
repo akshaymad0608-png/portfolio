@@ -17,6 +17,7 @@ import FinalCTA from '../../components/FinalCTA';
 
 const PUBLISHED = '2026-08-31';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -77,7 +78,6 @@ const LlmOptimizationCost: React.FC = () => (
       title="LLM Optimization Cost for Small Businesses in India"
       description="What actually drives the cost of LLM optimization for an Indian small business: prompt engineering, fine-tuning and RAG compared, and the ongoing costs."
       canonical="https://akshay.website/blog/llm-optimization-cost-small-businesses-india"
-      schema={schema}
     />
 
     <article className="relative py-20 md:py-28">

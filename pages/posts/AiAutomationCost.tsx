@@ -20,6 +20,7 @@ import FinalCTA from '../../components/FinalCTA';
 
 const PUBLISHED = '2026-08-28';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -91,7 +92,6 @@ const AiAutomationCost: React.FC = () => (
       title="AI Workflow Automation Cost for Small Business in India"
       description="One workflow costs ₹15,000–₹60,000 to build and ₹500–₹3,000 a month to run in India. Real rupee figures, an itemised bill, and when not to bother."
       canonical="https://akshay.website/blog/ai-workflow-automation-cost-small-business"
-      schema={schema}
     />
 
     <article className="relative py-20 md:py-28">
