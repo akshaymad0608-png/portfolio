@@ -6,6 +6,7 @@ import { A, Callout, Code, Faq, H2, LI, P, PostShell, UL } from '../../component
 
 const PUBLISHED = '2026-10-15';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -43,7 +44,6 @@ const SuratWebsiteChecklist: React.FC = () => (
       title="Website for a Surat Business: A Local SEO Checklist"
       description="A local SEO checklist for a Surat business website: Google Business Profile, consistent details, reviews, a WhatsApp button, mobile speed and Gujarati pages."
       canonical="https://akshay.website/blog/website-for-surat-business-local-seo"
-      schema={schema}
     />
 
     <PostShell

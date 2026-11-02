@@ -6,6 +6,7 @@ import { A, Callout, Faq, H2, LI, P, PostShell, UL } from '../../components/ui/P
 
 const PUBLISHED = '2026-11-02';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -51,7 +52,6 @@ const SeoAeoGeoSxoAio: React.FC = () => (
       title="SEO vs AEO vs GEO vs SXO vs AIO: What's the Difference?"
       description="SEO, AEO, GEO, SXO and AIO in plain English: what each means, what it is for, what to do and how the five fit together. With a one-page checklist."
       canonical="https://akshay.website/blog/seo-aeo-geo-sxo-aio-explained"
-      schema={schema}
     />
 
     <PostShell

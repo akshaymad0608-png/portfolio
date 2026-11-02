@@ -381,6 +381,16 @@
         { "href": "/blog/website-for-surat-business-local-seo", "label": "Surat local SEO checklist" },
         { "href": "/blog/seo-aeo-geo-sxo-aio-explained", "label": "SEO, AEO, GEO, SXO, AIO" }
       ],
+      "pointsHeading": "What each post covers",
+      "points": [
+        "What AI workflow automation actually costs: ₹15,000–₹60,000 to build one workflow in India, then ₹500–₹3,000 a month.",
+        "LLM optimization cost for small businesses in India: prompt engineering, fine-tuning and RAG compared.",
+        "Automating CRM updates and email triage with n8n: classify, log and alert, node by node.",
+        "How to build an AI agent that survives real users: scope, tools, prompt injection, handoff, cost limits and testing.",
+        "What generative AI is good at in web development, and where it quietly costs you a week.",
+        "A website for a Surat business: the local SEO checklist, from Google Business Profile to Gujarati pages.",
+        "SEO vs AEO vs GEO vs SXO vs AIO: what each means, what it is for and how the five fit together."
+      ],
       "keywords": "web development blog India, AI development tips, build with LLMs, developer blog India, AI automation blog, full stack developer blog",
       "navLabel": "Blog",
       "lastmod": "2026-11-02"

@@ -45,7 +45,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 /** Holds the viewport steady while a route chunk loads, so the footer doesn't jump up. */
 const RouteFallback = () => (
-  <div className="flex min-h-[70vh] items-center justify-center" role="status" aria-label="Loading">
+  <div className="flex min-h-[100dvh] items-center justify-center" role="status" aria-label="Loading">
     <span className="h-1.5 w-1.5 rounded-full bg-wire pulse-soft" />
   </div>
 );

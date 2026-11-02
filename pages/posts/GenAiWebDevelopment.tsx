@@ -6,6 +6,7 @@ import { A, Callout, Faq, H2, H3, LI, P, PostShell, UL } from '../../components/
 
 const PUBLISHED = '2026-10-15';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -43,7 +44,6 @@ const GenAiWebDevelopment: React.FC = () => (
       title="What Generative AI Is Actually Good At in Web Development"
       description="Where generative AI saves real time in web development and where it quietly costs you a week: a practical split for anyone building or buying a website."
       canonical="https://akshay.website/blog/generative-ai-in-web-development"
-      schema={schema}
     />
 
     <PostShell

@@ -6,6 +6,7 @@ import { A, Callout, Code, Faq, H2, H3, LI, P, PostShell, UL } from '../../compo
 
 const PUBLISHED = '2026-10-15';
 
+/* Read by scripts/prerender.mjs and emitted as static JSON-LD (see readPostSchema); not passed to <SEO>, so there is one copy. */
 const schema = {
   '@context': 'https://schema.org',
   '@type': 'BlogPosting',
@@ -43,7 +44,6 @@ const N8nEmailTriage: React.FC = () => (
       title="n8n CRM and Email Triage Workflow: A Step-by-Step Build"
       description="Build an n8n workflow that reads inbound email, classifies it with an LLM, logs it to a CRM sheet and alerts you only when it matters. Nodes and pitfalls."
       canonical="https://akshay.website/blog/n8n-crm-email-triage-workflow"
-      schema={schema}
     />
 
     <PostShell
