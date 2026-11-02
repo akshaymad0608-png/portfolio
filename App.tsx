@@ -32,6 +32,7 @@ const N8nEmailTriage = lazy(() => import('./pages/posts/N8nEmailTriage'));
 const AiAgentRealUsers = lazy(() => import('./pages/posts/AiAgentRealUsers'));
 const GenAiWebDevelopment = lazy(() => import('./pages/posts/GenAiWebDevelopment'));
 const SuratWebsiteChecklist = lazy(() => import('./pages/posts/SuratWebsiteChecklist'));
+const SeoAeoGeoSxoAio = lazy(() => import('./pages/posts/SeoAeoGeoSxoAio'));
 const WebsiteDeveloperSurat = lazy(() => import('./pages/WebsiteDeveloperSurat'));
 const WhatsAppAutomation = lazy(() => import('./pages/WhatsAppAutomation'));
 const Pricing = lazy(() => import('./pages/Pricing'));
@@ -136,6 +137,7 @@ const App: React.FC = () => {
               <Route path="/blog/ai-agent-that-survives-real-users" element={<AiAgentRealUsers />} />
               <Route path="/blog/generative-ai-in-web-development" element={<GenAiWebDevelopment />} />
               <Route path="/blog/website-for-surat-business-local-seo" element={<SuratWebsiteChecklist />} />
+              <Route path="/blog/seo-aeo-geo-sxo-aio-explained" element={<SeoAeoGeoSxoAio />} />
               <Route path="/website-developer-surat" element={<WebsiteDeveloperSurat />} />
               <Route path="/whatsapp-automation-small-business" element={<WhatsAppAutomation />} />
               <Route path="/pricing" element={<Pricing />} />

@@ -353,17 +353,24 @@ const buildHead = (route) => {
       '@type': 'OfferCatalog',
       '@id': `${baseUrl}${route.path}#offers`,
       name: 'Web development, AI and automation services',
-      itemListElement: TIERS.filter((t) => t.inr !== null).map((t) => ({
-        '@type': 'Offer',
-        name: t.title,
-        priceSpecification: {
-          '@type': 'PriceSpecification',
-          price: t.inr,
-          priceCurrency: 'INR',
-        },
-        availability: 'https://schema.org/InStock',
-        seller: { '@id': `${baseUrl}/#akshay` },
-      })),
+      itemListElement: TIERS.filter((t) => t.inr !== null).map((t) => {
+        // "from ₹15,000" is a floor and "₹8,000 / hour" is a rate, so neither is
+        // published as a flat price for the whole job.
+        const spec = { '@type': 'PriceSpecification', priceCurrency: 'INR' };
+        if (/^from\b/i.test(t.label)) spec.minPrice = t.inr;
+        else spec.price = t.inr;
+        const unit = /\/\s*hour/i.test(t.label) ? 'HUR' : /\/\s*month/i.test(t.label) ? 'MON' : null;
+        if (unit) {
+          spec['@type'] = 'UnitPriceSpecification';
+          spec.unitCode = unit;
+        }
+        return {
+          '@type': 'Offer',
+          name: t.title,
+          priceSpecification: spec,
+          seller: { '@id': `${baseUrl}/#akshay` },
+        };
+      }),
     });
   }
 
@@ -728,8 +735,10 @@ if (!existsSync(dist)) {
 
 for (const route of routes) {
   const html = template
-    .replace('</head>', `  ${buildHead(route)}\n  </head>`)
-    .replace('<div id="root"></div>', `<div id="root">${buildBody(route)}\n    </div>`);
+    // Function replacers: a string replacement treats "$$" as one "$", which
+    // quietly turned the schema's priceRange "$$" into "$".
+    .replace('</head>', () => `  ${buildHead(route)}\n  </head>`)
+    .replace('<div id="root"></div>', () => `<div id="root">${buildBody(route)}\n    </div>`);
   const outDir = route.path === '/' ? dist : join(dist, route.path);
   mkdirSync(outDir, { recursive: true });
   writeFileSync(join(outDir, 'index.html'), html);

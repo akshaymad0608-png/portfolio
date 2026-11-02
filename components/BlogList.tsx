@@ -77,6 +77,15 @@ export const POSTS: Post[] = [
     readTime: '~7 min',
     href: '/blog/website-for-surat-business-local-seo',
   },
+  {
+    id: 6,
+    title: 'SEO vs AEO vs GEO vs SXO vs AIO: what is the difference?',
+    excerpt:
+      'Five acronyms in plain English: what each one means, what it is for, what to do about it and how the five fit together.',
+    category: 'Search and AI',
+    readTime: '~7 min',
+    href: '/blog/seo-aeo-geo-sxo-aio-explained',
+  },
 ];
 
 const Card: React.FC<{ post: Post }> = ({ post }) => (

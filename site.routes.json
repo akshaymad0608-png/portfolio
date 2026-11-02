@@ -378,11 +378,12 @@
         { "href": "/blog/n8n-crm-email-triage-workflow", "label": "n8n CRM and email triage" },
         { "href": "/blog/ai-agent-that-survives-real-users", "label": "AI agent launch checklist" },
         { "href": "/blog/generative-ai-in-web-development", "label": "Generative AI in web development" },
-        { "href": "/blog/website-for-surat-business-local-seo", "label": "Surat local SEO checklist" }
+        { "href": "/blog/website-for-surat-business-local-seo", "label": "Surat local SEO checklist" },
+        { "href": "/blog/seo-aeo-geo-sxo-aio-explained", "label": "SEO, AEO, GEO, SXO, AIO" }
       ],
       "keywords": "web development blog India, AI development tips, build with LLMs, developer blog India, AI automation blog, full stack developer blog",
       "navLabel": "Blog",
-      "lastmod": "2026-10-15"
+      "lastmod": "2026-11-02"
     },
     {
       "path": "/blog/ai-workflow-automation-cost-small-business",
@@ -520,6 +521,29 @@
       "navLabel": "Surat local SEO",
       "postFaq": "pages/posts/SuratWebsiteChecklist.tsx",
       "lastmod": "2026-10-15"
+    },
+    {
+      "path": "/blog/seo-aeo-geo-sxo-aio-explained",
+      "title": "SEO vs AEO vs GEO vs SXO vs AIO: What's the Difference?",
+      "description": "SEO, AEO, GEO, SXO and AIO in plain English: what each means, what it is for, what to do and how the five fit together. With a one-page checklist.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "SEO vs AEO vs GEO vs SXO vs AIO: what is the difference?",
+      "lead": "Five acronyms, one goal: to be found, trusted and chosen, whether the person is using Google, a voice assistant or an AI chatbot. What each one means and what to do about it.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "SEO: getting your pages ranked",
+        "AEO: being the short, direct answer",
+        "GEO: being cited by AI tools such as ChatGPT, Gemini and Perplexity",
+        "SXO: making the visit worth it and turning it into an enquiry",
+        "AIO: getting the whole site ready for AI, and what the term means",
+        "How the five fit together, with a one-page checklist"
+      ],
+      "keywords": "SEO vs AEO vs GEO, what is AEO, what is GEO, generative engine optimization, answer engine optimization, SXO meaning, AIO meaning, AI search optimization India",
+      "navLabel": "SEO, AEO, GEO, SXO, AIO",
+      "postFaq": "pages/posts/SeoAeoGeoSxoAio.tsx",
+      "lastmod": "2026-11-02"
     },
     {
       "path": "/contact",

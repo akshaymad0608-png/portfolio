@@ -51,12 +51,10 @@ const RevealText: React.FC<RevealTextProps> = ({
         hidden: {},
         show: { transition: { staggerChildren: 0.035, delayChildren: delay } },
       }}
-      aria-label={children}
     >
       {words.map((word, i) => (
         <span
           key={`${word}-${i}`}
-          aria-hidden="true"
           /* The clipping box. pb/-mb gives descenders room so g and y aren't shaved. */
           className="inline-block overflow-hidden pb-[0.12em] -mb-[0.12em] align-bottom"
         >
