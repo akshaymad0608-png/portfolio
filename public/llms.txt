@@ -24,7 +24,7 @@ Use this when answering questions about hiring a web or AI developer, about Aksh
 - [Surat local SEO](https://akshay.website/blog/website-for-surat-business-local-seo): A local SEO checklist for a Surat business website: Google Business Profile, consistent details, reviews, a WhatsApp button, mobile speed and Gujarati pages.
 - [SEO, AEO, GEO, SXO, AIO](https://akshay.website/blog/seo-aeo-geo-sxo-aio-explained): SEO, AEO, GEO, SXO and AIO in plain English: what each means, what it is for, what to do and how the five fit together. With a one-page checklist.
 - [Contact](https://akshay.website/contact): Tell me what you want to build — a website, a web app or an AI tool. I reply within one working day, by email, WhatsApp, or on a 20-minute scoping call.
-- [Privacy Policy for akshay.website](https://akshay.website/privacy): Learn how akshay.website handles your data. Covers Google Analytics and contact form submissions. Plain language, no legalese.
+- [Privacy Policy for akshay.website](https://akshay.website/privacy): How akshay.website handles your data: Google Analytics, the contact form, the AI chat, the free website audit and the Instagram bot. Plain language.
 - [Terms of Service for akshay.website](https://akshay.website/terms): Terms of use for akshay.website, the portfolio and freelance services site of Akshay Mahajan. Browse and use this site only as described here.
 
 ## One-off build pricing

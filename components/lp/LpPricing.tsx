@@ -52,12 +52,12 @@ const LpPricing: React.FC = () => {
                   <div className="flex items-center justify-between gap-2">
                     <p className="text-[15px] font-semibold">{pkg.title}</p>
                     {hot && (
-                      <span className="rounded-full bg-white/20 px-2.5 py-1 text-[11px] font-semibold">Popular</span>
+                      <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold text-lp-deep">Popular</span>
                     )}
                   </div>
                   <p className="mt-6 font-lp text-[54px] leading-none tracking-[-0.02em]">{amount(pkg)}</p>
-                  <p className={`mt-2 text-[13.5px] ${hot ? 'text-white/75' : 'text-lp-muted'}`}>Delivery {pkg.delivery}</p>
-                  <p className={`mt-4 text-[15px] leading-[1.6] ${hot ? 'text-white/85' : 'text-lp-body'}`}>{pkg.desc}</p>
+                  <p className={`mt-2 text-[13.5px] ${hot ? 'text-white/90' : 'text-lp-muted'}`}>Delivery {pkg.delivery}</p>
+                  <p className={`mt-4 text-[15px] leading-[1.6] ${hot ? 'text-white/95' : 'text-lp-body'}`}>{pkg.desc}</p>
 
                   <ul className="mt-6 flex-1 space-y-2.5">
                     {pkg.features.map((f) => (
@@ -68,7 +68,7 @@ const LpPricing: React.FC = () => {
                     ))}
                   </ul>
 
-                  <p className={`mt-6 text-[12.5px] leading-[1.5] ${hot ? 'text-white/70' : 'text-lp-muted'}`}>{pkg.excludes}</p>
+                  <p className={`mt-6 text-[12.5px] leading-[1.5] ${hot ? 'text-white/90' : 'text-lp-muted'}`}>{pkg.excludes}</p>
                   <Link
                     to={`/contact?service=${encodeURIComponent(pkg.service)}`}
                     className={`mt-5 inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-[15px] font-semibold transition-all hover:-translate-y-0.5 ${

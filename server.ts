@@ -100,6 +100,7 @@ async function startServer() {
         config: {
           systemInstruction: AI_SYSTEM_INSTRUCTION || 'You are Akshay Mahajan\'s AI assistant. Follow the persona.',
           temperature: 0.7,
+          maxOutputTokens: 700,
         }
       });
 

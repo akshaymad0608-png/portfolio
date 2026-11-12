@@ -10,7 +10,7 @@ const TermsOfService: React.FC = () => (
       canonical="https://akshay.website/terms"
     />
 
-    <main className="pt-32 md:pt-40 pb-24">
+    <div className="pt-32 md:pt-40 pb-24">
       <div className="container mx-auto max-w-3xl px-6">
         <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted mb-3">Legal</p>
         <h1 className="font-display text-4xl font-bold tracking-tight text-text mb-3">Terms of Service</h1>
@@ -81,9 +81,9 @@ const TermsOfService: React.FC = () => (
             <h2 className="text-xl font-semibold text-text mb-3">Contact</h2>
             <p>
               Questions?{' '}
-              <a href="/contact" className="text-wire hover:underline">Use the contact form</a> or
+              <a href="/contact" className="text-wire underline underline-offset-4">Use the contact form</a> or
               email{' '}
-              <a href="mailto:akshaymad0608@gmail.com" className="text-wire hover:underline">
+              <a href="mailto:akshaymad0608@gmail.com" className="text-wire underline underline-offset-4">
                 akshaymad0608@gmail.com
               </a>
               .
@@ -91,7 +91,7 @@ const TermsOfService: React.FC = () => (
           </section>
         </div>
       </div>
-    </main>
+    </div>
   </PageTransition>
 );
 

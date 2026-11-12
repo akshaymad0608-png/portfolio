@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, FolderOpen } from 'lucide-react';
 import { PROJECTS } from '../../constants';
-import { Reveal, SectionHead } from './ui';
+import { Reveal, SectionHead, shotProps } from './ui';
 
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
@@ -27,7 +27,7 @@ const LpWork: React.FC = () => (
             >
               <div className="aspect-[16/10] overflow-hidden bg-lp-tint">
                 <img
-                  src={p.image}
+                  {...shotProps(p.image, '(min-width: 1024px) 360px, (min-width: 768px) 50vw, 92vw')}
                   alt={`${p.title} screenshot`}
                   width={640}
                   height={400}

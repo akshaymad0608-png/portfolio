@@ -1,7 +1,7 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 import { PROCESS_STEPS } from '../../constants';
-import { Pill, Reveal } from './ui';
+import { Pill, Reveal, RevealItem } from './ui';
 
 type Msg = { from: 'client' | 'me'; text: string; time: string };
 
@@ -24,7 +24,7 @@ const Bubble: React.FC<{ m: Msg }> = ({ m }) => (
       }`}
     >
       {m.text}
-      <span className={`mt-1 block text-[10.5px] ${m.from === 'me' ? 'text-white/70' : 'text-lp-muted'}`}>{m.time}</span>
+      <span className={`mt-1 block text-[11px] ${m.from === 'me' ? 'text-white/90' : 'text-lp-muted'}`}>{m.time}</span>
     </div>
   </div>
 );
@@ -48,20 +48,18 @@ const LpHow: React.FC = () => (
           {PROCESS_STEPS.map((s, i) => {
             const Icon = s.icon;
             return (
-              <Reveal key={s.id} delay={i * 0.05}>
-                <li className="flex gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lp-tint text-lp-blue">
-                    <Icon size={19} aria-hidden="true" />
-                  </span>
-                  <div>
-                    <p className="text-[16.5px] font-semibold text-lp-ink">
-                      <span className="mr-2 text-lp-muted">{String(i + 1).padStart(2, '0')}</span>
-                      {s.title}
-                    </p>
-                    <p className="mt-0.5 text-[15px] leading-[1.6] text-lp-body">{s.description}</p>
-                  </div>
-                </li>
-              </Reveal>
+              <RevealItem key={s.id} delay={i * 0.05} className="flex gap-4">
+                <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-lp-tint text-lp-blue">
+                  <Icon size={19} aria-hidden="true" />
+                </span>
+                <div>
+                  <p className="text-[16.5px] font-semibold text-lp-ink">
+                    <span className="mr-2 text-lp-muted">{String(i + 1).padStart(2, '0')}</span>
+                    {s.title}
+                  </p>
+                  <p className="mt-0.5 text-[15px] leading-[1.6] text-lp-body">{s.description}</p>
+                </div>
+              </RevealItem>
             );
           })}
         </ol>
@@ -71,7 +69,7 @@ const LpHow: React.FC = () => (
         <div className="rounded-[28px] border border-lp-line bg-lp-tint/60 p-4 shadow-[0_40px_80px_-40px_rgba(31,91,255,0.35)] sm:p-6">
           <div className="rounded-[20px] border border-lp-line bg-white p-4 sm:p-5">
             <div className="flex items-center gap-3 border-b border-lp-line pb-4">
-              <img src="/akshay-avatar-256.webp" alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
+              <img src="/akshay-avatar-96.webp" alt="" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
               <div>
                 <p className="text-[15px] font-semibold text-lp-ink">Akshay Mahajan</p>
                 <p className="flex items-center gap-1.5 text-[12.5px] text-lp-muted">

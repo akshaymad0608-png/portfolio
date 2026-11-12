@@ -149,7 +149,7 @@ const BuildLog: React.FC = () => {
                     <dd className="mt-2 font-display text-3xl font-bold leading-none text-text">
                       {t.value === null ? <span className="text-muted">—</span> : t.value.toLocaleString()}
                     </dd>
-                    <p className="mt-1.5 font-mono text-[11px] text-muted">{t.note}</p>
+                    <dd className="mt-1.5 font-mono text-[11px] text-muted">{t.note}</dd>
                   </div>
                 );
               })}

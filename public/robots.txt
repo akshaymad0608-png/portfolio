@@ -1,52 +1,68 @@
 User-agent: *
 Allow: /
+Disallow: /promo/
 
 # Traditional search engines — explicitly welcome
 User-agent: Bingbot
 Allow: /
+Disallow: /promo/
 
 User-agent: YandexBot
 Allow: /
+Disallow: /promo/
 
 User-agent: DuckDuckBot
 Allow: /
+Disallow: /promo/
 
 User-agent: Slurp
 Allow: /
+Disallow: /promo/
 
 User-agent: Baiduspider
 Allow: /
+Disallow: /promo/
 
 # AI answer engines & crawlers are welcome (GEO/AEO)
 User-agent: GPTBot
 Allow: /
+Disallow: /promo/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /promo/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /promo/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /promo/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /promo/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /promo/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /promo/
 
 User-agent: Google-Extended
 Allow: /
+Disallow: /promo/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /promo/
 
 User-agent: CCBot
 Allow: /
+Disallow: /promo/
 
 # See /llms.txt for a structured summary for language models.
 Sitemap: https://akshay.website/sitemap.xml

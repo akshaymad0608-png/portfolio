@@ -5,6 +5,7 @@ import SkillsDashboard from '../components/SkillsDashboard';
 import Achievements from '../components/Achievements';
 import Certificates from '../components/Certificates';
 import FinalCTA from '../components/FinalCTA';
+import LpPageFaq from '../components/lp/LpPageFaq';
 import SEO from '../components/SEO';
 
 const AboutPage: React.FC = () => (
@@ -17,6 +18,7 @@ const AboutPage: React.FC = () => (
     <SkillsDashboard />
     <Achievements />
     <Certificates />
+    <LpPageFaq path="/about" />
     <FinalCTA />
   </PageTransition>
 );

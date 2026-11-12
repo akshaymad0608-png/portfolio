@@ -84,7 +84,12 @@ const InternalBuilds: React.FC = () => (
                         of putting it here is that you can read what each step
                         does.
                       */}
-                      <div className="max-h-[420px] overflow-auto border border-border bg-section">
+                      <div
+                        className="max-h-[420px] overflow-auto border border-border bg-section"
+                        tabIndex={0}
+                        role="region"
+                        aria-label={`${build.title} workflow diagram (scrollable)`}
+                      >
                         <img
                           src={build.diagram.src}
                           alt={`The ${build.title} workflow: every node and how they connect`}

@@ -40,13 +40,13 @@ export default {
         text: '#0B1220',
         textSecondary: '#3B465C',
         /* >= 4.5:1 on the page and on white cards. */
-        muted: '#667085',
+        muted: '#5A6478',
         /* Light landing page (home route only). */
         lp: {
           bg: '#F4F7FD',
           ink: '#0B1220',
           body: '#3B465C',
-          muted: '#667085',
+          muted: '#5A6478',
           line: '#E2E8F4',
           blue: '#1F5BFF',
           deep: '#1642D8',

@@ -3,7 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { PROJECTS } from '../../constants';
 import { availabilityMonth } from '../../lib/availability';
-import { Btn, CALENDLY, EMAIL, WHATSAPP } from './ui';
+import { Btn, CALENDLY, EMAIL, WHATSAPP, shotProps } from './ui';
 
 const host = (url: string) => url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 
@@ -14,10 +14,18 @@ const ProductCard: React.FC<{ p: Product; className?: string }> = ({ p, classNam
     href={p.link}
     target="_blank"
     rel="noopener noreferrer"
-    className={`group block w-[300px] overflow-hidden rounded-[22px] border border-lp-line bg-white shadow-[0_30px_60px_-28px_rgba(15,23,42,0.35)] transition-transform duration-300 hover:-translate-y-1 sm:w-[330px] ${className}`}
+    className={`group block w-[250px] overflow-hidden rounded-[22px] border border-lp-line bg-white shadow-[0_30px_60px_-28px_rgba(15,23,42,0.35)] transition-transform duration-300 hover:-translate-y-1 sm:w-[330px] ${className}`}
   >
     <div className="aspect-[16/10] w-full overflow-hidden bg-lp-tint">
-      <img src={p.image} alt={`${p.title} screenshot`} width={660} height={412} loading="eager" className="h-full w-full object-cover object-top" />
+      <img
+        {...shotProps(p.image, '(min-width: 640px) 350px, 250px')}
+        alt={`${p.title} screenshot`}
+        width={660}
+        height={412}
+        loading="eager"
+        decoding="async"
+        className="h-full w-full object-cover object-top"
+      />
     </div>
     <div className="p-4">
       <div className="flex items-center justify-between gap-2">
@@ -63,17 +71,16 @@ const LpHero: React.FC = () => {
           </span>
         </motion.div>
 
-        <motion.h1
-          {...rise(1)}
-          className="mt-7 font-lp text-[48px] font-normal leading-[1.01] tracking-[-0.03em] text-lp-ink sm:text-[68px] md:text-[88px]"
-        >
+        {/* The headline is the largest paint on the page, so it is never hidden and animated in:
+            an element that starts at opacity 0 is not painted, and the page's LCP waits for it. */}
+        <h1 className="mt-7 font-lp text-[48px] font-normal leading-[1.01] tracking-[-0.03em] text-lp-ink sm:text-[68px] md:text-[88px]">
           I build full-stack websites, <em className="italic text-lp-blue">wired with AI.</em>
-        </motion.h1>
+        </h1>
 
-        <motion.p {...rise(2)} className="mx-auto mt-6 max-w-[620px] text-[17px] leading-[1.65] text-lp-body md:text-[19px]">
+        <p className="mx-auto mt-6 max-w-[620px] text-[17px] leading-[1.65] text-lp-body md:text-[19px]">
           I'm Akshay Mahajan — a full-stack developer who ships fast with LLMs. Websites, web apps and
           custom tools, plus the AI agents and automation that make them smarter.
-        </motion.p>
+        </p>
 
         <motion.div {...rise(3)} className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Btn href={CALENDLY} arrow>Book a 20-minute call</Btn>
@@ -94,9 +101,11 @@ const LpHero: React.FC = () => {
       </div>
 
       {/* three live products, fanned and cropped by the next section */}
+      {/* Decorative on phones, where it would also become the page's largest paint and delay LCP;
+          the same cards sit in the Work section further down. */}
       <motion.div
         {...rise(5)}
-        className="lp-fade-bottom relative mx-auto mt-16 flex h-[300px] max-w-[1080px] items-start justify-center overflow-hidden px-4 md:h-[400px]"
+        className="lp-fade-bottom relative mx-auto mt-16 hidden h-[300px] max-w-[1080px] items-start justify-center overflow-hidden px-4 sm:flex md:h-[400px]"
         aria-label="Live products"
       >
         <div className="relative z-10 md:translate-x-[34px] md:-rotate-[5deg] md:translate-y-8">

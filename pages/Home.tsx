@@ -1,13 +1,5 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import LpHero from '../components/lp/LpHero';
-import LpHow from '../components/lp/LpHow';
-import LpWork from '../components/lp/LpWork';
-import LpServices from '../components/lp/LpServices';
-import LpVideo from '../components/lp/LpVideo';
-import LpPricing from '../components/lp/LpPricing';
-import LpFaq from '../components/lp/LpFaq';
-import LpPosts from '../components/lp/LpPosts';
-import LpCta from '../components/lp/LpCta';
 import { introVideoSchema } from '../components/IntroVideoSection';
 import SEO from '../components/SEO';
 import PageTransition from '../components/PageTransition';
@@ -37,18 +29,17 @@ const projectsSchema = {
  * NavBar and Footer. The FAQ is marked up in the prerendered head, built from
  * the same FAQ_DATA that LpFaq renders, so it is not emitted a second time here.
  */
+// Below-the-fold sections load as one chunk right after first paint.
+const LpBelowFold = lazy(() => import('../components/lp/LpBelowFold'));
+
 const Home: React.FC = () => (
   <PageTransition>
     <SEO schema={[projectsSchema, introVideoSchema]} />
     <LpHero />
-    <LpHow />
-    <LpWork />
-    <LpServices />
-    <LpVideo />
-    <LpPricing />
-    <LpFaq />
-    <LpPosts />
-    <LpCta />
+    {/* Holds the space the sections will fill so the footer does not jump when the chunk lands. */}
+    <Suspense fallback={<div className="min-h-[3200px]" aria-hidden="true" />}>
+      <LpBelowFold />
+    </Suspense>
   </PageTransition>
 );
 

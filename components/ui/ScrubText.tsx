@@ -8,7 +8,7 @@ interface ScrubTextProps {
 
 const Word: React.FC<{ word: string; i: number; n: number; progress: MotionValue<number> }> = ({ word, i, n, progress }) => {
   const start = (i / n) * 0.8;
-  const opacity = useTransform(progress, [start, start + 0.2], [0.35, 1]);
+  const opacity = useTransform(progress, [start, start + 0.2], [0.78, 1]);
   return (
     <motion.span style={{ opacity }} className="inline-block">
       {word}&nbsp;
@@ -18,7 +18,9 @@ const Word: React.FC<{ word: string; i: number; n: number; progress: MotionValue
 
 /**
  * A paragraph that lights up word by word as it is scrolled into view, so
- * reading speed and scroll speed are tied together. Fully legible once the
+ * reading speed and scroll speed are tied together. It starts at 78% opacity
+ * (4.5:1 contrast or better) so unread words are still legible, and is fully
+ * dark once the
  * visitor has scrolled past; plain text for reduced motion.
  */
 const ScrubText: React.FC<ScrubTextProps> = ({ text, className = '' }) => {

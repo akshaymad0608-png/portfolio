@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LpPageFaq from '../components/lp/LpPageFaq';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Clock, Check, ArrowRight, MessageCircle, Phone } from 'lucide-react';
@@ -295,6 +296,7 @@ const Contact: React.FC = () => {
           </div>
         </div>
       </div>
+      <LpPageFaq path="/contact" />
     </PageTransition>
   );
 };

@@ -19,7 +19,7 @@ const LpFaq: React.FC = () => {
           </Reveal>
           <Reveal delay={0.08}>
             <div className="mt-9 rounded-[22px] border border-lp-line bg-lp-bg p-6">
-              <img src="/akshay-avatar-256.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+              <img src="/akshay-avatar-96.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
               <p className="mt-4 text-[17px] font-semibold text-lp-ink">Something else on your mind?</p>
               <p className="mt-1 text-[14.5px] leading-[1.6] text-lp-body">
                 Ask me on WhatsApp. No pitch, no pressure, and I reply within a working day.

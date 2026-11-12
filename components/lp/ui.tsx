@@ -3,6 +3,13 @@ import { Link } from 'react-router-dom';
 import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 
+/** "/work/x.webp" (1200 px) -> props for a 640 px / 1200 px srcset. */
+export const shotProps = (src: string, sizes: string) => ({
+  src: src.replace(/\.webp$/, '-640.webp'),
+  srcSet: `${src.replace(/\.webp$/, '-640.webp')} 640w, ${src} 1200w`,
+  sizes,
+});
+
 export const CALENDLY = 'https://calendly.com/akshaymad0608';
 export const WHATSAPP = 'https://wa.me/917600885080';
 export const EMAIL = 'akshaymad0608@gmail.com';
@@ -24,6 +31,26 @@ export const Reveal: React.FC<{ children: React.ReactNode; delay?: number; class
     >
       {children}
     </motion.div>
+  );
+};
+
+/** Same reveal, but renders an <li> so it can sit directly inside a <ul>/<ol>. */
+export const RevealItem: React.FC<{ children: React.ReactNode; delay?: number; className?: string }> = ({
+  children,
+  delay = 0,
+  className,
+}) => {
+  const reduced = useReducedMotion();
+  return (
+    <motion.li
+      className={className}
+      initial={reduced ? false : { opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: '-60px' }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {children}
+    </motion.li>
   );
 };
 

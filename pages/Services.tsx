@@ -7,6 +7,7 @@ import Process from '../components/Process';
 import TechStack from '../components/TechStack';
 import Pricing from '../components/Pricing';
 import FinalCTA from '../components/FinalCTA';
+import LpPageFaq from '../components/lp/LpPageFaq';
 import SEO from '../components/SEO';
 
 const ServicesPage: React.FC = () => (
@@ -33,6 +34,7 @@ const ServicesPage: React.FC = () => (
     <Process />
     <TechStack />
     <Pricing />
+    <LpPageFaq path="/services" />
     <FinalCTA />
   </PageTransition>
 );

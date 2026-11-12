@@ -24,7 +24,7 @@ const LpNav: React.FC = () => {
         <div className="flex items-center justify-between rounded-full border border-lp-line bg-white/80 py-2 pl-2.5 pr-2 shadow-[0_6px_30px_-14px_rgba(15,23,42,0.25)] backdrop-blur-xl">
           <Link to="/" aria-label="Akshay Mahajan, home" className="flex items-center gap-2.5">
             <img
-              src="/akshay-avatar-256.webp"
+              src="/akshay-avatar-96.webp"
               alt=""
               width={34}
               height={34}
