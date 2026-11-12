@@ -8,7 +8,7 @@ export const INTRO_VIDEO = {
   duration: 'PT53S',
 };
 
-const TRANSCRIPT =
+export const TRANSCRIPT =
   "Hi, I'm Akshay, and welcome to my website! I'm a full-stack developer from Surat, India, and I build with AI. I work in English, Hindi and Gujarati. Here is what I can do for you: websites, AI chatbots, automation, and search visibility. First, websites: fast, mobile-friendly sites, usually live in one to two weeks, with a fixed written quote. Second, AI chatbots that answer customer questions from your own documents and hand over to a person when they are unsure. Third, automation: enquiries from WhatsApp or forms flow into your sheet, and you get an alert only when it matters. Fourth, search: I structure your site so Google and AI assistants can find it and recommend it. I've built and run five live products myself, and you can try every one. Ready to start? Book a free twenty minute call, or message me on WhatsApp.";
 
 /** Schema.org VideoObject for the welcome video, passed to the page's SEO block. */
