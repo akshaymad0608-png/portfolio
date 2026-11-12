@@ -42,10 +42,6 @@ const CLAIMS = [
   { file: 'components/FAQ.tsx', tier: 'Website development', label: 'website' },
   { file: 'components/FAQ.tsx', tier: 'n8n automation build', label: 'automation build' },
   { file: 'components/FAQ.tsx', tier: 'AI agent or chatbot', label: 'agent/chatbot' },
-  { file: 'components/AIChatBot.tsx', tier: 'Website development', label: 'website' },
-  { file: 'components/AIChatBot.tsx', tier: 'n8n automation build', label: 'automation build' },
-  { file: 'components/AIChatBot.tsx', tier: 'AI agent or chatbot', label: 'agent/chatbot' },
-  { file: 'components/AIChatBot.tsx', tier: 'Full product build', label: 'full build' },
 ];
 
 const problems = [];

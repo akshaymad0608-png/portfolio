@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Send, CalendarDays, MessageCircle } from 'lucide-react';
-import { HERO_CONTENT } from '../constants';
 import RobotMascot from './ui/RobotMascot';
 
 interface Message {
@@ -20,14 +19,6 @@ const SUGGESTED_QUESTIONS = [
 
 const CALENDLY = 'https://calendly.com/akshaymad0608';
 const WHATSAPP = `https://wa.me/917600885080?text=${encodeURIComponent("Hi Akshay, I was chatting on your website")}`;
-
-const RESPONSES: Record<string, string> = {
-  "What services do you offer?": "I specialize in building intelligent AI agents, custom automation workflows, and high-conversion web applications.",
-  "How much does a project cost?": "Pricing is per project. A website starts at $275 (about ₹25,000), an n8n automation build at $300, an AI agent or chatbot at $900, and a full product build at $1,800. The pricing page lists every tier in rupees or dollars. Happy to give you a precise number on WhatsApp once I know the scope.",
-  "Do you build AI Agents?": "Yes! I build autonomous AI agents using tools like LangChain, OpenAI, and custom Python/Node backends. They can handle customer support, lead generation, and complex data tasks.",
-  "What's your tech stack?": "I build robust systems using React, Next.js, Node.js, Python, and PostgreSQL. For AI, I use OpenAI/Anthropic APIs, LangChain, and Pinecone. For workflow automation, I prefer n8n and Make.com.",
-  "Do you do consulting?": "Yes! I offer strategic consulting to help businesses figure out how AI and automation can save them time and money. Schedule a call with me to explore possibilities."
-};
 
 const AIChatBot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -148,7 +139,7 @@ const AIChatBot: React.FC = () => {
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       
-      if (!reader) return;
+      if (!reader) throw new Error('Failed to send message');
 
       const aiMessageId = (Date.now() + 1).toString();
       setMessages(prev => [...prev, { id: aiMessageId, sender: 'ai', text: '' }]);
@@ -165,10 +156,11 @@ const AIChatBot: React.FC = () => {
           )
         );
       }
+      if (!accumulatedText.trim()) throw new Error('Failed to send message');
     } catch (error) {
       console.error('Chat error:', error);
       setIsTyping(false);
-      setMessages(prev => [...prev, { 
+      setMessages(prev => [...prev.filter(m => !(m.sender === 'ai' && m.text === '')), { 
         id: (Date.now() + 1).toString(), 
         sender: 'ai',
         text: error instanceof Error && error.message !== 'Failed to send message'
@@ -186,6 +178,8 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 20, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            role="dialog"
+            aria-label="Chat with Akshay's assistant"
             className="fixed bottom-24 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[360px] max-h-[78vh] sm:max-h-[520px] panel ticked shadow-2xl z-[100] flex flex-col overflow-hidden"
           >
             {/* Header */}
@@ -206,6 +200,7 @@ const AIChatBot: React.FC = () => {
               </div>
               <button 
                 onClick={() => setIsOpen(false)}
+                aria-label="Close the chat"
                 className="text-textSecondary hover:text-text transition-colors p-1"
               >
                 <X size={18} />
@@ -218,7 +213,7 @@ const AIChatBot: React.FC = () => {
                 href={CALENDLY}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-full bg-wire px-3 py-1.5 text-[12px] font-semibold text-ink"
+                className="inline-flex items-center gap-1.5 rounded-full bg-wire px-3 py-1.5 text-[12px] font-semibold text-white"
               >
                 <CalendarDays size={13} /> Book a call
               </a>
@@ -233,12 +228,12 @@ const AIChatBot: React.FC = () => {
             </div>
 
             {/* Messages Area */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[250px] bg-ink">
+            <div className="flex-1 overflow-y-auto p-4 space-y-3 min-h-[250px] bg-ink" role="log" aria-live="polite" aria-label="Conversation">
               {messages.map(msg => (
                 <div key={msg.id} className={`flex ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`max-w-[85%] p-3 rounded-2xl text-sm ${
                     msg.sender === 'user' 
-                      ? 'bg-wire text-ink font-medium rounded-br-sm' 
+                      ? 'bg-wire text-white font-medium rounded-br-sm' 
                       : 'bg-cards border border-border text-text rounded-bl-sm'
                   }`}>
                     {msg.text}
@@ -315,12 +310,14 @@ const AIChatBot: React.FC = () => {
                   type="text"
                   value={inputValue}
                   onChange={(e) => setInputValue(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleSend(inputValue)}
+                  onKeyDown={(e) => { if (e.key === 'Enter' && !isTyping) handleSend(inputValue); }}
+                  aria-label="Type your question"
                   placeholder="Ask in English, Hindi or Gujarati"
                   className="w-full bg-ink border border-border rounded-full pl-4 pr-12 py-3 text-sm text-text placeholder-muted focus:outline-none focus:border-wire/50 transition-colors font-sans"
                 />
                 <button
                   onClick={() => handleSend(inputValue)}
+                  aria-label="Send message"
                   disabled={!inputValue.trim() || isTyping}
                   className="absolute right-2 p-2 text-wire disabled:text-muted hover:bg-wire/10 rounded-full transition-colors"
                 >
@@ -382,7 +379,7 @@ const AIChatBot: React.FC = () => {
             : 'bottom-2 right-2 sm:right-4 h-[104px] w-[86px]'
         }`}
       >
-        {isOpen ? <X className="text-ink" size={22} /> : <RobotMascot className="h-full w-full drop-shadow-lg" />}
+        {isOpen ? <X className="text-white" size={22} /> : <RobotMascot className="h-full w-full drop-shadow-lg" />}
       </motion.button>
     </>
   );

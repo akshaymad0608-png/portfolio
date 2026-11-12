@@ -23,7 +23,13 @@ export const config = { runtime: 'edge' };
 
 const MAX_MESSAGES = 20;
 const MAX_CHARS = 1000;
-const MAX_OUTPUT_TOKENS = 700;
+const MAX_OUTPUT_TOKENS = 1200;
+// Google retires Gemini models on a schedule (2.5 Flash is listed for October 2026),
+// so a hard-coded name eventually turns the chat into a 404. Try the owner's choice
+// (GEMINI_MODEL in Vercel), then the rolling alias, then the model this shipped with.
+const MODELS = [process.env.GEMINI_MODEL, 'gemini-flash-latest', 'gemini-2.5-flash'].filter(
+  (m, i, all): m is string => !!m && all.indexOf(m) === i,
+);
 const WINDOW_MS = 15 * 60 * 1000;
 const MAX_PER_WINDOW = 50;
 const hits = new Map<string, number[]>();
@@ -101,17 +107,36 @@ export default async function handler(req: Request): Promise<Response> {
     }))
     .filter((m) => m.parts[0].text.length > 0);
 
+  // Gemini wants the conversation to open with the visitor, not the bot's greeting.
+  while (contents.length > 0 && contents[0].role !== 'user') contents.shift();
+
   if (contents.length === 0) {
     return Response.json({ error: 'Nothing to send.' }, { status: 400 });
   }
 
   try {
     const ai = new GoogleGenAI({ apiKey });
-    const stream = await ai.models.generateContentStream({
-      model: 'gemini-2.5-flash',
-      contents,
-      config: { systemInstruction: AI_SYSTEM_INSTRUCTION, temperature: 0.7, maxOutputTokens: MAX_OUTPUT_TOKENS },
-    });
+    let stream: Awaited<ReturnType<typeof ai.models.generateContentStream>> | null = null;
+    for (const model of MODELS) {
+      try {
+        stream = await ai.models.generateContentStream({
+          model,
+          contents,
+          config: {
+            systemInstruction: AI_SYSTEM_INSTRUCTION,
+            temperature: 0.7,
+            maxOutputTokens: MAX_OUTPUT_TOKENS,
+            // 2.5 models count hidden thinking against the output cap and can
+            // return an empty answer; this is a short Q&A bot, so skip it.
+            ...(model.includes('2.5') ? { thinkingConfig: { thinkingBudget: 0 } } : {}),
+          },
+        });
+        break;
+      } catch (err) {
+        console.error(`chat: model ${model} failed`, err instanceof Error ? err.message : err);
+      }
+    }
+    if (!stream) throw new Error('no model available');
 
     const encoder = new TextEncoder();
     const body = new ReadableStream({
