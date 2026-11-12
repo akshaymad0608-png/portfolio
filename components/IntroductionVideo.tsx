@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { PlayCircle, VideoOff, Loader2 } from 'lucide-react';
 
@@ -30,6 +30,17 @@ const IntroductionVideo: React.FC<IntroductionVideoProps> = ({
 
   const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
   const [isPlaying, setIsPlaying] = useState(variant === 'background');
+
+  // With preload="metadata" the browser never fires `canplay` until playback is
+  // requested, so waiting for it left the spinner up forever and the Play button
+  // hidden. Metadata is enough to offer Play. The event can also fire before React
+  // hydrates the prerendered page, so check the element's state on mount too.
+  useEffect(() => {
+    const v = videoRef.current;
+    if (!v) return;
+    if (v.error) setStatus('error');
+    else if (v.readyState >= 1) setStatus('ready');
+  }, []);
 
   const handlePlay = () => {
     setIsPlaying(true);
@@ -68,7 +79,8 @@ const IntroductionVideo: React.FC<IntroductionVideoProps> = ({
             playsInline
             controls={variant === 'player' && isPlaying}
             preload="metadata"
-            onCanPlay={() => setStatus('ready')}
+            onLoadedMetadata={() => setStatus((s) => (s === 'error' ? s : 'ready'))}
+            onCanPlay={() => setStatus((s) => (s === 'error' ? s : 'ready'))}
             onError={() => setStatus('error')}
           />
 
