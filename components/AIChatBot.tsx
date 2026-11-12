@@ -338,6 +338,8 @@ const AIChatBot: React.FC = () => {
             initial={{ opacity: 0, y: 10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 10, scale: 0.9 }}
+            role="complementary"
+            aria-label="Chat assistant tip"
             className="fixed bottom-[112px] right-3 sm:right-5 z-[90] max-w-[250px] cursor-pointer"
             onClick={() => { dismissNudge(); setIsOpen(true); }}
           >

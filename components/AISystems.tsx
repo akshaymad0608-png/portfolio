@@ -79,9 +79,9 @@ const AISystems: React.FC<AISystemsProps> = ({ limit, detailed = false, heading 
                       </div>
                     </div>
 
-                    <h3 className="font-display text-2xl font-bold text-text md:text-[28px]">
+                    <h2 className="font-display text-2xl font-bold text-text md:text-[28px]">
                       {project.title}
-                    </h3>
+                    </h2>
 
                     <dl className="mt-6 space-y-4 border-t border-border pt-6">
                       <div className="grid gap-1 sm:grid-cols-[88px_1fr] sm:gap-4">

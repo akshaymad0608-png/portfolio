@@ -29,7 +29,7 @@ const Achievements: React.FC = () => (
           <li key={i} className="bg-panel">
             <Reveal delay={(i % 2) * 0.06}>
               <div className="group flex h-full gap-5 p-7 transition-colors hover:bg-cards">
-                <span className="font-mono text-[12px] text-wire/70 transition-colors group-hover:text-wire">
+                <span className="font-mono text-[12px] text-wire transition-colors group-hover:text-wire">
                   {String(i + 1).padStart(2, '0')}
                 </span>
                 <p className="text-[15px] leading-relaxed text-textSecondary transition-colors group-hover:text-text">

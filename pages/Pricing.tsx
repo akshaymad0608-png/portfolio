@@ -5,6 +5,7 @@ import Pricing from '../components/Pricing';
 import ROICalculator from '../components/ROICalculator';
 import FAQ from '../components/FAQ';
 import FinalCTA from '../components/FinalCTA';
+import LpPageFaq from '../components/lp/LpPageFaq';
 import SEO from '../components/SEO';
 
 const PricingPage: React.FC = () => (
@@ -18,6 +19,7 @@ const PricingPage: React.FC = () => (
     <Pricing />
     <ROICalculator />
     <FAQ />
+    <LpPageFaq path="/pricing" />
     <FinalCTA />
   </PageTransition>
 );

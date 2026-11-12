@@ -7,6 +7,7 @@ import BuildLog from '../components/BuildLog';
 import InternalBuilds from '../components/InternalBuilds';
 import AINewsFeed from '../components/AINewsFeed';
 import FinalCTA from '../components/FinalCTA';
+import LpPageFaq from '../components/lp/LpPageFaq';
 import SEO from '../components/SEO';
 import { PROJECTS, INTERNAL_BUILDS } from '../constants';
 
@@ -72,6 +73,7 @@ const Work: React.FC = () => (
     <InternalBuilds />
     <AINewsFeed />
     <BuildLog />
+    <LpPageFaq path="/work" />
     <FinalCTA />
   </PageTransition>
 );

@@ -9,6 +9,7 @@ import PageHero from '../components/ui/PageHero';
 import SectionHeading from '../components/ui/SectionHeading';
 import Reveal from '../components/ui/Reveal';
 import FinalCTA from '../components/FinalCTA';
+import LpPageFaq from '../components/lp/LpPageFaq';
 import SEO from '../components/SEO';
 
 /* ------------------------------------------------------------------ data --- */
@@ -465,6 +466,7 @@ const AIGuide: React.FC = () => (
     </section>
 
     {/* CTA ------------------------------------------------------------------- */}
+    <LpPageFaq path="/ai-guide" />
     <FinalCTA />
   </PageTransition>
 );

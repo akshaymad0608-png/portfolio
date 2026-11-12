@@ -58,7 +58,7 @@ const LpFooter: React.FC = () => {
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
-              <img src="/akshay-avatar-256.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
+              <img src="/akshay-avatar-96.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
               <div>
                 <p className="text-[17px] font-semibold text-lp-ink">Akshay Mahajan</p>
                 <p className="text-[13px] text-lp-muted">Full-stack &amp; AI web developer, Surat</p>

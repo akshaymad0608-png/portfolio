@@ -14,14 +14,13 @@ const Stats: React.FC = () => (
     <div className="container mx-auto max-w-shell px-6">
       <dl className="grid gap-y-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-x-8">
         {STATS.map((stat, i) => (
-          <Reveal key={stat.label} delay={i * 0.08}>
-            <div className="lg:border-l lg:border-border lg:pl-6">
-              <dd className="font-display text-[42px] font-bold leading-none tracking-tightest md:text-5xl text-shine">
-                <Counter value={stat.value} suffix={stat.suffix} />
-              </dd>
-              <dt className="mt-3 text-[15px] font-medium text-text">{stat.label}</dt>
-              <p className="mt-1 font-mono text-[11.5px] text-muted">{stat.note}</p>
-            </div>
+          <Reveal key={stat.label} delay={i * 0.08} className="flex flex-col lg:border-l lg:border-border lg:pl-6">
+            {/* dl > div > dt + dd, as the HTML spec wants; the order classes keep the number on top */}
+            <dt className="order-2 mt-3 text-[15px] font-medium text-text">{stat.label}</dt>
+            <dd className="order-1 font-display text-[42px] font-bold leading-none tracking-tightest md:text-5xl text-shine">
+              <Counter value={stat.value} suffix={stat.suffix} />
+            </dd>
+            <dd className="order-3 mt-1 font-mono text-[11.5px] text-muted">{stat.note}</dd>
           </Reveal>
         ))}
       </dl>

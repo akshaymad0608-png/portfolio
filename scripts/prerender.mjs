@@ -251,7 +251,7 @@ const website = {
   url: baseUrl,
   name: siteName,
   publisher: { '@id': `${baseUrl}/#akshay` },
-  inLanguage: 'en',
+  inLanguage: 'en-IN',
 };
 
 const service = {
@@ -517,14 +517,15 @@ const buildHead = (route) => {
     `<meta ${rh} property="og:url" content="${url}" />`,
     `<meta ${rh} property="og:title" content="${esc(route.title)}" />`,
     `<meta ${rh} property="og:description" content="${esc(route.description)}" />`,
-    `<meta ${rh} property="og:image" content="${baseUrl}${ogImage}" />`,
-    `<meta ${rh} property="og:image:width" content="1672" />`,
-    `<meta ${rh} property="og:image:height" content="941" />`,
-    `<meta ${rh} property="og:image:alt" content="Akshay Mahajan — AI agents, chatbots and automation" />`,
+    `<meta ${rh} property="og:image" content="${baseUrl}${route.ogImage || ogImage}" />`,
+    // Per-page images (public/og/, made by scripts/gen-og-images.cjs) are 1200x630; the shared portrait is 1672x941.
+    `<meta ${rh} property="og:image:width" content="${route.ogImage ? 1200 : 1672}" />`,
+    `<meta ${rh} property="og:image:height" content="${route.ogImage ? 630 : 941}" />`,
+    `<meta ${rh} property="og:image:alt" content="${route.ogImage ? esc(route.title.split('|')[0].trim()) : 'Akshay Mahajan — AI agents, chatbots and automation'}" />`,
     `<meta ${rh} name="twitter:card" content="summary_large_image" />`,
     `<meta ${rh} name="twitter:title" content="${esc(route.title)}" />`,
     `<meta ${rh} name="twitter:description" content="${esc(route.description)}" />`,
-    `<meta ${rh} name="twitter:image" content="${baseUrl}${ogImage}" />`,
+    `<meta ${rh} name="twitter:image" content="${baseUrl}${route.ogImage || ogImage}" />`,
     `<script type="application/ld+json">${JSON.stringify({
       '@context': 'https://schema.org',
       '@graph': graph,
