@@ -125,8 +125,8 @@ const BuildLog: React.FC = () => {
                 <div className="min-w-[680px]">
                   <GitHubCalendar
                     username={GITHUB_USER}
-                    colorScheme="dark"
-                    theme={{ dark: ['#141A2B', '#0E4429', '#16803C', '#2BC95F', '#39FF88'] }}
+                    colorScheme="light"
+                    theme={{ light: ['#E6ECF7', '#BFD0FF', '#86A8FF', '#4A7BFF', '#1F5BFF'] }}
                     fontSize={12}
                     blockSize={11}
                     blockMargin={3}

@@ -4,25 +4,25 @@
 @tailwind utilities;
 
 /**
- * Dark stage.
+ * Light theme.
  *
- * Near-black ink, hairline rules, a neon green accent with violet and cyan as
- * supporting light. The page is alive: an aurora drifts behind everything,
- * cards carry a travelling light border, buttons shine, headings shimmer.
- * Every moving layer is switched off for visitors who ask for reduced motion.
+ * A pale blue-white page, white cards, hairline rules and one blue accent,
+ * with violet and cyan as supporting colour. Cards carry a travelling light
+ * border on hover and buttons shine. Every moving layer is switched off for
+ * visitors who ask for reduced motion.
  */
 
 :root {
-  --ink: #05070D;        /* page */
-  --panel: #0A0E18;      /* sections & cards */
-  --cards: #0E1322;
-  --frame: #10162A;
-  --wire: #39FF88;       /* the main accent */
-  --signal: #39FF88;
-  --violet: #8B5CF6;
-  --cyan: #22D3EE;
-  --line: rgba(255, 255, 255, 0.10);
-  --line-strong: rgba(255, 255, 255, 0.24);
+  --ink: #F4F7FD;        /* page */
+  --panel: #FFFFFF;      /* sections & cards */
+  --cards: #FFFFFF;
+  --frame: #EEF3FF;
+  --wire: #1F5BFF;       /* the main accent */
+  --signal: #1F5BFF;
+  --violet: #7C3AED;
+  --cyan: #0891B2;
+  --line: rgba(15, 23, 42, 0.10);
+  --line-strong: rgba(15, 23, 42, 0.22);
 }
 
 @layer base {
@@ -32,7 +32,7 @@
     min-height: 100vh;
     position: relative;
     background-color: var(--ink);
-    color: #F3F6FB;
+    color: #0B1220;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
   }
@@ -61,7 +61,7 @@
     letter-spacing: inherit;
   }
 
-  ::selection { background: #39FF88; color: #05070D; }
+  ::selection { background: #1F5BFF; color: #fff; }
 
   :focus-visible {
     outline: 2px solid var(--wire);
@@ -70,17 +70,17 @@
   }
 
   ::-webkit-scrollbar { width: 10px; height: 10px; }
-  ::-webkit-scrollbar-track { background: #05070D; }
-  ::-webkit-scrollbar-thumb { background: #2A3350; border: 3px solid #05070D; }
-  ::-webkit-scrollbar-thumb:hover { background: #6E6E6E; }
+  ::-webkit-scrollbar-track { background: #F4F7FD; }
+  ::-webkit-scrollbar-thumb { background: #C5CEE0; border: 3px solid #F4F7FD; }
+  ::-webkit-scrollbar-thumb:hover { background: #A9B5CD; }
 }
 
 @layer components {
   /* The grid is the design. Kept crisp rather than faded. */
   .blueprint {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+      linear-gradient(rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
     background-size: 64px 64px;
   }
   .blueprint-fade {
@@ -88,18 +88,19 @@
     mask-image: linear-gradient(180deg, #000 0%, transparent 90%);
   }
 
-  /* No shadow, no radius to speak of — a ruled box. */
+  /* A white card with a hairline border and a soft shadow. */
   .panel {
     background: var(--panel);
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: 20px;
+    box-shadow: 0 1px 0 rgba(15, 23, 42, 0.03);
   }
   .glass-effect, .glass-card {
-    background: rgba(14, 19, 34, 0.72);
+    background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     border: 1px solid var(--line);
-    border-radius: 4px;
+    border-radius: 20px;
   }
 
   /* Register marks, as on a print sheet. */
@@ -120,11 +121,11 @@
   }
   .text-gradient {
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    background-image: linear-gradient(100deg, #39FF88 0%, #22D3EE 100%);
+    background-image: linear-gradient(100deg, #1F5BFF 0%, #7C3AED 100%);
   }
   /* Shimmering headline accent: a light band sweeps across gradient text. */
   .text-shine {
-    background-image: linear-gradient(100deg, #39FF88 0%, #22D3EE 35%, #8B5CF6 55%, #22D3EE 75%, #39FF88 100%);
+    background-image: linear-gradient(100deg, #1F5BFF 0%, #0891B2 35%, #7C3AED 55%, #0891B2 75%, #1F5BFF 100%);
     background-size: 250% 100%;
     background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     animation: shine-x 6s linear infinite;
@@ -133,13 +134,14 @@
   .btn-signal {
     position: relative; overflow: hidden;
     background: var(--signal);
-    color: #04120A;
-    font-weight: 700;
-    border-radius: 2px;
+    color: #FFFFFF;
+    font-weight: 600;
+    border-radius: 999px;
+    box-shadow: 0 10px 28px -12px rgba(31, 91, 255, 0.7);
     border: 1px solid var(--signal);
     transition: background .15s ease, border-color .15s ease, color .15s ease;
   }
-  .btn-signal:hover { background: #22C96B; border-color: #22C96B; }
+  .btn-signal:hover { background: #1642D8; border-color: #1642D8; }
   /* a band of light sweeps across on hover */
   .btn-signal::after {
     content: ''; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%;
@@ -150,13 +152,13 @@
 
   .btn-ghost {
     border: 1px solid var(--line-strong);
-    color: #F3F6FB;
-    border-radius: 2px;
-    background: rgba(255, 255, 255, 0.03);
+    color: #0B1220;
+    border-radius: 999px;
+    background: #FFFFFF;
     font-weight: 600;
     transition: border-color .15s ease, background .15s ease, color .15s ease;
   }
-  .btn-ghost:hover { border-color: #39FF88; background: rgba(57, 255, 136, 0.10); color: #39FF88; }
+  .btn-ghost:hover { border-color: #1F5BFF; background: #E8EFFF; color: #1F5BFF; }
 
   /* Hover fills the rule rather than washing the surface. */
   .spotlight { position: relative; overflow: hidden; transition: border-color .15s ease; }
@@ -171,7 +173,7 @@
   @property --ang { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
   .spotlight::before {
     content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none;
-    background: conic-gradient(from var(--ang), transparent 0 62%, #39FF88 78%, #22D3EE 88%, #8B5CF6 94%, transparent 100%);
+    background: conic-gradient(from var(--ang), transparent 0 62%, #1F5BFF 78%, #0891B2 88%, #7C3AED 94%, transparent 100%);
     -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
     -webkit-mask-composite: xor; mask-composite: exclude;
     opacity: 0; transition: opacity .3s ease;
@@ -217,7 +219,7 @@
   .btn-signal, .btn-ghost { transition-property: color, background-color, border-color, scale; }
   .btn-signal:active, .btn-ghost:active { scale: .97; }
 
-  @keyframes cta-breathe { 0%,100% { box-shadow: 0 0 0 0 rgba(57,255,136,.45); } 60% { box-shadow: 0 0 0 14px rgba(57,255,136,0); } }
+  @keyframes cta-breathe { 0%,100% { box-shadow: 0 0 0 0 rgba(31,91,255,.40); } 60% { box-shadow: 0 0 0 14px rgba(31,91,255,0); } }
   @keyframes shine-x { to { background-position: -250% 0; } }
   @keyframes btn-sweep { to { left: 130%; } }
   @keyframes spin-ang { to { --ang: 360deg; } }
@@ -280,17 +282,16 @@
   }
 }
 
-/**
- * Light landing page (home route only).
- * theme-init.js adds .lp-light to <html> before first paint on "/", and App
- * keeps it in step with the route, so the page background and scrollbars
- * match and there is no dark flash behind the light sections.
- */
-html.lp-light, html.lp-light body { background-color: #F4F7FD; color: #0B1220; }
-html.lp-light ::selection { background: #1F5BFF; color: #fff; }
-html.lp-light :focus-visible { outline-color: #1F5BFF; }
-html.lp-light ::-webkit-scrollbar-track { background: #F4F7FD; }
-html.lp-light ::-webkit-scrollbar-thumb { background: #C5CEE0; border: 3px solid #F4F7FD; }
+/* Serif display face for page headings. Instrument Serif has a single weight, so
+   the bold utility classes are overridden here rather than left to be faked. */
+h1.font-display, h2.font-display {
+  font-family: 'Instrument Serif', Georgia, 'Times New Roman', serif;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  /* Instrument Serif has a small x-height; scale it up to sit level with the sans body text. */
+  font-size-adjust: 0.52;
+}
 
 .lp-grid-bg {
   background-image:

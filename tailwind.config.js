@@ -12,33 +12,35 @@ export default {
   theme: {
     extend: {
       /**
-       * Dark stage. Near-black ink, hairline rules, a neon green as the main
-       * accent with violet and cyan as supporting light for gradients and glows.
+       * Light theme. A pale blue-white page, white cards, hairline rules and one
+       * blue accent, with violet and cyan as supporting colour for gradients.
+       * `ink` is the page colour (it is also the text colour used on top of the
+       * blue accent, where it reads as near-white).
        */
       colors: {
-        ink: '#05070D',
-        background: '#05070D',
-        panel: '#0A0E18',
-        section: '#080B14',
-        cards: '#0E1322',
-        raised: '#121829',
-        frame: '#10162A',
-        wire: '#39FF88',
-        wireDim: '#0F3D25',
-        signal: '#39FF88',
-        signalDim: '#22C96B',
-        primary: '#39FF88',
-        secondary: '#F3F6FB',
-        accent: '#39FF88',
-        success: '#39FF88',
-        violet: '#8B5CF6',
-        cyan: '#22D3EE',
-        glass: 'rgba(5, 7, 13, 0.72)',
-        border: 'rgba(255, 255, 255, 0.10)',
-        text: '#F3F6FB',
-        textSecondary: '#A9B1C4',
-        /* >= 4.5:1 on the page and on the raised surfaces. */
-        muted: '#8C95AB',
+        ink: '#F4F7FD',
+        background: '#F4F7FD',
+        panel: '#FFFFFF',
+        section: '#FFFFFF',
+        cards: '#FFFFFF',
+        raised: '#F8FAFF',
+        frame: '#EEF3FF',
+        wire: '#1F5BFF',
+        wireDim: '#E8EFFF',
+        signal: '#1F5BFF',
+        signalDim: '#1642D8',
+        primary: '#1F5BFF',
+        secondary: '#0B1220',
+        accent: '#1F5BFF',
+        success: '#059669',
+        violet: '#7C3AED',
+        cyan: '#0891B2',
+        glass: 'rgba(255, 255, 255, 0.80)',
+        border: 'rgba(15, 23, 42, 0.10)',
+        text: '#0B1220',
+        textSecondary: '#3B465C',
+        /* >= 4.5:1 on the page and on white cards. */
+        muted: '#667085',
         /* Light landing page (home route only). */
         lp: {
           bg: '#F4F7FD',
@@ -65,7 +67,7 @@ export default {
       letterSpacing: { tightest: '-0.04em' },
       maxWidth: { shell: '1240px' },
       spacing: { 13: '3.25rem' },
-      borderRadius: { xl: '4px', '2xl': '4px', '3xl': '6px' },
+      borderRadius: { xl: '14px', '2xl': '20px', '3xl': '26px' },
     },
   },
   plugins: [],

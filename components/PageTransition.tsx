@@ -20,13 +20,13 @@ const Shutters: React.FC = () =>
   createPortal(
     <div aria-hidden="true" className="pointer-events-none fixed inset-0 z-[90]">
       <motion.div
-        className="absolute inset-x-0 top-0 h-1/2 bg-[#070A12]"
+        className="absolute inset-x-0 top-0 h-1/2 bg-[#EAF0FF]"
         initial={{ y: '0%' }}
         animate={{ y: '-101%', transition: { duration: 0.6, delay: 0.15, ease: EASE } }}
         exit={{ y: '0%', transition: { duration: 0.35, ease: EASE } }}
       />
       <motion.div
-        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#070A12]"
+        className="absolute inset-x-0 bottom-0 h-1/2 bg-[#EAF0FF]"
         initial={{ y: '0%' }}
         animate={{ y: '101%', transition: { duration: 0.6, delay: 0.15, ease: EASE } }}
         exit={{ y: '0%', transition: { duration: 0.35, ease: EASE } }}
@@ -44,8 +44,8 @@ const Shutters: React.FC = () =>
         animate={{ opacity: 0, transition: { duration: 0.2, delay: 0.05 } }}
         exit={{ opacity: 1, transition: { duration: 0.2, delay: 0.1 } }}
       >
-        <span className="font-display text-2xl font-bold tracking-tightest text-white md:text-4xl">
-          akshay<span className="font-mono text-[0.55em] font-normal text-wireDim">.website</span>
+        <span className="font-display text-2xl font-bold tracking-tightest text-text md:text-4xl">
+          akshay<span className="font-mono text-[0.55em] font-normal text-muted">.website</span>
         </span>
       </motion.div>
     </div>,
