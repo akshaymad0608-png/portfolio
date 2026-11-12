@@ -62,7 +62,7 @@
   </url>
   <url>
     <loc>https://akshay.website/blog</loc>
-    <lastmod>2026-11-02</lastmod>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>
@@ -105,6 +105,24 @@
   <url>
     <loc>https://akshay.website/blog/seo-aeo-geo-sxo-aio-explained</loc>
     <lastmod>2026-11-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/website-cost-india-small-business</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/whatsapp-enquiries-to-google-sheets-n8n</loc>
+    <lastmod>2026-11-12</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://akshay.website/blog/ai-chatbot-for-small-business-website</loc>
+    <lastmod>2026-11-12</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.8</priority>
   </url>

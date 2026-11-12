@@ -396,7 +396,10 @@
         { "href": "/blog/ai-agent-that-survives-real-users", "label": "AI agent launch checklist" },
         { "href": "/blog/generative-ai-in-web-development", "label": "Generative AI in web development" },
         { "href": "/blog/website-for-surat-business-local-seo", "label": "Surat local SEO checklist" },
-        { "href": "/blog/seo-aeo-geo-sxo-aio-explained", "label": "SEO, AEO, GEO, SXO, AIO" }
+        { "href": "/blog/seo-aeo-geo-sxo-aio-explained", "label": "SEO, AEO, GEO, SXO, AIO" },
+        { "href": "/blog/website-cost-india-small-business", "label": "Website cost in India" },
+        { "href": "/blog/whatsapp-enquiries-to-google-sheets-n8n", "label": "WhatsApp enquiries to Sheets" },
+        { "href": "/blog/ai-chatbot-for-small-business-website", "label": "AI chatbot for your website" }
       ],
       "pointsHeading": "What each post covers",
       "points": [
@@ -406,11 +409,14 @@
         "How to build an AI agent that survives real users: scope, tools, prompt injection, handoff, cost limits and testing.",
         "What generative AI is good at in web development, and where it quietly costs you a week.",
         "A website for a Surat business: the local SEO checklist, from Google Business Profile to Gujarati pages.",
-        "SEO vs AEO vs GEO vs SXO vs AIO: what each means, what it is for and how the five fit together."
+        "SEO vs AEO vs GEO vs SXO vs AIO: what each means, what it is for and how the five fit together.",
+        "What a website costs in India in 2026, with real starting prices and the costs after launch.",
+        "How to log WhatsApp enquiries into Google Sheets automatically with n8n, step by step.",
+        "What an AI chatbot can and cannot do for a small business site, what it costs and when to skip it."
       ],
       "keywords": "web development blog India, AI development tips, build with LLMs, developer blog India, AI automation blog, full stack developer blog",
       "navLabel": "Blog",
-      "lastmod": "2026-11-02"
+      "lastmod": "2026-11-12"
     },
     {
       "path": "/blog/ai-workflow-automation-cost-small-business",
@@ -578,6 +584,72 @@
       "navLabel": "SEO, AEO, GEO, SXO, AIO",
       "postFaq": "pages/posts/SeoAeoGeoSxoAio.tsx",
       "lastmod": "2026-11-02"
+    },
+    {
+      "path": "/blog/website-cost-india-small-business",
+      "ogImage": "/og/blog-website-cost-india-small-business.jpg",
+      "title": "How Much Does a Website Cost in India? (2026 Guide)",
+      "description": "What a small business website costs in India in 2026: what drives the price, my own starting prices, the costs after launch and how to compare quotes.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "How much does a website cost in India? A plain price guide",
+      "lead": "Real starting prices, what pushes a quote up or down, and the costs people forget after launch.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "My starting prices for a website, an AI chatbot and a full product",
+        "What drives the price: pages, design, features and content",
+        "Costs after launch: hosting, domain, updates and support",
+        "How to compare quotes fairly"
+      ],
+      "keywords": "website cost India, website development cost India, small business website price, how much does a website cost, website developer Surat price",
+      "navLabel": "Website cost in India",
+      "postFaq": "pages/posts/WebsiteCostIndia.tsx",
+      "lastmod": "2026-11-12"
+    },
+    {
+      "path": "/blog/whatsapp-enquiries-to-google-sheets-n8n",
+      "ogImage": "/og/blog-whatsapp-enquiries-to-google-sheets-n8n.jpg",
+      "title": "WhatsApp Enquiries to Google Sheets with n8n, Step by Step",
+      "description": "How to log every WhatsApp enquiry into a Google Sheet automatically with n8n: what you need, the steps, the columns to keep, and the mistakes to avoid.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "WhatsApp enquiries to Google Sheets with n8n, step by step",
+      "lead": "Stop copying customer messages by hand. A six-step n8n build that logs each WhatsApp enquiry to a sheet and alerts you.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "What you need before you start",
+        "Receiving the message and cleaning the fields",
+        "The sheet columns to keep and how to avoid duplicates",
+        "An error workflow, and a privacy note"
+      ],
+      "keywords": "WhatsApp to Google Sheets, n8n WhatsApp automation, log WhatsApp enquiries, WhatsApp lead tracking, WhatsApp automation India",
+      "navLabel": "WhatsApp to Sheets",
+      "postFaq": "pages/posts/WhatsappEnquiriesToSheets.tsx",
+      "lastmod": "2026-11-12"
+    },
+    {
+      "path": "/blog/ai-chatbot-for-small-business-website",
+      "ogImage": "/og/blog-ai-chatbot-for-small-business-website.jpg",
+      "title": "AI Chatbot for a Small Business Website: Cost and Limits",
+      "description": "What an AI chatbot can and cannot do for a small business website, what it costs to build and run, when not to build one, and how to launch it safely.",
+      "priority": "0.8",
+      "changefreq": "yearly",
+      "hideFromNav": true,
+      "heading": "An AI chatbot for a small business website: cost, limits and when to skip it",
+      "lead": "What a chatbot is good and bad at, what it costs, and how to launch one without giving customers wrong answers.",
+      "pointsHeading": "What the page covers",
+      "points": [
+        "What a chatbot is good at, and what it is bad at",
+        "Build cost, running cost and upkeep",
+        "When not to build one",
+        "A safe launch checklist"
+      ],
+      "keywords": "AI chatbot for website, chatbot for small business, AI chatbot cost India, website chatbot, customer support chatbot",
+      "navLabel": "AI chatbot guide",
+      "postFaq": "pages/posts/AiChatbotSmallBusiness.tsx",
+      "lastmod": "2026-11-12"
     },
     {
       "path": "/contact",

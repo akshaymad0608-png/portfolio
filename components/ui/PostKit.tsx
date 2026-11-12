@@ -86,6 +86,9 @@ const ALL_POSTS: { to: string; label: string; blurb: string }[] = [
   { to: '/blog/generative-ai-in-web-development', label: 'Generative AI in web dev', blurb: 'What it speeds up and what it breaks.' },
   { to: '/blog/website-for-surat-business-local-seo', label: 'Surat local SEO checklist', blurb: 'The basics that get a local business found.' },
   { to: '/blog/seo-aeo-geo-sxo-aio-explained', label: 'SEO, AEO, GEO, SXO, AIO', blurb: 'Five acronyms, what each one is for.' },
+  { to: '/blog/website-cost-india-small-business', label: 'Website cost in India', blurb: 'A plain price guide with real starting prices.' },
+  { to: '/blog/whatsapp-enquiries-to-google-sheets-n8n', label: 'WhatsApp to Sheets', blurb: 'Log every enquiry automatically with n8n.' },
+  { to: '/blog/ai-chatbot-for-small-business-website', label: 'AI chatbot for your site', blurb: 'Cost, limits and when to skip it.' },
 ];
 
 interface PostShellProps {
