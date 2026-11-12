@@ -39,6 +39,18 @@ export default {
         textSecondary: '#A9B1C4',
         /* >= 4.5:1 on the page and on the raised surfaces. */
         muted: '#8C95AB',
+        /* Light landing page (home route only). */
+        lp: {
+          bg: '#F4F7FD',
+          ink: '#0B1220',
+          body: '#3B465C',
+          muted: '#667085',
+          line: '#E2E8F4',
+          blue: '#1F5BFF',
+          deep: '#1642D8',
+          navy: '#0A1A44',
+          tint: '#E8EFFF',
+        },
       },
       fontFamily: {
         sans: ['Inter', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'],
@@ -47,6 +59,8 @@ export default {
         /* The poster's marker hand. An accent face only — it carries one line,
            never body copy or a heading a reader has to work through. */
         hand: ['Caveat', 'Segoe Script', 'Bradley Hand', 'cursive'],
+        /* Serif display face for the light landing page headings. */
+        lp: ['"Instrument Serif"', 'Georgia', '"Times New Roman"', 'serif'],
       },
       letterSpacing: { tightest: '-0.04em' },
       maxWidth: { shell: '1240px' },
