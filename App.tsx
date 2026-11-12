@@ -2,22 +2,16 @@ import React, { useEffect, lazy, Suspense } from 'react';
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 
-import NavBar from './components/NavBar';
-import Footer from './components/Footer';
-import MagneticButtons from './components/MagneticButtons';
-import AuroraBackground from './components/ui/AuroraBackground';
-import CursorGlow from './components/ui/CursorGlow';
 import LpNav from './components/lp/LpNav';
 import LpFooter from './components/lp/LpFooter';
 import { lenisRef } from './lib/lenis';
 
-// None of these three can be seen or used until after first paint — the chatbot
-// waits on a click, the widgets sit at the edge of the viewport, the cursor is
-// pointer-only decoration. In the entry chunk they were costing every visitor
-// download time before the page appeared.
+// Neither of these can be seen or used until after first paint — the chatbot
+// waits on a click and the widgets sit at the edge of the viewport. In the
+// entry chunk they were costing every visitor download time before the page
+// appeared.
 const AIChatBot = lazy(() => import('./components/AIChatBot'));
 const FloatingWidgets = lazy(() => import('./components/FloatingWidgets'));
-const CustomCursor = lazy(() => import('./components/CustomCursor'));
 
 // Home ships in the main bundle — it's the landing route and shouldn't wait
 // on a second request. Everything else is fetched when it's actually visited.
@@ -54,16 +48,6 @@ const RouteFallback = () => (
 
 const App: React.FC = () => {
   const location = useLocation();
-  // The home route has its own light design; every other route keeps the dark one.
-  const isHome = location.pathname.replace(/\/+$/, '') === '';
-
-  // Keeps <html> in step with the route; /public/theme-init.js sets the first value before paint.
-  useEffect(() => {
-    document.documentElement.classList.toggle('lp-light', isHome);
-    document.querySelector('meta[name="color-scheme"]')?.setAttribute('content', isHome ? 'light' : 'dark');
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', isHome ? '#F4F7FD' : '#05070D');
-  }, [isHome]);
-
   useEffect(() => {
     // Lenis fights native scrolling for anyone who has asked for less motion.
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -110,11 +94,7 @@ const App: React.FC = () => {
   }, [location.pathname]);
 
   return (
-    <div
-      className={`relative min-h-[100dvh] w-full overflow-x-hidden font-sans ${
-        isHome ? 'bg-lp-bg text-lp-ink' : 'bg-background text-text'
-      }`}
-    >
+    <div className="relative min-h-[100dvh] w-full overflow-x-hidden bg-background font-sans text-text">
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-signal focus:px-5 focus:py-2.5 focus:font-semibold focus:text-ink"
@@ -122,18 +102,7 @@ const App: React.FC = () => {
         Skip to content
       </a>
 
-      {/* film grain and a soft vignette over the whole frame — cinematic texture, pointer-transparent.
-          Dark routes only; the light home page has none of it. */}
-      {!isHome && (
-        <>
-          <div aria-hidden="true" className="film-grain" />
-          <MagneticButtons />
-          <AuroraBackground />
-          <CursorGlow />
-        </>
-      )}
-
-      {isHome ? <LpNav /> : <NavBar />}
+      <LpNav />
 
       <main id="main" className="relative z-10">
         <Suspense fallback={<RouteFallback />}>
@@ -175,11 +144,10 @@ const App: React.FC = () => {
         </Suspense>
       </main>
 
-      {isHome ? <LpFooter /> : <Footer />}
+      <LpFooter />
       <Suspense fallback={null}>
         <AIChatBot />
         <FloatingWidgets />
-        {!isHome && <CustomCursor />}
       </Suspense>
     </div>
   );

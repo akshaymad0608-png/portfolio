@@ -55,7 +55,7 @@ const LpFooter: React.FC = () => {
   return (
     <footer className="relative px-4 pb-6 pt-4 md:px-6">
       <div className="mx-auto max-w-[1180px] rounded-[28px] border border-lp-line bg-white p-7 md:p-10">
-        <div className="grid gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1.3fr_1fr_1fr]">
           <div>
             <div className="flex items-center gap-3">
               <img src="/akshay-avatar-256.webp" alt="" width={44} height={44} className="h-11 w-11 rounded-full object-cover" />
