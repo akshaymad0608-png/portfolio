@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Inter';src:url(fonts/inter.woff2) format('woff2');font-weight:100 900}
+@font-face{font-family:'IS';src:url(fonts/is.woff2) format('woff2');font-style:normal}
+@font-face{font-family:'IS';src:url(fonts/isi.woff2) format('woff2');font-style:italic}
+@font-face{font-family:'Dev';src:url(fonts/dev.woff2) format('woff2');font-weight:700}
+@font-face{font-family:'Guj';src:url(fonts/guj.woff2) format('woff2');font-weight:700}
+:root{--blue:#1F5BFF;--deep:#1642D8;--navy:#0A1A44;--ink:#0B1220;--body:#3B465C;--muted:#5A6478;--line:#E2E8F4;--tint:#E8EFFF;--bg:#F4F7FD}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1920px;height:1080px;overflow:hidden;background:var(--bg);font-family:'Inter',sans-serif;color:var(--ink)}
+#bg{position:absolute;inset:0;background:
+ radial-gradient(900px 700px at 12% 8%,rgba(124,58,237,.10),transparent 70%),
+ radial-gradient(1000px 800px at 62% 100%,rgba(31,91,255,.14),transparent 70%),
+ radial-gradient(700px 600px at 95% 10%,rgba(8,145,178,.10),transparent 70%),var(--bg)}
+#grid{position:absolute;inset:0;background-image:linear-gradient(rgba(15,23,42,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(15,23,42,.045) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse at 40% 40%,#000 25%,transparent 78%)}
+#brand{position:absolute;left:110px;top:54px;height:68px;padding:0 28px 0 10px;background:#fff;border:1px solid var(--line);border-radius:99px;display:flex;align-items:center;gap:16px;box-shadow:0 14px 30px -18px rgba(15,23,42,.4)}
+#brand img{width:48px;height:48px;border-radius:50%;object-fit:cover}
+#brand b{font-size:26px;font-weight:700;letter-spacing:-.3px}
+#brand i{font-style:normal;font-size:17px;color:var(--muted);font-family:'Inter';display:block;margin-top:-2px}
+#ak{position:absolute;right:70px;bottom:-14px;height:1040px;width:auto;filter:drop-shadow(0 30px 40px rgba(10,26,68,.18))}
+#shadow{position:absolute;right:210px;bottom:18px;width:520px;height:46px;border-radius:50%;background:radial-gradient(closest-side,rgba(10,26,68,.28),transparent)}
+#prog{position:absolute;left:0;bottom:0;height:8px;width:100%;background:rgba(31,91,255,.12)}
+#prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--blue),#7C3AED)}
+#cap{position:absolute;left:100px;width:1120px;bottom:58px;display:flex;justify-content:center}
+#cap span{display:inline-block;background:rgba(10,26,68,.93);color:#fff;font-weight:600;font-size:46px;line-height:1.22;padding:16px 32px;border-radius:18px;text-align:center;opacity:0;letter-spacing:-.2px}
+.scene{position:absolute;left:100px;top:132px;width:1010px;height:780px;opacity:0;transform-origin:0 0}
+.el{position:absolute;opacity:0;will-change:transform,opacity}
+.serif{font-family:'IS',Georgia,serif;font-weight:400;letter-spacing:-2px;line-height:1}
+.it{font-style:italic;color:var(--blue)}
+.card{background:#fff;border:1px solid var(--line);border-radius:30px;box-shadow:0 40px 70px -38px rgba(15,23,42,.38)}
+.pill{display:inline-flex;align-items:center;gap:12px;height:62px;padding:0 28px;border-radius:99px;font-weight:700;font-size:28px;white-space:nowrap}
+.pb{background:var(--blue);color:#fff;box-shadow:0 16px 30px -14px rgba(31,91,255,.75)}
+.po{background:#fff;color:var(--ink);border:2px solid var(--line)}
+.pt{background:var(--tint);color:var(--deep)}
+.ic{width:34px;height:34px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:24px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.eyebrow:before{content:'';width:44px;height:2px;background:var(--blue)}
+.bar{background:var(--ink);border-radius:10px;height:26px}
+.sk{background:#E6ECF8;border-radius:10px}
+.msg{padding:20px 26px;border-radius:26px;font-size:28px;font-weight:600;line-height:1.3;max-width:560px}
+.mu{background:var(--tint);color:var(--ink);border-bottom-right-radius:8px}
+.mb{background:var(--blue);color:#fff;border-bottom-left-radius:8px;box-shadow:0 16px 28px -16px rgba(31,91,255,.8)}
+.node{border-radius:26px;padding:22px 26px;width:300px}
+.node h4{font-size:30px;font-weight:800;letter-spacing:-.4px}
+.node p{font-size:21px;color:var(--muted);margin-top:6px;font-weight:500}
+.spark{fill:var(--blue)}
+</style></head><body>
+<div id="bg"></div><div id="grid"></div>
+<div id="brand"><img src="av.webp"><div><b>Akshay Mahajan</b><i>Full-stack &amp; AI developer · Surat</i></div></div>
+<div id="shadow"></div><img id="ak" src="ak.webp">
+<div id="stage"></div>
+<div id="cap"><span></span></div>
+<div id="prog"><i></i></div>
+
+<!-- SCENE 1: welcome -->
+<div class="scene" id="sc1">
+  <div class="el serif" data-a="up" data-at="0.0" data-d=".7" style="left:0;top:110px;font-size:190px">Welcome</div>
+  <div class="el serif it" data-a="up" data-at=".3" data-d=".7" style="left:6px;top:300px;font-size:112px">to my website</div>
+  <div class="el card" data-a="pop" data-at=".8" data-d=".6" style="left:6px;top:480px;width:640px;padding:30px 34px;display:flex;gap:26px;align-items:center">
+    <div style="width:92px;height:92px;border-radius:24px;background:var(--blue);color:#fff;font-size:60px;font-weight:800;display:flex;align-items:center;justify-content:center;box-shadow:0 16px 30px -14px rgba(31,91,255,.8)">A</div>
+    <div><div style="font-size:44px;font-weight:800;letter-spacing:-1px">akshay<span style="color:var(--blue)">.website</span></div><div style="font-size:24px;color:var(--muted);margin-top:6px;font-weight:500">Full-stack websites, wired with AI.</div></div>
+  </div>
+  <svg class="el" data-a="pop" data-at="1.0" data-d=".5" style="left:700px;top:96px;width:60px;height:60px" viewBox="0 0 24 24"><path class="spark" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+  <svg class="el" data-a="pop" data-at="1.2" data-d=".5" style="left:800px;top:230px;width:30px;height:30px" viewBox="0 0 24 24"><path style="fill:#7C3AED" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+</div>
+
+<!-- SCENE 2: location + languages -->
+<div class="scene" id="sc2">
+  <div class="el pill pb" data-a="up" data-at=".1" data-d=".5" style="left:330px;top:10px">Full-stack + AI</div>
+  <div class="el card" data-a="pop" data-at=".25" data-d=".6" style="left:0;top:70px;width:760px;height:470px">
+    <svg viewBox="0 0 760 470" style="position:absolute;inset:0;width:100%;height:100%">
+      <defs><pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="2" fill="#1F5BFF" opacity=".28"/></pattern></defs>
+      <ellipse cx="380" cy="190" rx="300" ry="150" fill="#E8EFFF"/>
+      <path d="M250 120c40-50 150-60 210-20 55 36 70 110 25 165-45 50-140 70-205 35-55-30-85-120-30-180z" fill="url(#dots)"/>
+      <path d="M250 120c40-50 150-60 210-20 55 36 70 110 25 165-45 50-140 70-205 35-55-30-85-120-30-180z" fill="rgba(31,91,255,.10)" stroke="#1F5BFF" stroke-opacity=".35" stroke-width="2"/>
+    </svg>
+    <svg class="el" data-a="drop" data-at=".55" data-d=".55" style="left:318px;top:70px;width:124px;height:150px" viewBox="0 0 24 30"><path d="M12 29c6-8 9-12 9-17a9 9 0 10-18 0c0 5 3 9 9 17z" fill="#1F5BFF"/><circle cx="12" cy="12" r="3.6" fill="#fff"/></svg>
+    <div class="el" data-a="up" data-at=".9" data-d=".5" style="left:0;right:0;top:372px;text-align:center;font-size:50px;font-weight:800;letter-spacing:-1.2px">Surat, Gujarat, India</div>
+  </div>
+  <div class="el pill po" data-a="up" data-at="4.1" data-d=".5" style="left:0;top:600px;font-size:34px;height:80px;padding:0 40px"><svg class="ic" viewBox="0 0 24 24" style="color:var(--blue)"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg>English</div>
+  <div class="el pill po" data-a="up" data-at="4.55" data-d=".5" style="left:290px;top:600px;font-size:36px;height:80px;padding:0 40px;font-family:'Dev','Inter'">हिन्दी</div>
+  <div class="el pill po" data-a="up" data-at="5.0" data-d=".5" style="left:520px;top:600px;font-size:36px;height:80px;padding:0 40px;font-family:'Guj','Inter'">ગુજરાતી</div>
+</div>
+
+<!-- SCENE 3: four services -->
+<div class="scene" id="sc3">
+  <div class="el eyebrow" data-a="up" data-at=".1" data-d=".5" style="left:0;top:0">What I can do for you</div>
+  <div class="el card" data-a="pop" data-at="1.7" data-d=".5" style="left:0;top:80px;width:490px;height:300px;padding:36px">
+    <div style="width:84px;height:84px;border-radius:24px;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" style="width:44px;height:44px"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M8 14h4"/></svg></div>
+    <div style="font-size:40px;font-weight:800;letter-spacing:-.8px;margin-top:26px">Websites</div><div style="font-size:24px;color:var(--muted);margin-top:8px;font-weight:500">Fast and mobile friendly</div></div>
+  <div class="el card" data-a="pop" data-at="2.5" data-d=".5" style="left:520px;top:80px;width:490px;height:300px;padding:36px">
+    <div style="width:84px;height:84px;border-radius:24px;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" style="width:44px;height:44px"><rect x="4" y="8" width="16" height="12" rx="3"/><path d="M12 4v4M9 13h.01M15 13h.01M9 17h6"/></svg></div>
+    <div style="font-size:40px;font-weight:800;letter-spacing:-.8px;margin-top:26px">AI chatbots</div><div style="font-size:24px;color:var(--muted);margin-top:8px;font-weight:500">Trained on your own documents</div></div>
+  <div class="el card" data-a="pop" data-at="3.4" data-d=".5" style="left:0;top:410px;width:490px;height:300px;padding:36px">
+    <div style="width:84px;height:84px;border-radius:24px;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" style="width:44px;height:44px"><circle cx="6" cy="12" r="2.6"/><circle cx="18" cy="6" r="2.6"/><circle cx="18" cy="18" r="2.6"/><path d="M8.3 10.8l7.4-3.6M8.3 13.2l7.4 3.6"/></svg></div>
+    <div style="font-size:40px;font-weight:800;letter-spacing:-.8px;margin-top:26px">Automation</div><div style="font-size:24px;color:var(--muted);margin-top:8px;font-weight:500">Forms to sheets to alerts</div></div>
+  <div class="el card" data-a="pop" data-at="4.1" data-d=".5" style="left:520px;top:410px;width:490px;height:300px;padding:36px">
+    <div style="width:84px;height:84px;border-radius:24px;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center"><svg class="ic" viewBox="0 0 24 24" style="width:44px;height:44px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+    <div style="font-size:40px;font-weight:800;letter-spacing:-.8px;margin-top:26px">Search visibility</div><div style="font-size:24px;color:var(--muted);margin-top:8px;font-weight:500">Found by Google and AI</div></div>
+</div>
+
+<!-- SCENE 4: websites -->
+<div class="scene" id="sc4">
+  <div class="el eyebrow" data-a="up" data-at=".6" data-d=".5" style="left:0;top:0">01 · Websites</div>
+  <div class="el card" data-a="pop" data-at=".9" data-d=".6" style="left:0;top:70px;width:720px;height:490px;overflow:hidden">
+    <div style="height:56px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;padding:0 22px"><i style="width:14px;height:14px;border-radius:50%;background:#FF5F57"></i><i style="width:14px;height:14px;border-radius:50%;background:#FEBC2E"></i><i style="width:14px;height:14px;border-radius:50%;background:#28C840"></i><div style="margin-left:16px;flex:1;height:30px;border-radius:99px;background:#F1F4FB;font-size:17px;color:var(--muted);display:flex;align-items:center;padding-left:16px">yourbusiness.com</div></div>
+    <div style="padding:34px 40px">
+      <div class="el bar" data-a="grow" data-at="1.4" data-d=".6" style="position:relative;width:480px;height:34px"></div>
+      <div class="el bar" data-a="grow" data-at="1.7" data-d=".6" style="position:relative;width:340px;height:34px;margin-top:14px"></div>
+      <div class="el sk" data-a="grow" data-at="2.0" data-d=".6" style="position:relative;width:560px;height:18px;margin-top:26px"></div>
+      <div class="el pill pb" data-a="pop" data-at="2.3" data-d=".5" style="position:relative;margin-top:26px;height:54px;font-size:22px;padding:0 26px">Book a call</div>
+      <div style="display:flex;gap:18px;margin-top:34px">
+        <div class="el sk" data-a="up" data-at="2.6" data-d=".5" style="position:relative;flex:1;height:120px;border-radius:18px"></div>
+        <div class="el sk" data-a="up" data-at="2.8" data-d=".5" style="position:relative;flex:1;height:120px;border-radius:18px"></div>
+        <div class="el sk" data-a="up" data-at="3.0" data-d=".5" style="position:relative;flex:1;height:120px;border-radius:18px"></div>
+      </div>
+    </div>
+  </div>
+  <div class="el card" data-a="up" data-at="2.2" data-d=".6" style="left:700px;top:190px;width:250px;height:500px;border-radius:44px;border:8px solid var(--navy);padding:34px 20px;box-shadow:0 40px 70px -30px rgba(10,26,68,.6)">
+    <div class="bar" style="width:170px;height:22px"></div><div class="bar" style="width:120px;height:22px;margin-top:12px"></div>
+    <div class="sk" style="width:190px;height:12px;margin-top:22px"></div>
+    <div class="pill pb" style="margin-top:20px;height:44px;font-size:17px;padding:0 18px">Book a call</div>
+    <div class="sk" style="width:190px;height:96px;margin-top:26px;border-radius:14px"></div><div class="sk" style="width:190px;height:96px;margin-top:14px;border-radius:14px"></div>
+  </div>
+  <div class="el pill pt" data-a="up" data-at="2.3" data-d=".5" style="left:0;top:620px">Mobile friendly</div>
+  <div class="el pill pb" data-a="up" data-at="3.4" data-d=".5" style="left:270px;top:620px">Live in 1–2 weeks</div>
+  <div class="el pill po" data-a="up" data-at="5.3" data-d=".5" style="left:590px;top:620px"><svg class="ic" viewBox="0 0 24 24" style="color:var(--blue)"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 14l2 2 4-4"/></svg>Fixed written quote</div>
+</div>
+
+<!-- SCENE 5: chatbot -->
+<div class="scene" id="sc5">
+  <div class="el eyebrow" data-a="up" data-at=".2" data-d=".5" style="left:0;top:0">02 · AI chatbots</div>
+  <div class="el card" data-a="pop" data-at=".35" data-d=".6" style="left:0;top:70px;width:760px;height:500px;overflow:hidden">
+    <div style="height:84px;background:var(--navy);color:#fff;display:flex;align-items:center;gap:16px;padding:0 30px;font-size:28px;font-weight:700"><i style="width:14px;height:14px;border-radius:50%;background:#4ADE80;display:block"></i>AI assistant</div>
+    <div class="el msg mu" data-a="up" data-at=".8" data-d=".45" style="left:150px;top:112px">What are your opening hours?</div>
+    <div class="el msg mb" data-a="up" data-at="1.5" data-d=".45" style="left:30px;top:200px">Open 10 to 7, Monday to Saturday.</div>
+    <div class="el msg mu" data-a="up" data-at="3.0" data-d=".45" style="left:150px;top:290px">Can I get a quote for a website?</div>
+    <div class="el msg mb" data-a="up" data-at="3.8" data-d=".45" style="left:30px;top:378px">Sure. I'll pass this to Akshay.</div>
+  </div>
+  <div class="el pill pt" data-a="pop" data-at="2.6" data-d=".5" style="left:470px;top:20px"><svg class="ic" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg>Your own documents</div>
+  <div class="el pill pb" data-a="up" data-at="4.7" data-d=".5" style="left:0;top:600px"><svg class="ic" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg>Handed over to a person</div>
+</div>
+
+<!-- SCENE 6: automation -->
+<div class="scene" id="sc6">
+  <div class="el eyebrow" data-a="up" data-at=".5" data-d=".5" style="left:0;top:0">03 · Automation</div>
+  <div class="el card node" data-a="up" data-at="1.3" data-d=".5" style="left:0;top:150px"><h4>Enquiry</h4><p>WhatsApp or form</p></div>
+  <svg style="position:absolute;left:0;top:0;width:1010px;height:780px;overflow:visible">
+    <path class="el" data-a="draw" data-at="2.0" data-d=".6" d="M300 230 H355" stroke="#1F5BFF" stroke-width="5" fill="none" stroke-linecap="round" style="opacity:1"/>
+    <path class="el" data-a="draw" data-at="3.3" data-d=".6" d="M655 230 H710" stroke="#1F5BFF" stroke-width="5" fill="none" stroke-linecap="round" style="opacity:1"/>
+    <path class="el" data-a="draw" data-at="4.9" data-d=".6" d="M505 310 V420" stroke="#1F5BFF" stroke-width="5" fill="none" stroke-linecap="round" style="opacity:1"/>
+  </svg>
+  <div class="el node" data-a="pop" data-at="2.3" data-d=".5" style="left:355px;top:150px;background:var(--blue);color:#fff;box-shadow:0 30px 50px -20px rgba(31,91,255,.7)"><h4>n8n</h4><p style="color:#D5E1FF">workflow</p></div>
+  <div class="el card node" data-a="up" data-at="3.6" data-d=".5" style="left:710px;top:150px"><h4>Sheet</h4><p>CRM updated</p>
+    <div style="margin-top:14px"><div class="el sk" data-a="grow" data-at="3.9" data-d=".4" style="position:relative;height:12px;width:200px"></div><div class="el sk" data-a="grow" data-at="4.2" data-d=".4" style="position:relative;height:12px;width:160px;margin-top:8px"></div></div></div>
+  <div class="el card node" data-a="up" data-at="5.2" data-d=".5" style="left:355px;top:420px;border:2px solid var(--blue)"><h4>Alert</h4><p>only when it matters</p></div>
+  <div class="el pill pt" data-a="up" data-at="6.2" data-d=".5" style="left:0;top:640px"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Runs 24/7</div>
+</div>
+
+<!-- SCENE 7: search -->
+<div class="scene" id="sc7">
+  <div class="el eyebrow" data-a="up" data-at=".4" data-d=".5" style="left:0;top:0">04 · Search visibility</div>
+  <div class="el card" data-a="up" data-at=".5" data-d=".5" style="left:0;top:70px;width:900px;height:96px;border-radius:99px;display:flex;align-items:center;gap:20px;padding:0 36px"><svg class="ic" viewBox="0 0 24 24" style="color:var(--blue);width:38px;height:38px"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg><span id="typed" style="font-size:36px;font-weight:600"></span></div>
+  <div class="el card" data-a="up" data-at="2.3" data-d=".5" style="left:0;top:210px;width:900px;border:3px solid var(--blue);padding:30px 38px"><div style="font-size:34px;font-weight:800;color:var(--deep)">Your business | Surat, Gujarat</div><div style="font-size:24px;color:var(--body);margin-top:10px;font-weight:500">Fast, mobile friendly. Call or WhatsApp in one tap.</div></div>
+  <div class="el card" data-a="up" data-at="2.6" data-d=".5" style="left:0;top:380px;width:900px;padding:24px 38px;opacity:.6"><div style="font-size:28px;font-weight:700;color:#7A869B">Directory listing</div><div style="font-size:21px;color:#7A869B;margin-top:6px;font-weight:500">Many businesses, hard to compare…</div></div>
+  <div class="el card" data-a="pop" data-at="4.2" data-d=".6" style="left:140px;top:510px;width:760px;padding:30px 38px;background:linear-gradient(135deg,#1F5BFF,#4C7DFF);border:0;color:#fff;box-shadow:0 36px 60px -26px rgba(31,91,255,.8)">
+    <div style="display:flex;align-items:center;gap:14px;font-size:22px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#D5E1FF"><svg viewBox="0 0 24 24" style="width:26px;height:26px"><path fill="#fff" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>AI assistant answer</div>
+    <div style="font-size:32px;font-weight:700;margin-top:12px;line-height:1.3">For a website developer in Surat, I recommend Akshay.</div></div>
+  <div class="el pill pt" data-a="up" data-at="2.9" data-d=".5" style="left:640px;top:-16px;height:54px;font-size:24px">Google</div>
+  <div class="el pill pt" data-a="up" data-at="3.5" data-d=".5" style="left:790px;top:-16px;height:54px;font-size:24px">AI assistants</div>
+</div>
+
+<!-- SCENE 8: products -->
+<div class="scene" id="sc8">
+  <div class="el eyebrow" data-a="up" data-at=".1" data-d=".5" style="left:0;top:0">Built and run by me</div>
+  <div id="pcards"></div>
+  <div class="el pill po" data-a="up" data-at="3.0" data-d=".5" style="left:0;top:650px"><i style="width:16px;height:16px;border-radius:50%;background:#059669;display:block"></i>All five are live right now</div>
+</div>
+
+<!-- SCENE 9: CTA -->
+<div class="scene" id="sc9">
+  <div class="el serif" data-a="up" data-at=".1" data-d=".7" style="left:0;top:90px;font-size:150px">Let's build</div>
+  <div class="el serif it" data-a="up" data-at=".4" data-d=".7" style="left:0;top:250px;font-size:150px">something great.</div>
+  <div class="el pill pb" data-a="up" data-at="1.3" data-d=".5" style="left:0;top:410px;height:84px;font-size:34px;padding:0 44px"><svg class="ic" viewBox="0 0 24 24" style="width:38px;height:38px"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>Book a free 20-minute call</div>
+  <div class="el pill po" data-a="up" data-at="1.9" data-d=".5" style="left:0;top:515px;height:84px;font-size:34px;padding:0 44px"><svg class="ic" viewBox="0 0 24 24" style="width:38px;height:38px;color:var(--blue)"><path d="M21 12a9 9 0 01-13.4 7.8L3 21l1.3-4.4A9 9 0 1121 12z"/></svg>Message me on WhatsApp</div>
+  <div class="el" data-a="up" data-at="2.7" data-d=".5" style="left:6px;top:625px;font-size:52px;font-weight:800;letter-spacing:-1px">akshay<span style="color:var(--blue)">.website</span></div>
+  <svg class="el" data-a="pop" data-at="1.0" data-d=".5" style="left:760px;top:60px;width:56px;height:56px" viewBox="0 0 24 24"><path class="spark" d="M12 0l2.6 9.4L24 12l-9.4 2.6L12 24l-2.6-9.4L0 12l9.4-2.6z"/></svg>
+</div>
+
+<script>
+const TL=__TL__;
+const S=TL.s, TOTAL=TL.total;
+// scene windows [start,end]
+const W=[
+ [S[0].start-0.15, S[0].start+S[0].dur+0.3],
+ [S[1].start-0.1, S[2].start+S[2].dur+0.3],
+ [S[3].start-0.1, S[3].start+S[3].dur+0.3],
+ [S[4].start-0.1, S[4].start+S[4].dur+0.3],
+ [S[5].start-0.1, S[5].start+S[5].dur+0.3],
+ [S[6].start-0.1, S[6].start+S[6].dur+0.3],
+ [S[7].start-0.1, S[7].start+S[7].dur+0.3],
+ [S[8].start-0.1, S[8].start+S[8].dur+0.3],
+ [S[9].start-0.1, TOTAL+1]
+];
+// product cards
+const P=[['ai-master-tools','AI Master Tools',0,0],['quickresume','QuickResume',1,0],['photo-resizer','Photo Resizer',2,0],['fitsmart','FitSmart',0.5,1],['rosetta','Rosetta',1.5,1]];
+const pc=document.getElementById('pcards');
+P.forEach(([f,n,col,row],i)=>{
+  const w=310,h=222;const x=col*(w+30), y=70+row*(h+92);
+  pc.insertAdjacentHTML('beforeend',`<div class="el card" data-a="pop" data-at="${.3+i*.35}" data-d=".5" style="left:${x}px;top:${y}px;width:${w}px;overflow:hidden;border-radius:24px"><img src="${f}.webp" style="width:100%;height:${h-60}px;object-fit:cover;object-position:top;display:block"><div style="padding:0 20px;height:60px;display:flex;align-items:center;font-size:26px;font-weight:800;letter-spacing:-.4px">${n}</div></div>`);
+});
+// element registry
+const scenes=[...document.querySelectorAll('.scene')];
+const els=scenes.map(sc=>[...sc.querySelectorAll('[data-a]')].map(e=>({e,a:e.dataset.a,at:+e.dataset.at,d:+e.dataset.d,base:e.style.opacity||''})));
+const clamp=(x,a=0,b=1)=>Math.min(b,Math.max(a,x));
+const eo=p=>1-Math.pow(1-p,3);
+const eb=p=>{const c=1.5,c3=c+1;return 1+c3*Math.pow(p-1,3)+c*Math.pow(p-1,2)};
+// captions
+function chunks(text){const w=text.split(' ');const out=[];let cur=[];
+  for(const x of w){cur.push(x);const end=/[,:?!.]$/.test(x);if((cur.length>=3&&end)||cur.length>=6){out.push(cur.join(' '));cur=[]}}
+  if(cur.length){if(out.length&&cur.length<2)out[out.length-1]+=' '+cur.join(' ');else out.push(cur.join(' '))}
+  return out;}
+const CAPS=[];
+S.forEach(s=>{const ch=chunks(s.text);const tot=ch.reduce((a,c)=>a+c.length+4,0);let t=s.start+0.02;const span=s.dur-0.04;
+  ch.forEach(c=>{const d=span*(c.length+4)/tot;CAPS.push({t0:t,t1:t+d,text:c});t+=d;});});
+const cap=document.querySelector('#cap span');
+const typed=document.getElementById('typed');
+const q='website developer in Surat';
+function render(t){
+  // background drift
+  document.getElementById('bg').style.backgroundPosition=`${Math.sin(t/7)*30}px ${Math.cos(t/9)*20}px`;
+  // Akshay
+  const pa=clamp((t-0.15)/0.9), ak=document.getElementById('ak'), sh=document.getElementById('shadow');
+  ak.style.opacity=eo(pa);ak.style.transform=`translateX(${(1-eo(pa))*90}px) scale(${1+Math.sin(t*1.3)*0.003})`;
+  ak.style.transformOrigin='50% 100%';sh.style.opacity=eo(pa);
+  // brand chip
+  const br=document.getElementById('brand');const pb=clamp(t/0.6);br.style.opacity=eo(pb);br.style.transform=`translateY(${(1-eo(pb))*-20}px)`;
+  document.querySelector('#prog i').style.width=(clamp(t/TOTAL)*100)+'%';
+  scenes.forEach((sc,i)=>{
+    const [s0,e0]=W[i];const vis=t>=s0-0.01&&t<=e0+0.4;
+    if(!vis){sc.style.opacity=0;sc.style.visibility='hidden';return}
+    sc.style.visibility='visible';
+    const fin=clamp((t-s0)/0.3), fout=i===8?1:clamp((e0+0.35-t)/0.35);
+    sc.style.opacity=Math.min(fin,fout);
+    sc.style.transform=`translateY(${(1-eo(fin))*14 + (1-fout)*-12}px) scale(1.1)`;
+    const local=t-(i===0?S[0].start:i===1?S[1].start:i===8?S[9].start:S[i+1].start);
+    els[i].forEach(o=>{
+      const p=clamp((local-o.at)/o.d);const e=eo(p), el=o.e;
+      if(o.a==='up'){el.style.opacity=p>0?e:0;el.style.transform=`translateY(${(1-e)*36}px)`}
+      else if(o.a==='pop'){const b=eb(p);el.style.opacity=p>0?Math.min(1,p*2.5):0;el.style.transform=`scale(${.86+.14*b}) translateY(${(1-e)*24}px)`}
+      else if(o.a==='drop'){const b=eb(p);el.style.opacity=p>0?Math.min(1,p*3):0;el.style.transform=`translateY(${(1-b)*-110}px)`}
+      else if(o.a==='grow'){el.style.opacity=p>0?1:0;el.style.transformOrigin='0 50%';el.style.transform=`scaleX(${e})`}
+      else if(o.a==='draw'){const len=el.getTotalLength?el.getTotalLength():100;el.style.strokeDasharray=len;el.style.strokeDashoffset=len*(1-e);el.style.opacity=p>0?1:0}
+    });
+    if(i===6){const lp=clamp((local-0.6)/1.8);typed.textContent=q.slice(0,Math.floor(lp*q.length))+(lp<1&&Math.floor(t*2)%2?'|':'')}
+  });
+  // captions
+  let c=CAPS.find(x=>t>=x.t0&&t<x.t1);
+  if(c){if(cap.textContent!==c.text)cap.textContent=c.text;cap.style.opacity=clamp((t-c.t0)/0.12)*clamp((c.t1-t)/0.08+0.2)}else cap.style.opacity=0;
+}
+window.render=render;
+</script></body></html>
