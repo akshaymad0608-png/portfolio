@@ -86,6 +86,33 @@ export const POSTS: Post[] = [
     readTime: '~7 min',
     href: '/blog/seo-aeo-geo-sxo-aio-explained',
   },
+  {
+    id: 7,
+    title: 'How much does a website cost in India? A plain price guide',
+    excerpt:
+      'What drives the price of a small business website, my own starting prices, the costs after launch and how to compare quotes fairly.',
+    category: 'Web development',
+    readTime: '~7 min',
+    href: '/blog/website-cost-india-small-business',
+  },
+  {
+    id: 8,
+    title: 'Send WhatsApp enquiries to Google Sheets with n8n',
+    excerpt:
+      'A six-step build: receive the message, clean it, avoid duplicates, log it to a sheet and alert you, with an error workflow.',
+    category: 'Automation',
+    readTime: '~9 min',
+    href: '/blog/whatsapp-enquiries-to-google-sheets-n8n',
+  },
+  {
+    id: 9,
+    title: 'An AI chatbot for a small business website: cost, limits and when to skip it',
+    excerpt:
+      'What a chatbot is good and bad at, what it costs to build and run, and how to launch one without embarrassing yourself.',
+    category: 'AI for Business',
+    readTime: '~7 min',
+    href: '/blog/ai-chatbot-for-small-business-website',
+  },
 ];
 
 const Card: React.FC<{ post: Post }> = ({ post }) => (
