@@ -1,0 +1,65 @@
+{
+ "total": 55.92,
+ "s": [
+  {
+   "i": 1,
+   "start": 0.7,
+   "dur": 2.494,
+   "text": "Hi, I'm Akshay, and welcome to my website!"
+  },
+  {
+   "i": 2,
+   "start": 3.694,
+   "dur": 3.98,
+   "text": "I'm a full-stack developer from Surat, India, and I build with AI."
+  },
+  {
+   "i": 3,
+   "start": 7.824,
+   "dur": 2.66,
+   "text": "I work in English, Hindi and Gujarati."
+  },
+  {
+   "i": 4,
+   "start": 11.084,
+   "dur": 5.196,
+   "text": "Here is what I can do for you: websites, AI chatbots, automation, and search visibility."
+  },
+  {
+   "i": 5,
+   "start": 16.83,
+   "dur": 7.132,
+   "text": "First, websites: fast, mobile-friendly sites, usually live in one to two weeks, with a fixed written quote."
+  },
+  {
+   "i": 6,
+   "start": 24.512,
+   "dur": 5.98,
+   "text": "Second, AI chatbots that answer customer questions from your own documents, and hand over to a person when they are unsure."
+  },
+  {
+   "i": 7,
+   "start": 31.042,
+   "dur": 7.26,
+   "text": "Third, automation: enquiries from WhatsApp or forms flow into your sheet, and you get an alert only when it matters."
+  },
+  {
+   "i": 8,
+   "start": 38.852,
+   "dur": 5.9,
+   "text": "Fourth, search: I structure your site so Google and AI assistants can find it, and recommend it."
+  },
+  {
+   "i": 9,
+   "start": 45.302,
+   "dur": 4.3,
+   "text": "I've built and run five live products myself, and you can try every one."
+  },
+  {
+   "i": 10,
+   "start": 50.152,
+   "dur": 4.172,
+   "text": "Ready to start? Book a free twenty minute call, or message me on WhatsApp."
+  }
+ ]
+}

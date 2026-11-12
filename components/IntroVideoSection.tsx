@@ -5,11 +5,11 @@ import IntroductionVideo from './IntroductionVideo';
 export const INTRO_VIDEO = {
   src: '/intro/akshay-intro.mp4',
   poster: '/intro/akshay-intro.webp',
-  duration: 'PT53S',
+  duration: 'PT56S',
 };
 
 export const TRANSCRIPT =
-  "Hi, I'm Akshay, and welcome to my website! I'm a full-stack developer from Surat, India, and I build with AI. I work in English, Hindi and Gujarati. Here is what I can do for you: websites, AI chatbots, automation, and search visibility. First, websites: fast, mobile-friendly sites, usually live in one to two weeks, with a fixed written quote. Second, AI chatbots that answer customer questions from your own documents and hand over to a person when they are unsure. Third, automation: enquiries from WhatsApp or forms flow into your sheet, and you get an alert only when it matters. Fourth, search: I structure your site so Google and AI assistants can find it and recommend it. I've built and run five live products myself, and you can try every one. Ready to start? Book a free twenty minute call, or message me on WhatsApp.";
+  "Hi, I'm Akshay, and welcome to my website! I'm a full-stack developer from Surat, India, and I build with AI. I work in English, Hindi and Gujarati. Here is what I can do for you: websites, AI chatbots, automation, and search visibility. First, websites: fast, mobile-friendly sites, usually live in one to two weeks, with a fixed written quote. Second, AI chatbots that answer customer questions from your own documents, and hand over to a person when they are unsure. Third, automation: enquiries from WhatsApp or forms flow into your sheet, and you get an alert only when it matters. Fourth, search: I structure your site so Google and AI assistants can find it, and recommend it. I've built and run five live products myself, and you can try every one. Ready to start? Book a free twenty minute call, or message me on WhatsApp.";
 
 /** Schema.org VideoObject for the welcome video, passed to the page's SEO block. */
 export const introVideoSchema = {
@@ -20,7 +20,7 @@ export const introVideoSchema = {
     'A one-minute animated welcome from Akshay Mahajan covering websites, AI chatbots, automation and search visibility.',
   thumbnailUrl: `https://akshay.website${INTRO_VIDEO.poster}`,
   contentUrl: `https://akshay.website${INTRO_VIDEO.src}`,
-  uploadDate: '2026-10-15T09:00:00+05:30',
+  uploadDate: '2026-11-12T18:00:00+05:30',
   duration: INTRO_VIDEO.duration,
   inLanguage: 'en',
   transcript: TRANSCRIPT,
