@@ -72,7 +72,7 @@ const IntroductionVideo: React.FC<IntroductionVideoProps> = ({
             ref={videoRef}
             src={src}
             poster={poster}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-contain bg-black"
             muted={variant === 'background'}
             loop={variant === 'background'}
             autoPlay={variant === 'background'}
