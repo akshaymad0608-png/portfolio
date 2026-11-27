@@ -29,6 +29,7 @@ const bookSchema = (b: Book) => {
     name: b.title,
     ...(b.subtitle ? { alternativeHeadline: b.subtitle } : {}),
     ...(b.description ? { description: b.description } : {}),
+    ...(b.cover ? { image: `https://akshay.website${b.cover}` } : {}),
     inLanguage: 'en',
     author: { '@type': 'Person', name: 'Akshay Mahajan', url: 'https://akshay.website/about' },
     publisher: { '@type': 'Organization', name: 'Amazon Kindle Direct Publishing' },
@@ -64,12 +65,24 @@ const Formats: React.FC<{ book: Book }> = ({ book }) => (
 
 const BookCard: React.FC<{ book: Book }> = ({ book }) => (
   <article className="panel flex flex-col gap-5 p-5 sm:flex-row sm:p-6">
-    <div
-      aria-hidden="true"
-      className={`flex aspect-[2/3] w-full max-w-[150px] shrink-0 items-end rounded-[4px] bg-gradient-to-b p-3 sm:w-[130px] ${TONES[book.tone]}`}
-    >
-      <span className="font-display text-[15px] font-bold leading-tight text-white">{book.title}</span>
-    </div>
+    {book.cover ? (
+      <img
+        src={book.cover}
+        alt={`Cover of ${book.title} by Akshay Mahajan`}
+        width={420}
+        height={672}
+        loading="lazy"
+        decoding="async"
+        className="aspect-[5/8] w-full max-w-[150px] shrink-0 rounded-[4px] object-cover shadow-[0_10px_30px_-12px_rgba(15,23,42,0.45)] sm:w-[130px]"
+      />
+    ) : (
+      <div
+        aria-hidden="true"
+        className={`flex aspect-[2/3] w-full max-w-[150px] shrink-0 items-end rounded-[4px] bg-gradient-to-b p-3 sm:w-[130px] ${TONES[book.tone]}`}
+      >
+        <span className="font-display text-[15px] font-bold leading-tight text-white">{book.title}</span>
+      </div>
+    )}
     <div className="min-w-0 flex-1">
       <h2 className="font-display text-[22px] font-bold leading-tight tracking-tightest text-text">
         {book.title}

@@ -19,6 +19,8 @@ export interface Book {
   paperback?: string;
   /** Direct Amazon product URL, once known. */
   amazonUrl?: string;
+  /** Path under /public to the real cover image. Falls back to a typographic tile when absent. */
+  cover?: string;
   /** Short accent for the typographic cover tile. */
   tone: 'blue' | 'teal' | 'violet' | 'amber' | 'rose';
 }
@@ -30,6 +32,7 @@ export const BOOKS: Book[] = [
     description:
       'A short, practical guide to setting clear boundaries at work: a simple four-part formula for a calm no, real wording for managers and colleagues, and a gentle fourteen-day start.',
     kindle: '2026-11',
+    cover: '/books/say-no-without-the-guilt.webp',
     tone: 'violet',
   },
   {
@@ -48,6 +51,7 @@ export const BOOKS: Book[] = [
       'A practical, research-informed guide to self-discipline, daily habits and focus, for people who want progress without burnout or self-blame. Twelve chapters, each ending with an exercise.',
     kindle: '2026-10',
     paperback: '2026-10',
+    cover: '/books/the-quiet-discipline.webp',
     tone: 'blue',
   },
   {
