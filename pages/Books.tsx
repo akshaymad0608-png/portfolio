@@ -69,8 +69,8 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => (
       <img
         src={book.cover}
         alt={`Cover of ${book.title} by Akshay Mahajan`}
-        width={420}
-        height={672}
+        width={480}
+        height={768}
         loading="lazy"
         decoding="async"
         className="aspect-[5/8] h-auto w-full max-w-[150px] shrink-0 self-start rounded-[4px] object-cover shadow-[0_10px_30px_-12px_rgba(15,23,42,0.45)] sm:w-[130px]"
