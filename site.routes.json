@@ -380,6 +380,26 @@
       "lastmod": "2026-10-19"
     },
     {
+      "path": "/books",
+      "title": "Books by Akshay Mahajan: Self-Help Guides on Amazon Kindle",
+      "description": "Five self-help books by Akshay Mahajan on Amazon: The Overthinking Reset, Say No Without the Guilt, The Quiet Discipline, The 5 AM Lie and Transform Yourself.",
+      "priority": "0.6",
+      "changefreq": "monthly",
+      "heading": "Practical self-help guides",
+      "lead": "Short, plain-language books on overthinking, habits and boundaries, published on Amazon as Kindle eBooks and paperbacks.",
+      "pointsHeading": "The books",
+      "points": [
+        "Say No Without the Guilt",
+        "The Overthinking Reset",
+        "The Quiet Discipline",
+        "Transform Yourself",
+        "The 5 AM Lie"
+      ],
+      "keywords": "Akshay Mahajan books, self-help books, The Overthinking Reset, Say No Without the Guilt, The Quiet Discipline, The 5 AM Lie, Transform Yourself",
+      "navLabel": "Books",
+      "lastmod": "2026-11-27"
+    },
+    {
       "path": "/blog",
       "ogImage": "/og/blog.jpg",
       "title": "Writing on Full-Stack & AI Development | Akshay Mahajan",

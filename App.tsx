@@ -33,6 +33,7 @@ const WebsiteCostIndia = lazy(() => import('./pages/posts/WebsiteCostIndia'));
 const WhatsappEnquiriesToSheets = lazy(() => import('./pages/posts/WhatsappEnquiriesToSheets'));
 const AiChatbotSmallBusiness = lazy(() => import('./pages/posts/AiChatbotSmallBusiness'));
 const WebsiteDeveloperSurat = lazy(() => import('./pages/WebsiteDeveloperSurat'));
+const Books = lazy(() => import('./pages/Books'));
 const WhatsAppAutomation = lazy(() => import('./pages/WhatsAppAutomation'));
 const Pricing = lazy(() => import('./pages/Pricing'));
 const AIAutomationPricing = lazy(() => import('./pages/AIAutomationPricing'));
@@ -134,6 +135,7 @@ const App: React.FC = () => {
               <Route path="/blog/whatsapp-enquiries-to-google-sheets-n8n" element={<WhatsappEnquiriesToSheets />} />
               <Route path="/blog/ai-chatbot-for-small-business-website" element={<AiChatbotSmallBusiness />} />
               <Route path="/website-developer-surat" element={<WebsiteDeveloperSurat />} />
+              <Route path="/books" element={<Books />} />
               <Route path="/whatsapp-automation-small-business" element={<WhatsAppAutomation />} />
               <Route path="/pricing" element={<Pricing />} />
               <Route path="/ai-automation-pricing" element={<AIAutomationPricing />} />
