@@ -84,7 +84,7 @@ export const BOOKS: Book[] = [
 
 export const amazonSearchUrl = (b: Book): string =>
   b.amazonUrl ??
-  `https://www.amazon.com/s?k=${encodeURIComponent(`${b.title} Akshay Mahajan`)}`;
+  `https://www.amazon.com/s?k=${encodeURIComponent(`"${b.title}" Akshay Mahajan`)}&i=digital-text`;
 
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 export const monthLabel = (iso: string): string => {
