@@ -23,6 +23,7 @@ const COLS = [
       { label: 'About', to: '/about' },
       { label: 'AI guide', to: '/ai-guide' },
       { label: 'Blog', to: '/blog' },
+      { label: 'Books', to: '/books' },
       { label: 'Privacy', to: '/privacy' },
       { label: 'Terms', to: '/terms' },
     ],
