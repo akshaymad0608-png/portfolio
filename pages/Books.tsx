@@ -73,7 +73,7 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => (
         height={672}
         loading="lazy"
         decoding="async"
-        className="aspect-[5/8] w-full max-w-[150px] shrink-0 rounded-[4px] object-cover shadow-[0_10px_30px_-12px_rgba(15,23,42,0.45)] sm:w-[130px]"
+        className="aspect-[5/8] h-auto w-full max-w-[150px] shrink-0 self-start rounded-[4px] object-cover shadow-[0_10px_30px_-12px_rgba(15,23,42,0.45)] sm:w-[130px]"
       />
     ) : (
       <div
@@ -98,7 +98,7 @@ const BookCard: React.FC<{ book: Book }> = ({ book }) => (
         rel="noopener noreferrer"
         className="btn-ghost mt-5 inline-flex items-center justify-center px-5 py-2.5 text-[14.5px] font-medium"
       >
-        View on Amazon
+        {book.amazonUrl ? 'View on Amazon' : 'Find on Amazon'}
       </a>
     </div>
   </article>
@@ -131,8 +131,8 @@ const Books: React.FC = () => (
               self-help guides, not medical or psychological advice.
             </P>
             <P>
-              The "View on Amazon" buttons open an Amazon search for the title and author. Prices and
-              availability by country are shown on Amazon itself.
+              The buttons open each book on Amazon. Prices, formats and availability by country are
+              shown on Amazon itself.
             </P>
             <Callout title="Also by the same author">
               I also build websites and automation for small businesses. See the{' '}
