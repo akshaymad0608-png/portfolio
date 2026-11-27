@@ -40,6 +40,10 @@ const FAQS = [
     a: 'Not as separate projects. Good SEO is the base, and most of AEO, GEO and AIO is the same work done carefully: clear answers, honest facts, structured data and a consistent name across the web. SXO is the part that turns a visit into an enquiry, so it matters as soon as you have traffic.',
   },
   {
+    q: 'Do I need an llms.txt file to appear in ChatGPT?',
+    a: 'No. A 2026 Ahrefs study of about 137,000 domains found that 97% of llms.txt files received zero requests, and most of the bots that did fetch one were SEO audit tools, not AI assistants. It costs little to publish, but it has not been shown to help you get cited. Clear answers, structured data and robots.txt rules that allow AI crawlers matter more.',
+  },
+  {
     q: 'Can anyone guarantee a ranking or an AI mention?',
     a: 'No. Search engines and AI tools change often and decide for themselves. What you control is the quality, clarity and consistency of what you publish, and whether visitors who arrive can do what they came to do.',
   },
@@ -58,7 +62,7 @@ const SeoAeoGeoSxoAio: React.FC = () => (
       path="/blog/seo-aeo-geo-sxo-aio-explained"
       eyebrow="Search and AI"
       title="SEO vs AEO vs GEO vs SXO vs AIO: what is the difference?"
-      meta="2 Nov 2026 · ~7 min · a checklist to copy"
+      meta="2 Nov 2026 · updated 12 Nov · ~8 min · a checklist to copy"
       lead="Five acronyms, one goal: to be found, trusted and chosen, whether the person is using Google, a voice assistant or an AI chatbot. Here is what each one means, in plain words, and what to do about it."
     >
       <Reveal>
@@ -123,7 +127,7 @@ const SeoAeoGeoSxoAio: React.FC = () => (
         </P>
         <UL>
           <LI title="Goal:">machines understand who you are, what you offer and where it is true.</LI>
-          <LI title="Do:">schema markup that matches the visible page, one consistent entity (name, address, profiles), an llms.txt summary, and robots rules that do not block the crawlers you want.</LI>
+          <LI title="Do:">schema markup that matches the visible page, one consistent entity (name, address, profiles), and robots rules that do not block the crawlers you want. An llms.txt file is optional: see the note on it below.</LI>
         </UL>
 
         <Callout title="The one-line version">
@@ -140,6 +144,30 @@ const SeoAeoGeoSxoAio: React.FC = () => (
           fast, clear and honest.
         </P>
 
+        <H2>7 steps to get cited by AI tools</H2>
+        <P>
+          No one can promise a mention, and many guides on this are written by tool vendors, so treat their
+          numbers as indicative. These are the steps most of them agree on, and the ones I use on this site.
+        </P>
+        <UL>
+          <LI title="1. Answer first.">Put the direct answer in the first line under the question heading.</LI>
+          <LI title="2. Numbers with a source.">State figures plainly and say where they come from.</LI>
+          <LI title="3. FAQ and schema.">Add real questions and answers, with FAQPage markup that matches the page.</LI>
+          <LI title="4. Let the crawlers in.">Check robots.txt does not block GPTBot, ClaudeBot, PerplexityBot or Google-Extended. You can see this site's file at <a className="underline decoration-border underline-offset-4 hover:text-wire hover:decoration-wire" href="/robots.txt">/robots.txt</a>.</LI>
+          <LI title="5. Keep it fresh.">Some tools, Perplexity in particular, are reported to favour recently updated pages.</LI>
+          <LI title="6. Be mentioned elsewhere.">Reddit, YouTube and other sites that AI tools cite often count as much as your own pages.</LI>
+          <LI title="7. Measure.">Use the AI reports in Google Search Console and Bing Webmaster Tools, and look for referrals from chatgpt.com and perplexity.ai in GA4.</LI>
+        </UL>
+
+        <H2>Does llms.txt help?</H2>
+        <P>
+          Not in any way that has been shown. Ahrefs looked at server logs for about 137,000 domains and found
+          that 97% of llms.txt files received no requests at all, and most bots that did fetch one were SEO
+          audit tools rather than AI assistants. Google says it does not need the file for Search, and OpenAI
+          points site owners to robots.txt. It costs little to publish and may suit documentation-heavy sites,
+          but do not expect it to get you cited. Spend the time on steps 1 to 4 first.
+        </P>
+
         <H2>A one-page checklist</H2>
         <UL>
           <LI>Every important page can be crawled and is in the sitemap.</LI>
@@ -149,7 +177,7 @@ const SeoAeoGeoSxoAio: React.FC = () => (
           <LI>Structured data that matches what is on the page.</LI>
           <LI>The same name, address and profiles everywhere you appear.</LI>
           <LI>A fast mobile experience and one clear next step on every page.</LI>
-          <LI>An llms.txt file, and robots.txt rules that let the crawlers you want in.</LI>
+          <LI>robots.txt rules that let the crawlers you want in. (An llms.txt file is optional and not proven to help.)</LI>
         </UL>
         <P>
           To see where your site stands on this list, run <A to="/free-website-audit">the free website audit</A>,
