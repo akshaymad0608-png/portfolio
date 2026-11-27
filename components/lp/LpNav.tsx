@@ -9,6 +9,7 @@ const LINKS = [
   { label: 'Pricing', to: '/pricing' },
   { label: 'About', to: '/about' },
   { label: 'Blog', to: '/blog' },
+  { label: 'Books', to: '/books' },
 ];
 
 /** Floating light navigation bar for the home page. */
